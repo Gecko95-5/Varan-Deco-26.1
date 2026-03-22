@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "minecraft:block/driftwood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "minecraft:block/driftwood"
+    },
+    "axis=z": {
+      "model": "minecraft:block/driftwood",
+      "x": 90
+    }
+  }
+}

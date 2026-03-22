@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hydrated_brain_coral": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:hydrated_brain_coral"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:hydrated_brain_coral_block_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hydrated_brain_coral"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:hydrated_brain_coral_block_recipe_create"
+    ]
+  }
+}

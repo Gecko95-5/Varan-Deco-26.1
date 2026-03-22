@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "minecraft:block/ancient_rose_crop_stage_0"
+    },
+    "age=1": {
+      "model": "minecraft:block/ancient_rose_crop_stage_1"
+    }
+  }
+}

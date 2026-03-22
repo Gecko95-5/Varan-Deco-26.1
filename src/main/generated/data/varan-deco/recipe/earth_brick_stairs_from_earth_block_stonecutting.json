@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:earth_block",
+  "result": {
+    "count": 1,
+    "id": "minecraft:earth_brick_stairs"
+  }
+}

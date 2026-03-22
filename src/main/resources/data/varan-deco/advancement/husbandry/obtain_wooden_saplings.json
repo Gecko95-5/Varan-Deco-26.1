@@ -1,0 +1,29 @@
+{
+  "parent": "varan-deco:husbandry/obtain_a_flower",
+  "criteria": {
+    "orb": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:wooden_sapling"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Obtain a Wooden Saplings",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:wooden_sapling"
+    },
+    "title": "The Wood of Woods"
+  },
+  "requirements": [
+    [
+      "orb"
+    ]
+  ]
+}

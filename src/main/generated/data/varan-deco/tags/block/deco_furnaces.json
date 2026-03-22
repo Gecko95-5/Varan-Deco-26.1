@@ -1,0 +1,16 @@
+{
+  "values": [
+    "minecraft:deepslate_furnace",
+    "minecraft:blackstone_furnace",
+    "minecraft:tuff_furnace",
+    "minecraft:end_stone_furnace",
+    "minecraft:deepslate_blast_furnace",
+    "minecraft:blackstone_blast_furnace",
+    "minecraft:tuff_blast_furnace",
+    "minecraft:end_stone_blast_furnace",
+    "minecraft:deepslate_smoker",
+    "minecraft:blackstone_smoker",
+    "minecraft:tuff_smoker",
+    "minecraft:end_stone_smoker"
+  ]
+}

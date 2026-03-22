@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "terracotta_bricks",
+  "key": {
+    "#": "minecraft:terracotta_bricks",
+    "X": "minecraft:orange_dye"
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:orange_terracotta_bricks"
+  }
+}

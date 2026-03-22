@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/oak_mosaic_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/oak_mosaic"
+    },
+    "type=top": {
+      "model": "minecraft:block/oak_mosaic_slab_top"
+    }
+  }
+}

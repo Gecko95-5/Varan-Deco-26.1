@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:nether_brick_fence_gate",
+    "minecraft:red_nether_brick_fence_gate",
+    "minecraft:blue_nether_brick_fence_gate",
+    "minecraft:cracked_nether_brick_fence_gate",
+    "minecraft:cracked_red_nether_brick_fence_gate",
+    "minecraft:cracked_blue_nether_brick_fence_gate",
+    "minecraft:cactus_plank_fence_gate",
+    "minecraft:iron_cap_fence_gate",
+    "minecraft:mushroom_fence_gate",
+    "minecraft:wooden_fence_gate"
+  ]
+}

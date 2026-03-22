@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "hydrating_coral",
+  "ingredients": [
+    "minecraft:dead_brain_coral_block",
+    "minecraft:bubble_orb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:brain_coral_block"
+  }
+}

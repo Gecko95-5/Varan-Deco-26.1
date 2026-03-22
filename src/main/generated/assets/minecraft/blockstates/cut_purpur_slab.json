@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/cut_purpur_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/cut_purpur"
+    },
+    "type=top": {
+      "model": "minecraft:block/cut_purpur_slab_top"
+    }
+  }
+}

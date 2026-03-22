@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:crafting_table",
+    "minecraft:crimson_crafting_table",
+    "minecraft:warped_crafting_table",
+    "minecraft:iron_cap_crafting_table",
+    "#varan-deco:wooden_crafting_tables"
+  ]
+}

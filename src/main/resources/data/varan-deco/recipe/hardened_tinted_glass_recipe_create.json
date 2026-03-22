@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hardened_glass",
+  "key": {
+    "#": "minecraft:amethyst_shard",
+    "X": "minecraft:hardened_glass"
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:hardened_tinted_glass"
+  }
+}

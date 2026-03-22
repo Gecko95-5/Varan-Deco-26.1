@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hardened_glass_pane": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:hardened_glass_pane"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:dyed_hardened_green_stained_glass_pane_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hardened_glass_pane"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:dyed_hardened_green_stained_glass_pane_recipe_create"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/cactus_mosaic_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/cactus_mosaic_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/cactus_mosaic_slab_top"
+    }
+  }
+}

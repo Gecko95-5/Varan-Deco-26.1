@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_resin_stairs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:resin_stairs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:smooth_resin_stairs_from_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_resin_stairs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:smooth_resin_stairs_from_smelting"
+    ]
+  }
+}

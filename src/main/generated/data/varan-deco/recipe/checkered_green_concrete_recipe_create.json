@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "special_cut_concrete",
+  "key": {
+    "#": "minecraft:cut_green_concrete",
+    "$": "minecraft:passtol"
+  },
+  "pattern": [
+    "$#",
+    "#$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:checkered_green_concrete"
+  }
+}

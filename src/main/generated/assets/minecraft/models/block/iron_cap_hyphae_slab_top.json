@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "minecraft:block/iron_cap_stem_temp",
+    "side": "minecraft:block/iron_cap_stem_temp",
+    "top": "minecraft:block/iron_cap_stem_temp"
+  }
+}

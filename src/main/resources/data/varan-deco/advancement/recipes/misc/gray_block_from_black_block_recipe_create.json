@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_black_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:black_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:gray_block_from_black_block_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:white_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_black_block",
+      "has_white_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:gray_block_from_black_block_recipe_create"
+    ]
+  }
+}

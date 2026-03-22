@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/dry_grass_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/dry_grass_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/dry_grass_slab_top"
+    }
+  }
+}

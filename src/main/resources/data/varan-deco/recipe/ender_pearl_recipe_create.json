@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:warped_wart",
+    "F": "minecraft:chorus_fruit"
+  },
+  "pattern": [
+    " # ",
+    "#F#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:ender_pearl"
+  }
+}

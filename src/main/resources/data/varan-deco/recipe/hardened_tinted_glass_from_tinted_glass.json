@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hardened_glass",
+  "key": {
+    "#": "minecraft:iron_ingot",
+    "X": "minecraft:tinted_glass"
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:hardened_tinted_glass"
+  }
+}

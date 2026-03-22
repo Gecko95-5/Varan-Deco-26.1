@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "pastel_blocks",
+  "key": {
+    "#": "minecraft:shaded_light_blue_block",
+    "X": "minecraft:passtol"
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:light_blue_block"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/crimson_bookshelf_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/crimson_bookshelf"
+    },
+    "type=top": {
+      "model": "minecraft:block/crimson_bookshelf_slab_top"
+    }
+  }
+}

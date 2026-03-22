@@ -1,0 +1,38 @@
+package net.gecko.varandeco.block.nature.flowers;
+
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.TallFlowerBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCollisionHandler;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.World;
+
+public class WitherRoseBushBlock extends TallFlowerBlock {
+    public WitherRoseBushBlock(Settings settings) {
+        super(settings);
+    }
+    @Override
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+        return super.canPlantOnTop(floor, world, pos) || floor.isOf(Blocks.NETHERRACK) || floor.isOf(Blocks.SOUL_SAND) || floor.isOf(Blocks.SOUL_SOIL);
+    }
+    @Override
+    protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler, boolean bl) {
+        if (world instanceof ServerWorld serverWorld
+                && world.getDifficulty() != Difficulty.PEACEFUL
+                && entity instanceof LivingEntity livingEntity
+                && !livingEntity.isInvulnerableTo(serverWorld, world.getDamageSources().magic())) {
+            livingEntity.addStatusEffect(this.getContactEffect());
+        }
+    }
+
+    public StatusEffectInstance getContactEffect() {
+        return new StatusEffectInstance(StatusEffects.WITHER, 40);
+    }
+}

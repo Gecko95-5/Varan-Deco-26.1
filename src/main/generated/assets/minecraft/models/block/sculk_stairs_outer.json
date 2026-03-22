@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "minecraft:block/sculk_temp",
+    "side": "minecraft:block/sculk_temp",
+    "top": "minecraft:block/sculk_temp"
+  }
+}

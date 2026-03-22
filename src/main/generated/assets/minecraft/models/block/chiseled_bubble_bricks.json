@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/chiseled_bubble_bricks_bottom",
+    "side": "minecraft:block/chiseled_bubble_bricks_side",
+    "top": "minecraft:block/chiseled_bubble_bricks_top"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "coral_block",
+  "key": {
+    "#": "minecraft:dead_brain_coral"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:dead_brain_coral_block"
+  }
+}

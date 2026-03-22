@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/cut_soul_soilstone_brick_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/cut_soul_soilstone_bricks"
+    },
+    "type=top": {
+      "model": "minecraft:block/cut_soul_soilstone_brick_slab_top"
+    }
+  }
+}

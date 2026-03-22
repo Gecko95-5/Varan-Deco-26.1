@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_clay": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:clay"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:clay_stairs_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_clay"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:clay_stairs_recipe_create"
+    ]
+  }
+}

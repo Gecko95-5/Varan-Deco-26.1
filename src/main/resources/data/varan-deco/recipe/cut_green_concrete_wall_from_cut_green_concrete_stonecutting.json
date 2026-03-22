@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:cut_green_concrete",
+  "result": {
+    "count": 1,
+    "id": "minecraft:cut_green_concrete_wall"
+  }
+}

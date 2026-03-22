@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_ladder",
+  "key": {
+    "#": "minecraft:stick",
+    "S": "minecraft:bamboo_slab"
+  },
+  "pattern": [
+    "# #",
+    "#S#",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:bamboo_ladder"
+  }
+}

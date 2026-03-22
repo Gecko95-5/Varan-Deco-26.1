@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/warped_mosaic_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/warped_mosaic"
+    },
+    "type=top": {
+      "model": "minecraft:block/warped_mosaic_slab_top"
+    }
+  }
+}

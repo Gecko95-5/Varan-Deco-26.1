@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hardened_glass_panes",
+  "key": {
+    "#": "minecraft:iron_ingot",
+    "X": "minecraft:lime_stained_glass_pane"
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:hardened_lime_stained_glass_pane"
+  }
+}

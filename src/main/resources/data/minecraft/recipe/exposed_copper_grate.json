@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#":"minecraft:exposed_copper",
+    "X":"minecraft:exposed_light_copper_bars"
+  },
+  "pattern": [
+    " X ",
+    "X#X",
+    " X "
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:exposed_copper_grate"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "minecraft:block/hardened_tinted_glass"
+    }
+  }
+}

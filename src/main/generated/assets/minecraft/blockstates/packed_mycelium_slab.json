@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/packed_mycelium_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/mycelium_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/packed_mycelium_slab_top"
+    }
+  }
+}

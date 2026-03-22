@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "minecraft:block/driftwood_barrel_bottom",
+    "side": "minecraft:block/driftwood_barrel_side",
+    "top": "minecraft:block/driftwood_barrel_top"
+  }
+}

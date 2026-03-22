@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:lapis_bricks",
+  "result": {
+    "count": 1,
+    "id": "minecraft:lapis_brick_stairs"
+  }
+}

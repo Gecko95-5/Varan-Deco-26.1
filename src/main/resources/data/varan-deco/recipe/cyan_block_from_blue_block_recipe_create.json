@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "cyan_block",
+  "ingredients": [
+    "minecraft:yellow_block",
+    "minecraft:blue_block",
+    "minecraft:blue_block"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:cyan_block"
+  }
+}

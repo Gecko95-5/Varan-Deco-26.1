@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_mega_brown_tulip": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:mega_brown_tulip"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:brown_dye_from_mega_brown_tulip"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_mega_brown_tulip"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:brown_dye_from_mega_brown_tulip"
+    ]
+  }
+}

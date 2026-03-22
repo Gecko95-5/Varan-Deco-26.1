@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "minecraft:block/magma_temp",
+    "side": "minecraft:block/magma_temp",
+    "top": "minecraft:block/magma_temp"
+  }
+}

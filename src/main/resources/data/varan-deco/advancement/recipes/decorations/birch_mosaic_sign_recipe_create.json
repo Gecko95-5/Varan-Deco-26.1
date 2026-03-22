@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_birch_mosaic": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:birch_mosaic"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:birch_mosaic_sign_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_birch_mosaic"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:birch_mosaic_sign_recipe_create"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "pastel_blocks",
+  "key": {
+    "#": "minecraft:green_block",
+    "X": "minecraft:passtol"
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:pastel_green_block"
+  }
+}

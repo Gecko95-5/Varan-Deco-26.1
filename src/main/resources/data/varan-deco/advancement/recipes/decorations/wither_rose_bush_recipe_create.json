@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:wither_rose_bush_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wither_rose": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wither_rose"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wither_rose"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:wither_rose_bush_recipe_create"
+    ]
+  }
+}

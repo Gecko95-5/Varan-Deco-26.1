@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "minecraft:block/tube_coral_temp",
+    "side": "minecraft:block/tube_coral_temp",
+    "top": "minecraft:block/tube_coral_temp"
+  }
+}

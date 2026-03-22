@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "minecraft:block/cobbled_soul_soilstone",
+    "side": "minecraft:block/soul_soilstone",
+    "top": "minecraft:block/soul_soilstone_top"
+  }
+}

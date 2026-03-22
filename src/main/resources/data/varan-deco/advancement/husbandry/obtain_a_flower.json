@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:husbandry/root",
+  "criteria": {
+    "flower": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:small_flowers"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Obtain any Flower",
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:rose"
+    },
+    "show_toast": true,
+    "title": "Petals of Power"
+  },
+  "requirements": [
+    [
+      "flower"
+    ]
+  ]
+}

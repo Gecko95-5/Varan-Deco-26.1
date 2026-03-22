@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#minecraft:logs_that_burn",
+    "A": "minecraft:acacia_sapling",
+    "B": "minecraft:birch_sapling",
+    "D": "minecraft:dark_oak_sapling",
+    "J": "minecraft:jungle_sapling",
+    "O": "minecraft:oak_sapling",
+    "S": "minecraft:spruce_sapling"
+  },
+  "pattern": [
+    "OSB",
+    "###",
+    "JAD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:wooden_sapling"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:smooth_lapis",
+  "result": {
+    "count": 1,
+    "id": "minecraft:smooth_lapis_stairs"
+  }
+}

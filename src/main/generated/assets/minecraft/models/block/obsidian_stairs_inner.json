@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "minecraft:block/obsidian_temp",
+    "side": "minecraft:block/obsidian_temp",
+    "top": "minecraft:block/obsidian_temp"
+  }
+}

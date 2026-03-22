@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_alpine_poppy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:alpine_poppy"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:white_dye_from_alpine_poppy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_alpine_poppy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:white_dye_from_alpine_poppy"
+    ]
+  }
+}

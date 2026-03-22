@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/template_bars_post_ends",
+    "textures": {
+        "bars": "minecraft:block/heavy_iron_bars_edge",
+        "edge": "minecraft:block/heavy_iron_bars_edge"
+    }
+}

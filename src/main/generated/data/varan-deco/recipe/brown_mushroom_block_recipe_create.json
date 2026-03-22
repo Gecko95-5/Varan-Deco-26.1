@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "giant_mushroom_blocks",
+  "key": {
+    "#": "minecraft:brown_mushroom"
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:brown_mushroom_block"
+  }
+}

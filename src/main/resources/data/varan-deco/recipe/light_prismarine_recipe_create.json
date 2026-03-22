@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:crystallized_prismarine",
+    "I": "minecraft:amethyst_shard"
+  },
+  "pattern": [
+    "###",
+    "#I#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:light_prismarine"
+  }
+}

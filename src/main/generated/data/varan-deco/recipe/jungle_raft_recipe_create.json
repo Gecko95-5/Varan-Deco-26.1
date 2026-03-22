@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "boat",
+  "key": {
+    "#": "minecraft:jungle_planks",
+    "-": "minecraft:jungle_slab"
+  },
+  "pattern": [
+    "# #",
+    "---"
+  ],
+  "result": {
+    "count": 1,
+    "id": "varan-deco:jungle_raft"
+  }
+}

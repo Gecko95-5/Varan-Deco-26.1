@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:soul_soilstone",
+  "result": {
+    "count": 8,
+    "id": "minecraft:cobbled_soul_soilstone_slab"
+  }
+}

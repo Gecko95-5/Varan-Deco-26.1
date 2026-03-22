@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_crafting_tables",
+  "key": {
+    "#": "minecraft:pale_oak_planks",
+    "$": "#varan-deco:deco_crafting_tables"
+  },
+  "pattern": [
+    " # ",
+    "#$#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:pale_oak_crafting_table"
+  }
+}

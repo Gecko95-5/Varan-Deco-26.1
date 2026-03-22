@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "pallet_trapdoors",
+  "key": {
+    "#": "minecraft:acacia_slab"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:acacia_pallet_trapdoor"
+  }
+}

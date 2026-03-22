@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:polished_gilded_blackstone",
+    "C": "minecraft:chiseled_polished_blackstone"
+  },
+  "pattern": [
+    " # ",
+    "#C#",
+    " # "
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:chiseled_gilded_blackstone"
+  }
+}

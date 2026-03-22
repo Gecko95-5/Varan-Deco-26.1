@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#minecraft:logs_that_burn",
+    "/": "minecraft:stick"
+  },
+  "pattern": [
+    "/#/",
+    " / "
+  ],
+  "result": {
+    "count": 16,
+    "id": "minecraft:hanging_roots"
+  }
+}

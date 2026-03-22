@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "minecraft:block/duel_cut_cyan_concrete"
+  }
+}

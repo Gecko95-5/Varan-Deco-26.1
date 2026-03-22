@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:warped_bookshelf_slab"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warped_bookshelf": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:warped_bookshelf"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_warped_bookshelf"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:warped_bookshelf_slab"
+    ]
+  }
+}

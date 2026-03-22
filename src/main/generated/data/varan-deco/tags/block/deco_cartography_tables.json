@@ -1,0 +1,20 @@
+{
+  "values": [
+    "minecraft:oak_cartography_table",
+    "minecraft:birch_cartography_table",
+    "minecraft:spruce_cartography_table",
+    "minecraft:jungle_cartography_table",
+    "minecraft:acacia_cartography_table",
+    "minecraft:dark_oak_cartography_table",
+    "minecraft:mangrove_cartography_table",
+    "minecraft:crimson_cartography_table",
+    "minecraft:warped_cartography_table",
+    "minecraft:cactus_cartography_table",
+    "minecraft:mushroom_cartography_table",
+    "minecraft:cherry_cartography_table",
+    "minecraft:bamboo_cartography_table",
+    "minecraft:pale_oak_cartography_table",
+    "minecraft:driftwood_cartography_table",
+    "minecraft:iron_cap_cartography_table"
+  ]
+}

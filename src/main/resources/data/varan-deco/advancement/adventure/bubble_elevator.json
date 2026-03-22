@@ -1,0 +1,33 @@
+{
+  "parent": "varan-deco:adventure/obtain_bubble_orb",
+  "criteria": {
+    "elevator": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bubble_elevator_block_bubble"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Craft the Bubble Elevator Block",
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:bubble_elevator_block_bubble"
+    },
+    "show_toast": true,
+    "title": "The Best Two in One"
+  },
+  "requirements": [
+    [
+      "elevator"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

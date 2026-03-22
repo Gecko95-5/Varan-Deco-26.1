@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "pallet_trapdoors",
+  "key": {
+    "#": "minecraft:mushroom_slab"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:mushroom_pallet_trapdoor"
+  }
+}

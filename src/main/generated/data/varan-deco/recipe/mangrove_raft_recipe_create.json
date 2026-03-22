@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "boat",
+  "key": {
+    "#": "minecraft:mangrove_planks",
+    "-": "minecraft:mangrove_slab"
+  },
+  "pattern": [
+    "# #",
+    "---"
+  ],
+  "result": {
+    "count": 1,
+    "id": "varan-deco:mangrove_raft"
+  }
+}

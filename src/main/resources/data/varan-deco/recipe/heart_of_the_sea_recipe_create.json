@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:bubble_orb",
+    "C": "minecraft:prismarine_crystals",
+    "E": "minecraft:ender_eye"
+  },
+  "pattern": [
+    "#C#",
+    "CEC",
+    "#C#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:heart_of_the_sea"
+  }
+}

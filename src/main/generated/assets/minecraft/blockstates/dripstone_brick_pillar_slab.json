@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/dripstone_brick_pillar_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/dripstone_brick_pillar_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/dripstone_brick_pillar_slab_top"
+    }
+  }
+}

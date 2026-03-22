@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "group": "mosaic_glass",
+  "ingredient": "minecraft:brown_stained_glass",
+  "result": {
+    "id": "minecraft:mosaic_brown_stained_glass"
+  }
+}

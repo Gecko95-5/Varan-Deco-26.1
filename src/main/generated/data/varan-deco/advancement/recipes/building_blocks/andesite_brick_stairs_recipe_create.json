@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_andesite_bricks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:andesite_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:andesite_brick_stairs_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_andesite_bricks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:andesite_brick_stairs_recipe_create"
+    ]
+  }
+}

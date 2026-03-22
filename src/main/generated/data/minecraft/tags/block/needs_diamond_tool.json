@@ -1,0 +1,25 @@
+{
+  "values": [
+    "minecraft:obsidian_stairs",
+    "minecraft:obsidian_brick_stairs",
+    "minecraft:obsidian_slab",
+    "minecraft:obsidian_brick_slab",
+    "minecraft:obsidian_wall",
+    "minecraft:obsidian_brick_wall",
+    "minecraft:obsidian_bricks",
+    "minecraft:obsidian_pillar",
+    "minecraft:chiseled_obsidian",
+    "minecraft:sanded_obsidian",
+    "minecraft:smooth_obsidian",
+    "minecraft:cut_obsidian",
+    "minecraft:sanded_obsidian_stairs",
+    "minecraft:smooth_obsidian_stairs",
+    "minecraft:cut_obsidian_stairs",
+    "minecraft:sanded_obsidian_slab",
+    "minecraft:smooth_obsidian_slab",
+    "minecraft:cut_obsidian_slab",
+    "minecraft:sanded_obsidian_wall",
+    "minecraft:smooth_obsidian_wall",
+    "minecraft:cut_obsidian_wall"
+  ]
+}

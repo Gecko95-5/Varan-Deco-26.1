@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/cut_lapis_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/cut_lapis"
+    },
+    "type=top": {
+      "model": "minecraft:block/cut_lapis_slab_top"
+    }
+  }
+}

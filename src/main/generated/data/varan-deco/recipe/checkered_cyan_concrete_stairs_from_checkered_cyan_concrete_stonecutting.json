@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:checkered_cyan_concrete",
+  "result": {
+    "count": 1,
+    "id": "minecraft:checkered_cyan_concrete_stairs"
+  }
+}

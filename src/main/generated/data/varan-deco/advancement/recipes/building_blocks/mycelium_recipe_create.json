@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_earth_sphere": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:earth_sphere"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:mycelium_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_earth_sphere"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:mycelium_recipe_create"
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dirt_like",
+  "key": {
+    "#": "minecraft:coarse_dirt",
+    "0": "minecraft:earth_sphere",
+    "M": "#varan-deco:mushrooms"
+  },
+  "pattern": [
+    "M0M",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:mycelium"
+  }
+}

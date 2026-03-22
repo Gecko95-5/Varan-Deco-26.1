@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cut_yellow_concrete": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cut_yellow_concrete"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:duel_cut_yellow_concrete_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cut_yellow_concrete"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:duel_cut_yellow_concrete_recipe_create"
+    ]
+  }
+}

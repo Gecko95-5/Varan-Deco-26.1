@@ -1,0 +1,33 @@
+{
+  "values": [
+    "minecraft:soul_soilstone",
+    "minecraft:soul_soilstone_stairs",
+    "minecraft:soul_soilstone_slab",
+    "minecraft:soul_soilstone_wall",
+    "minecraft:cut_soul_soilstone",
+    "minecraft:cut_soul_soilstone_stairs",
+    "minecraft:cut_soul_soilstone_slab",
+    "minecraft:cut_soul_soilstone_wall",
+    "minecraft:chiseled_soul_soilstone",
+    "minecraft:smooth_soul_soilstone",
+    "minecraft:smooth_soul_soilstone_stairs",
+    "minecraft:smooth_soul_soilstone_slab",
+    "minecraft:smooth_soul_soilstone_wall",
+    "minecraft:cut_soul_soilstone_bricks",
+    "minecraft:cut_soul_soilstone_brick_stairs",
+    "minecraft:cut_soul_soilstone_brick_slab",
+    "minecraft:cut_soul_soilstone_brick_wall",
+    "minecraft:cobbled_soul_soilstone",
+    "minecraft:polished_soul_soilstone",
+    "minecraft:soul_soilstone_bricks",
+    "minecraft:cobbled_soul_soilstone_stairs",
+    "minecraft:cobbled_soul_soilstone_slab",
+    "minecraft:cobbled_soul_soilstone_wall",
+    "minecraft:polished_soul_soilstone_stairs",
+    "minecraft:polished_soul_soilstone_slab",
+    "minecraft:polished_soul_soilstone_wall",
+    "minecraft:soul_soilstone_brick_stairs",
+    "minecraft:soul_soilstone_brick_slab",
+    "minecraft:soul_soilstone_brick_wall"
+  ]
+}

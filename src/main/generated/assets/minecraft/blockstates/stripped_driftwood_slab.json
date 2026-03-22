@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/stripped_driftwood_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/stripped_driftwood_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/stripped_driftwood_slab_top"
+    }
+  }
+}

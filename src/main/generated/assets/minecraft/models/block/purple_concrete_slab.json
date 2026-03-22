@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "minecraft:block/purple_concrete_temp",
+    "side": "minecraft:block/purple_concrete_temp",
+    "top": "minecraft:block/purple_concrete_temp"
+  }
+}

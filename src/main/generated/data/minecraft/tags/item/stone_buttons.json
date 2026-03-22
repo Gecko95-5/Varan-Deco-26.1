@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:polished_deepslate_button",
+    "minecraft:deepslate_button",
+    "minecraft:cobbled_deepslate_button",
+    "minecraft:cobblestone_button",
+    "minecraft:blackstone_button",
+    "minecraft:polished_stone_button",
+    "minecraft:tuff_button",
+    "minecraft:polished_tuff_button",
+    "minecraft:end_stone_button",
+    "minecraft:polished_end_stone_button"
+  ]
+}

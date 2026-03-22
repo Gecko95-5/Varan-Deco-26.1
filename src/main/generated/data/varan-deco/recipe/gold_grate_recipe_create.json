@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:gold_block",
+    "X": "minecraft:light_gold_bars"
+  },
+  "pattern": [
+    " X ",
+    "X#X",
+    " X "
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:gold_grate"
+  }
+}

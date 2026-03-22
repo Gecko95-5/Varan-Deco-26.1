@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "minecraft:block/wind_block",
+    "side": "minecraft:block/wind_block",
+    "top": "minecraft:block/wind_block"
+  }
+}

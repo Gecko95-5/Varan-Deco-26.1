@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dirt_like",
+  "key": {
+    "#": "minecraft:dirt",
+    "0": "minecraft:earth_sphere",
+    "S": "#varan-deco:seeds"
+  },
+  "pattern": [
+    "S0S",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:farmland"
+  }
+}

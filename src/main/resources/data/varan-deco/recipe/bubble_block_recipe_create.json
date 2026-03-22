@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:cobblestone",
+    "I": "minecraft:bubble_orb"
+  },
+  "pattern": [
+    "#I",
+    "I#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bubble_block"
+  }
+}

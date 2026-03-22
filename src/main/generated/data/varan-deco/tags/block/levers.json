@@ -1,0 +1,16 @@
+{
+  "values": [
+    "minecraft:lever",
+    "minecraft:deepslate_lever",
+    "minecraft:polished_deepslate_lever",
+    "minecraft:stone_lever",
+    "minecraft:polished_stone_lever",
+    "minecraft:cobbled_deepslate_lever",
+    "minecraft:blackstone_lever",
+    "minecraft:polished_blackstone_lever",
+    "minecraft:end_stone_lever",
+    "minecraft:polished_end_stone_lever",
+    "minecraft:tuff_lever",
+    "minecraft:polished_tuff_lever"
+  ]
+}

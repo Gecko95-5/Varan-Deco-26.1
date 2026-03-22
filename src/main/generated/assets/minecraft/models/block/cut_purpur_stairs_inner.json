@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "minecraft:block/cut_purpur",
+    "side": "minecraft:block/cut_purpur",
+    "top": "minecraft:block/cut_purpur"
+  }
+}

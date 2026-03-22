@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_cartography_tables",
+  "key": {
+    "#": "minecraft:iron_cap_planks",
+    "$": "#varan-deco:deco_cartography_tables"
+  },
+  "pattern": [
+    " # ",
+    "#$#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:iron_cap_cartography_table"
+  }
+}

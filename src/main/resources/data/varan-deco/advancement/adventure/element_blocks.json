@@ -1,0 +1,76 @@
+{
+  "parent": "varan-deco:adventure/obtain_bubble_orb",
+  "criteria": {
+    "fire": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+            "minecraft:magma_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "water": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+            "minecraft:bubble_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "air": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+            "minecraft:wind_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "earth": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+            "minecraft:earth_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Collect or Craft all Four Element Blocks",
+    "frame": "task",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:wind_block"
+    },
+    "show_toast": true,
+    "title": "Earth, Fire, Water, Air in Blocks"
+  },
+  "requirements": [
+    [
+      "fire"
+    ],
+    [
+      "water"
+    ],
+    [
+      "air"
+    ],
+    [
+      "earth"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "special_cut_concrete",
+  "key": {
+    "#": "minecraft:cut_yellow_concrete",
+    "$": "minecraft:amethyst_shard"
+  },
+  "pattern": [
+    "$#",
+    "#$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:duel_cut_yellow_concrete"
+  }
+}

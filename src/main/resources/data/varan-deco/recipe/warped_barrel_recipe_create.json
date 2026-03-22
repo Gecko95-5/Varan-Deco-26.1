@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_barrels",
+  "key": {
+    "#": "minecraft:warped_planks",
+    "$": "#varan-deco:deco_barrels"
+  },
+  "pattern": [
+    " # ",
+    "#$#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:warped_barrel"
+  }
+}

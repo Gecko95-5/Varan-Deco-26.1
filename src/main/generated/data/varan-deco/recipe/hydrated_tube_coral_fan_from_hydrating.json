@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "hydrating_coral",
+  "ingredients": [
+    "minecraft:tube_coral_fan",
+    "minecraft:bubble_orb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:hydrated_tube_coral_fan"
+  }
+}

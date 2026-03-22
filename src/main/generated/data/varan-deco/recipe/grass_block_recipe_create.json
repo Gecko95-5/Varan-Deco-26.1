@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dirt_like",
+  "key": {
+    "#": "minecraft:dirt",
+    "0": "minecraft:earth_sphere",
+    "G": "minecraft:short_grass"
+  },
+  "pattern": [
+    "G0G",
+    "###"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:grass_block"
+  }
+}

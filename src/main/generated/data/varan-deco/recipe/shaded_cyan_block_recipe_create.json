@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "shaded_blocks",
+  "key": {
+    "#": "minecraft:cyan_block",
+    "X": "minecraft:shaddol"
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:shaded_cyan_block"
+  }
+}

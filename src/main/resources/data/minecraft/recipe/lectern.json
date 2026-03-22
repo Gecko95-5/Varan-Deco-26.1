@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "B": "#varan-deco:deco_bookshelves",
+    "S": "#minecraft:wooden_slabs"
+  },
+  "pattern": [
+    "SSS",
+    " B ",
+    " S "
+  ],
+  "result": {
+    "id": "minecraft:lectern"
+  },
+  "show_notification": true
+}

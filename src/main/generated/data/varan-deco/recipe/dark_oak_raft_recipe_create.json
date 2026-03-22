@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "boat",
+  "key": {
+    "#": "minecraft:dark_oak_planks",
+    "-": "minecraft:dark_oak_slab"
+  },
+  "pattern": [
+    "# #",
+    "---"
+  ],
+  "result": {
+    "count": 1,
+    "id": "varan-deco:dark_oak_raft"
+  }
+}

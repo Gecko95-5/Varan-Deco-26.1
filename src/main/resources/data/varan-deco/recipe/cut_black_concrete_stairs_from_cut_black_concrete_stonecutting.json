@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:cut_black_concrete",
+  "result": {
+    "count": 1,
+    "id": "minecraft:cut_black_concrete_stairs"
+  }
+}

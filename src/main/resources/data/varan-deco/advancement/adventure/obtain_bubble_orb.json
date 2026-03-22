@@ -1,0 +1,32 @@
+{
+  "parent": "varan-deco:adventure/obtain_earth_sphere",
+  "criteria": {
+    "orb": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bubble_orb"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Obtain a Bubble Orb",
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:bubble_orb"
+    },
+    "show_toast": true,
+    "title": "The Orb found in the Ocean Depths"
+  },
+  "requirements": [
+    [
+      "orb"
+    ]
+  ]
+}

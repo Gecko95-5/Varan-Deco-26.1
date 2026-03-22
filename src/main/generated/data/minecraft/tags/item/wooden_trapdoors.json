@@ -1,0 +1,22 @@
+{
+  "values": [
+    "minecraft:cactus_trapdoor",
+    "minecraft:mushroom_trapdoor",
+    "minecraft:wooden_trapdoor",
+    "minecraft:oak_pallet_trapdoor",
+    "minecraft:spruce_pallet_trapdoor",
+    "minecraft:birch_pallet_trapdoor",
+    "minecraft:jungle_pallet_trapdoor",
+    "minecraft:acacia_pallet_trapdoor",
+    "minecraft:dark_oak_pallet_trapdoor",
+    "minecraft:mangrove_pallet_trapdoor",
+    "minecraft:cactus_pallet_trapdoor",
+    "minecraft:mushroom_pallet_trapdoor",
+    "minecraft:wooden_pallet_trapdoor",
+    "minecraft:cherry_pallet_trapdoor",
+    "minecraft:pale_oak_pallet_trapdoor",
+    "minecraft:driftwood_pallet_trapdoor",
+    "minecraft:bamboo_pallet_trapdoor",
+    "minecraft:driftwood_trapdoor"
+  ]
+}

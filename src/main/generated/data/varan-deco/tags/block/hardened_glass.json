@@ -1,0 +1,23 @@
+{
+  "values": [
+    "minecraft:hardened_glass",
+    "minecraft:hardened_tinted_glass",
+    "minecraft:hardened_black_stained_glass",
+    "minecraft:hardened_light_blue_stained_glass",
+    "minecraft:hardened_light_gray_stained_glass",
+    "minecraft:hardened_white_stained_glass",
+    "minecraft:hardened_gray_stained_glass",
+    "minecraft:hardened_red_stained_glass",
+    "minecraft:hardened_orange_stained_glass",
+    "minecraft:hardened_yellow_stained_glass",
+    "minecraft:hardened_lime_stained_glass",
+    "minecraft:hardened_green_stained_glass",
+    "minecraft:hardened_cyan_stained_glass",
+    "minecraft:hardened_blue_stained_glass",
+    "minecraft:hardened_purple_stained_glass",
+    "minecraft:hardened_pink_stained_glass",
+    "minecraft:hardened_magenta_stained_glass",
+    "minecraft:hardened_brown_stained_glass",
+    "#varan-deco:hardened_glass_panes"
+  ]
+}

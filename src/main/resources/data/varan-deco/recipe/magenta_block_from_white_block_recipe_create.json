@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "magenta_block",
+  "ingredients": [
+    "minecraft:white_block",
+    "minecraft:red_block",
+    "minecraft:red_block",
+    "minecraft:blue_block"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:magenta_block"
+  }
+}

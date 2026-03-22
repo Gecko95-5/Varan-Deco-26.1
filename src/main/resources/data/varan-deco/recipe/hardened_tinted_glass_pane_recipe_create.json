@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hardened_glass_pane",
+  "key": {
+    "#": "minecraft:hardened_tinted_glass"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 18,
+    "id": "minecraft:hardened_tinted_glass_pane"
+  }
+}

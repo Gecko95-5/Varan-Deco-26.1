@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_gecko_wildflowers": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:gecko_wildflowers"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:green_dye_from_wildflower"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_gecko_wildflowers"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:green_dye_from_wildflower"
+    ]
+  }
+}

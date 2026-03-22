@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "boat",
+  "key": {
+    "#": "minecraft:iron_cap_planks",
+    "-": "minecraft:iron_cap_slab"
+  },
+  "pattern": [
+    "# #",
+    "---"
+  ],
+  "result": {
+    "count": 1,
+    "id": "varan-deco:iron_cap_raft"
+  }
+}

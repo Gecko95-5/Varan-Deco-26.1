@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dead_eye_daisy": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:dead_eye_daisy"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:gray_dye_from_dead_eye_daisy"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_dead_eye_daisy"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:gray_dye_from_dead_eye_daisy"
+    ]
+  }
+}

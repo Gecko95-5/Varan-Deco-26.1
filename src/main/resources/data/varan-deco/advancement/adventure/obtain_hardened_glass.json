@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "glass": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:hardened_glass"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": "Crafted Hardened Glass",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:hardened_glass"
+    },
+    "title": "As Tough as Obsidian"
+  },
+  "requirements": [
+    [
+      "glass"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

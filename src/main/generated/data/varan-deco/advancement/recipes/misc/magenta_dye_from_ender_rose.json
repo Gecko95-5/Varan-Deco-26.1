@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ender_rose": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:ender_rose"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:magenta_dye_from_ender_rose"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_ender_rose"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:magenta_dye_from_ender_rose"
+    ]
+  }
+}

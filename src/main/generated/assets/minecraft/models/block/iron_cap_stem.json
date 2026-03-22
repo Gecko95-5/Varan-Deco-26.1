@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "minecraft:block/iron_cap_stem_top",
+    "side": "minecraft:block/iron_cap_stem"
+  }
+}

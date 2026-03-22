@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:wooden_wood_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wooden_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wooden_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wooden_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:wooden_wood_recipe_create"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "#varan-deco:driftwood_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:driftwood_planks"
+  }
+}

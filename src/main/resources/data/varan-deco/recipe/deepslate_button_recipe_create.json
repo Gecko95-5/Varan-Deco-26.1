@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:deepslate"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:deepslate_button"
+  }
+}

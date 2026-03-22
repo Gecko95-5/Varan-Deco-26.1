@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_smithing_tables",
+  "key": {
+    "#": "minecraft:cherry_planks",
+    "$": "#varan-deco:deco_smithing_tables"
+  },
+  "pattern": [
+    " # ",
+    "#$#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:cherry_smithing_table"
+  }
+}

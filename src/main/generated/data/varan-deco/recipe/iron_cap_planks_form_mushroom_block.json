@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "minecraft:iron_cap_mushroom_block"
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:iron_cap_planks"
+  }
+}

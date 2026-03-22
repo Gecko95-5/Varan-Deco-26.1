@@ -1,0 +1,28 @@
+{
+
+  "type": "minecraft:jigsaw",
+
+  "start_pool": "varan-deco:clouds/start_pool",
+
+  "size": 2,
+
+  "max_distance_from_center": 40,
+
+  "biomes": "#varan-deco:has_structure/clouds",
+
+  "step": "surface_structures",
+
+  "start_height": {
+    "absolute": 100
+  },
+
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+
+  "use_expansion_hack": false,
+
+  "liquid_settings": "apply_waterlogging",
+
+  "spawn_overrides": {},
+
+  "pool_aliases": []
+}

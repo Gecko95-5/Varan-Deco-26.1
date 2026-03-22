@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "minecraft:block/checkered_green_concrete"
+  }
+}

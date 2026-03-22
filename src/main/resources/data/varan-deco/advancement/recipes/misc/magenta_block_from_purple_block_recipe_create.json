@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_purple_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:purple_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_red_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:red_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:magenta_block_from_purple_block_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:white_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_white_block",
+      "has_red_block",
+      "has_purple_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:magenta_block_from_purple_block_recipe_create"
+    ]
+  }
+}

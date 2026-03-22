@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "minecraft:block/cut_calcite",
+    "side": "minecraft:block/cut_calcite",
+    "top": "minecraft:block/cut_calcite"
+  }
+}

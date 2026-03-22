@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:nether/root",
+  "criteria": {
+    "glowstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:smooth_glowstone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Smelt a Block of Smooth Glowstone",
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:smooth_glowstone"
+    },
+    "show_toast": true,
+    "title": "A Smooth Beacon of Light"
+  },
+  "requirements": [
+    [
+      "glowstone"
+    ]
+  ]
+}

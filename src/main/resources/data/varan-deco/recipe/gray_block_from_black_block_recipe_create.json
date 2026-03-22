@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "gray_block",
+  "ingredients": [
+    "minecraft:black_block",
+    "minecraft:white_block"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:gray_block"
+  }
+}

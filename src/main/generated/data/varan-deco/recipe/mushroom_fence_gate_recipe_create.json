@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_fence_fence",
+  "key": {
+    "#": "minecraft:mushroom_planks",
+    "/": "minecraft:stick"
+  },
+  "pattern": [
+    "/#/",
+    "/#/"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:mushroom_fence_gate"
+  }
+}

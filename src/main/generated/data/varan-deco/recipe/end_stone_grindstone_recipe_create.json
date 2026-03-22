@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#minecraft:planks",
+    "-": "minecraft:end_stone_slab",
+    "I": "minecraft:stick"
+  },
+  "pattern": [
+    "I-I",
+    "# #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:end_stone_grindstone"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "minecraft:block/cracked_stone_bricks_temp",
+    "side": "minecraft:block/cracked_stone_bricks_temp",
+    "top": "minecraft:block/cracked_stone_bricks_temp"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raw_copper_stairs": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:raw_copper_stairs"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:copper_stairs_form_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raw_copper_stairs"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:copper_stairs_form_blasting"
+    ]
+  }
+}

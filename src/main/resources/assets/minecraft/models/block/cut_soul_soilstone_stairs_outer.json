@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "minecraft:block/polished_soul_soilstone",
+    "side": "minecraft:block/cut_soul_soilstone",
+    "top": "minecraft:block/soul_soilstone_top"
+  }
+}

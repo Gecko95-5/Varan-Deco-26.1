@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "textures": {
+    "bottom": "minecraft:block/driftwood_pallet_door_bottom",
+    "top": "minecraft:block/driftwood_pallet_door_top"
+  }
+}

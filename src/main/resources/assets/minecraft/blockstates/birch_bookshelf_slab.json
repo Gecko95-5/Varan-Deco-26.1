@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/birch_bookshelf_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/birch_bookshelf"
+    },
+    "type=top": {
+      "model": "minecraft:block/birch_bookshelf_slab_top"
+    }
+  }
+}

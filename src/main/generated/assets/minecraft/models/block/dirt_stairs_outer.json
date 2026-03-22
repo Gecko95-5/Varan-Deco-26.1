@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "minecraft:block/dirt_temp",
+    "side": "minecraft:block/dirt_temp",
+    "top": "minecraft:block/dirt_temp"
+  }
+}

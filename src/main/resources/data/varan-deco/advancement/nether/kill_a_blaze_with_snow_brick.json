@@ -1,0 +1,45 @@
+{
+  "parent": "minecraft:nether/obtain_blaze_rod",
+  "criteria": {
+    "killed_blaze": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "minecraft:blaze"
+            }
+          }
+        ],
+        "killing_blow": {
+          "direct_entity": {
+            "type": "varan-deco:snow_brick_projectile"
+          },
+          "is_projectile": true
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Kill a Blaze with a Snow Brick",
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:snow_brick"
+    },
+    "show_toast": true,
+    "title": "Chill Out"
+  },
+  "requirements": [
+    [
+      "killed_blaze"
+    ]
+  ],
+  "rewards": {
+    "experience": 25
+  }
+}

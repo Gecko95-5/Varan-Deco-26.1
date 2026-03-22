@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "minecraft:block/wooden_wood_temp",
+    "side": "minecraft:block/wooden_wood_temp",
+    "top": "minecraft:block/wooden_wood_temp"
+  }
+}

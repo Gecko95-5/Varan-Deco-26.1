@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hardened_glass",
+  "key": {
+    "#": "minecraft:hardened_glass",
+    "X": "minecraft:orange_dye"
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "minecraft:hardened_orange_stained_glass"
+  }
+}

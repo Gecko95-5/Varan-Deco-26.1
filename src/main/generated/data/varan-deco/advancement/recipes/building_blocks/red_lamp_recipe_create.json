@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_smooth_glowstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:smooth_glowstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:red_lamp_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_smooth_glowstone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:red_lamp_recipe_create"
+    ]
+  }
+}

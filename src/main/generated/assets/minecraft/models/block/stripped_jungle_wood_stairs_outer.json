@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "minecraft:block/stripped_jungle_temp",
+    "side": "minecraft:block/stripped_jungle_temp",
+    "top": "minecraft:block/stripped_jungle_temp"
+  }
+}

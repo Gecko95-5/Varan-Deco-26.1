@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "minecraft:moss_block",
+    "minecraft:end_stone_bricks"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:mossy_end_stone_bricks"
+  }
+}

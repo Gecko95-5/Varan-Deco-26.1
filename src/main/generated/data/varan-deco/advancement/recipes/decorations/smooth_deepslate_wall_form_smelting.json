@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_deepslate_wall": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:deepslate_wall"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:smooth_deepslate_wall_form_smelting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_deepslate_wall"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:smooth_deepslate_wall_form_smelting"
+    ]
+  }
+}

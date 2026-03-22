@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:soul_soilstone",
+  "result": {
+    "count": 8,
+    "id": "minecraft:soul_soilstone_brick_slab"
+  }
+}

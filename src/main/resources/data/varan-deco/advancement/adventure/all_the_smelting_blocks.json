@@ -1,0 +1,229 @@
+{
+  "parent": "minecraft:adventure/sleep_in_bed",
+  "criteria": {
+    "stone_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "deepslate_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:deepslate_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blackstone_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:blackstone_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tuff_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:tuff_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "end_stone_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:end_stone_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stone_smoker": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:smoker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "deepslate_smoker": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:deepslate_smoker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blackstone_smoker": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:blackstone_smoker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tuff_smoker": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:tuff_smoker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "end_stone_smoker": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:end_stone_smoker"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stone_blast_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:blast_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "deepslate_blast_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:deepslate_blast_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blackstone_blast_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:blackstone_blast_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "tuff_blast_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+            "minecraft:tuff_blast_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "end_stone_blast_furnace": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "minecraft:end_stone_blast_furnace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Obtain all the Smelting Blocks",
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:blackstone_blast_furnace"
+    },
+    "show_toast": true,
+    "title": "Smelting a Million"
+  },
+  "requirements": [
+    [
+      "stone_furnace"
+    ],
+    [
+      "deepslate_furnace"
+    ],
+    [
+      "blackstone_furnace"
+    ],
+    [
+      "tuff_furnace"
+    ],
+    [
+      "end_stone_furnace"
+    ],
+    [
+      "stone_smoker"
+    ],
+    [
+      "deepslate_smoker"
+    ],
+    [
+      "blackstone_smoker"
+    ],
+    [
+      "tuff_smoker"
+    ],
+    [
+      "end_stone_smoker"
+    ],
+    [
+      "stone_blast_furnace"
+    ],
+    [
+      "deepslate_blast_furnace"
+    ],
+    [
+      "blackstone_blast_furnace"
+    ],
+    [
+      "tuff_blast_furnace"
+    ],
+    [
+      "end_stone_blast_furnace"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_solid_cloud": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:solid_cloud"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:cloud_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_solid_cloud"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:cloud_wall"
+    ]
+  }
+}

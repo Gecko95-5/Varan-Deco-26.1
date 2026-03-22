@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/earth_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/earth_block"
+    },
+    "type=top": {
+      "model": "minecraft:block/earth_slab_top"
+    }
+  }
+}

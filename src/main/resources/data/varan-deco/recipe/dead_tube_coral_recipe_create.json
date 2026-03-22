@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "coral",
+  "ingredients": [
+    "minecraft:dead_tube_coral_block"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:dead_tube_coral"
+  }
+}

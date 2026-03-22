@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "minecraft:block/mega_brown_tulip_bottom"
+    },
+    "half=upper": {
+      "model": "minecraft:block/mega_brown_tulip_top"
+    }
+  }
+}

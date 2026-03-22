@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/gold_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/gold_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/gold_slab_top"
+    }
+  }
+}

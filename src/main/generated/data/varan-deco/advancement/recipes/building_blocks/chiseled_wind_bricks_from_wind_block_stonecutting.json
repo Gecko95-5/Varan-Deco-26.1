@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:chiseled_wind_bricks_from_wind_block_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wind_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wind_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wind_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:chiseled_wind_bricks_from_wind_block_stonecutting"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "values": [
+    "minecraft:oak_wood_slab",
+    "minecraft:spruce_wood_slab",
+    "minecraft:birch_wood_slab",
+    "minecraft:jungle_wood_slab",
+    "minecraft:acacia_wood_slab",
+    "minecraft:dark_oak_wood_slab",
+    "minecraft:mangrove_wood_slab",
+    "minecraft:pale_oak_wood_slab",
+    "minecraft:stripped_oak_wood_slab",
+    "minecraft:stripped_spruce_wood_slab",
+    "minecraft:stripped_birch_wood_slab",
+    "minecraft:stripped_jungle_wood_slab",
+    "minecraft:stripped_acacia_wood_slab",
+    "minecraft:stripped_dark_oak_wood_slab",
+    "minecraft:stripped_mangrove_wood_slab",
+    "minecraft:stripped_pale_oak_wood_slab",
+    "minecraft:wooden_wood_slab",
+    "minecraft:stripped_wooden_wood_slab",
+    "minecraft:cherry_wood_slab",
+    "minecraft:stripped_cherry_wood_slab",
+    "minecraft:bamboo_block_slab",
+    "minecraft:stripped_bamboo_slab"
+  ]
+}

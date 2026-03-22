@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "minecraft:block/orange_terracotta_temp",
+    "side": "minecraft:block/orange_terracotta_temp",
+    "top": "minecraft:block/orange_terracotta_temp"
+  }
+}

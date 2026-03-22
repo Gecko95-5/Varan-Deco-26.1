@@ -1,0 +1,31 @@
+{
+  "parent": "varan-deco:nether/obtain_smooth_glowstone",
+  "criteria": {
+    "glowstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#varan-deco:coloured_lamps"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Crafted a Colour Lamp with Stained Glass Panes",
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:red_lamp"
+    },
+    "show_toast": true,
+    "title": "Coloured Lamp encased in Glass"
+  },
+  "requirements": [
+    [
+      "glowstone"
+    ]
+  ]
+}

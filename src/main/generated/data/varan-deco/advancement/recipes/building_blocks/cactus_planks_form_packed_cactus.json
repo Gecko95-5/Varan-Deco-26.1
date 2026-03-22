@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_packed_cactus": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:packed_cactus"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:cactus_planks_form_packed_cactus"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_packed_cactus"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:cactus_planks_form_packed_cactus"
+    ]
+  }
+}

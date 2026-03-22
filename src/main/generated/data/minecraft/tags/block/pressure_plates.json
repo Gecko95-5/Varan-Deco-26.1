@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:copper_weight_pressure_plate",
+    "minecraft:waxed_copper_weight_pressure_plate",
+    "minecraft:exposed_copper_weight_pressure_plate",
+    "minecraft:waxed_exposed_copper_weight_pressure_plate",
+    "minecraft:weathered_copper_weight_pressure_plate",
+    "minecraft:waxed_exposed_copper_weight_pressure_plate",
+    "minecraft:oxidized_copper_weight_pressure_plate",
+    "minecraft:waxed_oxidized_copper_weight_pressure_plate"
+  ]
+}

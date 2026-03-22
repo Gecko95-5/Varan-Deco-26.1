@@ -1,0 +1,26 @@
+{
+  "values": [
+    "minecraft:oak_wood_wall",
+    "minecraft:spruce_wood_wall",
+    "minecraft:birch_wood_wall",
+    "minecraft:jungle_wood_wall",
+    "minecraft:acacia_wood_wall",
+    "minecraft:dark_oak_wood_wall",
+    "minecraft:mangrove_wood_wall",
+    "minecraft:pale_oak_wood_wall",
+    "minecraft:stripped_oak_wood_wall",
+    "minecraft:stripped_spruce_wood_wall",
+    "minecraft:stripped_birch_wood_wall",
+    "minecraft:stripped_jungle_wood_wall",
+    "minecraft:stripped_acacia_wood_wall",
+    "minecraft:stripped_dark_oak_wood_wall",
+    "minecraft:stripped_mangrove_wood_wall",
+    "minecraft:stripped_pale_oak_wood_wall",
+    "minecraft:wooden_wood_wall",
+    "minecraft:stripped_wooden_wood_wall",
+    "minecraft:cherry_wood_wall",
+    "minecraft:stripped_cherry_wood_wall",
+    "minecraft:bamboo_block_wall",
+    "minecraft:stripped_bamboo_wall"
+  ]
+}

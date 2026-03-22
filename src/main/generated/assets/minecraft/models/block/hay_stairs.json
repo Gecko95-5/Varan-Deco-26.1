@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "minecraft:block/hay_temp",
+    "side": "minecraft:block/hay_temp",
+    "top": "minecraft:block/hay_temp"
+  }
+}

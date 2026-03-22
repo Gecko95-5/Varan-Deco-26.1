@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:smooth_tuff",
+    "I": "minecraft:iron_ingot",
+    "X": "minecraft:tuff_furnace"
+  },
+  "pattern": [
+    "III",
+    "IXI",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:tuff_blast_furnace"
+  }
+}

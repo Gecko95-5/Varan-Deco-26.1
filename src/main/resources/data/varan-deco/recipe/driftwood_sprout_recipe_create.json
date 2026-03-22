@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "#varan-deco:wet_driftwood_logs",
+    "/": "minecraft:kelp"
+  },
+  "pattern": [
+    " / ",
+    "/#/"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:driftwood_sprout"
+  }
+}

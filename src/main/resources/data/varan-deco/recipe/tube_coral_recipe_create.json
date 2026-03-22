@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "coral",
+  "ingredients": [
+    "minecraft:tube_coral_block"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:tube_coral"
+  }
+}

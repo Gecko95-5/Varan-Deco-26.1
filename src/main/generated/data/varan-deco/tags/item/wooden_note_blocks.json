@@ -1,0 +1,20 @@
+{
+  "values": [
+    "minecraft:mushroom_note_block",
+    "minecraft:oak_note_block",
+    "minecraft:spruce_note_block",
+    "minecraft:birch_note_block",
+    "minecraft:jungle_note_block",
+    "minecraft:dark_oak_note_block",
+    "minecraft:acacia_note_block",
+    "minecraft:mangrove_note_block",
+    "minecraft:crimson_note_block",
+    "minecraft:warped_note_block",
+    "minecraft:cactus_note_block",
+    "minecraft:cherry_note_block",
+    "minecraft:bamboo_note_block",
+    "minecraft:pale_oak_note_block",
+    "minecraft:driftwood_note_block",
+    "minecraft:iron_cap_note_block"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "lever",
+  "key": {
+    "#": "minecraft:deepslate",
+    "/": "minecraft:stick"
+  },
+  "pattern": [
+    "/",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:deepslate_lever"
+  }
+}

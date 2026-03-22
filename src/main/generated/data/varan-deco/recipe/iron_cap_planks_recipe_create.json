@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    "#varan-deco:iron_cap_stem"
+  ],
+  "result": {
+    "count": 4,
+    "id": "minecraft:iron_cap_planks"
+  }
+}

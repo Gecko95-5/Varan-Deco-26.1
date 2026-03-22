@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wooden_bookshelves",
+  "key": {
+    "#": "minecraft:oak_planks",
+    "$": "#varan-deco:deco_bookshelves"
+  },
+  "pattern": [
+    " # ",
+    "#$#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:oak_bookshelf"
+  }
+}

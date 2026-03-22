@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/crimson_mosaic_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/crimson_mosaic_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/crimson_mosaic_slab_top"
+    }
+  }
+}

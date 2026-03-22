@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_casted_iron": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:casted_iron"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:casted_iron_stairs_from_casted_iron_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_casted_iron"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:casted_iron_stairs_from_casted_iron_stonecutting"
+    ]
+  }
+}

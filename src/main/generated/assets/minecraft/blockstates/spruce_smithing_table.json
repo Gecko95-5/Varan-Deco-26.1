@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "minecraft:block/spruce_smithing_table"
+    }
+  }
+}

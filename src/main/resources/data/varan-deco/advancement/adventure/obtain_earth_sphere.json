@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:adventure/root",
+  "criteria": {
+    "sphere": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:earth_sphere"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": "Craft an Earth Sphere with Mud & Soil",
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:earth_sphere"
+    },
+    "show_toast": true,
+    "title": "A small piece of World"
+  },
+  "requirements": [
+    [
+      "sphere"
+    ]
+  ]
+}

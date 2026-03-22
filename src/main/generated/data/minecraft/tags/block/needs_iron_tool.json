@@ -1,0 +1,24 @@
+{
+  "values": [
+    "minecraft:black_ice",
+    "minecraft:gold_door",
+    "minecraft:gold_trapdoor",
+    "minecraft:cut_gold",
+    "minecraft:cut_gold_stairs",
+    "minecraft:cut_gold_slab",
+    "minecraft:gold_stairs",
+    "minecraft:gold_slab",
+    "minecraft:raw_gold_stairs",
+    "minecraft:raw_gold_slab",
+    "minecraft:light_gold_bars",
+    "minecraft:gold_bars",
+    "minecraft:heavy_gold_bars",
+    "minecraft:gold_grate",
+    "minecraft:chiseled_gold",
+    "minecraft:heavy_gold_bars",
+    "minecraft:golden_ladder",
+    "minecraft:casted_iron",
+    "minecraft:casted_iron_stairs",
+    "minecraft:casted_iron_slab"
+  ]
+}

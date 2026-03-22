@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "varan-deco",
+	"version": "${version}",
+	"name": "Variant Decoration",
+	"description": "This Mod is about Blocks and they're Different Variants, including new and old blocks. thanks to Kaupenjoe for his Tutorials on Minecraft Modding",
+	"authors": [
+		"Gecko95.5"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/Gecko95-5/Varan-Deco"
+	},
+	"license": "MIT",
+	"icon": "assets/varan-deco/icon/varan-deco_icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.gecko.varandeco.VaranDeco"
+		],
+		"client": [
+			"net.gecko.varandeco.VaranDecoClient"
+		],
+		"fabric-datagen": [
+			"net.gecko.varandeco.VaranDecoDataGenerator"
+		]
+	},
+	"mixins": [
+		"varan-deco.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": ">=26.1",
+		"java": ">=25",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

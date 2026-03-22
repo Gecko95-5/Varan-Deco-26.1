@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "minecraft:block/tuff_stonecutter",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "minecraft:block/tuff_stonecutter"
+    },
+    "facing=south": {
+      "model": "minecraft:block/tuff_stonecutter",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "minecraft:block/tuff_stonecutter",
+      "y": 270
+    }
+  }
+}

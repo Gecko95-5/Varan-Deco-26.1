@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "hydrating_coral",
+  "ingredients": [
+    "minecraft:bubble_coral_stairs",
+    "minecraft:bubble_orb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:hydrated_bubble_coral_stairs"
+  }
+}

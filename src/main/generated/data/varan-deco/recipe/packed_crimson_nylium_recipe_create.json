@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "packed_nylium",
+  "key": {
+    "#": "minecraft:crimson_nylium"
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:packed_crimson_nylium"
+  }
+}

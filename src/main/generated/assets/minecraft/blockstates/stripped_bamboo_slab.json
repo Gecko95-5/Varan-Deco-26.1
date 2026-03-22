@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/stripped_bamboo_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/stripped_bamboo_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/stripped_bamboo_slab_top"
+    }
+  }
+}

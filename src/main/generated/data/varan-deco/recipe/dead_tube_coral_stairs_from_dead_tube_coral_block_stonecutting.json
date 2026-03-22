@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:dead_tube_coral_block",
+  "result": {
+    "count": 1,
+    "id": "minecraft:dead_tube_coral_stairs"
+  }
+}

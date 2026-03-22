@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/smooth_resin_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/smooth_resin"
+    },
+    "type=top": {
+      "model": "minecraft:block/smooth_resin_slab_top"
+    }
+  }
+}

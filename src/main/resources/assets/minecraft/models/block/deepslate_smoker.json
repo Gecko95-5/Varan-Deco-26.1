@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "minecraft:block/deepslate_smoker_front",
+    "side": "minecraft:block/deepslate_smoker_side",
+    "top": "minecraft:block/deepslate_smoker_top",
+    "bottom": "minecraft:block/deepslate_smoker_bottom"
+  }
+}

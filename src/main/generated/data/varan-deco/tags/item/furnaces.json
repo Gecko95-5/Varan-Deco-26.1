@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:furnace",
+    "minecraft:deepslate_furnace",
+    "minecraft:blackstone_furnace",
+    "minecraft:tuff_furnace",
+    "minecraft:end_stone_furnace"
+  ]
+}

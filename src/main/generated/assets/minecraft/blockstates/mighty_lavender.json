@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "minecraft:block/mighty_lavender_bottom"
+    },
+    "half=upper": {
+      "model": "minecraft:block/mighty_lavender_top"
+    }
+  }
+}

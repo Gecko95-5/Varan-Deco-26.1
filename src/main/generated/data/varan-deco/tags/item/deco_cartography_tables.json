@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:cartography_table",
+    "minecraft:crimson_cartography_table",
+    "minecraft:warped_cartography_table",
+    "minecraft:iron_cap_cartography_table",
+    "#varan-deco:wooden_cartography_tables"
+  ]
+}

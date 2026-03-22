@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_acacia_mosaic": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:acacia_mosaic"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:acacia_mosaic_sign_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_acacia_mosaic"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:acacia_mosaic_sign_recipe_create"
+    ]
+  }
+}

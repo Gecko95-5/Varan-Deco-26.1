@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "metal_ladder",
+  "key": {
+    "#": "minecraft:gold_nugget",
+    "I": "minecraft:gold_ingot"
+  },
+  "pattern": [
+    "# #",
+    "#I#",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "id": "minecraft:golden_ladder"
+  }
+}

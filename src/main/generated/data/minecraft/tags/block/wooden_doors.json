@@ -1,0 +1,25 @@
+{
+  "values": [
+    "minecraft:cactus_door",
+    "minecraft:mushroom_door",
+    "minecraft:iron_cap_door",
+    "minecraft:wooden_door",
+    "minecraft:oak_pallet_door",
+    "minecraft:spruce_pallet_door",
+    "minecraft:birch_pallet_door",
+    "minecraft:jungle_pallet_door",
+    "minecraft:acacia_pallet_door",
+    "minecraft:dark_oak_pallet_door",
+    "minecraft:mangrove_pallet_door",
+    "minecraft:crimson_pallet_door",
+    "minecraft:warped_pallet_door",
+    "minecraft:cactus_pallet_door",
+    "minecraft:mushroom_pallet_door",
+    "minecraft:wooden_pallet_door",
+    "minecraft:cherry_pallet_door",
+    "minecraft:pale_oak_pallet_door",
+    "minecraft:bamboo_pallet_door",
+    "minecraft:driftwood_pallet_door",
+    "minecraft:driftwood_door"
+  ]
+}

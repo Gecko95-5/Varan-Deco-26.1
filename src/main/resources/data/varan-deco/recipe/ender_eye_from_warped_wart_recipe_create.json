@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:warped_wart",
+    "B": "minecraft:blaze_powder",
+    "F": "minecraft:chorus_fruit"
+  },
+  "pattern": [
+    " # ",
+    "#F#",
+    " #B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:ender_eye"
+  }
+}

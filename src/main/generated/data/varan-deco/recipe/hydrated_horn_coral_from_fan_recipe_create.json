@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "coral",
+  "key": {
+    "#": "minecraft:hydrated_horn_coral_fan"
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:hydrated_horn_coral"
+  }
+}

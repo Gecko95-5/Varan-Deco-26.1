@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_checkered_gray_concrete": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:checkered_gray_concrete"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:checkered_gray_concrete_wall_from_checkered_gray_concrete_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_checkered_gray_concrete"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:checkered_gray_concrete_wall_from_checkered_gray_concrete_stonecutting"
+    ]
+  }
+}

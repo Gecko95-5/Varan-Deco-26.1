@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "packed_soil",
+  "key": {
+    "0": "minecraft:earth_sphere",
+    "G": "minecraft:short_grass"
+  },
+  "pattern": [
+    " G ",
+    "G0G",
+    " G "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:packed_grass"
+  }
+}

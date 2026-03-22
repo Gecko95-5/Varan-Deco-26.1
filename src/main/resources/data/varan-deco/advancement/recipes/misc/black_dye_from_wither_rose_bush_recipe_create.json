@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:black_dye_from_wither_rose_bush_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wither_rose_bush": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:wither_rose_bush"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wither_rose_bush"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:black_dye_from_wither_rose_bush_recipe_create"
+    ]
+  }
+}

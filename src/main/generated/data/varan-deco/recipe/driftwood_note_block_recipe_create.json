@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "wooden_smithing_tables",
+  "key": {
+    "#": "minecraft:driftwood_planks",
+    "$": "#varan-deco:deco_note_blocks"
+  },
+  "pattern": [
+    " # ",
+    "#$#",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:driftwood_note_block"
+  }
+}

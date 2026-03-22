@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "minecraft:warped_wart",
+    "N": "minecraft:nether_brick"
+  },
+  "pattern": [
+    "N#",
+    "#N"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:blue_nether_bricks"
+  }
+}

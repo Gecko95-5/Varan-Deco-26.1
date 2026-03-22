@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/mushroom_bookshelf_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/mushroom_bookshelf"
+    },
+    "type=top": {
+      "model": "minecraft:block/mushroom_bookshelf_slab_top"
+    }
+  }
+}

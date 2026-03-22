@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": "minecraft:copper_block",
+    "/": "minecraft:copper_ingot",
+    "B": "minecraft:bubble_block",
+    "M": "minecraft:magma_block",
+    "P": "minecraft:piston",
+    "X": "minecraft:copper_bars"
+  },
+  "pattern": [
+    "#X#",
+    "BPM",
+    "#/#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:bubble_elevator_block_bubble"
+  }
+}

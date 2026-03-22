@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/cracked_end_stone_tile_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/cracked_end_stone_tiles"
+    },
+    "type=top": {
+      "model": "minecraft:block/cracked_end_stone_tile_slab_top"
+    }
+  }
+}

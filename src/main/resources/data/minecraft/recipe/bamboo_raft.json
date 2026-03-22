@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "boat",
+  "key": {
+    "#": "minecraft:bamboo_planks",
+    "-": "minecraft:bamboo_slab"
+  },
+  "pattern": [
+    "# #",
+    "---"
+  ],
+  "result": {
+    "id": "minecraft:bamboo_raft"
+  },
+  "show_notification": true
+}

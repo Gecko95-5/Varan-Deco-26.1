@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:soul_soilstone",
+  "result": {
+    "count": 1,
+    "id": "minecraft:cut_soul_soilstone_brick_stairs"
+  }
+}

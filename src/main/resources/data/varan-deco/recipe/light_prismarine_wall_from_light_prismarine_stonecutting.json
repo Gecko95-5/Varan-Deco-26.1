@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:light_prismarine",
+  "result": {
+    "count": 1,
+    "id": "minecraft:light_prismarine_wall"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "values": [
+    "minecraft:white_lamp",
+    "minecraft:light_gray_lamp",
+    "minecraft:gray_lamp",
+    "minecraft:black_lamp",
+    "minecraft:brown_lamp",
+    "minecraft:red_lamp",
+    "minecraft:orange_lamp",
+    "minecraft:yellow_lamp",
+    "minecraft:lime_lamp",
+    "minecraft:green_lamp",
+    "minecraft:cyan_lamp",
+    "minecraft:light_blue_lamp",
+    "minecraft:blue_lamp",
+    "minecraft:purple_lamp",
+    "minecraft:magenta_lamp",
+    "minecraft:pink_lamp"
+  ]
+}

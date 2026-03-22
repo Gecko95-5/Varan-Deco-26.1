@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "packed_nylium",
+  "key": {
+    "0": "minecraft:netherrack",
+    "R": "minecraft:crimson_roots"
+  },
+  "pattern": [
+    " R ",
+    "R0R",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:packed_crimson_nylium"
+  }
+}
