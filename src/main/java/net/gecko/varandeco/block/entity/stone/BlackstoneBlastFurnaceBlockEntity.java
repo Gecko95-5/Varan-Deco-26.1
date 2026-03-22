@@ -1,28 +1,31 @@
 package net.gecko.varandeco.block.entity.stone;
 
+
 import net.gecko.varandeco.block.entity.DecoBlockEntities;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.screen.BlastFurnaceScreenHandler;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.FurnaceMenu;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class BlackstoneBlastFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
-	public BlackstoneBlastFurnaceBlockEntity(BlockPos pos, BlockState state) {
-		super(DecoBlockEntities.BLACKSTONE_BLAST_FURNACE_BE, pos, state, RecipeType.BLASTING);
-	}
+    private static final Component DEFAULT_NAME = Component.translatable("container.furnace");
 
-	@Override
-	protected Text getContainerName() {
-		return Text.translatable("container.blast_furnace");
-	}
+    public BlackstoneBlastFurnaceBlockEntity(final BlockPos worldPosition, final BlockState blockState) {
+        super(DecoBlockEntities.BLACKSTONE_BLAST_FURNACE_BE, worldPosition, blockState, RecipeType.SMELTING);
+    }
 
+    @Override
+    protected Component getDefaultName() {
+        return DEFAULT_NAME;
+    }
 
-	@Override
-	protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-		return new BlastFurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
-	}
+    @Override
+    protected AbstractContainerMenu createMenu(final int containerId, final Inventory inventory) {
+        return new FurnaceMenu(containerId, inventory, this, this.dataAccess);
+    }
 }

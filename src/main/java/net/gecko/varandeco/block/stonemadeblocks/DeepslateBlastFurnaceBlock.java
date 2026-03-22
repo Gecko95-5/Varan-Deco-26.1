@@ -2,7 +2,7 @@ package net.gecko.varandeco.block.stonemadeblocks;
 
 import com.mojang.serialization.MapCodec;
 import net.gecko.varandeco.block.entity.DecoBlockEntities;
-import net.gecko.varandeco.block.entity.stone.DeepslateBlastFurnaceBlockEntity;
+import net.gecko.varandeco.block.entity.blockEntities.DeepslateBlastFurnaceBlockEntity;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;

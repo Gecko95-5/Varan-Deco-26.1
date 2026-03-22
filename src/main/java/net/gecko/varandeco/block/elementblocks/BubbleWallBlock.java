@@ -1,32 +1,31 @@
 package net.gecko.varandeco.block.elementblocks;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.WallBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class BubbleWallBlock extends WallBlock {
-    private static final Logger log = LoggerFactory.getLogger(BubbleWallBlock.class);
 
-    public BubbleWallBlock(Settings settings) {
-        super(settings);
+    public BubbleWallBlock(Properties properties) {
+        super(properties);
     }
+
     @Override
-    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        if (!entity.bypassesSteppingEffects() && entity.isOnFire()) {
-            if (entity.isPlayer()) {
-                entity.playSound(SoundEvents.BLOCK_FIRE_EXTINGUISH, 1.0f, 1.0f);
+    public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
+        if (!entity.isPassenger() && entity.isOnFire()) {
+            if (entity.hasExactlyOnePlayerPassenger()) {
+                entity.playSound(SoundEvents.FIRE_EXTINGUISH, 1.0f, 1.0f);
             }
-            entity.extinguish();
+            entity.extinguishFire();
         }
-        if (!entity.bypassesSteppingEffects() && entity.isSubmergedInWater()) {
-            entity.setAir(300);
+        if (!entity.isPassenger() && entity.isUnderWater()) {
+            entity.setAirSupply(300);
         }
 
-        super.onSteppedOn(world, pos, state, entity);
+        super.stepOn(level, pos, onState, entity);
     }
 }

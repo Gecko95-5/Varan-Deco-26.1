@@ -2,8 +2,7 @@ package net.gecko.varandeco.block.stonemadeblocks;
 
 import com.mojang.serialization.MapCodec;
 import net.gecko.varandeco.block.entity.DecoBlockEntities;
-import net.gecko.varandeco.block.entity.stone.EndstoneSmokerBlockEntity;
-import net.gecko.varandeco.block.entity.stone.EndstoneSmokerBlockEntity;
+import net.gecko.varandeco.block.entity.blockEntities.EndstoneSmokerBlockEntity;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -23,8 +22,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class EndstoneSmokerBlock extends AbstractFurnaceBlock {
     public static final MapCodec<EndstoneSmokerBlock> CODEC = createCodec(EndstoneSmokerBlock::new);

@@ -1,9 +1,8 @@
 package net.gecko.varandeco.block.stonemadeblocks;
 
 import com.mojang.serialization.MapCodec;
-import net.gecko.varandeco.block.entity.stone.BlackstoneSmokerBlockEntity;
+import net.gecko.varandeco.block.entity.blockEntities.ModdedSmokerBlockEntity;
 import net.gecko.varandeco.block.entity.DecoBlockEntities;
-import net.gecko.varandeco.block.entity.stone.BlackstoneSmokerBlockEntity;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -33,7 +32,7 @@ public class BlackstoneSmokerBlock extends AbstractFurnaceBlock {
 
 	@Override
 	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-		return new BlackstoneSmokerBlockEntity(pos, state);
+		return new ModdedSmokerBlockEntity(pos, state);
 	}
 
 	@Nullable
@@ -45,7 +44,7 @@ public class BlackstoneSmokerBlock extends AbstractFurnaceBlock {
 	@Override
 	protected void openScreen(World world, BlockPos pos, PlayerEntity player) {
 		BlockEntity blockEntity = world.getBlockEntity(pos);
-		if (blockEntity instanceof BlackstoneSmokerBlockEntity) {
+		if (blockEntity instanceof ModdedSmokerBlockEntity) {
 			player.openHandledScreen((NamedScreenHandlerFactory)blockEntity);
 			player.incrementStat(Stats.INTERACT_WITH_SMOKER);
 		}

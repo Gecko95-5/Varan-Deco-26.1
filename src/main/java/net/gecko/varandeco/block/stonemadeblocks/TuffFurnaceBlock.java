@@ -2,7 +2,7 @@ package net.gecko.varandeco.block.stonemadeblocks;
 
 import com.mojang.serialization.MapCodec;
 import net.gecko.varandeco.block.entity.DecoBlockEntities;
-import net.gecko.varandeco.block.entity.stone.TuffFurnaceBlockEntity;
+import net.gecko.varandeco.block.entity.blockEntities.TuffFurnaceBlockEntity;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -39,7 +39,7 @@ public class TuffFurnaceBlock extends AbstractFurnaceBlock {
 	@Nullable
 	@Override
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-		return validateTicker(world, type, DecoBlockEntities.TUFF_FURNACE_BE);
+		return validateTicker(world, type, DecoBlockEntities.SMOKER_BE);
 	}
 
 	@Override

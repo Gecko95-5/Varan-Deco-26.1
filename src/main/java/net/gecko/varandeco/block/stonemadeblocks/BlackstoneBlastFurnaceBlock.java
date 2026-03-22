@@ -1,9 +1,8 @@
 package net.gecko.varandeco.block.stonemadeblocks;
 
 import com.mojang.serialization.MapCodec;
-import net.gecko.varandeco.block.entity.stone.BlackstoneBlastFurnaceBlockEntity;
+import net.gecko.varandeco.block.entity.blockEntities.ModdedBlastFurnaceBlockEntity;
 import net.gecko.varandeco.block.entity.DecoBlockEntities;
-import net.gecko.varandeco.block.entity.stone.BlackstoneBlastFurnaceBlockEntity;
 import net.minecraft.block.AbstractFurnaceBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -35,7 +34,7 @@ public class BlackstoneBlastFurnaceBlock extends AbstractFurnaceBlock {
 
 	@Override
 	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-		return new BlackstoneBlastFurnaceBlockEntity(pos, state);
+		return new ModdedBlastFurnaceBlockEntity(pos, state);
 	}
 
 	@Nullable
@@ -47,7 +46,7 @@ public class BlackstoneBlastFurnaceBlock extends AbstractFurnaceBlock {
 	@Override
 	protected void openScreen(World world, BlockPos pos, PlayerEntity player) {
 		BlockEntity blockEntity = world.getBlockEntity(pos);
-		if (blockEntity instanceof BlackstoneBlastFurnaceBlockEntity) {
+		if (blockEntity instanceof ModdedBlastFurnaceBlockEntity) {
 			player.openHandledScreen((NamedScreenHandlerFactory)blockEntity);
 			player.incrementStat(Stats.INTERACT_WITH_BLAST_FURNACE);
 		}

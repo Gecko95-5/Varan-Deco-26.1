@@ -1,75 +1,34 @@
 package net.gecko.varandeco.block.elementblocks;
 
+
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.BubbleColumnBlock;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.block.WireOrientation;
-import net.minecraft.world.tick.ScheduledTickView;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RedstoneTorchBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.redstone.Orientation;
+import org.jspecify.annotations.Nullable;
 
 public class BubbleElevatorBubbleBlock extends Block {
-
-    public BubbleElevatorBubbleBlock(Settings settings) {
-        super(settings);
+    public BubbleElevatorBubbleBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        BubbleColumnBlock.update(world, pos.up(), state);
-    }
-
-    @Override
-    protected BlockState getStateForNeighborUpdate(
-            BlockState state,
-            WorldView world,
-            ScheduledTickView tickView,
-            BlockPos pos,
-            Direction direction,
-            BlockPos neighborPos,
-            BlockState neighborState,
-            Random random
+    protected void neighborChanged(
+            final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
     ) {
-        if (direction == Direction.UP && neighborState.isOf(Blocks.WATER)) {
-            tickView.scheduleBlockTick(pos, this, 20);
+        if (state.isRedstoneConductor(level, pos)) {
+            level.playSound(null, pos, SoundEvents.PISTON_EXTEND, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.25F + 0.6F);
+            level.updatePOIOnBlockStateChange(pos, DecoBlocks.BUBBLE_ELEVATOR_BLOCK_BUBBLE.defaultBlockState(), DecoBlocks.BUBBLE_ELEVATOR_BLOCK_MAGMA.defaultBlockState());
         }
-
-        return super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
-    }
-
-    @Override
-    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
-        if (world.isReceivingRedstonePower(pos) || world.isReceivingRedstonePower(pos.up())) {
-            world.playSound(null, pos, SoundEvents.BLOCK_PISTON_EXTEND, SoundCategory.BLOCKS, 0.5F, world.random.nextFloat() * 0.25F + 0.6F);
-            world.scheduleBlockTick(pos, this, 4);
-            world.setBlockState(pos, DecoBlocks.BUBBLE_ELEVATOR_BLOCK_MAGMA.getDefaultState(), Block.NOTIFY_LISTENERS);
-        }
-    }
-
-    @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        BlockPos blockPos = pos.up();
-        if (world.getFluidState(pos).isIn(FluidTags.WATER)) {
-            world.playSound(
-                    null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5F, 2.6F + (world.random.nextFloat() - world.random.nextFloat()) * 0.8F
-            );
-            world.spawnParticles(ParticleTypes.LARGE_SMOKE, blockPos.getX() + 0.5, blockPos.getY() + 0.25, blockPos.getZ() + 0.5, 8, 0.5, 0.25, 0.5, 0.0);
-        }
-    }
-
-    @Override
-    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        world.scheduleBlockTick(pos, this, 20);
     }
 }

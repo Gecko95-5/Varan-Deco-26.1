@@ -1,7 +1,7 @@
 package net.gecko.varandeco.block.woodmadeblocks.barrel;
 
 import com.mojang.serialization.MapCodec;
-import net.gecko.varandeco.block.entity.wood.AcaciaBarrelBlockEntity;
+import net.gecko.varandeco.block.entity.blockEntities.ModdedBarrelBlockEntity;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -45,7 +45,7 @@ public class AcaciaBarrelBlock extends BlockWithEntity {
 
     @Override
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (world instanceof ServerWorld serverWorld && world.getBlockEntity(pos) instanceof AcaciaBarrelBlockEntity barrelBlockEntity) {
+        if (world instanceof ServerWorld serverWorld && world.getBlockEntity(pos) instanceof ModdedBarrelBlockEntity barrelBlockEntity) {
             player.openHandledScreen(barrelBlockEntity);
             player.incrementStat(Stats.OPEN_BARREL);
             PiglinBrain.onGuardedBlockInteracted(serverWorld, player, true);
@@ -62,15 +62,15 @@ public class AcaciaBarrelBlock extends BlockWithEntity {
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof AcaciaBarrelBlockEntity) {
-            ((AcaciaBarrelBlockEntity)blockEntity).tick();
+        if (blockEntity instanceof ModdedBarrelBlockEntity) {
+            ((ModdedBarrelBlockEntity)blockEntity).tick();
         }
     }
 
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new AcaciaBarrelBlockEntity(pos, state);
+        return new ModdedBarrelBlockEntity(pos, state);
     }
 
     @Override
