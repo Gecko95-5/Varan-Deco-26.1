@@ -1,40 +1,40 @@
 package net.gecko.varandeco.block.woodmadeblocks.smithingtables;
 
 import net.gecko.varandeco.screen.wood.smithingtables.CherrySmithingScreenHandler;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.CraftingTableBlock;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
-import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.CraftingTableBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 
 public class CherrySmithingTableBlock extends CraftingTableBlock {
-	private static final Text SCREEN_TITLE = Text.translatable("container.upgrade");
+	private static final Component SCREEN_TITLE = Component.translatable("container.upgrade");
 
-	public CherrySmithingTableBlock(Settings settings) {
+	public CherrySmithingTableBlock(Properties settings) {
 		super(settings);
 	}
 
 	@Override
-	public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-		return new SimpleNamedScreenHandlerFactory(
-			(syncId, inventory, player) -> new CherrySmithingScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), SCREEN_TITLE
+	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
+		return new SimpleMenuProvider(
+			(syncId, inventory, player) -> new CherrySmithingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), SCREEN_TITLE
 		);
 	}
 
 	@Override
-	protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-		if (!world.isClient()) {
-			player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-			player.incrementStat(Stats.INTERACT_WITH_SMITHING_TABLE);
+	protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+		if (!world.isClientSide()) {
+			player.openMenu(state.getMenuProvider(world, pos));
+			player.awardStat(Stats.INTERACT_WITH_SMITHING_TABLE);
 		}
 
-		return ActionResult.SUCCESS;
+		return InteractionResult.SUCCESS;
 	}
 }

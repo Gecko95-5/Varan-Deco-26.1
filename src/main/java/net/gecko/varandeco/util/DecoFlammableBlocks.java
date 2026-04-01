@@ -2,7 +2,7 @@ package net.gecko.varandeco.util;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.Blocks;
+import net.minecraft.world.level.block.Blocks;
 
 public class DecoFlammableBlocks {
     public static void registerFlammableBlocks(){
@@ -97,24 +97,24 @@ public class DecoFlammableBlocks {
         registry.add(DecoBlocks.CYAN_ORCHID,60, 100);
         registry.add(DecoBlocks.FELICIA_DAISY,60, 100);
 
-        registry.add(DecoTags.Blocks.LOG_STAIRS,5,5);
-        registry.add(DecoTags.Blocks.LOG_SLABS,5,5);
-        registry.add(DecoTags.Blocks.LOG_WALLS,5,5);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.LOG_STAIRS,5,5);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.LOG_SLABS,5,5);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.LOG_WALLS,5,5);
 
-        registry.add(DecoTags.Blocks.WOOL_STAIRS,30, 60);
-        registry.add(DecoTags.Blocks.WOOL_SLABS,30, 60);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOOL_STAIRS,30, 60);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOOL_SLABS,30, 60);
 
-        registry.add(DecoTags.Blocks.WOODEN_BOOKSHELVES,30,20);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOODEN_BOOKSHELVES,30,20);
 
-        registry.add(DecoTags.Blocks.WOODEN_BOOKSHELF_STAIRS,25,20);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOODEN_BOOKSHELF_STAIRS,25,20);
 
-        registry.add(DecoTags.Blocks.WOODEN_BOOKSHELF_SLABS,15,20);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOODEN_BOOKSHELF_SLABS,15,20);
 
         registry.add(DecoBlocks.ANCIENT_ROSE,60, 100);
         registry.add(DecoBlocks.MIGHTY_LAVENDER,60, 100);
 
-        registry.add(DecoTags.Blocks.MOSAIC_WOOD,5,20);
-        registry.add(DecoTags.Blocks.MOSAIC_SLABS,5,20);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.MOSAIC_WOOD,5,20);
+        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.MOSAIC_SLABS,5,20);
         registry.add(DecoTags.Blocks.MOSAIC_STAIRS,5,20);
 
         registry.add(DecoBlocks.DRIED_LEAVES, 60, 100);

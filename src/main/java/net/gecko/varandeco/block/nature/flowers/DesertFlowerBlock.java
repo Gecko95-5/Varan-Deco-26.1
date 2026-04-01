@@ -1,23 +1,22 @@
 package net.gecko.varandeco.block.nature.flowers;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FlowerBlock;
-import net.minecraft.component.type.SuspiciousStewEffectsComponent;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class DesertFlowerBlock extends FlowerBlock {
 
 
-    public DesertFlowerBlock(RegistryEntry<StatusEffect> stewEffect, float effectLengthInSeconds, Settings settings) {
+    public DesertFlowerBlock(Holder<MobEffect> stewEffect, float effectLengthInSeconds, Properties settings) {
         super(stewEffect, effectLengthInSeconds, settings);
     }
 
     @Override
-    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(BlockTags.DRY_VEGETATION_MAY_PLACE_ON);
+    protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
+        return floor.is(BlockTags.SUPPORTS_DRY_VEGETATION);
     }
 }

@@ -1,22 +1,16 @@
 package net.gecko.varandeco.block.custom;
 
-
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockGetter;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TransparentSlabBlock extends SlabBlock {
-
-    public TransparentSlabBlock(Properties properties) {
-        super(properties);
+    public TransparentSlabBlock(Properties settings) {
+        super(settings);
     }
 
     @Override
-    protected VoxelShape getVisualShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context) {
-        return Shapes.empty();
+    public boolean skipRendering(BlockState state, BlockState stateFrom, Direction direction) {
+        return stateFrom.is(this) || super.skipRendering(state, stateFrom, direction);
     }
 }

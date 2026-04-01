@@ -5,8 +5,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.gecko.varandeco.datagen.*;
 import net.gecko.varandeco.world.feature.DecoConfiguredFeatures;
 import net.gecko.varandeco.world.feature.DecoPlacedFeatures;
-import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKeys;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 
 public class VaranDecoDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -23,8 +23,8 @@ public class VaranDecoDataGenerator implements DataGeneratorEntrypoint {
 	}
 
 	@Override
-	public void buildRegistry(RegistryBuilder registryBuilder) {
-		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, DecoConfiguredFeatures::bootstrap);
-		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, DecoPlacedFeatures::bootstrap);
+	public void buildRegistry(RegistrySetBuilder registryBuilder) {
+		registryBuilder.add(Registries.CONFIGURED_FEATURE, DecoConfiguredFeatures::bootstrap);
+		registryBuilder.add(Registries.PLACED_FEATURE, DecoPlacedFeatures::bootstrap);
 	}
 }

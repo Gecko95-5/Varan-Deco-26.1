@@ -2,64 +2,64 @@ package net.gecko.varandeco.block.nature.underwater;
 
 import com.mojang.serialization.MapCodec;
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.tick.ScheduledTickView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 
 public class KelpLeafBlock extends AbstractKelpLeafBlock {
-    public static final MapCodec<KelpLeafBlock> CODEC = createCodec(KelpLeafBlock::new);
-    public KelpLeafBlock(Settings settings) {
+    public static final MapCodec<KelpLeafBlock> CODEC = simpleCodec(KelpLeafBlock::new);
+    public KelpLeafBlock(Properties settings) {
         super(settings);
     }
     @Override
-    public MapCodec<KelpLeafBlock> getCodec() {
+    public MapCodec<KelpLeafBlock> codec() {
         return CODEC;
     }
 
     @Override
-    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!state.get(WATERLOGGED)) {
+    protected void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        if (!state.getValue(WATERLOGGED)) {
             if (!this.isInWater(world, pos)) {
-             world.setBlockState(pos, DecoBlocks.DEAD_KELP_LEAVES.getDefaultState(), Block.NOTIFY_LISTENERS);
+             world.setBlock(pos, DecoBlocks.DEAD_KELP_LEAVES.defaultBlockState(), Block.UPDATE_CLIENTS);
             }
         }
     }
 
     @Override
-    protected BlockState getStateForNeighborUpdate(
+    protected BlockState updateShape(
             BlockState state,
-            WorldView world,
-            ScheduledTickView tickView,
+            LevelReader world,
+            ScheduledTickAccess tickView,
             BlockPos pos,
             Direction direction,
             BlockPos neighborPos,
             BlockState neighborState,
-            Random random
+            RandomSource random
     ) {
-        if (state.get(WATERLOGGED)) {
-            tickView.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        if (state.getValue(WATERLOGGED)) {
+            tickView.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
         }
         else if (!this.isInWater(world, pos)) {
-            tickView.scheduleBlockTick(pos, this, 60 + random.nextInt(40));
+            tickView.scheduleTick(pos, this, 60 + random.nextInt(40));
         }
 
-        return super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
+        return super.updateShape(state, world, tickView, pos, direction, neighborPos, neighborState, random);
     }
-    public boolean isInWater(BlockView world, BlockPos pos) {
+    public boolean isInWater(BlockGetter world, BlockPos pos) {
         for (Direction direction : Direction.values()) {
-            FluidState fluidState = world.getFluidState(pos.offset(direction));
-            if (fluidState.isIn(FluidTags.WATER)) {
+            FluidState fluidState = world.getFluidState(pos.relative(direction));
+            if (fluidState.is(FluidTags.WATER)) {
                 return true;
             }
         }
@@ -68,12 +68,12 @@ public class KelpLeafBlock extends AbstractKelpLeafBlock {
     }
     @Nullable
     @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        if (!this.isInWater(ctx.getWorld(), ctx.getBlockPos())) {
-            ctx.getWorld().scheduleBlockTick(ctx.getBlockPos(), this, 60 + ctx.getWorld().getRandom().nextInt(40));
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        if (!this.isInWater(ctx.getLevel(), ctx.getClickedPos())) {
+            ctx.getLevel().scheduleTick(ctx.getClickedPos(), this, 60 + ctx.getLevel().getRandom().nextInt(40));
     }
 
-        FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        return super.getPlacementState(ctx).with(WATERLOGGED, fluidState.isOf(Fluids.WATER));
+        FluidState fluidState = ctx.getLevel().getFluidState(ctx.getClickedPos());
+        return super.getStateForPlacement(ctx).setValue(WATERLOGGED, fluidState.is(Fluids.WATER));
     }
 }

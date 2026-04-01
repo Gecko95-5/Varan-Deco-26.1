@@ -1,19 +1,19 @@
 package net.gecko.varandeco.block.nature.flowers;
 
 import net.gecko.varandeco.item.DecoItems;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.TallFlowerBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class MightyLavenderBlock extends TallFlowerBlock {
-    public MightyLavenderBlock(Settings settings) {
+    public MightyLavenderBlock(Properties settings) {
         super(settings);
     }
     @Override
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        dropStack(world, pos, new ItemStack(DecoItems.MIGHTY_LAVENDER_FLOWER));
+    public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
+        popResource(world, pos, new ItemStack(DecoItems.MIGHTY_LAVENDER_FLOWER));
     }
 }

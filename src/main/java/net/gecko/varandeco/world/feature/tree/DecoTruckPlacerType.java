@@ -3,7 +3,7 @@ package net.gecko.varandeco.world.feature.tree;
 import net.gecko.varandeco.VaranDeco;
 import net.gecko.varandeco.mixin.TrunkPlacerTypeInvoker;
 import net.gecko.varandeco.world.feature.tree.custom.DriftwoodTreePlacer;
-import net.minecraft.world.gen.trunk.TrunkPlacerType;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 
 public class DecoTruckPlacerType {
     public static final TrunkPlacerType<?> DRIFTWOOD_TRUNK_PLACER =

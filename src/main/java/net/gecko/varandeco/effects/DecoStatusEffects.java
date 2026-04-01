@@ -1,25 +1,25 @@
 package net.gecko.varandeco.effects;
 
 import net.gecko.varandeco.VaranDeco;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Holder;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 
 public class DecoStatusEffects {
 
-    public static final RegistryEntry<StatusEffect> GROUNDED = registerStatusEffect("grounded",
-            new CustomAttributeEffect(StatusEffectCategory.HARMFUL, 0x4D400F).addAttributeModifier(EntityAttributes.JUMP_STRENGTH,
-                    Identifier.of(VaranDeco.MOD_ID, "grounded"),-0.2, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
-                    .addAttributeModifier(EntityAttributes.STEP_HEIGHT,
-                            Identifier.of(VaranDeco.MOD_ID, "grounded"),-0.2, EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+    public static final Holder<MobEffect> GROUNDED = registerStatusEffect("grounded",
+            new CustomAttributeEffect(MobEffectCategory.HARMFUL, 0x4D400F).addAttributeModifier(Attributes.JUMP_STRENGTH,
+                    Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, "grounded"),-0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL)
+                    .addAttributeModifier(Attributes.STEP_HEIGHT,
+                            Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, "grounded"),-0.2, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
-    private static RegistryEntry<StatusEffect> registerStatusEffect(String name, StatusEffect statusEffect){
-        return Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(VaranDeco.MOD_ID, name), statusEffect);
+    private static Holder<MobEffect> registerStatusEffect(String name, MobEffect statusEffect){
+        return Registry.registerForHolder(BuiltInRegistries.MOB_EFFECT, Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, name), statusEffect);
     }
 
     public static void registerStatusEffects() {

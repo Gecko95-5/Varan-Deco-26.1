@@ -9,20 +9,18 @@ import net.gecko.varandeco.item.custom.SnowBrickItem;
 import net.gecko.varandeco.util.interfaces.HangingSignRegisterFunction;
 import net.gecko.varandeco.util.interfaces.SignRegisterFunction;
 import net.gecko.varandeco.util.interfaces.TallPlantItemRegisterFunction;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.*;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Direction;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
-
-import static net.minecraft.item.Items.register;
 
 public class DecoItems {
 
@@ -242,21 +240,21 @@ public class DecoItems {
             DecoBlocks.HANGING_DRIFTWOOD_PLANKS_SIGN, DecoBlocks.WALL_HANGING_DRIFTWOOD_PLANKS_SIGN,
             HangingSignItem::new);
 
-    public static final Item HYDRATED_TUBE_CORAL_FAN = register(
+    public static final Item HYDRATED_TUBE_CORAL_FAN = registerBlock(
             DecoBlocks.HYDRATED_TUBE_CORAL_FAN, (block, settings) ->
-                    new VerticallyAttachableBlockItem(block, DecoBlocks.HYDRATED_TUBE_CORAL_WALL_FAN, Direction.DOWN, settings));
-    public static final Item HYDRATED_BRAIN_CORAL_FAN = register(
+                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_TUBE_CORAL_WALL_FAN, Direction.DOWN, settings));
+    public static final Item HYDRATED_BRAIN_CORAL_FAN = registerBlock(
             DecoBlocks.HYDRATED_BRAIN_CORAL_FAN, (block, settings) ->
-                    new VerticallyAttachableBlockItem(block, DecoBlocks.HYDRATED_BRAIN_CORAL_WALL_FAN, Direction.DOWN, settings));
-    public static final Item HYDRATED_BUBBLE_CORAL_FAN = register(
+                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_BRAIN_CORAL_WALL_FAN, Direction.DOWN, settings));
+    public static final Item HYDRATED_BUBBLE_CORAL_FAN = registerBlock(
             DecoBlocks.HYDRATED_BUBBLE_CORAL_FAN, (block, settings) ->
-                    new VerticallyAttachableBlockItem(block, DecoBlocks.HYDRATED_BUBBLE_CORAL_WALL_FAN, Direction.DOWN, settings));
-    public static final Item HYDRATED_FIRE_CORAL_FAN = register(
+                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_BUBBLE_CORAL_WALL_FAN, Direction.DOWN, settings));
+    public static final Item HYDRATED_FIRE_CORAL_FAN = registerBlock(
             DecoBlocks.HYDRATED_FIRE_CORAL_FAN, (block, settings) ->
-                    new VerticallyAttachableBlockItem(block, DecoBlocks.HYDRATED_FIRE_CORAL_WALL_FAN, Direction.DOWN, settings));
-    public static final Item HYDRATED_HORN_CORAL_FAN = register(
+                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_FIRE_CORAL_WALL_FAN, Direction.DOWN, settings));
+    public static final Item HYDRATED_HORN_CORAL_FAN = registerBlock(
             DecoBlocks.HYDRATED_HORN_CORAL_FAN, (block, settings) ->
-                    new VerticallyAttachableBlockItem(block, DecoBlocks.HYDRATED_HORN_CORAL_WALL_FAN, Direction.DOWN, settings));
+                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_HORN_CORAL_WALL_FAN, Direction.DOWN, settings));
 
     public static final Item SNOW_BRICK = registerCooldownItem("snow_brick",16, 1, SnowBrickItem::new);
 
@@ -281,7 +279,7 @@ public class DecoItems {
 
     public static final Item LILAC_FLOWER = registerItem("lilac_flower",64, Item::new);
 
-    public static final Item TALL_SEAGRASS = registerTallItem("tall_seagrass", Blocks.TALL_SEAGRASS, TallBlockItem::new);
+    public static final Item TALL_SEAGRASS = registerTallItem("tall_seagrass", Blocks.TALL_SEAGRASS, DoubleHighBlockItem::new);
 
     public static final Item CACTUS_BOAT = TerraformBoatItemHelper.registerBoatItem(DecoBoats.CACTUS_BOAT_ID,
             false, false);
@@ -405,35 +403,38 @@ public class DecoItems {
 
 
     //I had some inspiration The Mentor CodeLab
-    public static RegistryKey<Item> getItemKey(String name){
-        return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(name));
+    public static ResourceKey<Item> getItemKey(String name){
+        return ResourceKey.create(Registries.ITEM, Identifier.parse(name));
     }
-    public static <T extends Item> T registerItem(String name, int stackCount, Function<Item.Settings, T> factory){
-        T item = factory.apply(new Item.Settings().registryKey(getItemKey(name)).maxCount(stackCount));
-        return Registry.register(Registries.ITEM, getItemKey(name), item);
+    public static <T extends Item> T registerItem(String name, int stackCount, Function<Item.Properties, T> factory){
+        T item = factory.apply(new Item.Properties().setId(getItemKey(name)).stacksTo(stackCount));
+        return Registry.register(BuiltInRegistries.ITEM, getItemKey(name), item);
     }
     public static <T extends Item> T registerCooldownItem(String name, int stackCount, int cooldownUse,
-                                                          Function<Item.Settings, T> factory){
-        T item = factory.apply(new Item.Settings().registryKey(getItemKey(name)).maxCount(stackCount).useCooldown(cooldownUse));
-        return Registry.register(Registries.ITEM, getItemKey(name), item);
+                                                          Function<Item.Properties, T> factory){
+        T item = factory.apply(new Item.Properties().setId(getItemKey(name)).stacksTo(stackCount).useCooldown(cooldownUse));
+        return Registry.register(BuiltInRegistries.ITEM, getItemKey(name), item);
     }
     public static <T extends Item> T registerTallItem(String name, Block tallPlantBlock,
-                                                      TallPlantItemRegisterFunction<Item.Settings, T> factory){
-        T item = factory.apply(tallPlantBlock, new Item.Settings().maxCount(64).registryKey(getItemKey(name)));
-        return Registry.register(Registries.ITEM,getItemKey(name),item);
+                                                      TallPlantItemRegisterFunction<Item.Properties, T> factory){
+        T item = factory.apply(tallPlantBlock, new Item.Properties().stacksTo(64).setId(getItemKey(name)));
+        return Registry.register(BuiltInRegistries.ITEM,getItemKey(name),item);
     }
     public static <T extends Item> T registerSignItem(String name, Block standingBlock, Block wallBlock,
-                                                      SignRegisterFunction<Item.Settings, T> factory){
-        T item = factory.apply(standingBlock, wallBlock, new Item.Settings().maxCount(16).registryKey(getItemKey(name)));
-        return Registry.register(Registries.ITEM,getItemKey(name),item);
+                                                      SignRegisterFunction<Item.Properties, T> factory){
+        T item = factory.apply(standingBlock, wallBlock, new Item.Properties().stacksTo(16).setId(getItemKey(name)));
+        return Registry.register(BuiltInRegistries.ITEM,getItemKey(name),item);
     }
     public static <T extends Item> T registerHangingSignItem(String name, Block hangingSign, Block wallHangingSign,
-                                                             HangingSignRegisterFunction<Item.Settings, T> factory){
-        T item = factory.apply(hangingSign, wallHangingSign, new Item.Settings().maxCount(16).registryKey(getItemKey(name)));
-        return Registry.register(Registries.ITEM,getItemKey(name),item);
+                                                             HangingSignRegisterFunction<Item.Properties, T> factory){
+        T item = factory.apply(hangingSign, wallHangingSign, new Item.Properties().stacksTo(16).setId(getItemKey(name)));
+        return Registry.register(BuiltInRegistries.ITEM,getItemKey(name),item);
     }
-    private static Function<Item.Settings, Item> createBlockItemWithUniqueName(Block block) {
-        return settings -> new BlockItem(block, settings.useItemPrefixedTranslationKey());
+    private static Item registerBlock(final Block block, final BiFunction<Block, Item.Properties, Item> itemFactory) {
+        return registerBlock(block, itemFactory);
+    }
+    private static Function<Item.Properties, Item> createBlockItemWithUniqueName(Block block) {
+        return settings -> new BlockItem(block, settings.useItemDescriptionPrefix());
     }
     public static void registerDecoItems() {
         VaranDeco.LOGGER.debug("Registering Items for" + VaranDeco.MOD_ID);

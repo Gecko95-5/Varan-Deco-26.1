@@ -1,103 +1,102 @@
 package net.gecko.varandeco.screen.stone;
 
 import net.gecko.varandeco.block.DecoBlocks;
-import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftingResultInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.recipe.StonecuttingRecipe;
-import net.minecraft.recipe.display.CuttingRecipeDisplay;
-import net.minecraft.recipe.input.SingleStackRecipeInput;
-import net.minecraft.screen.Property;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.world.World;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.ResultContainer;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.SelectableRecipe;
+import net.minecraft.world.item.crafting.SingleRecipeInput;
+import net.minecraft.world.item.crafting.StonecutterRecipe;
+import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.Optional;
 
-public class BlackstoneStonecutterScreenHandler extends ScreenHandler {
+public class BlackstoneStonecutterScreenHandler extends AbstractContainerMenu {
 	public static final int INPUT_ID = 0;
 	public static final int OUTPUT_ID = 1;
 	private static final int INVENTORY_START = 2;
 	private static final int INVENTORY_END = 29;
 	private static final int OUTPUT_START = 29;
 	private static final int OUTPUT_END = 38;
-	private final ScreenHandlerContext context;
-	final Property selectedRecipe = Property.create();
-	private final World world;
-	private CuttingRecipeDisplay.Grouping<StonecuttingRecipe> availableRecipes = CuttingRecipeDisplay.Grouping.empty();
+	private final ContainerLevelAccess context;
+	final DataSlot selectedRecipe = DataSlot.standalone();
+	private final Level world;
+	private SelectableRecipe.SingleInputSet<StonecutterRecipe> availableRecipes = SelectableRecipe.SingleInputSet.empty();
 	private ItemStack inputStack = ItemStack.EMPTY;
 	long lastTakeTime;
 	final Slot inputSlot;
 	final Slot outputSlot;
 	Runnable contentsChangedListener = () -> {};
-	public final Inventory input = new SimpleInventory(1) {
+	public final Container input = new SimpleContainer(1) {
 		@Override
-		public void markDirty() {
-			super.markDirty();
-			BlackstoneStonecutterScreenHandler.this.onContentChanged(this);
+		public void setChanged() {
+			super.setChanged();
+			BlackstoneStonecutterScreenHandler.this.slotsChanged(this);
 			BlackstoneStonecutterScreenHandler.this.contentsChangedListener.run();
 		}
 	};
-	final CraftingResultInventory output = new CraftingResultInventory();
+	final ResultContainer output = new ResultContainer();
 
-	public BlackstoneStonecutterScreenHandler(int syncId, PlayerInventory playerInventory) {
-		this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
+	public BlackstoneStonecutterScreenHandler(int syncId, Inventory playerInventory) {
+		this(syncId, playerInventory, ContainerLevelAccess.NULL);
 	}
 
-	public BlackstoneStonecutterScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-		super(ScreenHandlerType.STONECUTTER, syncId);
+	public BlackstoneStonecutterScreenHandler(int syncId, Inventory playerInventory, ContainerLevelAccess context) {
+		super(MenuType.STONECUTTER, syncId);
 		this.context = context;
-		this.world = playerInventory.player.getEntityWorld();
+		this.world = playerInventory.player.level();
 		this.inputSlot = this.addSlot(new Slot(this.input, 0, 20, 33));
 		this.outputSlot = this.addSlot(new Slot(this.output, 1, 143, 33) {
 			@Override
-			public boolean canInsert(ItemStack stack) {
+			public boolean mayPlace(ItemStack stack) {
 				return false;
 			}
 
 			@Override
-			public void onTakeItem(PlayerEntity player, ItemStack stack) {
-				stack.onCraftByPlayer(player, stack.getCount());
-				BlackstoneStonecutterScreenHandler.this.output.unlockLastRecipe(player, this.getInputStacks());
-				ItemStack itemStack = BlackstoneStonecutterScreenHandler.this.inputSlot.takeStack(1);
+			public void onTake(Player player, ItemStack stack) {
+				stack.onCraftedBy(player, stack.getCount());
+				BlackstoneStonecutterScreenHandler.this.output.awardUsedRecipes(player, this.getInputStacks());
+				ItemStack itemStack = BlackstoneStonecutterScreenHandler.this.inputSlot.remove(1);
 				if (!itemStack.isEmpty()) {
 					BlackstoneStonecutterScreenHandler.this.populateResult(BlackstoneStonecutterScreenHandler.this.selectedRecipe.get());
 				}
 
-				context.run((world, pos) -> {
-					long l = world.getTime();
+				context.execute((world, pos) -> {
+					long l = world.getGameTime();
 					if (BlackstoneStonecutterScreenHandler.this.lastTakeTime != l) {
-						world.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						world.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, 1.0F);
 						BlackstoneStonecutterScreenHandler.this.lastTakeTime = l;
 					}
 				});
-				super.onTakeItem(player, stack);
+				super.onTake(player, stack);
 			}
 
 			private List<ItemStack> getInputStacks() {
-				return List.of(BlackstoneStonecutterScreenHandler.this.inputSlot.getStack());
+				return List.of(BlackstoneStonecutterScreenHandler.this.inputSlot.getItem());
 			}
 		});
-		this.addPlayerSlots(playerInventory, 8, 84);
-		this.addProperty(this.selectedRecipe);
+		this.addStandardInventorySlots(playerInventory, 8, 84);
+		this.addDataSlot(this.selectedRecipe);
 	}
 
 	public int getSelectedRecipe() {
 		return this.selectedRecipe.get();
 	}
 
-	public CuttingRecipeDisplay.Grouping<StonecuttingRecipe> getAvailableRecipes() {
+	public SelectableRecipe.SingleInputSet<StonecutterRecipe> getAvailableRecipes() {
 		return this.availableRecipes;
 	}
 
@@ -106,16 +105,16 @@ public class BlackstoneStonecutterScreenHandler extends ScreenHandler {
 	}
 
 	public boolean canCraft() {
-		return this.inputSlot.hasStack() && !this.availableRecipes.isEmpty();
+		return this.inputSlot.hasItem() && !this.availableRecipes.isEmpty();
 	}
 
 	@Override
-	public boolean canUse(PlayerEntity player) {
-		return canUse(this.context, player, DecoBlocks.BLACKSTONE_STONECUTTER);
+	public boolean stillValid(Player player) {
+		return stillValid(this.context, player, DecoBlocks.BLACKSTONE_STONECUTTER);
 	}
 
 	@Override
-	public boolean onButtonClick(PlayerEntity player, int id) {
+	public boolean clickMenuButton(Player player, int id) {
 		if (this.selectedRecipe.get() == id) {
 			return false;
 		} else {
@@ -133,9 +132,9 @@ public class BlackstoneStonecutterScreenHandler extends ScreenHandler {
 	}
 
 	@Override
-	public void onContentChanged(Inventory inventory) {
-		ItemStack itemStack = this.inputSlot.getStack();
-		if (!itemStack.isOf(this.inputStack.getItem())) {
+	public void slotsChanged(Container inventory) {
+		ItemStack itemStack = this.inputSlot.getItem();
+		if (!itemStack.is(this.inputStack.getItem())) {
 			this.inputStack = itemStack.copy();
 			this.updateInput(itemStack);
 		}
@@ -143,18 +142,18 @@ public class BlackstoneStonecutterScreenHandler extends ScreenHandler {
 
 	private void updateInput(ItemStack stack) {
 		this.selectedRecipe.set(-1);
-		this.outputSlot.setStackNoCallbacks(ItemStack.EMPTY);
+		this.outputSlot.set(ItemStack.EMPTY);
 		if (!stack.isEmpty()) {
-			this.availableRecipes = this.world.getRecipeManager().getStonecutterRecipes().filter(stack);
+			this.availableRecipes = this.world.recipeAccess().stonecutterRecipes().selectByInput(stack);
 		} else {
-			this.availableRecipes = CuttingRecipeDisplay.Grouping.empty();
+			this.availableRecipes = SelectableRecipe.SingleInputSet.empty();
 		}
 	}
 
 	void populateResult(int selectedId) {
-		Optional<RecipeEntry<StonecuttingRecipe>> optional;
+		Optional<RecipeHolder<StonecutterRecipe>> optional;
 		if (!this.availableRecipes.isEmpty() && this.isInBounds(selectedId)) {
-			CuttingRecipeDisplay.GroupEntry<StonecuttingRecipe> groupEntry = (CuttingRecipeDisplay.GroupEntry<StonecuttingRecipe>)this.availableRecipes
+			SelectableRecipe.SingleInputEntry<StonecutterRecipe> groupEntry = this.availableRecipes
 					.entries()
 					.get(selectedId);
 			optional = groupEntry.recipe().recipe();
@@ -164,21 +163,21 @@ public class BlackstoneStonecutterScreenHandler extends ScreenHandler {
 
 		optional.ifPresentOrElse(
 				recipe -> {
-					this.output.setLastRecipe(recipe);
+					this.output.setRecipeUsed(recipe);
 					this.outputSlot
-							.setStackNoCallbacks(((StonecuttingRecipe)recipe.value()).craft(new SingleStackRecipeInput(this.input.getStack(0)), this.world.getRegistryManager()));
+							.set(recipe.value().assemble(new SingleRecipeInput(this.input.getItem(0))));
 				},
 				() -> {
-					this.outputSlot.setStackNoCallbacks(ItemStack.EMPTY);
-					this.output.setLastRecipe(null);
+					this.outputSlot.set(ItemStack.EMPTY);
+					this.output.setRecipeUsed(null);
 				}
 		);
-		this.sendContentUpdates();
+		this.broadcastChanges();
 	}
 
 	@Override
-	public ScreenHandlerType<?> getType() {
-		return ScreenHandlerType.STONECUTTER;
+	public MenuType<?> getType() {
+		return MenuType.STONECUTTER;
 	}
 
 	public void setContentsChangedListener(Runnable contentsChangedListener) {
@@ -186,65 +185,65 @@ public class BlackstoneStonecutterScreenHandler extends ScreenHandler {
 	}
 
 	@Override
-	public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
-		return slot.inventory != this.output && super.canInsertIntoSlot(stack, slot);
+	public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
+		return slot.container != this.output && super.canTakeItemForPickAll(stack, slot);
 	}
 
 	@Override
-	public ItemStack quickMove(PlayerEntity player, int slot) {
+	public ItemStack quickMoveStack(Player player, int slot) {
 		ItemStack itemStack = ItemStack.EMPTY;
 		Slot slot2 = this.slots.get(slot);
-		if (slot2 != null && slot2.hasStack()) {
-			ItemStack itemStack2 = slot2.getStack();
+		if (slot2 != null && slot2.hasItem()) {
+			ItemStack itemStack2 = slot2.getItem();
 			Item item = itemStack2.getItem();
 			itemStack = itemStack2.copy();
 			if (slot == 1) {
-				item.onCraftByPlayer(itemStack2, player);
-				if (!this.insertItem(itemStack2, 2, 38, true)) {
+				item.onCraftedBy(itemStack2, player);
+				if (!this.moveItemStackTo(itemStack2, 2, 38, true)) {
 					return ItemStack.EMPTY;
 				}
 
-				slot2.onQuickTransfer(itemStack2, itemStack);
+				slot2.onQuickCraft(itemStack2, itemStack);
 			} else if (slot == 0) {
-				if (!this.insertItem(itemStack2, 2, 38, false)) {
+				if (!this.moveItemStackTo(itemStack2, 2, 38, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else if (this.world.getRecipeManager().getStonecutterRecipes().contains(itemStack2)) {
-				if (!this.insertItem(itemStack2, 0, 1, false)) {
+			} else if (this.world.recipeAccess().stonecutterRecipes().acceptsInput(itemStack2)) {
+				if (!this.moveItemStackTo(itemStack2, 0, 1, false)) {
 					return ItemStack.EMPTY;
 				}
 			} else if (slot >= 2 && slot < 29) {
-				if (!this.insertItem(itemStack2, 29, 38, false)) {
+				if (!this.moveItemStackTo(itemStack2, 29, 38, false)) {
 					return ItemStack.EMPTY;
 				}
-			} else if (slot >= 29 && slot < 38 && !this.insertItem(itemStack2, 2, 29, false)) {
+			} else if (slot >= 29 && slot < 38 && !this.moveItemStackTo(itemStack2, 2, 29, false)) {
 				return ItemStack.EMPTY;
 			}
 
 			if (itemStack2.isEmpty()) {
-				slot2.setStack(ItemStack.EMPTY);
+				slot2.setByPlayer(ItemStack.EMPTY);
 			}
 
-			slot2.markDirty();
+			slot2.setChanged();
 			if (itemStack2.getCount() == itemStack.getCount()) {
 				return ItemStack.EMPTY;
 			}
 
-			slot2.onTakeItem(player, itemStack2);
+			slot2.onTake(player, itemStack2);
 			if (slot == 1) {
-				player.dropItem(itemStack2, false);
+				player.drop(itemStack2, false);
 			}
 
-			this.sendContentUpdates();
+			this.broadcastChanges();
 		}
 
 		return itemStack;
 	}
 
 	@Override
-	public void onClosed(PlayerEntity player) {
-		super.onClosed(player);
-		this.output.removeStack(1);
-		this.context.run((world, pos) -> this.dropInventory(player, this.input));
+	public void removed(Player player) {
+		super.removed(player);
+		this.output.removeItemNoUpdate(1);
+		this.context.execute((world, pos) -> this.clearContainer(player, this.input));
 	}
 }

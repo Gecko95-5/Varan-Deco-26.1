@@ -2,40 +2,44 @@ package net.gecko.varandeco.block.nature.flowers;
 
 import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.item.DecoItems;
-import net.minecraft.block.*;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.IntProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class AncientRoseBlock extends CropBlock {
-    public static final IntProperty AGE = Properties.AGE_1;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_1;
     private static final VoxelShape[] SHAPES = new VoxelShape[]{
-            Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)
+            Block.box(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), Block.box(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)
     };
 
-    public AncientRoseBlock(AbstractBlock.Settings settings) {
+    public AncientRoseBlock(BlockBehaviour.Properties settings) {
         super(settings);
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
 
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return SHAPES[this.getAge(state)];
     }
 
     @Override
-    protected IntProperty getAgeProperty() {
+    protected IntegerProperty getAgeProperty() {
         return AGE;
     }
 
@@ -45,24 +49,24 @@ public class AncientRoseBlock extends CropBlock {
     }
 
     @Override
-    protected ItemConvertible getSeedsItem() {
+    protected ItemLike getBaseSeedId() {
         return DecoItems.ANCIENT_ROSE_SEEDS;
     }
 
     @Override
-    public BlockState withAge(int age) {
-        return age == 2 ? DecoBlocks.ANCIENT_ROSE.getDefaultState() : super.withAge(age);
+    public BlockState getStateForAge(int age) {
+        return age == 2 ? DecoBlocks.ANCIENT_ROSE.defaultBlockState() : super.getStateForAge(age);
     }
 
     @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
         if (random.nextInt(3) != 0) {
             super.randomTick(state, world, pos, random);
         }
     }
 
     @Override
-    protected int getGrowthAmount(World world) {
+    protected int getBonemealAgeIncrease(Level world) {
         return 1;
     }
 }

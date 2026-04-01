@@ -1,11 +1,11 @@
 package net.gecko.varandeco.util;
 
 import net.gecko.varandeco.VaranDeco;
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.tag.TagKey;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 public class DecoTags {
     public static class Blocks {
@@ -152,7 +152,7 @@ public class DecoTags {
                 createTag("log_walls");
 
         private static TagKey<Block> createTag(String name){
-            return TagKey.of(Registries.BLOCK.getKey(), Identifier.of(VaranDeco.MOD_ID, name));
+            return TagKey.create(BuiltInRegistries.BLOCK.key(), Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, name));
         }
     }
     public static class Items {
@@ -268,7 +268,7 @@ public class DecoTags {
                 createTag("seeds");
 
         private static TagKey<Item> createTag(String name){
-            return TagKey.of(Registries.ITEM.getKey(), Identifier.of(VaranDeco.MOD_ID, name));
+            return TagKey.create(BuiltInRegistries.ITEM.key(), Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, name));
         }
     }
 }

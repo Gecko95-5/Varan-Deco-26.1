@@ -1,66 +1,65 @@
 package net.gecko.varandeco.block.nature.underwater.corals;
 
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.StairsBlock;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.tick.ScheduledTickView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 
-public class BrainCoralStairBlock extends StairsBlock {
-    public BrainCoralStairBlock(BlockState baseBlockState, Settings settings) {
+public class BrainCoralStairBlock extends StairBlock {
+    public BrainCoralStairBlock(BlockState baseBlockState, Properties settings) {
         super(baseBlockState, settings);
     }
-
     @Override
-    protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        this.checkLivingConditions(state, world, world, world.random, pos);
+    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
+        this.tryScheduleDieTick(state, level, level, level.getRandom(), pos);
     }
 
     @Override
-    protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!isInWater(state, world, pos)) {
-            world.setBlockState(pos, DecoBlocks.DEAD_BRAIN_CORAL_STAIRS.getDefaultState().with(WATERLOGGED, false).with(FACING, state.get(FACING)), Block.NOTIFY_LISTENERS);
+    protected void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        if (!scanForWater(state, world, pos)) {
+            world.setBlock(pos, DecoBlocks.DEAD_BRAIN_CORAL_STAIRS.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, state.getValue(FACING)), Block.UPDATE_CLIENTS);
         }
     }
 
     @Override
-    protected BlockState getStateForNeighborUpdate(
+    protected BlockState updateShape(
             BlockState state,
-            WorldView world,
-            ScheduledTickView tickView,
+            LevelReader world,
+            ScheduledTickAccess tickView,
             BlockPos pos,
             Direction direction,
             BlockPos neighborPos,
             BlockState neighborState,
-            Random random
+            RandomSource random
     ) {
-        if (direction == Direction.DOWN && !state.canPlaceAt(world, pos)) {
-            return Blocks.AIR.getDefaultState();
+        if (direction == Direction.DOWN && !state.canSurvive(world, pos)) {
+            return Blocks.AIR.defaultBlockState();
         } else {
-            this.checkLivingConditions(state, world, tickView, random, pos);
-            if (state.get(WATERLOGGED)) {
-                tickView.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+            this.tryScheduleDieTick(state, world, tickView, random, pos);
+            if (state.getValue(WATERLOGGED)) {
+                tickView.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
             }
 
-            return super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
+            return super.updateShape(state, world, tickView, pos, direction, neighborPos, neighborState, random);
         }
     }
-    protected static boolean isInWater(BlockState state, BlockView world, BlockPos pos) {
-        if (state.get(WATERLOGGED)) {
+    protected static boolean scanForWater(final BlockState state, final BlockGetter level, final BlockPos blockPos) {
+        if (state.getValue(WATERLOGGED)) {
             return true;
         } else {
             for (Direction direction : Direction.values()) {
-                if (world.getFluidState(pos.offset(direction)).isIn(FluidTags.WATER)) {
+                if (level.getFluidState(blockPos.relative(direction)).is(FluidTags.WATER)) {
                     return true;
                 }
             }
@@ -68,9 +67,11 @@ public class BrainCoralStairBlock extends StairsBlock {
             return false;
         }
     }
-    protected void checkLivingConditions(BlockState state, BlockView world, ScheduledTickView tickView, Random random, BlockPos pos) {
-        if (!isInWater(state, world, pos)) {
-            tickView.scheduleBlockTick(pos, this, 60 + random.nextInt(40));
+    protected void tryScheduleDieTick(
+            final BlockState state, final BlockGetter level, final ScheduledTickAccess ticks, final RandomSource random, final BlockPos pos
+    ) {
+        if (!scanForWater(state, level, pos)) {
+            ticks.scheduleTick(pos, this, 60 + random.nextInt(40));
         }
     }
 }

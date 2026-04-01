@@ -1,13 +1,13 @@
 package net.gecko.varandeco.util;
 
-import net.minecraft.block.ComposterBlock;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.ComposterBlock;
 //Terraform API Code
 public class ComposterItemsRecipes {
-    public static void registerCompostableItem(ItemConvertible item, float chance) {
+    public static void registerCompostableItem(ItemLike item, float chance) {
     if (item.asItem() != Items.AIR) {
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(item.asItem(), chance);
+        ComposterBlock.COMPOSTABLES.put(item.asItem(), chance);
     }
 }
 }

@@ -2,40 +2,39 @@ package net.gecko.varandeco.util.feature;
 
 import com.mojang.serialization.Codec;
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SeaPickleBlock;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.Heightmap;
-import net.minecraft.world.StructureWorldAccess;
-import net.minecraft.world.gen.CountConfig;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.util.FeatureContext;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import net.minecraft.world.level.levelgen.feature.configurations.CountConfiguration;
 
-public class DriftwoodSproutFeature extends Feature<CountConfig> {
-    public DriftwoodSproutFeature(Codec<CountConfig> configCodec) {
+public class DriftwoodSproutFeature extends Feature<CountConfiguration> {
+    public DriftwoodSproutFeature(Codec<CountConfiguration> configCodec) {
         super(configCodec);
     }
 
     @Override
-    public boolean generate(FeatureContext<CountConfig> context) {
+    public boolean place(FeaturePlaceContext<CountConfiguration> context) {
 
         int i = 0;
-        Random random = context.getRandom();
-        StructureWorldAccess structureWorldAccess = context.getWorld();
-        BlockPos blockPos = context.getOrigin();
-        int j = context.getConfig().getCount().get(random);
+        RandomSource random = context.random();
+        WorldGenLevel structureWorldAccess = context.level();
+        BlockPos blockPos = context.origin();
+        int j = context.config().count().sample(random);
 
         for (int k = 0; k < j; k++) {
             int l = random.nextInt(8) - random.nextInt(8);
             int m = random.nextInt(8) - random.nextInt(8);
-            int n = structureWorldAccess.getTopY(Heightmap.Type.OCEAN_FLOOR, blockPos.getX() + l, blockPos.getZ() + m);
+            int n = structureWorldAccess.getHeight(Heightmap.Types.OCEAN_FLOOR, blockPos.getX() + l, blockPos.getZ() + m);
             BlockPos blockPos2 = new BlockPos(blockPos.getX() + l, n, blockPos.getZ() + m);
-            BlockState blockState = DecoBlocks.DRIFTWOOD_SPROUT.getDefaultState();
-            if (structureWorldAccess.getBlockState(blockPos2).isOf(Blocks.WATER) && blockState.canPlaceAt(structureWorldAccess, blockPos2)) {
-                structureWorldAccess.setBlockState(blockPos2, blockState, Block.NOTIFY_LISTENERS);
+            BlockState blockState = DecoBlocks.DRIFTWOOD_SPROUT.defaultBlockState();
+            if (structureWorldAccess.getBlockState(blockPos2).is(Blocks.WATER) && blockState.canSurvive(structureWorldAccess, blockPos2)) {
+                structureWorldAccess.setBlock(blockPos2, blockState, Block.UPDATE_CLIENTS);
                 i++;
             }
         }

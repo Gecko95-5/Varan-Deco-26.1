@@ -1,25 +1,26 @@
 package net.gecko.varandeco.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.util.DecoTags;
-import net.minecraft.block.Blocks;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
 
-public class DecoBlockTagProvider extends FabricTagProvider.BlockTagProvider {
-    public DecoBlockTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-        super(output, registriesFuture);
+public class DecoBlockTagProvider extends FabricTagsProvider.BlockTagsProvider {
+
+    public DecoBlockTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
+        super(output, registryLookupFuture);
     }
 
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+    protected void addTags(HolderLookup.@NotNull Provider wrapperLookup) {
 
-        valueLookupBuilder(BlockTags.PICKAXE_MINEABLE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(DecoBlocks.POLISHED_STONE)
                 .add(DecoBlocks.POLISHED_STONE_STAIRS)
                 .add(DecoBlocks.POLISHED_STONE_SLAB)
@@ -659,7 +660,7 @@ public class DecoBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         valueLookupBuilder(BlockTags.IMPERMEABLE)
                 .addTag(DecoTags.Blocks.HARDENED_GLASS);
 
-        valueLookupBuilder(BlockTags.SHOVEL_MINEABLE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(DecoBlocks.SNOW_STAIRS)
                 .add(DecoBlocks.SNOW_SLAB)
                 .add(DecoBlocks.SNOW_WALL)
@@ -709,7 +710,7 @@ public class DecoBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(DecoBlocks.PACKED_CRIMSON_NYLIUM)
                 .add(DecoBlocks.PACKED_WARPED_NYLIUM);
 
-        valueLookupBuilder(BlockTags.HOE_MINEABLE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE)
                 .add(DecoBlocks.PACKED_GRASS)
                 .add(DecoBlocks.PACKED_DRY_GRASS)
                 .add(DecoBlocks.PACKED_PODZOL)
@@ -768,17 +769,17 @@ public class DecoBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(DecoBlocks.CRIMSON_NYLIUM_CARPET)
                 .add(DecoBlocks.WARPED_NYLIUM_CARPET);
 
-        valueLookupBuilder(BlockTags.MUSHROOM_GROW_BLOCK)
+        valueLookupBuilder(BlockTags.OVERRIDES_MUSHROOM_LIGHT_REQUIREMENT)
                 .add(DecoBlocks.PACKED_CRIMSON_NYLIUM)
                 .add(DecoBlocks.PACKED_WARPED_NYLIUM);
 
         valueLookupBuilder(BlockTags.OVERWORLD_NATURAL_LOGS)
                 .add(DecoBlocks.WOODEN_LOG);
 
-        valueLookupBuilder(BlockTags.HOE_MINEABLE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_HOE)
                 .add(DecoBlocks.SPORE_IRON_ORE);
 
-        valueLookupBuilder(BlockTags.AXE_MINEABLE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .addTag(DecoTags.Blocks.DECO_CRAFTING_TABLES)
                 .addTag(DecoTags.Blocks.DECO_BARRELS)
                 .addTag(DecoTags.Blocks.DECO_LADDERS)
@@ -2385,7 +2386,7 @@ public class DecoBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         valueLookupBuilder(BlockTags.CLIMBABLE)
                 .addTag(DecoTags.Blocks.DECO_LADDERS)
                 .add(Blocks.IRON_CHAIN)
-                .add(Blocks.COPPER_CHAINS.getAll())
+                .addAll(Blocks.COPPER_CHAIN.asList())
                 .add(DecoBlocks.IRON_LADDER)
                 .add(DecoBlocks.COPPER_LADDER)
                 .add(DecoBlocks.EXPOSED_COPPER_LADDER)
@@ -2703,9 +2704,9 @@ public class DecoBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(DecoBlocks.VOID_STONE);
 
         valueLookupBuilder(BlockTags.SNAPS_GOAT_HORN)
-                .addTag(BlockTags.PICKAXE_MINEABLE);
+                .addTag(BlockTags.MINEABLE_WITH_PICKAXE);
 
-        valueLookupBuilder(BlockTags.SNOW_LAYER_CANNOT_SURVIVE_ON)
+        valueLookupBuilder(BlockTags.CANNOT_SUPPORT_SNOW_LAYER)
                 .add(DecoBlocks.BLACK_ICE)
                 .add(DecoBlocks.BUBBLE_ELEVATOR_BLOCK_BUBBLE)
                 .add(DecoBlocks.BUBBLE_ELEVATOR_BLOCK_MAGMA)
@@ -2948,5 +2949,12 @@ public class DecoBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(DecoBlocks.HYDRATED_BUBBLE_CORAL_WALL_FAN)
                 .add(DecoBlocks.HYDRATED_FIRE_CORAL_WALL_FAN)
                 .add(DecoBlocks.HYDRATED_HORN_CORAL_WALL_FAN);
+
+        valueLookupBuilder(BlockTags.ENABLES_BUBBLE_COLUMN_PUSH_UP)
+                .add(DecoBlocks.BUBBLE_BLOCK)
+                .add(DecoBlocks.BUBBLE_ELEVATOR_BLOCK_BUBBLE);
+
+        valueLookupBuilder(BlockTags.ENABLES_BUBBLE_COLUMN_DRAG_DOWN)
+                .add(DecoBlocks.BUBBLE_ELEVATOR_BLOCK_MAGMA);
     }
 }

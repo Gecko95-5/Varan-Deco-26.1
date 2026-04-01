@@ -1,24 +1,27 @@
 package net.gecko.varandeco.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.item.DecoItems;
 import net.gecko.varandeco.util.DecoTags;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.Items;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class DecoItemTagProvider extends FabricTagProvider.ItemTagProvider {
-    public DecoItemTagProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
-        super(output, completableFuture);
+public class DecoItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
+
+    public DecoItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture, @Nullable BlockTagsProvider blockTagsProvider) {
+        super(output, registryLookupFuture, blockTagsProvider);
     }
 
     @Override
-    protected void configure(RegistryWrapper.WrapperLookup arg) {
+    protected void addTags(HolderLookup.@NotNull Provider arg) {
         valueLookupBuilder(ItemTags.PLANKS)
                 .add(DecoBlocks.CACTUS_PLANKS.asItem())
                 .add(DecoBlocks.MUSHROOM_PLANKS.asItem())

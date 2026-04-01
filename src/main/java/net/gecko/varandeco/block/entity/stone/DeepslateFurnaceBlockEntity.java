@@ -1,14 +1,14 @@
 package net.gecko.varandeco.block.entity.stone;
 
 import net.gecko.varandeco.block.entity.DecoBlockEntities;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.screen.FurnaceScreenHandler;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.FurnaceMenu;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class DeepslateFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 	public DeepslateFurnaceBlockEntity(BlockPos pos, BlockState state) {
@@ -16,12 +16,12 @@ public class DeepslateFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
 	}
 
 	@Override
-	protected Text getContainerName() {
-		return Text.translatable("container.furnace");
+	protected Component getDefaultName() {
+		return Component.translatable("container.furnace");
 	}
 
 	@Override
-	protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-		return new FurnaceScreenHandler(syncId, playerInventory, this, this.propertyDelegate);
+	protected AbstractContainerMenu createMenu(int syncId, Inventory playerInventory) {
+		return new FurnaceMenu(syncId, playerInventory, this, this.dataAccess);
 	}
 }

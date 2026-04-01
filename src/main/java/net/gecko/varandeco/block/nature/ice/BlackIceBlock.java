@@ -1,80 +1,80 @@
 package net.gecko.varandeco.block.nature.ice;
 
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.EnchantmentTags;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldEvents;
+import net.minecraft.core.BlockPos;
+import net.minecraft.tags.EnchantmentTags;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LevelEvent;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
 public class BlackIceBlock extends Block {
-    public BlackIceBlock(Settings settings) {
+    public BlackIceBlock(Properties settings) {
         super(settings);
     }
 
 
     @Override
-    public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
+    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
         if (entity.isOnFire()) {
-            world.syncWorldEvent(WorldEvents.LAVA_EXTINGUISHED, pos, 0);
-        entity.extinguish();
-        entity.serverDamage(world.getDamageSources().freeze(), 5.0F);
+            world.levelEvent(LevelEvent.LAVA_FIZZ, pos, 0);
+        entity.clearFire();
+        entity.hurt(world.damageSources().freeze(), 5.0F);
     }
-        if (!entity.bypassesSteppingEffects()) {
-            entity.serverDamage(world.getDamageSources().freeze(), 1.0F);
+        if (!entity.isSteppingCarefully()) {
+            entity.hurt(world.damageSources().freeze(), 1.0F);
         }
-        super.onSteppedOn(world, pos, state, entity);
+        super.stepOn(world, pos, state, entity);
     }
 
-    public BlockState onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
-        super.onBreak(world, pos, state, player);
-        ItemStack stack = player.getMainHandStack();
+    public BlockState playerWillDestroy(Level world, BlockPos pos, BlockState state, Player player) {
+        super.playerWillDestroy(world, pos, state, player);
+        ItemStack stack = player.getMainHandItem();
         int i = stack.getMaxDamage();
-        if (!stack.isSuitableFor(DecoBlocks.BLACK_ICE.getDefaultState())){
-            stack.damage(i, player, (EquipmentSlot.MAINHAND));
+        if (!stack.isCorrectToolForDrops(DecoBlocks.BLACK_ICE.defaultBlockState())){
+            stack.hurtAndBreak(i, player, (EquipmentSlot.MAINHAND));
         }
         return state;
     }
 
     @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (!player.bypassesSteppingEffects()) {
-            player.serverDamage(world.getDamageSources().freeze(), 0.1F);
+    protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!player.isSteppingCarefully()) {
+            player.hurt(world.damageSources().freeze(), 0.1F);
         }
-        return super.onUse(state, world, pos, player, hit);
+        return super.useWithoutItem(state, world, pos, player, hit);
     }
 
     @Override
-    public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
-        super.afterBreak(world, player, pos, state, blockEntity, stack);
-        if (!stack.isSuitableFor(DecoBlocks.BLACK_ICE.getDefaultState())){
-            if (!EnchantmentHelper.hasAnyEnchantmentsIn(stack, EnchantmentTags.PREVENTS_ICE_MELTING)) {
-                BlockState blockState = world.getBlockState(pos.down());
-                if (blockState.blocksMovement() || blockState.isReplaceable()) {
-                    world.setBlockState(pos, Blocks.PACKED_ICE.getDefaultState());
+    public void playerDestroy(Level world, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
+        super.playerDestroy(world, player, pos, state, blockEntity, stack);
+        if (!stack.isCorrectToolForDrops(DecoBlocks.BLACK_ICE.defaultBlockState())){
+            if (!EnchantmentHelper.hasTag(stack, EnchantmentTags.PREVENTS_ICE_MELTING)) {
+                BlockState blockState = world.getBlockState(pos.below());
+                if (blockState.blocksMotion() || blockState.canBeReplaced()) {
+                    world.setBlockAndUpdate(pos, Blocks.PACKED_ICE.defaultBlockState());
                 }
             }
 
-            BlockState blockState = world.getBlockState(pos.down());
-            if (blockState.blocksMovement() || blockState.isReplaceable()) {
-                world.setBlockState(pos, Blocks.PACKED_ICE.getDefaultState());
+            BlockState blockState = world.getBlockState(pos.below());
+            if (blockState.blocksMotion() || blockState.canBeReplaced()) {
+                world.setBlockAndUpdate(pos, Blocks.PACKED_ICE.defaultBlockState());
             }
         }
-        if (!EnchantmentHelper.hasAnyEnchantmentsIn(stack, EnchantmentTags.PREVENTS_ICE_MELTING)) {
-            BlockState blockState = world.getBlockState(pos.down());
-            if (blockState.blocksMovement() || blockState.isReplaceable()) {
-                world.setBlockState(pos, Blocks.PACKED_ICE.getDefaultState());
+        if (!EnchantmentHelper.hasTag(stack, EnchantmentTags.PREVENTS_ICE_MELTING)) {
+            BlockState blockState = world.getBlockState(pos.below());
+            if (blockState.blocksMotion() || blockState.canBeReplaced()) {
+                world.setBlockAndUpdate(pos, Blocks.PACKED_ICE.defaultBlockState());
             }
         }
     }

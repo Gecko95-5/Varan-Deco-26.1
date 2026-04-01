@@ -2,31 +2,32 @@ package net.gecko.varandeco.entity.custom;
 
 import net.gecko.varandeco.entity.DecoEntities;
 import net.gecko.varandeco.item.DecoItems;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityStatuses;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.BlazeEntity;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ItemStackParticleEffect;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.world.World;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityEvent;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Blaze;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 
-public class SnowBrickProjectileEntity extends ThrownItemEntity {
+public class SnowBrickProjectileEntity extends ThrowableItemProjectile {
 
-    public SnowBrickProjectileEntity(EntityType<? extends SnowBrickProjectileEntity> entityType, World world) {
+    public SnowBrickProjectileEntity(EntityType<? extends SnowBrickProjectileEntity> entityType, Level world) {
         super(entityType, world);
     }
-    public SnowBrickProjectileEntity(World world, LivingEntity owner, ItemStack stack) {
+    public SnowBrickProjectileEntity(Level world, LivingEntity owner, ItemStack stack) {
         super(DecoEntities.SNOW_BRICK_PROJECTILE, owner, world, stack);
     }
 
-    public SnowBrickProjectileEntity(World world, double x, double y, double z, ItemStack stack) {
+    public SnowBrickProjectileEntity(Level world, double x, double y, double z, ItemStack stack) {
         super(DecoEntities.SNOW_BRICK_PROJECTILE, x, y, z, world, stack);
     }
 
@@ -35,37 +36,35 @@ public class SnowBrickProjectileEntity extends ThrownItemEntity {
         return DecoItems.SNOW_BRICK;
     }
 
-    private ParticleEffect getParticleParameters() {
-        ItemStack itemStack = this.getStack();
-        return !itemStack.isEmpty() && !itemStack.isOf(this.getDefaultItem())
-                ? new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack)
-                : ParticleTypes.ITEM_SNOWBALL;
+    private ParticleOptions getParticle() {
+        ItemStack item = this.getItem();
+        return item.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item));
     }
 
     @Override
-    public void handleStatus(byte status) {
-        if (status == EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES) {
-            ParticleEffect particleEffect = this.getParticleParameters();
+    public void handleEntityEvent(final byte id) {
+        if (id == 3) {
+            ParticleOptions particle = this.getParticle();
 
             for (int i = 0; i < 8; i++) {
-                this.getEntityWorld().addParticleClient(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+                this.level().addParticle(particle, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             }
         }
     }
 
     @Override
-    protected void onEntityHit(EntityHitResult entityHitResult) {
-        super.onEntityHit(entityHitResult);
+    protected void onHitEntity(EntityHitResult entityHitResult) {
+        super.onHitEntity(entityHitResult);
         Entity entity = entityHitResult.getEntity();
-        int i = entity instanceof BlazeEntity ? 5 : 2;
-        entity.serverDamage(this.getDamageSources().thrown(this, this.getOwner()), i);
+        int i = entity instanceof Blaze ? 5 : 2;
+        entity.hurt(this.damageSources().thrown(this, this.getOwner()), i);
     }
 
     @Override
-    protected void onCollision(HitResult hitResult) {
-        super.onCollision(hitResult);
-        if (!this.getEntityWorld().isClient()) {
-            this.getEntityWorld().sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
+    protected void onHit(HitResult hitResult) {
+        super.onHit(hitResult);
+        if (!this.level().isClientSide()) {
+            this.level().broadcastEntityEvent(this, EntityEvent.DEATH);
             this.discard();
         }
     }

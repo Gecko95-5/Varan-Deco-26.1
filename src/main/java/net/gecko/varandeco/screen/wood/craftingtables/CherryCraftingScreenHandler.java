@@ -1,31 +1,31 @@
 package net.gecko.varandeco.screen.wood.craftingtables;
 
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.CraftingResultInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.inventory.RecipeInputInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.s2c.play.ScreenHandlerSlotUpdateS2CPacket;
-import net.minecraft.recipe.CraftingRecipe;
-import net.minecraft.recipe.RecipeEntry;
-import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.book.RecipeBookType;
-import net.minecraft.recipe.input.CraftingRecipeInput;
-import net.minecraft.screen.AbstractCraftingScreenHandler;
-import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.AbstractCraftingMenu;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.RecipeBookType;
+import net.minecraft.world.inventory.ResultContainer;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
 
-public class CherryCraftingScreenHandler extends AbstractCraftingScreenHandler {
+public class CherryCraftingScreenHandler extends AbstractCraftingMenu {
     private static final int field_52567 = 3;
     private static final int field_52568 = 3;
     public static final int RESULT_ID = 0;
@@ -36,125 +36,125 @@ public class CherryCraftingScreenHandler extends AbstractCraftingScreenHandler {
     private static final int INVENTORY_END = 37;
     private static final int HOTBAR_START = 37;
     private static final int HOTBAR_END = 46;
-    private final ScreenHandlerContext context;
-    private final PlayerEntity player;
+    private final ContainerLevelAccess context;
+    private final Player player;
     private boolean filling;
 
-    public CherryCraftingScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
+    public CherryCraftingScreenHandler(int syncId, Inventory playerInventory) {
+        this(syncId, playerInventory, ContainerLevelAccess.NULL);
     }
 
-    public CherryCraftingScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-        super(ScreenHandlerType.CRAFTING, syncId, 3, 3);
+    public CherryCraftingScreenHandler(int syncId, Inventory playerInventory, ContainerLevelAccess context) {
+        super(MenuType.CRAFTING, syncId, 3, 3);
         this.context = context;
         this.player = playerInventory.player;
         this.addResultSlot(this.player, 124, 35);
-        this.addInputSlots(30, 17);
-        this.addPlayerSlots(playerInventory, 8, 84);
+        this.addCraftingGridSlots(30, 17);
+        this.addStandardInventorySlots(playerInventory, 8, 84);
     }
 
     protected static void updateResult(
-            ScreenHandler handler,
-            ServerWorld world,
-            PlayerEntity player,
-            RecipeInputInventory craftingInventory,
-            CraftingResultInventory resultInventory,
-            @Nullable RecipeEntry<CraftingRecipe> recipe
+            AbstractContainerMenu handler,
+            ServerLevel world,
+            Player player,
+            CraftingContainer craftingInventory,
+            ResultContainer resultInventory,
+            @Nullable RecipeHolder<CraftingRecipe> recipe
     ) {
-        CraftingRecipeInput craftingRecipeInput = craftingInventory.createRecipeInput();
-        ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)player;
+        CraftingInput craftingRecipeInput = craftingInventory.asCraftInput();
+        ServerPlayer serverPlayerEntity = (ServerPlayer)player;
         ItemStack itemStack = ItemStack.EMPTY;
-        Optional<RecipeEntry<CraftingRecipe>> optional = world.getServer().getRecipeManager().getFirstMatch(RecipeType.CRAFTING, craftingRecipeInput, world, recipe);
+        Optional<RecipeHolder<CraftingRecipe>> optional = world.getServer().getRecipeManager().getRecipeFor(RecipeType.CRAFTING, craftingRecipeInput, world, recipe);
         if (optional.isPresent()) {
-            RecipeEntry<CraftingRecipe> recipeEntry = (RecipeEntry<CraftingRecipe>)optional.get();
+            RecipeHolder<CraftingRecipe> recipeEntry = (RecipeHolder<CraftingRecipe>)optional.get();
             CraftingRecipe craftingRecipe = recipeEntry.value();
-            if (resultInventory.shouldCraftRecipe(serverPlayerEntity, recipeEntry)) {
-                ItemStack itemStack2 = craftingRecipe.craft(craftingRecipeInput, world.getRegistryManager());
-                if (itemStack2.isItemEnabled(world.getEnabledFeatures())) {
+            if (resultInventory.setRecipeUsed(serverPlayerEntity, recipeEntry)) {
+                ItemStack itemStack2 = craftingRecipe.assemble(craftingRecipeInput, world.registryAccess());
+                if (itemStack2.isItemEnabled(world.enabledFeatures())) {
                     itemStack = itemStack2;
                 }
             }
         }
 
-        resultInventory.setStack(0, itemStack);
-        handler.setReceivedStack(0, itemStack);
-        serverPlayerEntity.networkHandler.sendPacket(new ScreenHandlerSlotUpdateS2CPacket(handler.syncId, handler.nextRevision(), 0, itemStack));
+        resultInventory.setItem(0, itemStack);
+        handler.setRemoteSlot(0, itemStack);
+        serverPlayerEntity.connection.send(new ClientboundContainerSetSlotPacket(handler.containerId, handler.incrementStateId(), 0, itemStack));
     }
 
     @Override
-    public void onContentChanged(Inventory inventory) {
+    public void slotsChanged(Container inventory) {
         if (!this.filling) {
-            this.context.run((world, pos) -> {
-                if (world instanceof ServerWorld serverWorld) {
-                    updateResult(this, serverWorld, this.player, this.craftingInventory, this.craftingResultInventory, null);
+            this.context.execute((world, pos) -> {
+                if (world instanceof ServerLevel serverWorld) {
+                    updateResult(this, serverWorld, this.player, this.craftSlots, this.resultSlots, null);
                 }
             });
         }
     }
 
     @Override
-    public void onInputSlotFillStart() {
+    public void beginPlacingRecipe() {
         this.filling = true;
     }
 
     @Override
-    public void onInputSlotFillFinish(ServerWorld world, RecipeEntry<CraftingRecipe> recipe) {
+    public void finishPlacingRecipe(ServerLevel world, RecipeHolder<CraftingRecipe> recipe) {
         this.filling = false;
-        updateResult(this, world, this.player, this.craftingInventory, this.craftingResultInventory, recipe);
+        updateResult(this, world, this.player, this.craftSlots, this.resultSlots, recipe);
     }
 
     @Override
-    public void onClosed(PlayerEntity player) {
-        super.onClosed(player);
-        this.context.run((world, pos) -> this.dropInventory(player, this.craftingInventory));
+    public void removed(Player player) {
+        super.removed(player);
+        this.context.execute((world, pos) -> this.clearContainer(player, this.craftSlots));
     }
 
     @Override
-    public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, DecoBlocks.CHERRY_CRAFTING_TABLE);
+    public boolean stillValid(Player player) {
+        return stillValid(this.context, player, DecoBlocks.CHERRY_CRAFTING_TABLE);
     }
 
     @Override
-    public ItemStack quickMove(PlayerEntity player, int slot) {
+    public ItemStack quickMoveStack(Player player, int slot) {
         ItemStack itemStack = ItemStack.EMPTY;
         Slot slot2 = this.slots.get(slot);
-        if (slot2 != null && slot2.hasStack()) {
-            ItemStack itemStack2 = slot2.getStack();
+        if (slot2 != null && slot2.hasItem()) {
+            ItemStack itemStack2 = slot2.getItem();
             itemStack = itemStack2.copy();
             if (slot == 0) {
-                itemStack2.getItem().onCraftByPlayer(itemStack2, player);
-                if (!this.insertItem(itemStack2, 10, 46, true)) {
+                itemStack2.getItem().onCraftedBy(itemStack2, player);
+                if (!this.moveItemStackTo(itemStack2, 10, 46, true)) {
                     return ItemStack.EMPTY;
                 }
 
-                slot2.onQuickTransfer(itemStack2, itemStack);
+                slot2.onQuickCraft(itemStack2, itemStack);
             } else if (slot >= 10 && slot < 46) {
-                if (!this.insertItem(itemStack2, 1, 10, false)) {
+                if (!this.moveItemStackTo(itemStack2, 1, 10, false)) {
                     if (slot < 37) {
-                        if (!this.insertItem(itemStack2, 37, 46, false)) {
+                        if (!this.moveItemStackTo(itemStack2, 37, 46, false)) {
                             return ItemStack.EMPTY;
                         }
-                    } else if (!this.insertItem(itemStack2, 10, 37, false)) {
+                    } else if (!this.moveItemStackTo(itemStack2, 10, 37, false)) {
                         return ItemStack.EMPTY;
                     }
                 }
-            } else if (!this.insertItem(itemStack2, 10, 46, false)) {
+            } else if (!this.moveItemStackTo(itemStack2, 10, 46, false)) {
                 return ItemStack.EMPTY;
             }
 
             if (itemStack2.isEmpty()) {
-                slot2.setStack(ItemStack.EMPTY);
+                slot2.setByPlayer(ItemStack.EMPTY);
             } else {
-                slot2.markDirty();
+                slot2.setChanged();
             }
 
             if (itemStack2.getCount() == itemStack.getCount()) {
                 return ItemStack.EMPTY;
             }
 
-            slot2.onTakeItem(player, itemStack2);
+            slot2.onTake(player, itemStack2);
             if (slot == 0) {
-                player.dropItem(itemStack2, false);
+                player.drop(itemStack2, false);
             }
         }
 
@@ -162,27 +162,27 @@ public class CherryCraftingScreenHandler extends AbstractCraftingScreenHandler {
     }
 
     @Override
-    public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
-        return slot.inventory != this.craftingResultInventory && super.canInsertIntoSlot(stack, slot);
+    public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
+        return slot.container != this.resultSlots && super.canTakeItemForPickAll(stack, slot);
     }
 
     @Override
-    public Slot getOutputSlot() {
+    public Slot getResultSlot() {
         return this.slots.getFirst();
     }
 
     @Override
-    public List<Slot> getInputSlots() {
+    public List<Slot> getInputGridSlots() {
         return this.slots.subList(1, 10);
     }
 
     @Override
-    public RecipeBookType getCategory() {
+    public RecipeBookType getRecipeBookType() {
         return RecipeBookType.CRAFTING;
     }
 
     @Override
-    protected PlayerEntity getPlayer() {
+    protected Player owner() {
         return this.player;
     }
 }

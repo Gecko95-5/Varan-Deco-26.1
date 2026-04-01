@@ -1,43 +1,43 @@
 package net.gecko.varandeco.item.custom;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 public class BubbleItem extends Item {
-    public BubbleItem(Settings settings) {
+    public BubbleItem(Properties settings) {
         super(settings);
     }
     @Override
-    public ActionResult useOnBlock(ItemUsageContext context) {
-        World world = context.getWorld();
-        BlockPos blockPos = context.getBlockPos();
-        ItemStack itemStack = context.getStack();
+    public InteractionResult useOn(UseOnContext context) {
+        Level world = context.getLevel();
+        BlockPos blockPos = context.getClickedPos();
+        ItemStack itemStack = context.getItemInHand();
         BlockState blockState = world.getBlockState(blockPos);
-        if (context.getSide() != Direction.DOWN && blockState.isIn(BlockTags.CONVERTABLE_TO_MUD)) {
-            itemStack.decrement(1);
-            world.playSound(null, blockPos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.PLAYERS, 1.0F, 1.0F);
-            if (!world.isClient()) {
-                ServerWorld serverWorld = (ServerWorld)world;
+        if (context.getClickedFace() != Direction.DOWN && blockState.is(BlockTags.CONVERTABLE_TO_MUD)) {
+            itemStack.shrink(1);
+            world.playSound(null, blockPos, SoundEvents.GENERIC_SPLASH, SoundSource.PLAYERS, 1.0F, 1.0F);
+            if (!world.isClientSide()) {
+                ServerLevel serverWorld = (ServerLevel)world;
 
                 for (int i = 0; i < 5; i++) {
-                    serverWorld.spawnParticles(
+                    serverWorld.sendParticles(
                             ParticleTypes.SPLASH,
-                            blockPos.getX() + world.random.nextDouble(),
+                            blockPos.getX() + world.getRandom().nextDouble(),
                             blockPos.getY() + 1,
-                            blockPos.getZ() + world.random.nextDouble(),
+                            blockPos.getZ() + world.getRandom().nextDouble(),
                             1,
                             0.0,
                             0.0,
@@ -47,12 +47,12 @@ public class BubbleItem extends Item {
                 }
             }
 
-            world.playSound(null, blockPos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
-            world.emitGameEvent(null, GameEvent.FLUID_PLACE, blockPos);
-            world.setBlockState(blockPos, Blocks.MUD.getDefaultState());
-            return ActionResult.SUCCESS;
+            world.playSound(null, blockPos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+            world.gameEvent(null, GameEvent.FLUID_PLACE, blockPos);
+            world.setBlockAndUpdate(blockPos, Blocks.MUD.defaultBlockState());
+            return InteractionResult.SUCCESS;
         } else {
-            return ActionResult.PASS;
+            return InteractionResult.PASS;
         }
     }
 }

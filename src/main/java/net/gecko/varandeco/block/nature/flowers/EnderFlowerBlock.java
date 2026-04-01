@@ -1,24 +1,22 @@
 package net.gecko.varandeco.block.nature.flowers;
 
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowerBlock;
-import net.minecraft.component.type.SuspiciousStewEffectsComponent;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.component.SuspiciousStewEffects;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class EnderFlowerBlock extends FlowerBlock {
 
 
-    public EnderFlowerBlock(SuspiciousStewEffectsComponent stewEffects, Settings settings) {
+    public EnderFlowerBlock(SuspiciousStewEffects stewEffects, Properties settings) {
         super(stewEffects, settings);
     }
 
     @Override
-    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return super.canPlantOnTop(floor, world, pos) || floor.isOf(Blocks.END_STONE) || floor.isOf(DecoBlocks.VOID_STONE);
+    protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
+        return super.mayPlaceOn(floor, world, pos) || floor.is(Blocks.END_STONE) || floor.is(DecoBlocks.VOID_STONE);
     }
 }

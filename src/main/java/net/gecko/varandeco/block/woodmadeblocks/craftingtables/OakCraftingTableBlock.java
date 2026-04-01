@@ -1,40 +1,40 @@
 package net.gecko.varandeco.block.woodmadeblocks.craftingtables;
 
 import net.gecko.varandeco.screen.wood.craftingtables.OakCraftingScreenHandler;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.screen.NamedScreenHandlerFactory;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
-import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 
 public class OakCraftingTableBlock extends Block {
-	private static final Text TITLE = Text.translatable("container.crafting");
+	private static final Component TITLE = Component.translatable("container.crafting");
 
-	public OakCraftingTableBlock(Settings settings) {
+	public OakCraftingTableBlock(Properties settings) {
 		super(settings);
 	}
 
 	@Override
-	protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-		if (!world.isClient()) {
-			player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
-			player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
+	protected InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+		if (!world.isClientSide()) {
+			player.openMenu(state.getMenuProvider(world, pos));
+			player.awardStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
 		}
 
-		return ActionResult.SUCCESS;
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override
-	public NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
-		return new SimpleNamedScreenHandlerFactory(
-			(syncId, inventory, player) -> new OakCraftingScreenHandler(syncId, inventory, ScreenHandlerContext.create(world, pos)), TITLE
+	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
+		return new SimpleMenuProvider(
+			(syncId, inventory, player) -> new OakCraftingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 }

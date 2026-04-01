@@ -1,30 +1,30 @@
 package net.gecko.varandeco.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.state.StateManager;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 
-public class MovablePumpkinBlock extends HorizontalFacingBlock {
-    public static final MapCodec<MovablePumpkinBlock> CODEC = createCodec(MovablePumpkinBlock::new);
-    public MovablePumpkinBlock(Settings settings) {
+public class MovablePumpkinBlock extends HorizontalDirectionalBlock {
+    public static final MapCodec<MovablePumpkinBlock> CODEC = simpleCodec(MovablePumpkinBlock::new);
+    public MovablePumpkinBlock(Properties settings) {
         super(settings);
     }
 
     @Override
-    public MapCodec<? extends MovablePumpkinBlock> getCodec() {
+    public MapCodec<? extends MovablePumpkinBlock> codec() {
         return CODEC;
     }
 
     @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
 }

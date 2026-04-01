@@ -1,37 +1,36 @@
 package net.gecko.varandeco.block.nature;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Fertilizable;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class PackedGrassBlock extends Block implements Fertilizable {
-    public PackedGrassBlock(Settings settings) {
+public class PackedGrassBlock extends Block implements BonemealableBlock {
+    public PackedGrassBlock(Properties settings) {
         super(settings);
     }
 
     @Override
-    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-        return world.getBlockState(pos.up()).isAir();
+    public boolean isValidBonemealTarget(LevelReader world, BlockPos pos, BlockState state) {
+        return world.getBlockState(pos.above()).isAir();
     }
 
     @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        world.getRegistryManager()
-                .getOptional(RegistryKeys.PLACED_FEATURE)
-                .flatMap(registry -> registry.getOptional(VegetationPlacedFeatures.GRASS_BONEMEAL))
-                .ifPresent(reference -> reference.value().generate(world, world.getChunkManager().getChunkGenerator(), random, pos.up()));
+    public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState state) {
+        world.registryAccess()
+                .lookup(Registries.PLACED_FEATURE)
+                .flatMap(registry -> registry.get(VegetationPlacements.GRASS_BONEMEAL))
+                .ifPresent(reference -> reference.value().placeWithBiomeCheck(world, world.getChunkSource().getGenerator(), random, pos.above()));
     }
 }

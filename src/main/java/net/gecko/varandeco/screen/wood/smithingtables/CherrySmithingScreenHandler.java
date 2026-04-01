@@ -1,27 +1,30 @@
 package net.gecko.varandeco.screen.wood.smithingtables;
 
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.Inventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.*;
-import net.minecraft.recipe.input.SmithingRecipeInput;
-import net.minecraft.screen.ForgingScreenHandler;
-import net.minecraft.screen.Property;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.ScreenHandlerType;
-import net.minecraft.screen.slot.ForgingSlotsManager;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldEvents;
-
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerLevelAccess;
+import net.minecraft.world.inventory.DataSlot;
+import net.minecraft.world.inventory.ItemCombinerMenu;
+import net.minecraft.world.inventory.ItemCombinerMenuSlotDefinition;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeAccess;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipePropertySet;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.SmithingRecipe;
+import net.minecraft.world.item.crafting.SmithingRecipeInput;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.LevelEvent;
+import net.minecraft.world.level.block.state.BlockState;
 import java.util.List;
 import java.util.Optional;
 
-public class CherrySmithingScreenHandler extends ForgingScreenHandler {
+public class CherrySmithingScreenHandler extends ItemCombinerMenu {
 	public static final int TEMPLATE_ID = 0;
 	public static final int EQUIPMENT_ID = 1;
 	public static final int MATERIAL_ID = 2;
@@ -31,112 +34,112 @@ public class CherrySmithingScreenHandler extends ForgingScreenHandler {
 	public static final int MATERIAL_X = 44;
 	private static final int OUTPUT_X = 98;
 	public static final int SLOT_Y = 48;
-	private final World world;
+	private final Level world;
 	private final RecipePropertySet basePropertySet;
 	private final RecipePropertySet templatePropertySet;
 	private final RecipePropertySet additionPropertySet;
-	private final Property invalidRecipe = Property.create();
+	private final DataSlot invalidRecipe = DataSlot.standalone();
 
-	public CherrySmithingScreenHandler(int syncId, PlayerInventory playerInventory) {
-		this(syncId, playerInventory, ScreenHandlerContext.EMPTY);
+	public CherrySmithingScreenHandler(int syncId, Inventory playerInventory) {
+		this(syncId, playerInventory, ContainerLevelAccess.NULL);
 	}
 
-	public CherrySmithingScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
-		this(syncId, playerInventory, context, playerInventory.player.getEntityWorld());
+	public CherrySmithingScreenHandler(int syncId, Inventory playerInventory, ContainerLevelAccess context) {
+		this(syncId, playerInventory, context, playerInventory.player.level());
 	}
 
-	private CherrySmithingScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context, World world) {
-		super(ScreenHandlerType.SMITHING, syncId, playerInventory, context, createForgingSlotsManager(world.getRecipeManager()));
+	private CherrySmithingScreenHandler(int syncId, Inventory playerInventory, ContainerLevelAccess context, Level world) {
+		super(MenuType.SMITHING, syncId, playerInventory, context, createForgingSlotsManager(world.recipeAccess()));
 		this.world = world;
-		this.basePropertySet = world.getRecipeManager().getPropertySet(RecipePropertySet.SMITHING_BASE);
-		this.templatePropertySet = world.getRecipeManager().getPropertySet(RecipePropertySet.SMITHING_TEMPLATE);
-		this.additionPropertySet = world.getRecipeManager().getPropertySet(RecipePropertySet.SMITHING_ADDITION);
-		this.addProperty(this.invalidRecipe).set(0);
+		this.basePropertySet = world.recipeAccess().propertySet(RecipePropertySet.SMITHING_BASE);
+		this.templatePropertySet = world.recipeAccess().propertySet(RecipePropertySet.SMITHING_TEMPLATE);
+		this.additionPropertySet = world.recipeAccess().propertySet(RecipePropertySet.SMITHING_ADDITION);
+		this.addDataSlot(this.invalidRecipe).set(0);
 	}
 
-	private static ForgingSlotsManager createForgingSlotsManager(RecipeManager recipeManager) {
-		RecipePropertySet recipePropertySet = recipeManager.getPropertySet(RecipePropertySet.SMITHING_BASE);
-		RecipePropertySet recipePropertySet2 = recipeManager.getPropertySet(RecipePropertySet.SMITHING_TEMPLATE);
-		RecipePropertySet recipePropertySet3 = recipeManager.getPropertySet(RecipePropertySet.SMITHING_ADDITION);
-		return ForgingSlotsManager.builder()
-				.input(0, 8, 48, recipePropertySet2::canUse)
-				.input(1, 26, 48, recipePropertySet::canUse)
-				.input(2, 44, 48, recipePropertySet3::canUse)
-				.output(3, 98, 48)
+	private static ItemCombinerMenuSlotDefinition createForgingSlotsManager(RecipeAccess recipeManager) {
+		RecipePropertySet recipePropertySet = recipeManager.propertySet(RecipePropertySet.SMITHING_BASE);
+		RecipePropertySet recipePropertySet2 = recipeManager.propertySet(RecipePropertySet.SMITHING_TEMPLATE);
+		RecipePropertySet recipePropertySet3 = recipeManager.propertySet(RecipePropertySet.SMITHING_ADDITION);
+		return ItemCombinerMenuSlotDefinition.create()
+				.withSlot(0, 8, 48, recipePropertySet2::test)
+				.withSlot(1, 26, 48, recipePropertySet::test)
+				.withSlot(2, 44, 48, recipePropertySet3::test)
+				.withResultSlot(3, 98, 48)
 				.build();
 	}
 
 	@Override
-	protected boolean canUse(BlockState state) {
-		return state.isOf(DecoBlocks.CHERRY_SMITHING_TABLE);
+	protected boolean isValidBlock(BlockState state) {
+		return state.is(DecoBlocks.CHERRY_SMITHING_TABLE);
 	}
 
 	@Override
-	protected void onTakeOutput(PlayerEntity player, ItemStack stack) {
-		stack.onCraftByPlayer(player, stack.getCount());
-		this.output.unlockLastRecipe(player, this.getInputStacks());
+	protected void onTake(Player player, ItemStack stack) {
+		stack.onCraftedBy(player, stack.getCount());
+		this.resultSlots.awardUsedRecipes(player, this.getInputStacks());
 		this.decrementStack(0);
 		this.decrementStack(1);
 		this.decrementStack(2);
-		this.context.run((world, pos) -> world.syncWorldEvent(WorldEvents.SMITHING_TABLE_USED, pos, 0));
+		this.access.execute((world, pos) -> world.levelEvent(LevelEvent.SOUND_SMITHING_TABLE_USED, pos, 0));
 	}
 
 	private List<ItemStack> getInputStacks() {
-		return List.of(this.input.getStack(0), this.input.getStack(1), this.input.getStack(2));
+		return List.of(this.inputSlots.getItem(0), this.inputSlots.getItem(1), this.inputSlots.getItem(2));
 	}
 
 	private SmithingRecipeInput createRecipeInput() {
-		return new SmithingRecipeInput(this.input.getStack(0), this.input.getStack(1), this.input.getStack(2));
+		return new SmithingRecipeInput(this.inputSlots.getItem(0), this.inputSlots.getItem(1), this.inputSlots.getItem(2));
 	}
 
 	private void decrementStack(int slot) {
-		ItemStack itemStack = this.input.getStack(slot);
+		ItemStack itemStack = this.inputSlots.getItem(slot);
 		if (!itemStack.isEmpty()) {
-			itemStack.decrement(1);
-			this.input.setStack(slot, itemStack);
+			itemStack.shrink(1);
+			this.inputSlots.setItem(slot, itemStack);
 		}
 	}
 
 	@Override
-	public void onContentChanged(Inventory inventory) {
-		super.onContentChanged(inventory);
-		if (this.world instanceof ServerWorld) {
-			boolean bl = this.getSlot(0).hasStack() && this.getSlot(1).hasStack() && this.getSlot(2).hasStack() && !this.getSlot(this.getResultSlotIndex()).hasStack();
+	public void slotsChanged(Container inventory) {
+		super.slotsChanged(inventory);
+		if (this.world instanceof ServerLevel) {
+			boolean bl = this.getSlot(0).hasItem() && this.getSlot(1).hasItem() && this.getSlot(2).hasItem() && !this.getSlot(this.getResultSlot()).hasItem();
 			this.invalidRecipe.set(bl ? 1 : 0);
 		}
 	}
 
 	@Override
-	public void updateResult() {
+	public void createResult() {
 		SmithingRecipeInput smithingRecipeInput = this.createRecipeInput();
-		Optional<RecipeEntry<SmithingRecipe>> optional;
-		if (this.world instanceof ServerWorld serverWorld) {
-			optional = serverWorld.getRecipeManager().getFirstMatch(RecipeType.SMITHING, smithingRecipeInput, serverWorld);
+		Optional<RecipeHolder<SmithingRecipe>> optional;
+		if (this.world instanceof ServerLevel serverWorld) {
+			optional = serverWorld.recipeAccess().getRecipeFor(RecipeType.SMITHING, smithingRecipeInput, serverWorld);
 		} else {
 			optional = Optional.empty();
 		}
 
 		optional.ifPresentOrElse(recipe -> {
-			ItemStack itemStack = ((SmithingRecipe)recipe.value()).craft(smithingRecipeInput, this.world.getRegistryManager());
-			this.output.setLastRecipe(recipe);
-			this.output.setStack(0, itemStack);
+			ItemStack itemStack = ((SmithingRecipe)recipe.value()).assemble(smithingRecipeInput, this.world.registryAccess());
+			this.resultSlots.setRecipeUsed(recipe);
+			this.resultSlots.setItem(0, itemStack);
 		}, () -> {
-			this.output.setLastRecipe(null);
-			this.output.setStack(0, ItemStack.EMPTY);
+			this.resultSlots.setRecipeUsed(null);
+			this.resultSlots.setItem(0, ItemStack.EMPTY);
 		});
 	}
 
 	@Override
-	public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
-		return slot.inventory != this.output && super.canInsertIntoSlot(stack, slot);
+	public boolean canTakeItemForPickAll(ItemStack stack, Slot slot) {
+		return slot.container != this.resultSlots && super.canTakeItemForPickAll(stack, slot);
 	}
 
 	@Override
-	public boolean isValidIngredient(ItemStack stack) {
-		if (this.templatePropertySet.canUse(stack) && !this.getSlot(0).hasStack()) {
+	public boolean canMoveIntoInputSlots(ItemStack stack) {
+		if (this.templatePropertySet.test(stack) && !this.getSlot(0).hasItem()) {
 			return true;
 		} else {
-			return this.basePropertySet.canUse(stack) && !this.getSlot(1).hasStack() || this.additionPropertySet.canUse(stack) && !this.getSlot(2).hasStack();
+			return this.basePropertySet.test(stack) && !this.getSlot(1).hasItem() || this.additionPropertySet.test(stack) && !this.getSlot(2).hasItem();
 		}
 	}
 

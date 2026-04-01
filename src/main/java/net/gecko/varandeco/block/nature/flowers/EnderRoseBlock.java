@@ -3,58 +3,62 @@ package net.gecko.varandeco.block.nature.flowers;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.gecko.varandeco.block.DecoBlocks;
-import net.minecraft.block.*;
-import net.minecraft.component.type.SuspiciousStewEffectsComponent;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCollisionHandler;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.World;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.InsideBlockEffectApplier;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.component.SuspiciousStewEffects;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class EnderRoseBlock extends FlowerBlock {
     public static final MapCodec<EnderRoseBlock> CODEC = RecordCodecBuilder.mapCodec(
-            instance -> instance.group(STEW_EFFECT_CODEC.forGetter(FlowerBlock::getStewEffects), createSettingsCodec()).apply(instance, EnderRoseBlock::new)
+            instance -> instance.group(EFFECTS_FIELD.forGetter(FlowerBlock::getSuspiciousEffects), propertiesCodec()).apply(instance, EnderRoseBlock::new)
     );
 
     @Override
-    public MapCodec<EnderRoseBlock> getCodec() {
+    public MapCodec<EnderRoseBlock> codec() {
         return CODEC;
     }
 
-    public EnderRoseBlock(RegistryEntry<StatusEffect> registryEntry, float f, AbstractBlock.Settings settings) {
-        this(createStewEffectList(registryEntry, f), settings);
+    public EnderRoseBlock(Holder<MobEffect> registryEntry, float f, BlockBehaviour.Properties settings) {
+        this(makeEffectList(registryEntry, f), settings);
     }
 
-    public EnderRoseBlock(SuspiciousStewEffectsComponent suspiciousStewEffectsComponent, AbstractBlock.Settings settings) {
+    public EnderRoseBlock(SuspiciousStewEffects suspiciousStewEffectsComponent, BlockBehaviour.Properties settings) {
         super(suspiciousStewEffectsComponent, settings);
     }
 
     @Override
-    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return super.canPlantOnTop(floor, world, pos) || floor.isOf(Blocks.END_STONE) || floor.isOf(DecoBlocks.VOID_STONE);
+    protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
+        return super.mayPlaceOn(floor, world, pos) || floor.is(Blocks.END_STONE) || floor.is(DecoBlocks.VOID_STONE);
     }
 
     @Override
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        VoxelShape voxelShape = this.getOutlineShape(state, world, pos, ShapeContext.absent());
-        Vec3d vec3d = voxelShape.getBoundingBox().getCenter();
+    public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
+        VoxelShape voxelShape = this.getShape(state, world, pos, CollisionContext.empty());
+        Vec3 vec3d = voxelShape.bounds().getCenter();
         double d = pos.getX() + vec3d.x;
         double e = pos.getZ() + vec3d.z;
 
         for (int i = 0; i < 3; i++) {
             if (random.nextBoolean()) {
-                world.addParticleClient(
+                world.addParticle(
                         ParticleTypes.PORTAL, d + random.nextDouble() / 5.0, pos.getY() + (0.5 - random.nextDouble()), e + random.nextDouble() / 5.0, 0.0, 0.0, 0.0
                 );
             }
@@ -62,17 +66,17 @@ public class EnderRoseBlock extends FlowerBlock {
     }
 
     @Override
-    protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler, boolean bl) {
-        if (world instanceof ServerWorld serverWorld
+    protected void entityInside(BlockState state, Level world, BlockPos pos, Entity entity, InsideBlockEffectApplier handler, boolean bl) {
+        if (world instanceof ServerLevel serverWorld
                 && world.getDifficulty() != Difficulty.PEACEFUL
                 && entity instanceof LivingEntity livingEntity
-                && !livingEntity.isInvulnerableTo(serverWorld, world.getDamageSources().magic())) {
-            livingEntity.addStatusEffect(this.getContactEffect());
+                && !livingEntity.isInvulnerableTo(serverWorld, world.damageSources().magic())) {
+            livingEntity.addEffect(this.getBeeInteractionEffect());
         }
     }
 
     @Override
-    public StatusEffectInstance getContactEffect() {
-        return new StatusEffectInstance(StatusEffects.LEVITATION, 40);
+    public MobEffectInstance getBeeInteractionEffect() {
+        return new MobEffectInstance(MobEffects.LEVITATION, 40);
     }
 }

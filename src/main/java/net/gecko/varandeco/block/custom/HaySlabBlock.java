@@ -7,13 +7,12 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class HaySlabBlock extends SlabBlock {
-
-    public HaySlabBlock(Properties properties) {
-        super(properties);
+    public HaySlabBlock(Properties settings) {
+        super(settings);
     }
 
     @Override
-    public void fallOn(final Level level, final BlockState state, final BlockPos pos, final Entity entity, final double fallDistance) {
-        entity.causeFallDamage(fallDistance, 0.2F, level.damageSources().fall());
+    public void fallOn(Level world, BlockState state, BlockPos pos, Entity entity, double fallDistance) {
+        entity.causeFallDamage(fallDistance, 0.2F, world.damageSources().fall());
     }
 }

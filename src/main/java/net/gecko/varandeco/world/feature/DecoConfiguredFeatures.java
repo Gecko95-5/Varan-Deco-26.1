@@ -5,313 +5,318 @@ import net.gecko.varandeco.VaranDeco;
 import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.util.DecoFeatures;
 import net.gecko.varandeco.world.feature.tree.custom.DriftwoodTreePlacer;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowerbedBlock;
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.IntProperty;
-import net.minecraft.structure.rule.BlockMatchRuleTest;
-import net.minecraft.structure.rule.RuleTest;
-import net.minecraft.structure.rule.TagMatchRuleTest;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.Pool;
-import net.minecraft.util.dynamic.Range;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.math.noise.DoublePerlinNoiseSampler;
-import net.minecraft.world.gen.CountConfig;
-import net.minecraft.world.gen.blockpredicate.BlockPredicate;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.AcaciaFoliagePlacer;
-import net.minecraft.world.gen.foliage.JungleFoliagePlacer;
-import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
-import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
-import net.minecraft.world.gen.stateprovider.*;
-import net.minecraft.world.gen.treedecorator.AlterGroundTreeDecorator;
-import net.minecraft.world.gen.treedecorator.AttachedToLogsTreeDecorator;
-import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
-import net.minecraft.world.gen.trunk.ForkingTrunkPlacer;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.InclusiveRange;
+import net.minecraft.util.random.WeightedList;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerBedBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.DualNoiseProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
+import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
+import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import java.util.List;
 import java.util.OptionalInt;
 
 public class DecoConfiguredFeatures {
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_FLOWER_FOREST_KEY = registerKey("deco_flower_forest");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_FLOWER_FOREST_KEY = registerKey("deco_flower_forest");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_TULIPS_FOREST_KEY = registerKey("deco_tulips_forest");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_TULIPS_FOREST_KEY = registerKey("deco_tulips_forest");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_MEADOW_KEY = registerKey("deco_meadow");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_MEADOW_KEY = registerKey("deco_meadow");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_MEADOW_WILDFLOWER_KEY = registerKey("deco_meadow_wildflower");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_MEADOW_WILDFLOWER_KEY = registerKey("deco_meadow_wildflower");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_TULIPS_MEADOW_KEY = registerKey("deco_tulips_meadow");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_TULIPS_MEADOW_KEY = registerKey("deco_tulips_meadow");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_PLAINS_KEY = registerKey("deco_plains_flowers");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_PLAINS_KEY = registerKey("deco_plains_flowers");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_SAVANNA_KEY = registerKey("deco_savanna_flowers");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_SAVANNA_KEY = registerKey("deco_savanna_flowers");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_SWAMP_KEY = registerKey("deco_swamp_flower");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_SWAMP_KEY = registerKey("deco_swamp_flower");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_RIVER_KEY = registerKey("deco_river_flowers");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_RIVER_KEY = registerKey("deco_river_flowers");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_ROSE_KEY = registerKey("deco_rose_flower");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_ROSE_KEY = registerKey("deco_rose_flower");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_ENDER_KEY = registerKey("deco_ender_flowers");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_ENDER_KEY = registerKey("deco_ender_flowers");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_RED_SUNFLOWER_KEY = registerKey("deco_red_sunflower");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_RED_SUNFLOWER_KEY = registerKey("deco_red_sunflower");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_NOVA_STARFLOWER_KEY = registerKey("deco_nova_starflower");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_NOVA_STARFLOWER_KEY = registerKey("deco_nova_starflower");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_BIRCH_KEY = registerKey("deco_birch");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_BIRCH_KEY = registerKey("deco_birch");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_BIRCH_WILDFLOWER_KEY = registerKey("deco_birch_wildflower");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_BIRCH_WILDFLOWER_KEY = registerKey("deco_birch_wildflower");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_JUNGLE_KEY = registerKey("deco_jungle");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_JUNGLE_KEY = registerKey("deco_jungle");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_MESA_KEY = registerKey("deco_mesa");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_MESA_KEY = registerKey("deco_mesa");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_MESA_WILDFLOWER_KEY = registerKey("deco_mesa_wildflower");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_MESA_WILDFLOWER_KEY = registerKey("deco_mesa_wildflower");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_WOODEN_TREE_KEY = registerKey("deco_wooden_tree");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_WOODEN_TREE_KEY = registerKey("deco_wooden_tree");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_FANCY_WOODEN_TREE_KEY = registerKey("deco_fancy_wooden_tree");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_FANCY_WOODEN_TREE_KEY = registerKey("deco_fancy_wooden_tree");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_MEGA_WOODEN_TREE_KEY = registerKey("deco_mega_wooden_tree");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_MEGA_WOODEN_TREE_KEY = registerKey("deco_mega_wooden_tree");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_DRIFTWOOD_TREE_KEY = registerKey("deco_driftwood_tree");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_DRIFTWOOD_TREE_KEY = registerKey("deco_driftwood_tree");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_FALLEN_DRIED_DRIFTWOOD_KEY = registerKey("deco_fallen_dried_driftwood");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_FALLEN_DRIED_DRIFTWOOD_KEY = registerKey("deco_fallen_dried_driftwood");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_DRIFTWOOD_SPROUT = registerKey("deco_driftwood_sprout");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_DRIFTWOOD_SPROUT = registerKey("deco_driftwood_sprout");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_BUBBLE_ORE = registerKey("deco_bubble_ore");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_BUBBLE_ORE = registerKey("deco_bubble_ore");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_VOID_PATCH = registerKey("deco_void_patch");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_VOID_PATCH = registerKey("deco_void_patch");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_IRON_CAP_MUSHROOM = registerKey("deco_iron_cap_mushroom");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_IRON_CAP_MUSHROOM = registerKey("deco_iron_cap_mushroom");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_DESERT = registerKey("deco_desert");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_DESERT = registerKey("deco_desert");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_PALE = registerKey("deco_pale");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_PALE = registerKey("deco_pale");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_ROOFED = registerKey("deco_roofed");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_ROOFED = registerKey("deco_roofed");
 
-    public static final RegistryKey<ConfiguredFeature<?,?>> DECO_MEGA_TULIP = registerKey("deco_mega_tulip");
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_MEGA_TULIP = registerKey("deco_mega_tulip");
 
-    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
-        RuleTest stoneReplacebles = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        RuleTest stoneReplacebles = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
 
 
-        List<OreFeatureConfig.Target> overworldBubbleOre =
-                List.of(OreFeatureConfig.createTarget(stoneReplacebles, DecoBlocks.BUBBLE_BLOCK.getDefaultState()));
+        List<OreConfiguration.TargetBlockState> overworldBubbleOre =
+                List.of(OreConfiguration.target(stoneReplacebles, DecoBlocks.BUBBLE_BLOCK.defaultBlockState()));
 
-        register(context, DECO_FLOWER_FOREST_KEY, Feature.FLOWER,
-                ConfiguredFeatures.createRandomPatchFeatureConfig(64, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(new NoiseBlockStateProvider(2345L,
-                                new DoublePerlinNoiseSampler.NoiseParameters(0, 1.0),
-                                0.020833334F, List.of(DecoBlocks.BARBERTON_DAISY.getDefaultState(),
-                                DecoBlocks.GERBERA_DAISY.getDefaultState(), DecoBlocks.WHITE_ORCHID.getDefaultState(),
-                                DecoBlocks.PINK_ORCHID.getDefaultState(), DecoBlocks.YELLOW_ORCHID.getDefaultState(),
-                                Blocks.BLUE_ORCHID.getDefaultState(), DecoBlocks.SALMON_POPPY.getDefaultState(),
-                                DecoBlocks.ROSE.getDefaultState(), DecoBlocks.PAEONIA.getDefaultState()))))));
+        FeatureUtils.register(context, DECO_FLOWER_FOREST_KEY, Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(new NoiseProvider(2345L,
+                                new NormalNoise.NoiseParameters(0, 1.0),
+                                0.020833334F, List.of(DecoBlocks.BARBERTON_DAISY.defaultBlockState(),
+                                DecoBlocks.GERBERA_DAISY.defaultBlockState(), DecoBlocks.WHITE_ORCHID.defaultBlockState(),
+                                DecoBlocks.PINK_ORCHID.defaultBlockState(), DecoBlocks.YELLOW_ORCHID.defaultBlockState(),
+                                Blocks.BLUE_ORCHID.defaultBlockState(), DecoBlocks.SALMON_POPPY.defaultBlockState(),
+                                DecoBlocks.ROSE.defaultBlockState(), DecoBlocks.PAEONIA.defaultBlockState()))));
 
         register(context, DECO_TULIPS_FOREST_KEY,
-                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                        (Pool.<BlockState>builder().add(DecoBlocks.YELLOW_TULIP.getDefaultState(),1)
-                                .add(DecoBlocks.PURPLE_TULIP.getDefaultState(),2)
-                                .add(DecoBlocks.BLUE_TULIP.getDefaultState(),2)
-                                .add(DecoBlocks.MAGENTA_TULIP.getDefaultState(),1).build()),32));
+                Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.YELLOW_TULIP.defaultBlockState(),1)
+                                .add(DecoBlocks.PURPLE_TULIP.defaultBlockState(),2)
+                                .add(DecoBlocks.BLUE_TULIP.defaultBlockState(),2)
+                                .add(DecoBlocks.MAGENTA_TULIP.defaultBlockState(),1))));
 
-        register(context, DECO_MEADOW_KEY, Feature.FLOWER,
-                        ConfiguredFeatures.createRandomPatchFeatureConfig(96, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                                new SimpleBlockFeatureConfig(new DualNoiseBlockStateProvider(new Range<>(1, 3),
-                                        new DoublePerlinNoiseSampler.NoiseParameters(-10, 1.0),
-                                        1.0F, 2345L, new DoublePerlinNoiseSampler.NoiseParameters(-3, 1.0),
-                                        1.0F, List.of(DecoBlocks.BARBERTON_DAISY.getDefaultState(),
-                                        DecoBlocks.ALPINE_POPPY.getDefaultState(), DecoBlocks.ROSE.getDefaultState()))))));
+        register(context, DECO_MEADOW_KEY, Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(new DualNoiseProvider(new InclusiveRange<>(1, 3),
+                                        new NormalNoise.NoiseParameters(-10, 1.0),
+                                        1.0F, 2345L, new NormalNoise.NoiseParameters(-3, 1.0),
+                                        1.0F, List.of(DecoBlocks.BARBERTON_DAISY.defaultBlockState(),
+                                        DecoBlocks.ALPINE_POPPY.defaultBlockState(), DecoBlocks.ROSE.defaultBlockState()))));
 
-        register(context, DECO_MEADOW_WILDFLOWER_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(
-                32, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig
-                (new WeightedBlockStateProvider(flowerbed(DecoBlocks.ROUGE_WILDFLOWERS))))));
+        FeatureUtils.register(context, DECO_MEADOW_WILDFLOWER_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
+                        (new WeightedStateProvider(flowerBedPatchBuilder(DecoBlocks.ROUGE_WILDFLOWERS))));
 
-        register(context, DECO_BIRCH_WILDFLOWER_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(
-                16, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig
-                (new WeightedBlockStateProvider(flowerbed(DecoBlocks.SWEET_WILDFLOWERS))))));
-                                        ConfiguredFeatures.register(context, DECO_TULIPS_MEADOW_KEY,
-                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                        (Pool.<BlockState>builder().add(DecoBlocks.BLACK_TULIP.getDefaultState(),1)
-                                .add(DecoBlocks.GREEN_TULIP.getDefaultState(),5)
-                                        .add(DecoBlocks.CYAN_TULIP.getDefaultState(),5).build()),48));
+        FeatureUtils.register(context, DECO_BIRCH_WILDFLOWER_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
+                (new WeightedStateProvider(flowerBedPatchBuilder(DecoBlocks.SWEET_WILDFLOWERS))));
 
-        register(context, DECO_PLAINS_KEY, Feature.FLOWER,
-                ConfiguredFeatures.createRandomPatchFeatureConfig(32, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(new DualNoiseBlockStateProvider(new Range<>(1, 3),
-                                new DoublePerlinNoiseSampler.NoiseParameters(-20, 2.0),
-                                0.5F, 2345L, new DoublePerlinNoiseSampler.NoiseParameters(-3, 1.0),
-                                0.005F, List.of(DecoBlocks.BARBERTON_DAISY.getDefaultState(), DecoBlocks.GERBERA_DAISY.getDefaultState()))))));
+        FeatureUtils.register(context, DECO_TULIPS_MEADOW_KEY,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.BLACK_TULIP.defaultBlockState(),1)
+                                .add(DecoBlocks.GREEN_TULIP.defaultBlockState(),5)
+                                        .add(DecoBlocks.CYAN_TULIP.defaultBlockState(),5))));
 
+        register(context, DECO_PLAINS_KEY, Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(new DualNoiseProvider(new InclusiveRange<>(1, 3),
+                                new NormalNoise.NoiseParameters(-20, 2.0),
+                                0.5F, 2345L, new NormalNoise.NoiseParameters(-3, 1.0),
+                                0.005F, List.of(DecoBlocks.BARBERTON_DAISY.defaultBlockState(), DecoBlocks.GERBERA_DAISY.defaultBlockState()))));
 
-        ConfiguredFeatures.register(context, DECO_SAVANNA_KEY,
-                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                        (Pool.<BlockState>builder().add(DecoBlocks.GERBERA_DAISY.getDefaultState(),2)
-                                .add(DecoBlocks.MICHAELMAS_DAISY.getDefaultState(),2)
-                                .add(DecoBlocks.BLUE_EYED_DAISY.getDefaultState(),1)
-                                .add(DecoBlocks.CALIFORNIA_POPPY.getDefaultState(),1).build()),24));
+        FeatureUtils.register(context, DECO_SAVANNA_KEY,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.GERBERA_DAISY.defaultBlockState(),2)
+                                .add(DecoBlocks.MICHAELMAS_DAISY.defaultBlockState(),2)
+                                .add(DecoBlocks.BLUE_EYED_DAISY.defaultBlockState(),1)
+                                .add(DecoBlocks.CALIFORNIA_POPPY.defaultBlockState(),1))));
 
-        ConfiguredFeatures.register(context, DECO_JUNGLE_KEY,
-                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                        (Pool.<BlockState>builder().add(DecoBlocks.BLUE_HIBISCUS.getDefaultState(),2)
-                                .add(DecoBlocks.BROMELIAD.getDefaultState(),2)
-                                .add(DecoBlocks.SALMON_POPPY.getDefaultState(),1)
-                                .add(DecoBlocks.MICHAELMAS_DAISY.getDefaultState(),1).build()),96));
+        FeatureUtils.register(context, DECO_JUNGLE_KEY,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.BLUE_HIBISCUS.defaultBlockState(),2)
+                                .add(DecoBlocks.BROMELIAD.defaultBlockState(),2)
+                                .add(DecoBlocks.SALMON_POPPY.defaultBlockState(),1)
+                                .add(DecoBlocks.MICHAELMAS_DAISY.defaultBlockState(),1))));
 
-        ConfiguredFeatures.register(context, DECO_MESA_KEY,
-                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                        (Pool.<BlockState>builder().add(DecoBlocks.ROSE.getDefaultState(),5)
-                                .add(DecoBlocks.BARBERTON_DAISY.getDefaultState(),3)
-                                .add(DecoBlocks.CALIFORNIA_POPPY.getDefaultState(),1).build()),16));
+        FeatureUtils.register(context, DECO_MESA_KEY,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.ROSE.defaultBlockState(),5)
+                                .add(DecoBlocks.BARBERTON_DAISY.defaultBlockState(),3)
+                                .add(DecoBlocks.CALIFORNIA_POPPY.defaultBlockState(),1))));
 
-        register(context, DECO_MESA_WILDFLOWER_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(
-                        16, 6, 2, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig
-                (new WeightedBlockStateProvider(flowerbed(DecoBlocks.GECKO_WILDFLOWERS))))));
+        FeatureUtils.register(context, DECO_MESA_WILDFLOWER_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
+                (new WeightedStateProvider(flowerBedPatchBuilder(DecoBlocks.GECKO_WILDFLOWERS))));
 
-        register(context, DECO_SWAMP_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(64, 6, 2,
-                        PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(DecoBlocks.YELLOW_ORCHID)))));
+        register(context, DECO_SWAMP_KEY,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.YELLOW_ORCHID)));
 
-        register(context, DECO_DESERT, Feature.FLOWER,
-                    DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                            (Pool.<BlockState>builder().add(DecoBlocks.POPPED_BLUET.getDefaultState(),1)
-                                    .add(DecoBlocks.DEAD_EYE_DAISY.getDefaultState(),1).build()),16));
+        register(context, DECO_DESERT, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(new WeightedStateProvider
+                            (WeightedList.<BlockState>builder().add(DecoBlocks.POPPED_BLUET.defaultBlockState(),1)
+                                    .add(DecoBlocks.DEAD_EYE_DAISY.defaultBlockState(),1))));
 
-        register(context, DECO_PALE, Feature.FLOWER,
-                    DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                            (Pool.<BlockState>builder().add(DecoBlocks.HAZZY_BLUET.getDefaultState(),5)
-                                    .add(DecoBlocks.DRILL_LAVENDER.getDefaultState(),1).build()),64));
+        register(context, DECO_PALE, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(new WeightedStateProvider
+                            (WeightedList.<BlockState>builder().add(DecoBlocks.HAZZY_BLUET.defaultBlockState(),5)
+                                    .add(DecoBlocks.DRILL_LAVENDER.defaultBlockState(),1))));
 
-        ConfiguredFeatures.register(context, DECO_RIVER_KEY, Feature.FLOWER,
-                        DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                                        (Pool.<BlockState>builder().add(DecoBlocks.PINK_ORCHID.getDefaultState(),3)
-                                        .add(DecoBlocks.SALMON_POPPY.getDefaultState(),2)
-                                .add(DecoBlocks.LAVENDER.getDefaultState(),1)
-                                .add(DecoBlocks.WHITE_ORCHID.getDefaultState(),3).build()),32));
+        FeatureUtils.register(context, DECO_RIVER_KEY, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(new WeightedStateProvider
+                                        (WeightedList.<BlockState>builder().add(DecoBlocks.PINK_ORCHID.defaultBlockState(),3)
+                                        .add(DecoBlocks.SALMON_POPPY.defaultBlockState(),2)
+                                .add(DecoBlocks.LAVENDER.defaultBlockState(),1)
+                                .add(DecoBlocks.WHITE_ORCHID.defaultBlockState(),3))));
 
-        ConfiguredFeatures.register(context,DECO_ROOFED, Feature.FLOWER,
-                    DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                            (Pool.<BlockState>builder().add(DecoBlocks.IRIS.getDefaultState(),2)
-                                    .add(DecoBlocks.BLUE_DELPHINIUM.getDefaultState(),2)
-                                    .add(DecoBlocks.CYAN_ORCHID.getDefaultState(),1)
-                                    .add(DecoBlocks.LAVENDER.getDefaultState(),1).build()),32));
+        FeatureUtils.register(context,DECO_ROOFED, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(new WeightedStateProvider
+                            (WeightedList.<BlockState>builder().add(DecoBlocks.IRIS.defaultBlockState(),2)
+                                    .add(DecoBlocks.BLUE_DELPHINIUM.defaultBlockState(),2)
+                                    .add(DecoBlocks.CYAN_ORCHID.defaultBlockState(),1)
+                                    .add(DecoBlocks.LAVENDER.defaultBlockState(),1))));
 
-    ConfiguredFeatures.register(
-            context, DECO_MEGA_TULIP, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
-                    new SimpleBlockFeatureConfig(BlockStateProvider.of(DecoBlocks.MEGA_BROWN_TULIP))));
+    FeatureUtils.register(
+            context, DECO_MEGA_TULIP, Feature.SIMPLE_BLOCK,
+                    new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.MEGA_BROWN_TULIP)));
 
-            ConfiguredFeatures.register(context, DECO_ROSE_KEY, Feature.FLOWER, new RandomPatchFeatureConfig(64, 6, 2,
-                        PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(DecoBlocks.ROSE)))));
+            FeatureUtils.register(context, DECO_ROSE_KEY, Feature.SIMPLE_BLOCK,
+                    new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.ROSE)));
 
-        register(context, DECO_ENDER_KEY, Feature.FLOWER,
-                ConfiguredFeatures.createRandomPatchFeatureConfig(64,
-                        PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new DualNoiseBlockStateProvider(new Range<>(1, 3),
-                                    new DoublePerlinNoiseSampler.NoiseParameters(-10, 1.0),
-                                    1.0F, 2345L, new DoublePerlinNoiseSampler.NoiseParameters(-3, 1.0),
-                                    1.0F, List.of(DecoBlocks.ENDER_ROSE.getDefaultState(), DecoBlocks.ENDERSHADE.getDefaultState()))))));
+        register(context, DECO_ENDER_KEY, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(new DualNoiseProvider(new InclusiveRange<>(1, 3),
+                                    new NormalNoise.NoiseParameters(-10, 1.0),
+                                    1.0F, 2345L, new NormalNoise.NoiseParameters(-3, 1.0),
+                                    1.0F, List.of(DecoBlocks.ENDER_ROSE.defaultBlockState(), DecoBlocks.ENDERSHADE.defaultBlockState()))));
 
-        register(context, DECO_RED_SUNFLOWER_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(DecoBlocks.RED_SUNFLOWER))));
-        register(context, DECO_NOVA_STARFLOWER_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(DecoBlocks.NOVA_STARFLOWER))));
+        register(context, DECO_RED_SUNFLOWER_KEY, Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.RED_SUNFLOWER)));
+        register(context, DECO_NOVA_STARFLOWER_KEY, Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.NOVA_STARFLOWER)));
 
-        ConfiguredFeatures.register(context, DECO_BIRCH_KEY,
-                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedBlockStateProvider
-                        (Pool.<BlockState>builder().add(DecoBlocks.PAEONIA.getDefaultState(),3)
-                                .add(DecoBlocks.BUTTERCUP.getDefaultState(),3)
-                                .add(DecoBlocks.NIGHTSHADE.getDefaultState(),1)
-                                .add(DecoBlocks.FELICIA_DAISY.getDefaultState(),2).build()),48));
+        FeatureUtils.register(context, DECO_BIRCH_KEY,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.PAEONIA.defaultBlockState(),3)
+                                .add(DecoBlocks.BUTTERCUP.defaultBlockState(),3)
+                                .add(DecoBlocks.NIGHTSHADE.defaultBlockState(),1)
+                                .add(DecoBlocks.FELICIA_DAISY.defaultBlockState(),2))));
 
-        register(context, DECO_WOODEN_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                        BlockStateProvider.of(DecoBlocks.WOODEN_LOG), new ForkingTrunkPlacer(5, 2, 2),
-                        BlockStateProvider.of(DecoBlocks.WOODEN_LEAVES),
-                        new LargeOakFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(4), 4),
+        register(context, DECO_WOODEN_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(DecoBlocks.WOODEN_LOG), new ForkingTrunkPlacer(5, 2, 2),
+                        BlockStateProvider.simple(DecoBlocks.WOODEN_LEAVES),
+                        new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
                         new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).build());
 
-        register(context, DECO_FANCY_WOODEN_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                        BlockStateProvider.of(DecoBlocks.WOODEN_LOG), new StraightTrunkPlacer(6, 4, 0),
-                        BlockStateProvider.of(DecoBlocks.WOODEN_LEAVES),
-                        new SpruceFoliagePlacer(UniformIntProvider.create(2, 3), UniformIntProvider.create(0, 2),
-                                UniformIntProvider.create(1, 2)), new TwoLayersFeatureSize(2, 0, 2)).build());
+        register(context, DECO_FANCY_WOODEN_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(DecoBlocks.WOODEN_LOG), new StraightTrunkPlacer(6, 4, 0),
+                        BlockStateProvider.simple(DecoBlocks.WOODEN_LEAVES),
+                        new SpruceFoliagePlacer(UniformInt.of(2, 3), UniformInt.of(0, 2),
+                                UniformInt.of(1, 2)), new TwoLayersFeatureSize(2, 0, 2)).build());
 
-        register(context, DECO_MEGA_WOODEN_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                        BlockStateProvider.of(DecoBlocks.WOODEN_LOG), new DarkOakTrunkPlacer(13, 2, 14),
-                        BlockStateProvider.of(DecoBlocks.WOODEN_LEAVES),
-                        new JungleFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(1), 2),
+        register(context, DECO_MEGA_WOODEN_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                        BlockStateProvider.simple(DecoBlocks.WOODEN_LOG), new DarkOakTrunkPlacer(13, 2, 14),
+                        BlockStateProvider.simple(DecoBlocks.WOODEN_LEAVES),
+                        new MegaJungleFoliagePlacer(ConstantInt.of(2), ConstantInt.of(1), 2),
                         new TwoLayersFeatureSize(1, 1, 2)).decorators
-                                (ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(Blocks.PODZOL))))
+                                (ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.PODZOL))))
                         .build());
 
-        register(context, DECO_DRIFTWOOD_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(DecoBlocks.DRIFTWOOD_LOG), new DriftwoodTreePlacer(5, 2, 2),
-                BlockStateProvider.of(DecoBlocks.KELP_LEAVES),
-                new SpruceFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(4), UniformIntProvider.create(3, 4)),
+        register(context, DECO_DRIFTWOOD_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(DecoBlocks.DRIFTWOOD_LOG), new DriftwoodTreePlacer(5, 2, 2),
+                BlockStateProvider.simple(DecoBlocks.KELP_LEAVES),
+                new SpruceFoliagePlacer(ConstantInt.of(1), ConstantInt.of(4), UniformInt.of(3, 4)),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).decorators
-                (ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(DecoBlocks.DRIFTWOOD_LOG)))).build());
+                (ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(DecoBlocks.DRIFTWOOD_LOG)))).build());
 
-        register(context, DECO_BUBBLE_ORE, Feature.ORE, new OreFeatureConfig(overworldBubbleOre, 5));
+        register(context, DECO_BUBBLE_ORE, Feature.ORE, new OreConfiguration(overworldBubbleOre, 5));
 
-        ConfiguredFeatures.register(context, DECO_VOID_PATCH, Feature.DISK,
-                new DiskFeatureConfig(PredicatedStateProvider.of(DecoBlocks.VOID_STONE),
-                        BlockPredicate.matchingBlocks(List.of(Blocks.END_STONE)), UniformIntProvider.create(2, 3), 1));
-
-        register(context, DECO_IRON_CAP_MUSHROOM, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(DecoBlocks.IRON_CAP_STEM), new StraightTrunkPlacer(2, 4, 0),
-                BlockStateProvider.of(DecoBlocks.IRON_CAP_MUSHROOM_BLOCK),
-                new AcaciaFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0)),
+        register(context, DECO_IRON_CAP_MUSHROOM, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(DecoBlocks.IRON_CAP_STEM), new StraightTrunkPlacer(2, 4, 0),
+                BlockStateProvider.simple(DecoBlocks.IRON_CAP_MUSHROOM_BLOCK),
+                new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                 new TwoLayersFeatureSize(1, 0, 2)).decorators
-                        (ImmutableList.of(new AlterGroundTreeDecorator(BlockStateProvider.of(DecoBlocks.SPORE_IRON_ORE))))
+                        (ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(DecoBlocks.SPORE_IRON_ORE))))
                 .build());
 
-        register(context, DECO_DRIFTWOOD_SPROUT, DecoFeatures.DRIFTWOOD_SPROUT, new CountConfig(20));
+        register(context, DECO_DRIFTWOOD_SPROUT, DecoFeatures.DRIFTWOOD_SPROUT, new CountConfiguration(20));
 
         register(context, DECO_FALLEN_DRIED_DRIFTWOOD_KEY, Feature.FALLEN_TREE, fallenDriedDriftwood().build());
     }
-    private static FallenTreeFeatureConfig.Builder fallenDriedDriftwood() {
+    private static FallenTreeConfiguration.FallenTreeConfigurationBuilder fallenDriedDriftwood() {
         return driedFallen();
     }
-    private static FallenTreeFeatureConfig.Builder driedFallen() {
-        return new FallenTreeFeatureConfig.Builder(BlockStateProvider.of(DecoBlocks.DRIED_DRIFTWOOD_LOG), UniformIntProvider.create(4, 8))
-                .logDecorators(ImmutableList.of(new AttachedToLogsTreeDecorator(0.5F,
-                                        new WeightedBlockStateProvider(Pool.<BlockState>builder()
-                                                .add(Blocks.MOSS_CARPET.getDefaultState(), 2)), List.of(Direction.UP))));
+    private static FallenTreeConfiguration.FallenTreeConfigurationBuilder driedFallen() {
+        return new FallenTreeConfiguration.FallenTreeConfigurationBuilder(BlockStateProvider.simple(DecoBlocks.DRIED_DRIFTWOOD_LOG), UniformInt.of(4, 8))
+                .logDecorators(ImmutableList.of(new AttachedToLogsDecorator(0.5F,
+                                        new WeightedStateProvider(WeightedList.<BlockState>builder()
+                                                .add(Blocks.MOSS_CARPET.defaultBlockState(), 2)), List.of(Direction.UP))));
     }
-    public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(VaranDeco.MOD_ID, name));
-    }
-
-    private static RandomPatchFeatureConfig createRandomPatchFeatureConfig(BlockStateProvider block, int tries) {
-        return ConfiguredFeatures.createRandomPatchFeatureConfig(tries, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(block)));
+    public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, name));
     }
 
-    private static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> context,
-                                                                                   RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
+    private static WeightedList.Builder<BlockState> flowerBedPatchBuilder(final Block flowerBedBlock) {
+        return segmentedBlockPatchBuilder(flowerBedBlock, 1, 4, FlowerBedBlock.AMOUNT, FlowerBedBlock.FACING);
+    }
+    private static WeightedList.Builder<BlockState> segmentedBlockPatchBuilder(
+            final Block block, final int minState, final int maxState, final IntegerProperty amountProperty, final EnumProperty<Direction> directionProperty
+    ) {
+        WeightedList.Builder<BlockState> segmentedBlockBuild = WeightedList.builder();
+
+        for (int amount = minState; amount <= maxState; amount++) {
+            for (Direction direction : Direction.Plane.HORIZONTAL) {
+                segmentedBlockBuild.add(block.defaultBlockState().setValue(amountProperty, amount).setValue(directionProperty, direction), 1);
+            }
+        }
+
+        return segmentedBlockBuild;
+    }
+    private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context,
+                                                                                   ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
         context.register(key, new ConfiguredFeature<>(feature, configuration));
     }
-    private static Pool.Builder<BlockState> flowerbed(Block flowerbed) {
-        return segmentedBlock(flowerbed, 1, 4, FlowerbedBlock.FLOWER_AMOUNT, FlowerbedBlock.HORIZONTAL_FACING);
+    private static WeightedList.Builder<BlockState> flowerbed(Block flowerbed) {
+        return segmentedBlock(flowerbed, 1, 4, FlowerBedBlock.AMOUNT, FlowerBedBlock.FACING);
     }
-    private static Pool.Builder<BlockState> segmentedBlock(Block block, int min, int max, IntProperty amountProperty, EnumProperty<Direction> facingProperty) {
-        Pool.Builder<BlockState> builder = Pool.builder();
+    private static WeightedList.Builder<BlockState> segmentedBlock(Block block, int min, int max, IntegerProperty amountProperty, EnumProperty<Direction> facingProperty) {
+        WeightedList.Builder<BlockState> builder = WeightedList.builder();
 
         for (int i = min; i <= max; i++) {
-            for (Direction direction : Direction.Type.HORIZONTAL) {
-                builder.add(block.getDefaultState().with(amountProperty, i).with(facingProperty, direction), 1);
+            for (Direction direction : Direction.Plane.HORIZONTAL) {
+                builder.add(block.defaultBlockState().setValue(amountProperty, i).setValue(facingProperty, direction), 1);
             }
         }
 
