@@ -30,7 +30,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class DecoLootTableGenerator extends FabricBlockLootSubProvider {
 
-    protected DecoLootTableGenerator(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public DecoLootTableGenerator(FabricPackOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(packOutput, registriesFuture);
     }
 

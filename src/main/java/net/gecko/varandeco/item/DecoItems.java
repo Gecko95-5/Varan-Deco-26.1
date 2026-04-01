@@ -6,6 +6,7 @@ import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.entity.DecoBoats;
 import net.gecko.varandeco.item.custom.BubbleItem;
 import net.gecko.varandeco.item.custom.SnowBrickItem;
+import net.gecko.varandeco.util.interfaces.CoralFanFunction;
 import net.gecko.varandeco.util.interfaces.HangingSignRegisterFunction;
 import net.gecko.varandeco.util.interfaces.SignRegisterFunction;
 import net.gecko.varandeco.util.interfaces.TallPlantItemRegisterFunction;
@@ -19,7 +20,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class DecoItems {
@@ -240,21 +240,25 @@ public class DecoItems {
             DecoBlocks.HANGING_DRIFTWOOD_PLANKS_SIGN, DecoBlocks.WALL_HANGING_DRIFTWOOD_PLANKS_SIGN,
             HangingSignItem::new);
 
-    public static final Item HYDRATED_TUBE_CORAL_FAN = registerBlock(
-            DecoBlocks.HYDRATED_TUBE_CORAL_FAN, (block, settings) ->
-                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_TUBE_CORAL_WALL_FAN, Direction.DOWN, settings));
-    public static final Item HYDRATED_BRAIN_CORAL_FAN = registerBlock(
-            DecoBlocks.HYDRATED_BRAIN_CORAL_FAN, (block, settings) ->
-                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_BRAIN_CORAL_WALL_FAN, Direction.DOWN, settings));
-    public static final Item HYDRATED_BUBBLE_CORAL_FAN = registerBlock(
-            DecoBlocks.HYDRATED_BUBBLE_CORAL_FAN, (block, settings) ->
-                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_BUBBLE_CORAL_WALL_FAN, Direction.DOWN, settings));
-    public static final Item HYDRATED_FIRE_CORAL_FAN = registerBlock(
-            DecoBlocks.HYDRATED_FIRE_CORAL_FAN, (block, settings) ->
-                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_FIRE_CORAL_WALL_FAN, Direction.DOWN, settings));
-    public static final Item HYDRATED_HORN_CORAL_FAN = registerBlock(
-            DecoBlocks.HYDRATED_HORN_CORAL_FAN, (block, settings) ->
-                    new StandingAndWallBlockItem(block, DecoBlocks.HYDRATED_HORN_CORAL_WALL_FAN, Direction.DOWN, settings));
+    public static final Item HYDRATED_TUBE_CORAL_FAN = registerBlock("hydrated_tube_coral_fan",
+            DecoBlocks.HYDRATED_TUBE_CORAL_FAN, DecoBlocks.HYDRATED_TUBE_CORAL_WALL_FAN, Direction.DOWN,
+            StandingAndWallBlockItem::new);
+
+    public static final Item HYDRATED_BRAIN_CORAL_FAN = registerBlock("hydrated_brain_coral_fan",
+            DecoBlocks.HYDRATED_BRAIN_CORAL_FAN, DecoBlocks.HYDRATED_BRAIN_CORAL_WALL_FAN, Direction.DOWN,
+            StandingAndWallBlockItem::new);
+
+    public static final Item HYDRATED_BUBBLE_CORAL_FAN = registerBlock("hydrated_bubble_coral_fan",
+            DecoBlocks.HYDRATED_BUBBLE_CORAL_FAN, DecoBlocks.HYDRATED_BUBBLE_CORAL_WALL_FAN, Direction.DOWN,
+            StandingAndWallBlockItem::new);
+
+    public static final Item HYDRATED_FIRE_CORAL_FAN = registerBlock("hydrated_fire_coral_fan",
+            DecoBlocks.HYDRATED_FIRE_CORAL_FAN, DecoBlocks.HYDRATED_FIRE_CORAL_WALL_FAN, Direction.DOWN,
+            StandingAndWallBlockItem::new);
+
+    public static final Item HYDRATED_HORN_CORAL_FAN = registerBlock("hydrated_horn_coral_fan",
+            DecoBlocks.HYDRATED_HORN_CORAL_FAN, DecoBlocks.HYDRATED_HORN_CORAL_WALL_FAN, Direction.DOWN,
+            StandingAndWallBlockItem::new);
 
     public static final Item SNOW_BRICK = registerCooldownItem("snow_brick",16, 1, SnowBrickItem::new);
 
@@ -430,8 +434,11 @@ public class DecoItems {
         T item = factory.apply(hangingSign, wallHangingSign, new Item.Properties().stacksTo(16).setId(getItemKey(name)));
         return Registry.register(BuiltInRegistries.ITEM,getItemKey(name),item);
     }
-    private static Item registerBlock(final Block block, final BiFunction<Block, Item.Properties, Item> itemFactory) {
-        return registerBlock(block, itemFactory);
+
+    private static <T extends Item> T registerBlock(String name, Block block, Block wallblock, Direction attachmentDirection,
+                                                       CoralFanFunction<Item.Properties,T> factory) {
+        T item = factory.apply(block, wallblock, attachmentDirection, new Item.Properties().stacksTo(64).setId(getItemKey(name)));
+        return Registry.register(BuiltInRegistries.ITEM,getItemKey(name),item);
     }
     private static Function<Item.Properties, Item> createBlockItemWithUniqueName(Block block) {
         return settings -> new BlockItem(block, settings.useItemDescriptionPrefix());

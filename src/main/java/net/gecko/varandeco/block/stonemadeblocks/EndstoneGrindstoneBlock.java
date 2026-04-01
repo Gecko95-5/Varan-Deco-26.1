@@ -1,7 +1,7 @@
 package net.gecko.varandeco.block.stonemadeblocks;
 
 import com.mojang.serialization.MapCodec;
-import net.gecko.varandeco.screen.stone.EndstoneGrindstoneScreenHandler;
+import net.gecko.varandeco.screen.stone.EndstoneGrindstoneMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -172,7 +172,7 @@ public class EndstoneGrindstoneBlock extends FaceAttachedHorizontalDirectionalBl
     @Override
     public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
         return new SimpleMenuProvider(
-                (syncId, inventory, player) -> new EndstoneGrindstoneScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
+                (syncId, inventory, player) -> new EndstoneGrindstoneMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
         );
     }
 

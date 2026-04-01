@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:checkered_magenta_concrete",
   "result": {
-    "count": 1,
     "id": "minecraft:checkered_magenta_concrete_wall"
   }
 }

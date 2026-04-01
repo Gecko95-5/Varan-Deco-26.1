@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.woodmadeblocks.craftingtables;
 
-import net.gecko.varandeco.screen.wood.craftingtables.BambooCraftingScreenHandler;
+import net.gecko.varandeco.screen.wood.craftingtables.BambooCraftingMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
@@ -33,7 +33,7 @@ public class BambooCraftingTableBlock extends Block {
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new BambooCraftingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
+			(syncId, inventory, player) -> new BambooCraftingMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 }

@@ -1,7 +1,7 @@
 package net.gecko.varandeco.block.stonemadeblocks;
 
 import com.mojang.serialization.MapCodec;
-import net.gecko.varandeco.screen.stone.TuffGrindstoneScreenHandler;
+import net.gecko.varandeco.screen.stone.TuffGrindstoneMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -171,7 +171,7 @@ public class TuffGrindstoneBlock extends FaceAttachedHorizontalDirectionalBlock 
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new TuffGrindstoneScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
+			(syncId, inventory, player) -> new TuffGrindstoneMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 

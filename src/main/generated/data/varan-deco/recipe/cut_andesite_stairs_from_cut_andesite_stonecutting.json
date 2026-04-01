@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:cut_andesite",
   "result": {
-    "count": 1,
     "id": "minecraft:cut_andesite_stairs"
   }
 }

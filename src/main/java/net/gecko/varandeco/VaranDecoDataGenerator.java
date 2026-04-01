@@ -12,7 +12,6 @@ public class VaranDecoDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-
 		pack.addProvider(DecoLootTableGenerator::new);
 		pack.addProvider(DecoRecipeGeneratorTwo::new);
 		pack.addProvider(DecoModelProvider::new);
@@ -24,7 +23,7 @@ public class VaranDecoDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
-		registryBuilder.add(Registries.CONFIGURED_FEATURE, DecoConfiguredFeatures::bootstrap);
-		registryBuilder.add(Registries.PLACED_FEATURE, DecoPlacedFeatures::bootstrap);
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, DecoConfiguredFeatures::bootstrap);
+        registryBuilder.add(Registries.PLACED_FEATURE, DecoPlacedFeatures::bootstrap);
 	}
 }

@@ -22,13 +22,13 @@ public class BubbleCoralStairBlock extends StairBlock {
     }
 
     @Override
-    protected void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean notify) {
-        this.checkLivingConditions(state, world, world, world.random, pos);
+    protected void onPlace(final BlockState state, final Level level, final BlockPos pos, final BlockState oldState, final boolean movedByPiston) {
+        this.tryScheduleDieTick(state, level, level, level.getRandom(), pos);
     }
 
     @Override
     protected void tick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
-        if (!isInWater(state, world, pos)) {
+        if (!scanForWater(state, world, pos)) {
             world.setBlock(pos, DecoBlocks.DEAD_BUBBLE_CORAL_STAIRS.defaultBlockState().setValue(WATERLOGGED, false).setValue(FACING, state.getValue(FACING)), Block.UPDATE_CLIENTS);
         }
     }
@@ -47,7 +47,7 @@ public class BubbleCoralStairBlock extends StairBlock {
         if (direction == Direction.DOWN && !state.canSurvive(world, pos)) {
             return Blocks.AIR.defaultBlockState();
         } else {
-            this.checkLivingConditions(state, world, tickView, random, pos);
+            this.tryScheduleDieTick(state, world, tickView, random, pos);
             if (state.getValue(WATERLOGGED)) {
                 tickView.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
             }
@@ -55,12 +55,12 @@ public class BubbleCoralStairBlock extends StairBlock {
             return super.updateShape(state, world, tickView, pos, direction, neighborPos, neighborState, random);
         }
     }
-    protected static boolean isInWater(BlockState state, BlockGetter world, BlockPos pos) {
+    protected static boolean scanForWater(final BlockState state, final BlockGetter level, final BlockPos blockPos) {
         if (state.getValue(WATERLOGGED)) {
             return true;
         } else {
             for (Direction direction : Direction.values()) {
-                if (world.getFluidState(pos.relative(direction)).is(FluidTags.WATER)) {
+                if (level.getFluidState(blockPos.relative(direction)).is(FluidTags.WATER)) {
                     return true;
                 }
             }
@@ -68,9 +68,11 @@ public class BubbleCoralStairBlock extends StairBlock {
             return false;
         }
     }
-    protected void checkLivingConditions(BlockState state, BlockGetter world, ScheduledTickAccess tickView, RandomSource random, BlockPos pos) {
-        if (!isInWater(state, world, pos)) {
-            tickView.scheduleTick(pos, this, 60 + random.nextInt(40));
+    protected void tryScheduleDieTick(
+            final BlockState state, final BlockGetter level, final ScheduledTickAccess ticks, final RandomSource random, final BlockPos pos
+    ) {
+        if (!scanForWater(state, level, pos)) {
+            ticks.scheduleTick(pos, this, 60 + random.nextInt(40));
         }
     }
 }

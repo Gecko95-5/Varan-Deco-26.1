@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.woodmadeblocks.craftingtables;
 
-import net.gecko.varandeco.screen.wood.craftingtables.MushroomCraftingScreenHandler;
+import net.gecko.varandeco.screen.wood.craftingtables.MushroomCraftingMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
@@ -34,7 +34,7 @@ public class MushroomCraftingTableBlock extends Block {
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new MushroomCraftingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
+			(syncId, inventory, player) -> new MushroomCraftingMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 }

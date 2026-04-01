@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.stonemadeblocks;
 
-import net.gecko.varandeco.screen.stone.EndstoneStonecutterScreenHandler;
+import net.gecko.varandeco.screen.stone.EndstoneStonecutterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -57,7 +57,7 @@ public class EndstoneStonecutterBlock extends Block {
     @Override
     public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
         return new SimpleMenuProvider(
-                (syncId, playerInventory, player) -> new EndstoneStonecutterScreenHandler(syncId, playerInventory, ContainerLevelAccess.create(world, pos)), TITLE
+                (syncId, playerInventory, player) -> new EndstoneStonecutterMenu(syncId, playerInventory, ContainerLevelAccess.create(world, pos)), TITLE
         );
     }
 

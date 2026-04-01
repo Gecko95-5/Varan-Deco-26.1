@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:checkered_yellow_concrete",
   "result": {
-    "count": 1,
     "id": "minecraft:checkered_yellow_concrete_wall"
   }
 }

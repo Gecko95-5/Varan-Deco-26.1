@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.woodmadeblocks.craftingtables;
 
-import net.gecko.varandeco.screen.wood.craftingtables.SpruceCraftingScreenHandler;
+import net.gecko.varandeco.screen.wood.craftingtables.SpruceCraftingMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
@@ -34,7 +34,7 @@ public class SpruceCraftingTableBlock extends Block {
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new SpruceCraftingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
+			(syncId, inventory, player) -> new SpruceCraftingMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 }

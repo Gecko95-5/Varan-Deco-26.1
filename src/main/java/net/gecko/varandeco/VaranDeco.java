@@ -11,7 +11,6 @@ import net.gecko.varandeco.item.DecoItems;
 import net.gecko.varandeco.potion.DecoPotion;
 import net.gecko.varandeco.util.*;
 import net.gecko.varandeco.world.feature.tree.DecoTruckPlacerType;
-import net.gecko.varandeco.world.gen.DecoWorldGeneration;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potions;
 import org.slf4j.Logger;
@@ -29,7 +28,6 @@ public class VaranDeco implements ModInitializer {
 		DecoItems.registerDecoItems();
 		DecoBlocks.registerDecoBlocks();
 		DecoBlockEntities.registerBlockEntities();
-		DecoWorldGeneration.generateWorldGen();
 		DecoPotion.registerPotions();
 		DecoFlammableBlocks.registerFlammableBlocks();
 		DecoStrippableBlocks.registerStrippables();
@@ -38,7 +36,6 @@ public class VaranDeco implements ModInitializer {
 		DecoLootTableModifiers.modifyLootTables();
 		DecoFuelRegistry.registerFuels();
 		DecoComposterRecipes.registerCompostableItems();
-		DecoCustomTrades.registerCustomTrades();
 		DecoEntities.registerDecoEntities();
 		DecoTruckPlacerType.register();
         DecoFeatures.registerDecoFeatures();

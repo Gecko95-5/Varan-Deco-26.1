@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.woodmadeblocks.smithingtables;
 
-import net.gecko.varandeco.screen.wood.smithingtables.JungleSmithingScreenHandler;
+import net.gecko.varandeco.screen.wood.smithingtables.JungleSmithingMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
@@ -24,7 +24,7 @@ public class JungleSmithingTableBlock extends CraftingTableBlock {
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new JungleSmithingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), SCREEN_TITLE
+			(syncId, inventory, player) -> new JungleSmithingMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), SCREEN_TITLE
 		);
 	}
 

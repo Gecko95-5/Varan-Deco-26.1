@@ -1,7 +1,7 @@
 package net.gecko.varandeco.block.stonemadeblocks;
 
 import com.mojang.serialization.MapCodec;
-import net.gecko.varandeco.screen.stone.DeepslateGrindstoneScreenHandler;
+import net.gecko.varandeco.screen.stone.DeepslateGrindstoneMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -171,7 +171,7 @@ public class DeepslateGrindstoneBlock extends FaceAttachedHorizontalDirectionalB
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new DeepslateGrindstoneScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
+			(syncId, inventory, player) -> new DeepslateGrindstoneMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 

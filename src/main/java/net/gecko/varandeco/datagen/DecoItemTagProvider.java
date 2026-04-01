@@ -16,12 +16,13 @@ import java.util.concurrent.CompletableFuture;
 
 public class DecoItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
 
-    public DecoItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture, @Nullable BlockTagsProvider blockTagsProvider) {
-        super(output, registryLookupFuture, blockTagsProvider);
+
+    public DecoItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
+        super(output, registryLookupFuture);
     }
 
     @Override
-    protected void addTags(HolderLookup.@NotNull Provider arg) {
+    public void addTags(HolderLookup.@NotNull Provider provider) {
         valueLookupBuilder(ItemTags.PLANKS)
                 .add(DecoBlocks.CACTUS_PLANKS.asItem())
                 .add(DecoBlocks.MUSHROOM_PLANKS.asItem())
@@ -552,5 +553,6 @@ public class DecoItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(DecoBlocks.ROUGE_WILDFLOWERS.asItem())
                 .add(DecoBlocks.SWEET_WILDFLOWERS.asItem())
                 .add(DecoBlocks.GECKO_WILDFLOWERS.asItem());
+
     }
 }

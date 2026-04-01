@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:void_stone_brick_pillar",
   "result": {
-    "count": 1,
     "id": "minecraft:void_stone_brick_pillar_wall"
   }
 }

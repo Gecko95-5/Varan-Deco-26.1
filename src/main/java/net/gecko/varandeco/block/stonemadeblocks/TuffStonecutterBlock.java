@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.stonemadeblocks;
 
-import net.gecko.varandeco.screen.stone.TuffStonecutterScreenHandler;
+import net.gecko.varandeco.screen.stone.TuffStonecutterMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -56,7 +56,7 @@ public class TuffStonecutterBlock extends Block {
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, playerInventory, player) -> new TuffStonecutterScreenHandler(syncId, playerInventory, ContainerLevelAccess.create(world, pos)), TITLE
+			(syncId, playerInventory, player) -> new TuffStonecutterMenu(syncId, playerInventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 

@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:wind_block",
   "result": {
-    "count": 1,
     "id": "minecraft:chiseled_wind_bricks"
   }
 }

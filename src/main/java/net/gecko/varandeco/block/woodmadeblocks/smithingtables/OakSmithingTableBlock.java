@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.woodmadeblocks.smithingtables;
 
-import net.gecko.varandeco.screen.wood.smithingtables.OakSmithingScreenHandler;
+import net.gecko.varandeco.screen.wood.smithingtables.OakSmithingMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
@@ -24,7 +24,7 @@ public class OakSmithingTableBlock extends CraftingTableBlock {
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new OakSmithingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), SCREEN_TITLE
+			(syncId, inventory, player) -> new OakSmithingMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), SCREEN_TITLE
 		);
 	}
 

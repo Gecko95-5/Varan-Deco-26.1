@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.woodmadeblocks.craftingtables;
 
-import net.gecko.varandeco.screen.wood.craftingtables.PaleOakCraftingScreenHandler;
+import net.gecko.varandeco.screen.wood.craftingtables.PaleOakCraftingMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
@@ -34,7 +34,7 @@ public class PaleOakCraftingTableBlock extends Block {
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new PaleOakCraftingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
+			(syncId, inventory, player) -> new PaleOakCraftingMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 }

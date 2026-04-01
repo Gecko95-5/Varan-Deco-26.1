@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:cut_purpur",
   "result": {
-    "count": 1,
     "id": "minecraft:cut_purpur_stairs"
   }
 }

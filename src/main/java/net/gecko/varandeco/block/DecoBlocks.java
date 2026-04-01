@@ -4895,7 +4895,7 @@ public class DecoBlocks {
     }
     public static <T extends Block> T registerCouldBlock(String name,BlockBehaviour.Properties settings, Function<BlockBehaviour.Properties, T> factory){
         T block = factory.apply(settings.setId(getBlockKey(name)));
-        registerCloudBlockItem(name, block);
+        registerBlockItem(name, block);
         return Registry.register(BuiltInRegistries.BLOCK, getCloudBlockKey(name), block);
     }
     public static <T extends Block> T registerBlockWithoutItem(String name,BlockBehaviour.Properties settings, Function<BlockBehaviour.Properties, T> factory){

@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:duel_cut_brown_concrete",
   "result": {
-    "count": 1,
     "id": "minecraft:duel_cut_brown_concrete_stairs"
   }
 }

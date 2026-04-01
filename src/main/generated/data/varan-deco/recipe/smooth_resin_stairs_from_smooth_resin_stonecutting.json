@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:smooth_resin",
   "result": {
-    "count": 1,
     "id": "minecraft:smooth_resin_stairs"
   }
 }

@@ -1,6 +1,6 @@
 package net.gecko.varandeco.block.woodmadeblocks.craftingtables;
 
-import net.gecko.varandeco.screen.wood.craftingtables.JungleCraftingScreenHandler;
+import net.gecko.varandeco.screen.wood.craftingtables.JungleCraftingMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
@@ -34,7 +34,7 @@ public class JungleCraftingTableBlock extends Block {
 	@Override
 	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
 		return new SimpleMenuProvider(
-			(syncId, inventory, player) -> new JungleCraftingScreenHandler(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
+			(syncId, inventory, player) -> new JungleCraftingMenu(syncId, inventory, ContainerLevelAccess.create(world, pos)), TITLE
 		);
 	}
 }

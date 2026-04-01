@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:smooth_end_stone",
   "result": {
-    "count": 1,
     "id": "minecraft:smooth_end_stone_wall"
   }
 }
