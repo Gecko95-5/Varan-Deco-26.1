@@ -98,8 +98,6 @@ public class DecoConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> DECO_BUBBLE_ORE = registerKey("deco_bubble_ore");
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_VOID_PATCH = registerKey("deco_void_patch");
-
     public static final ResourceKey<ConfiguredFeature<?,?>> DECO_IRON_CAP_MUSHROOM = registerKey("deco_iron_cap_mushroom");
 
     public static final ResourceKey<ConfiguredFeature<?,?>> DECO_DESERT = registerKey("deco_desert");
