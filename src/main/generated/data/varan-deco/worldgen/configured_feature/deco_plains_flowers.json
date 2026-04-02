@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:dual_noise_provider",
+      "noise": {
+        "amplitudes": [
+          1.0
+        ],
+        "firstOctave": -3
+      },
+      "scale": 0.005,
+      "seed": 2345,
+      "slow_noise": {
+        "amplitudes": [
+          2.0
+        ],
+        "firstOctave": -20
+      },
+      "slow_scale": 0.5,
+      "states": [
+        {
+          "Name": "minecraft:barberton_daisy"
+        },
+        {
+          "Name": "minecraft:gerbera_daisy"
+        }
+      ],
+      "variety": [
+        1,
+        3
+      ]
+    }
+  }
+}

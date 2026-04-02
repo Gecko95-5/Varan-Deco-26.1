@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:noise_provider",
+      "noise": {
+        "amplitudes": [
+          1.0
+        ],
+        "firstOctave": 0
+      },
+      "scale": 0.020833334,
+      "seed": 2345,
+      "states": [
+        {
+          "Name": "minecraft:barberton_daisy"
+        },
+        {
+          "Name": "minecraft:gerbera_daisy"
+        },
+        {
+          "Name": "minecraft:white_orchid"
+        },
+        {
+          "Name": "minecraft:pink_orchid"
+        },
+        {
+          "Name": "minecraft:yellow_orchid"
+        },
+        {
+          "Name": "minecraft:blue_orchid"
+        },
+        {
+          "Name": "minecraft:salmon_poppy"
+        },
+        {
+          "Name": "minecraft:rose"
+        },
+        {
+          "Name": "minecraft:paeonia"
+        }
+      ]
+    }
+  }
+}

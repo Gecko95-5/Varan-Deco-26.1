@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:hazzy_bluet"
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "minecraft:drill_lavender"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:rose"
+          },
+          "weight": 5
+        },
+        {
+          "data": {
+            "Name": "minecraft:barberton_daisy"
+          },
+          "weight": 3
+        },
+        {
+          "data": {
+            "Name": "minecraft:california_poppy"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

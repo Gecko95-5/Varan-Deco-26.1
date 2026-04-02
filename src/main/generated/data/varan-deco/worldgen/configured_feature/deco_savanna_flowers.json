@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:gerbera_daisy"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "minecraft:michaelmas_daisy"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "minecraft:blue_eyed_daisy"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:california_poppy"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}
