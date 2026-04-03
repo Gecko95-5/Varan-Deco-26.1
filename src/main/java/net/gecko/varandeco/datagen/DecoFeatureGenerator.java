@@ -7,9 +7,9 @@ import net.minecraft.core.registries.Registries;
 
 import java.util.concurrent.CompletableFuture;
 
-public class DecoWorldGenerator extends FabricDynamicRegistryProvider {
+public class DecoFeatureGenerator extends FabricDynamicRegistryProvider {
 
-    public DecoWorldGenerator(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public DecoFeatureGenerator(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 

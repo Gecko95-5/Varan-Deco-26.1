@@ -17,7 +17,7 @@ public class VaranDecoDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(DecoModelProvider::new);
 		pack.addProvider(DecoBlockTagProvider::new);
 		pack.addProvider(DecoItemTagProvider::new);
-		pack.addProvider(DecoWorldGenerator::new);
+		pack.addProvider(DecoFeatureGenerator::new);
 		pack.addProvider(DecoEntityTagProvider::new);
 	}
 
