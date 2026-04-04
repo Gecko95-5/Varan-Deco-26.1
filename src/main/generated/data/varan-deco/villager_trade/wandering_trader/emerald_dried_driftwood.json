@@ -1,0 +1,10 @@
+{
+  "gives": {
+    "count": 8,
+    "id": "minecraft:dried_driftwood_log"
+  },
+  "reputation_discount": 0.075,
+  "wants": {
+    "id": "minecraft:emerald"
+  }
+}

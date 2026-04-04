@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "count": 8,
+    "id": "minecraft:stone_bricks"
+  },
+  "max_uses": 16.0,
+  "reputation_discount": 0.075,
+  "wants": {
+    "id": "minecraft:emerald"
+  }
+}

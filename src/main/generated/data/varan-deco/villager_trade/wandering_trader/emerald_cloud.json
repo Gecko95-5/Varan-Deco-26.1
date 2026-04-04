@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "count": 4,
+    "id": "minecraft:cloud_block"
+  },
+  "max_uses": 9.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "id": "minecraft:emerald"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "gives": {
+    "id": "minecraft:passtol"
+  },
+  "reputation_discount": 0.075,
+  "wants": {
+    "count": 2.0,
+    "id": "minecraft:emerald"
+  }
+}

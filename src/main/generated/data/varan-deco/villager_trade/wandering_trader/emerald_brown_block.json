@@ -1,0 +1,10 @@
+{
+  "gives": {
+    "id": "minecraft:brown_block"
+  },
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 3.0,
+    "id": "minecraft:emerald"
+  }
+}

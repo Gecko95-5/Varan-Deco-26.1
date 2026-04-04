@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "id": "minecraft:dark_oak_bookshelf"
+  },
+  "max_uses": 15.0,
+  "reputation_discount": 0.05,
+  "wants": {
+    "count": 9.0,
+    "id": "minecraft:emerald"
+  }
+}

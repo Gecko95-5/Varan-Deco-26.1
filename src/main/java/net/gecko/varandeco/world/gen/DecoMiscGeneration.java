@@ -23,20 +23,6 @@ public class DecoMiscGeneration {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DEEP_FROZEN_OCEAN),
                 GenerationStep.Decoration.UNDERGROUND_ORES, DecoPlacedFeatures.DECO_DEEP_BUBBLE_ORE_PLACED);
 
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.END_MIDLANDS),
-                GenerationStep.Decoration.SURFACE_STRUCTURES, DecoPlacedFeatures.DECO_VOID_PATCH_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.END_HIGHLANDS),
-                GenerationStep.Decoration.SURFACE_STRUCTURES, DecoPlacedFeatures.DECO_VOID_PATCH_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.END_BARRENS),
-                GenerationStep.Decoration.SURFACE_STRUCTURES, DecoPlacedFeatures.DECO_VOID_BIG_PATCH_PLACED);
-
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.BEACH),
-                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_DRIED_FALLEN_DRIFTWOOD_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SNOWY_BEACH),
-                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_DRIED_FALLEN_DRIFTWOOD_PLACED);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.STONY_SHORE),
-                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_DRIED_FALLEN_DRIFTWOOD_PLACED);
-
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.OCEAN),
                 GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_DRIFTWOOD_SPROUT_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DEEP_OCEAN),

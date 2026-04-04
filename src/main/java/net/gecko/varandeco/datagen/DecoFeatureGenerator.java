@@ -17,6 +17,7 @@ public class DecoFeatureGenerator extends FabricDynamicRegistryProvider {
     public void configure(HolderLookup.Provider registries, Entries entries) {
         entries.addAll(registries.lookupOrThrow(Registries.CONFIGURED_FEATURE));
         entries.addAll(registries.lookupOrThrow(Registries.PLACED_FEATURE));
+        entries.addAll(registries.lookupOrThrow(Registries.VILLAGER_TRADE));
     }
 
     @Override

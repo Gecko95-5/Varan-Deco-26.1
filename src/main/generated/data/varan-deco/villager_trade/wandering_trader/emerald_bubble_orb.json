@@ -1,0 +1,11 @@
+{
+  "gives": {
+    "id": "minecraft:bubble_orb"
+  },
+  "max_uses": 8.0,
+  "reputation_discount": 0.075,
+  "wants": {
+    "count": 3.0,
+    "id": "minecraft:emerald"
+  }
+}

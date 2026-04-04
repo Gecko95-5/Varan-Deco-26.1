@@ -204,6 +204,33 @@ public class DecoVillagerTrades {
     public static final ResourceKey<VillagerTrade> DECO_MASON_5_EMERALD_CUT_QUARTZ =
             resourceKey("mason/5/emerald_cut_quartz");
 
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_OAK_BOOKSHELF =
+            resourceKey("librarian/1/emerald_oak_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_SPRUCE_BOOKSHELF =
+            resourceKey("librarian/1/emerald_spruce_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_BIRCH_BOOKSHELF =
+            resourceKey("librarian/1/emerald_birch_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_JUNGLE_BOOKSHELF =
+            resourceKey("librarian/1/emerald_jungle_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_ACACIA_BOOKSHELF =
+            resourceKey("librarian/1/emerald_acacia_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_DARK_OAK_BOOKSHELF =
+            resourceKey("librarian/1/emerald_dark_oak_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_MANGROVE_BOOKSHELF =
+            resourceKey("librarian/1/emerald_mangrove_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_CHERRY_BOOKSHELF =
+            resourceKey("librarian/1/emerald_cherry_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_BAMBOO_BOOKSHELF =
+            resourceKey("librarian/1/emerald_bamboo_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_CACTUS_BOOKSHELF =
+            resourceKey("librarian/1/emerald_cactus_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_MUSHROOM_BOOKSHELF =
+            resourceKey("librarian/1/emerald_mushroom_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_DRIFTWOOD_BOOKSHELF =
+            resourceKey("librarian/1/emerald_driftwood_bookshelf");
+    public static final ResourceKey<VillagerTrade> DECO_LIBRARIAN_1_EMERALD_PALE_OAK_BOOKSHELF =
+            resourceKey("librarian/1/emerald_pale_oak_bookshelf");
+
     public static void bootstrap(final BootstrapContext<VillagerTrade> context) {
 
         context.register(DECO_WANDERING_TRADER_EMERALD_DRIFTWOOD_SAPLING,
@@ -265,19 +292,19 @@ public class DecoVillagerTrades {
                         Optional.empty(), List.of()));
 
         for (Pair<ResourceKey<VillagerTrade>, Item> entry : List.of(
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_OAK_BOOKSHELF, DecoBlocks.OAK_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_SPRUCE_BOOKSHELF, DecoBlocks.SPRUCE_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_BIRCH_BOOKSHELF, DecoBlocks.BIRCH_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_JUNGLE_BOOKSHELF, DecoBlocks.JUNGLE_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_ACACIA_BOOKSHELF, DecoBlocks.ACACIA_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_DARK_OAK_BOOKSHELF, DecoBlocks.DARK_OAK_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_MANGROVE_BOOKSHELF, DecoBlocks.MANGROVE_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_BAMBOO_BOOKSHELF, DecoBlocks.BAMBOO_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_CHERRY_BOOKSHELF, DecoBlocks.CHERRY_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_CACTUS_BOOKSHELF, DecoBlocks.CACTUS_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_MUSHROOM_BOOKSHELF, DecoBlocks.MUSHROOM_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_PALE_OAK_BOOKSHELF, DecoBlocks.PALE_OAK_BOOKSHELF),
-                Pair.of(DECO_LIBRARIAN_1_EMERALD_DRIFTWOOD_BOOKSHELF, DecoBlocks.DRIFTWOOD_BOOKSHELF)
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_OAK_BOOKSHELF, DecoBlocks.OAK_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_SPRUCE_BOOKSHELF, DecoBlocks.SPRUCE_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_BIRCH_BOOKSHELF, DecoBlocks.BIRCH_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_JUNGLE_BOOKSHELF, DecoBlocks.JUNGLE_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_ACACIA_BOOKSHELF, DecoBlocks.ACACIA_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_DARK_OAK_BOOKSHELF, DecoBlocks.DARK_OAK_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_MANGROVE_BOOKSHELF, DecoBlocks.MANGROVE_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_BAMBOO_BOOKSHELF, DecoBlocks.BAMBOO_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_CHERRY_BOOKSHELF, DecoBlocks.CHERRY_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_CACTUS_BOOKSHELF, DecoBlocks.CACTUS_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_MUSHROOM_BOOKSHELF, DecoBlocks.MUSHROOM_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_PALE_OAK_BOOKSHELF, DecoBlocks.PALE_OAK_BOOKSHELF.asItem()),
+                Pair.of(DECO_LIBRARIAN_1_EMERALD_DRIFTWOOD_BOOKSHELF, DecoBlocks.DRIFTWOOD_BOOKSHELF.asItem())
                 )) {
             context.register(
                     entry.getLeft(), new VillagerTrade(new TradeCost(Items.EMERALD, 9),

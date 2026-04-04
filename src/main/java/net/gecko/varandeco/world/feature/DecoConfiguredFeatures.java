@@ -253,7 +253,7 @@ public class DecoConfiguredFeatures {
                         .build());
 
         register(context, DECO_DRIFTWOOD_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(DecoBlocks.DRIFTWOOD_LOG), new DriftwoodTreePlacer(5, 2, 2),
+                BlockStateProvider.simple(DecoBlocks.DRIFTWOOD_LOG), new StraightTrunkPlacer(5, 2, 2),
                 BlockStateProvider.simple(DecoBlocks.KELP_LEAVES),
                 new SpruceFoliagePlacer(ConstantInt.of(1), ConstantInt.of(4), UniformInt.of(3, 4)),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).decorators
@@ -270,17 +270,6 @@ public class DecoConfiguredFeatures {
                 .build());
 
         register(context, DECO_DRIFTWOOD_SPROUT, DecoFeatures.DRIFTWOOD_SPROUT, new CountConfiguration(20));
-
-        register(context, DECO_FALLEN_DRIED_DRIFTWOOD_KEY, Feature.FALLEN_TREE, fallenDriedDriftwood().build());
-    }
-    private static FallenTreeConfiguration.FallenTreeConfigurationBuilder fallenDriedDriftwood() {
-        return driedFallen();
-    }
-    private static FallenTreeConfiguration.FallenTreeConfigurationBuilder driedFallen() {
-        return new FallenTreeConfiguration.FallenTreeConfigurationBuilder(BlockStateProvider.simple(DecoBlocks.DRIED_DRIFTWOOD_LOG), UniformInt.of(4, 8))
-                .logDecorators(ImmutableList.of(new AttachedToLogsDecorator(0.5F,
-                                        new WeightedStateProvider(WeightedList.<BlockState>builder()
-                                                .add(Blocks.MOSS_CARPET.defaultBlockState(), 2)), List.of(Direction.UP))));
     }
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, name));
