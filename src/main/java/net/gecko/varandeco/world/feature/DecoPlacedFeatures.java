@@ -217,7 +217,9 @@ public class DecoPlacedFeatures {
                 HeightRangePlacement.uniform(VerticalAnchor.absolute(8), VerticalAnchor.absolute(45))));
 
         register(context,DECO_DRIFTWOOD_SPROUT_PLACED,
-                configuredFeatures.getOrThrow(DecoConfiguredFeatures.DECO_DRIFTWOOD_SPROUT), seagrassPlacement(16));
+                configuredFeatures.getOrThrow(DecoConfiguredFeatures.DECO_DRIFTWOOD_SPROUT),
+                RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
     }
 
     public static ResourceKey<PlacedFeature> registerKey(String name) {
@@ -236,9 +238,6 @@ public class DecoPlacedFeatures {
     }
     private static List<PlacementModifier> orePlacement(final PlacementModifier frequencyModifier, final PlacementModifier heightRange) {
         return List.of(frequencyModifier, InSquarePlacement.spread(), heightRange, BiomeFilter.biome());
-    }
-    private static List<PlacementModifier> seagrassPlacement(final int count) {
-        return List.of(InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, CountPlacement.of(count), BiomeFilter.biome());
     }
     private static List<PlacementModifier> commonOrePlacement(final int count, final PlacementModifier heightRange) {
         return orePlacement(CountPlacement.of(count), heightRange);

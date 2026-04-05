@@ -92,8 +92,6 @@ public class DecoConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> DECO_DRIFTWOOD_TREE_KEY = registerKey("deco_driftwood_tree");
 
-    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_FALLEN_DRIED_DRIFTWOOD_KEY = registerKey("deco_fallen_dried_driftwood");
-
     public static final ResourceKey<ConfiguredFeature<?,?>> DECO_DRIFTWOOD_SPROUT = registerKey("deco_driftwood_sprout");
 
     public static final ResourceKey<ConfiguredFeature<?,?>> DECO_BUBBLE_ORE = registerKey("deco_bubble_ore");
@@ -253,11 +251,11 @@ public class DecoConfiguredFeatures {
                         .build());
 
         register(context, DECO_DRIFTWOOD_TREE_KEY, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(DecoBlocks.DRIFTWOOD_LOG), new StraightTrunkPlacer(5, 2, 2),
+                BlockStateProvider.simple(DecoBlocks.DRIFTWOOD_LOG), new DriftwoodTreePlacer(5, 2, 2),
                 BlockStateProvider.simple(DecoBlocks.KELP_LEAVES),
                 new SpruceFoliagePlacer(ConstantInt.of(1), ConstantInt.of(4), UniformInt.of(3, 4)),
-                new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).decorators
-                (ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(DecoBlocks.DRIFTWOOD_LOG)))).build());
+                new TwoLayersFeatureSize(0, 0, 0)).belowTrunkProvider(BlockStateProvider.simple
+                (DecoBlocks.DRIFTWOOD_LOG)).build());
 
         register(context, DECO_BUBBLE_ORE, Feature.ORE, new OreConfiguration(overworldBubbleOre, 5));
 
@@ -265,9 +263,8 @@ public class DecoConfiguredFeatures {
                 BlockStateProvider.simple(DecoBlocks.IRON_CAP_STEM), new StraightTrunkPlacer(2, 4, 0),
                 BlockStateProvider.simple(DecoBlocks.IRON_CAP_MUSHROOM_BLOCK),
                 new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
-                new TwoLayersFeatureSize(1, 0, 2)).decorators
-                        (ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(DecoBlocks.SPORE_IRON_ORE))))
-                .build());
+                new TwoLayersFeatureSize(1, 0, 2)).belowTrunkProvider(BlockStateProvider.simple
+                (DecoBlocks.SPORE_IRON_ORE)).build());
 
         register(context, DECO_DRIFTWOOD_SPROUT, DecoFeatures.DRIFTWOOD_SPROUT, new CountConfiguration(20));
     }

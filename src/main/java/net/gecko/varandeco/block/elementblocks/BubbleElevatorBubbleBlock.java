@@ -23,12 +23,10 @@ public class BubbleElevatorBubbleBlock extends Block {
     }
 
     @Override
-    protected void neighborChanged(
-            final BlockState state, final Level level, final BlockPos pos, final Block block, @Nullable final Orientation orientation, final boolean movedByPiston
-    ) {
-        if (state.isRedstoneConductor(level, pos)) {
-            level.playSound(null, pos, SoundEvents.PISTON_EXTEND, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.25F + 0.6F);
-            level.updatePOIOnBlockStateChange(pos, DecoBlocks.BUBBLE_ELEVATOR_BLOCK_BUBBLE.defaultBlockState(), DecoBlocks.BUBBLE_ELEVATOR_BLOCK_MAGMA.defaultBlockState());
+    public void neighborChanged(BlockState state, Level world, BlockPos pos, Block sourceBlock, @Nullable Orientation wireOrientation, boolean notify) {
+        if (world.hasNeighborSignal(pos) || world.hasNeighborSignal(pos.above(1))) {
+            world.playSound(null, pos, SoundEvents.PISTON_EXTEND, SoundSource.BLOCKS, 0.5F, world.getRandom().nextFloat() * 0.25F + 0.6F);
+            world.setBlock(pos, DecoBlocks.BUBBLE_ELEVATOR_BLOCK_MAGMA.defaultBlockState(), Block.UPDATE_CLIENTS);
         }
     }
 }
