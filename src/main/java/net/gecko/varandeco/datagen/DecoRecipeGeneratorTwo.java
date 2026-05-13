@@ -3332,17 +3332,11 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.LAPIS_WALL), has(DecoBlocks.LAPIS_WALL))
                         .save(output,("smooth_lapis_wall_from_smelting"));
 
-                shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_LAPIS,2)
-                        .pattern("##")
-                        .pattern("##")
-                        .define('#', DecoBlocks.LAPIS_SLAB)
-                        .unlockedBy(getHasName(DecoBlocks.LAPIS_SLAB),
-                                has(DecoBlocks.LAPIS_SLAB))
-                        .save(output,getSimpleRecipeName(DecoBlocks.CHISELED_LAPIS) + "_recipe_create");
-                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_LAPIS, Items.LAPIS_BLOCK);
+        chiseled(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_LAPIS, DecoBlocks.LAPIS_SLAB);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_LAPIS, Items.LAPIS_BLOCK);
 
-                chiseled(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.LAPIS_PILLAR, DecoBlocks.LAPIS_SLAB);
-                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.LAPIS_PILLAR, Items.LAPIS_BLOCK);
+        offerPillarBlockRecipe(output, DecoBlocks.LAPIS_PILLAR, DecoBlocks.LAPIS_SLAB);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.LAPIS_PILLAR, Items.LAPIS_BLOCK);
 
                 offerDuelCutRecipe(output, DecoBlocks.DUEL_CUT_LIGHT_GRAY_CONCRETE, DecoBlocks.CUT_LIGHT_GRAY_CONCRETE);
                 offerDuelCutRecipe(output, DecoBlocks.DUEL_CUT_GRAY_CONCRETE, DecoBlocks.CUT_GRAY_CONCRETE);
@@ -3757,14 +3751,14 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                         has(Items.SOUL_TORCH))
                 .save(output, getSimpleRecipeName(DecoBlocks.JACK_O_SOUL_LANTERN) + "_recipe_create");
 
-        chiseled(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.NETHER_BRICK_PILLAR, Items.NETHER_BRICK_SLAB);
+        offerPillarBlockRecipe(output, DecoBlocks.NETHER_BRICK_PILLAR, Items.NETHER_BRICK_SLAB);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.NETHER_BRICK_PILLAR, Items.NETHER_BRICKS);
-        chiseled(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.RED_NETHER_BRICK_PILLAR, Items.RED_NETHER_BRICK_SLAB);
+        offerPillarBlockRecipe(output, DecoBlocks.RED_NETHER_BRICK_PILLAR, Items.RED_NETHER_BRICK_SLAB);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.RED_NETHER_BRICK_PILLAR, Items.RED_NETHER_BRICKS);
-        chiseled(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLUE_NETHER_BRICK_PILLAR, DecoBlocks.BLUE_NETHER_BRICK_SLAB);
+        offerPillarBlockRecipe(output, DecoBlocks.BLUE_NETHER_BRICK_PILLAR, DecoBlocks.BLUE_NETHER_BRICK_SLAB);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLUE_NETHER_BRICK_PILLAR, DecoBlocks.BLUE_NETHER_BRICKS);
 
-        chiseled(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.VOID_STONE_BRICK_PILLAR, DecoBlocks.VOID_STONE_BRICK_SLAB);
+        offerPillarBlockRecipe(output, DecoBlocks.VOID_STONE_BRICK_PILLAR, DecoBlocks.VOID_STONE_BRICK_SLAB);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.VOID_STONE_BRICK_PILLAR, DecoBlocks.VOID_STONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.VOID_STONE_BRICK_PILLAR, DecoBlocks.VOID_STONE_BRICKS);
 
@@ -3809,7 +3803,7 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.DRIPSTONE_BRICK_WALL, Items.DRIPSTONE_BLOCK);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.DRIPSTONE_BRICK_WALL, DecoBlocks.DRIPSTONE_BRICKS);
 
-        chiseled(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.DRIPSTONE_BRICK_PILLAR, DecoBlocks.DRIPSTONE_BRICK_SLAB);
+        offerPillarBlockRecipe(output, DecoBlocks.DRIPSTONE_BRICK_PILLAR, DecoBlocks.DRIPSTONE_BRICK_SLAB);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.DRIPSTONE_BRICK_PILLAR, Items.DRIPSTONE_BLOCK);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.DRIPSTONE_BRICK_PILLAR, DecoBlocks.DRIPSTONE_BRICKS);
 
@@ -4215,6 +4209,607 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                 .pattern(" / ")
                 .unlockedBy("has_logs", has(ItemTags.LOGS_THAT_BURN))
                 .save(output,getSimpleRecipeName(Items.HANGING_ROOTS) + "_recipe_create");
+
+        shapeless(RecipeCategory.MISC, DecoBlocks.BROWN_BLOCK,2)
+                .requires(DecoBlocks.YELLOW_BLOCK)
+                .requires(DecoBlocks.PURPLE_BLOCK)
+                .group("brown_block")
+                .unlockedBy(getHasName(DecoBlocks.YELLOW_BLOCK),
+                        has(DecoBlocks.YELLOW_BLOCK))
+                .unlockedBy(getHasName(DecoBlocks.PURPLE_BLOCK),
+                        has(DecoBlocks.PURPLE_BLOCK))
+                .save(output,("brown_block_from_purple_block"));
+
+        shapeless(RecipeCategory.MISC, Items.BROWN_DYE,2)
+                .requires(Items.YELLOW_DYE)
+                .requires(Items.PURPLE_DYE)
+                .group("brown_dye")
+                .unlockedBy(getHasName(Items.YELLOW_DYE),
+                        has(Items.YELLOW_DYE))
+                .unlockedBy(getHasName(Items.PURPLE_DYE),
+                        has(Items.PURPLE_DYE))
+                .save(output,("brown_dye_from_purple_dye"));
+
+        shapeless(RecipeCategory.MISC, DecoBlocks.BROWN_BLOCK,2)
+                .requires(DecoBlocks.BLUE_BLOCK)
+                .requires(DecoBlocks.ORANGE_BLOCK)
+                .group("brown_block")
+                .unlockedBy(getHasName(DecoBlocks.BLUE_BLOCK),
+                        has(DecoBlocks.BLUE_BLOCK))
+                .unlockedBy(getHasName(DecoBlocks.ORANGE_BLOCK),
+                        has(DecoBlocks.ORANGE_BLOCK))
+                .save(output,("brown_block_from_orange_block"));
+
+        shapeless(RecipeCategory.MISC, Items.BROWN_DYE,2)
+                .requires(Items.BLUE_DYE)
+                .requires(Items.ORANGE_DYE)
+                .group("brown_dye")
+                .unlockedBy(getHasName(Items.BLUE_DYE),
+                        has(Items.BLUE_DYE))
+                .unlockedBy(getHasName(Items.ORANGE_DYE),
+                        has(Items.ORANGE_DYE))
+                .save(output,("brown_dye_from_orange_dye"));
+
+        shaped(RecipeCategory.DECORATIONS, Items.COBWEB)
+                .pattern(" / ")
+                .pattern("/ /")
+                .pattern(" / ")
+                .define('/', Items.STRING)
+                .unlockedBy(getHasName(Items.STRING),
+                        has(Items.STRING))
+                .save(output, (getSimpleRecipeName(Items.COBWEB) + "_recipe_create"));
+
+        shaped(RecipeCategory.DECORATIONS,DecoBlocks.GLOWING_GLASS,2)
+                .pattern(" # ")
+                .pattern("#X#")
+                .pattern(" # ")
+                .define('#', Items.GLOWSTONE_DUST)
+                .define('X', Items.GLASS)
+                .unlockedBy(getHasName(Items.GLOWSTONE_DUST),
+                        has(Items.GLOWSTONE_DUST))
+                .save(output,(getSimpleRecipeName(DecoBlocks.GLOWING_GLASS)+ "_recipe_create"));
+
+        shaped(RecipeCategory.DECORATIONS,DecoBlocks.GLOWING_GLASS_PANE,6)
+                .pattern(" # ")
+                .pattern("#X#")
+                .pattern(" # ")
+                .define('#', Items.GLOWSTONE_DUST)
+                .define('X', Items.GLASS_PANE)
+                .group("glowing_glass_pane")
+                .unlockedBy(getHasName(Items.GLOWSTONE_DUST),
+                        has(Items.GLOWSTONE_DUST))
+                .save(output,("glowing_glass_pane_glowstone_dust"));
+
+        shaped(RecipeCategory.DECORATIONS,DecoBlocks.GLOWING_GLASS_PANE,18)
+                .pattern("###")
+                .pattern("###")
+                .define('#', DecoBlocks.GLOWING_GLASS)
+                .group("glowing_glass_pane")
+                .unlockedBy(getHasName(DecoBlocks.GLOWING_GLASS),
+                        has(DecoBlocks.GLOWING_GLASS))
+                .save(output,(getSimpleRecipeName(DecoBlocks.GLOWING_GLASS_PANE)+ "_recipe_create"));
+
+        offerHardenedGlassRecipe(output,DecoBlocks.HARDENED_GLOWING_GLASS, DecoBlocks.GLOWING_GLASS);
+
+        shaped(RecipeCategory.DECORATIONS, DecoBlocks.HARDENED_GLOWING_GLASS,2)
+                .pattern(" # ")
+                .pattern("#X#")
+                .pattern(" # ")
+                .define('#', Items.GLOWSTONE_DUST)
+                .define('X', DecoBlocks.HARDENED_GLASS)
+                .group("hardened_glass")
+                .unlockedBy(getHasName(Items.GLOWSTONE_DUST),
+                        has(Items.GLOWSTONE_DUST))
+                .save(output,(getSimpleRecipeName(DecoBlocks.HARDENED_GLOWING_GLASS)+ "_recipe_create"));
+
+        offerHardenedGlassPaneRecipe(output,DecoBlocks.HARDENED_GLOWING_GLASS_PANE, DecoBlocks.GLOWING_GLASS_PANE);
+
+        shaped(RecipeCategory.DECORATIONS, DecoBlocks.HARDENED_GLOWING_GLASS_PANE,6)
+                .pattern(" # ")
+                .pattern("#X#")
+                .pattern(" # ")
+                .define('#', Items.GLOWSTONE_DUST)
+                .define('X', DecoBlocks.HARDENED_GLASS_PANE)
+                .group("hardened_glass_pane")
+                .unlockedBy(getHasName(Items.GLOWSTONE_DUST),
+                        has(Items.GLOWSTONE_DUST))
+                .save(output,("hardened_glowing_glass_pane_glowstone_dust"));
+
+        shaped(RecipeCategory.DECORATIONS, DecoBlocks.HARDENED_GLOWING_GLASS_PANE,18)
+                .pattern("###")
+                .pattern("###")
+                .define('#', DecoBlocks.HARDENED_GLOWING_GLASS)
+                .group("hardened_glass_pane")
+                .unlockedBy(getHasName(DecoBlocks.HARDENED_GLOWING_GLASS),
+                        has(DecoBlocks.HARDENED_GLOWING_GLASS))
+                .save(output,(getSimpleRecipeName(DecoBlocks.HARDENED_GLOWING_GLASS_PANE)+ "_recipe_create"));
+
+        shapeless(RecipeCategory.MISC, Items.GRAY_DYE)
+                .requires(DecoBlocks.TAIGA_DANDELION)
+                .group("gray_dye")
+                .unlockedBy(getHasName(DecoBlocks.TAIGA_DANDELION),
+                        has(DecoBlocks.TAIGA_DANDELION))
+                .save(output,("gray_dye_from_taiga_dandelion"));
+        shapeless(RecipeCategory.MISC, Items.GREEN_DYE)
+                .requires(DecoBlocks.FERN_LAVENDER)
+                .group("green_dye")
+                .unlockedBy(getHasName(DecoBlocks.FERN_LAVENDER),
+                        has(DecoBlocks.FERN_LAVENDER))
+                .save(output,("green_dye_from_fern_lavender"));
+        shapeless(RecipeCategory.MISC, Items.BROWN_DYE)
+                .requires(DecoBlocks.CARAMEL_BUTTERCUP)
+                .group("brown_dye")
+                .unlockedBy(getHasName(DecoBlocks.CARAMEL_BUTTERCUP),
+                        has(DecoBlocks.CARAMEL_BUTTERCUP))
+                .save(output,("brown_dye_from_caramel_buttercup"));
+        shapeless(RecipeCategory.MISC, Items.LIGHT_GRAY_DYE)
+                .requires(DecoBlocks.SILVER_ROSE)
+                .group("light_gray_dye")
+                .unlockedBy(getHasName(DecoBlocks.SILVER_ROSE),
+                        has(DecoBlocks.SILVER_ROSE))
+                .save(output,("light_gray_dye_from_silver_rose"));
+        shapeless(RecipeCategory.MISC, Items.PURPLE_DYE)
+                .requires(DecoBlocks.ALPINE_SPEEDWELL)
+                .group("purple_dye")
+                .unlockedBy(getHasName(DecoBlocks.ALPINE_SPEEDWELL),
+                        has(DecoBlocks.ALPINE_SPEEDWELL))
+                .save(output,("purple_dye_from_alpine_speedwell"));
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.GOLD_CHAIN)
+                .pattern("-")
+                .pattern("#")
+                .pattern("-")
+                .define('-', Items.GOLD_INGOT)
+                .define('#', Items.GOLD_NUGGET)
+                .unlockedBy(getHasName(Items.GOLD_INGOT),
+                        has(Items.GOLD_INGOT))
+                .save(output,(getSimpleRecipeName(DecoBlocks.GOLD_CHAIN)+ "_recipe_create"));
+
+        offerBasicStairSlabWallRecipes(output, Items.COAL_BLOCK, DecoBlocks.COAL_STAIRS,
+                DecoBlocks.COAL_SLAB, DecoBlocks.COAL_WALL);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COAL_BRICKS)
+                .pattern("B#")
+                .pattern("#B")
+                .define('#', Items.COAL)
+                .define('B', Items.BRICK)
+                .unlockedBy(getHasName(Items.BRICK),
+                        has(Items.BRICK))
+                .save(output,(getSimpleRecipeName(DecoBlocks.COAL_BRICKS)+ "_recipe_create"));
+
+        offerChiseledStairSlabWallRecipes(output, DecoBlocks.COAL_BRICKS, DecoBlocks.COAL_BRICK_STAIRS,
+                DecoBlocks.COAL_BRICK_SLAB, DecoBlocks.COAL_BRICK_WALL, DecoBlocks.CHISELED_COAL_BRICKS);
+
+        offerNonStonecutterStairSlabWallRecipes(output, DecoBlocks.CHARCOAL_BLOCK, DecoBlocks.CHARCOAL_STAIRS,
+                DecoBlocks.CHARCOAL_SLAB, DecoBlocks.CHARCOAL_WALL);
+
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_LAMP, DecoBlocks.SMOOTH_GLOWSTONE);
+
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_WHITE_LAMP, DecoBlocks.WHITE_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_LIGHT_GRAY_LAMP, DecoBlocks.LIGHT_GRAY_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_GRAY_LAMP, DecoBlocks.GRAY_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_BLACK_LAMP, DecoBlocks.BLACK_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_BROWN_LAMP, DecoBlocks.BROWN_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_RED_LAMP, DecoBlocks.RED_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_ORANGE_LAMP, DecoBlocks.ORANGE_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_YELLOW_LAMP, DecoBlocks.YELLOW_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_LIME_LAMP, DecoBlocks.LIME_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_GREEN_LAMP, DecoBlocks.GREEN_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_CYAN_LAMP, DecoBlocks.CYAN_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_LIGHT_BLUE_LAMP, DecoBlocks.LIGHT_BLUE_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_BLUE_LAMP, DecoBlocks.BLUE_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_PURPLE_LAMP, DecoBlocks.PURPLE_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_MAGENTA_LAMP, DecoBlocks.MAGENTA_LAMP);
+        offerHangingLampRecipe(output, DecoBlocks.HANGING_PINK_LAMP, DecoBlocks.PINK_LAMP);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_WHITE_LAMP, Items.WHITE_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_LIGHT_GRAY_LAMP, Items.LIGHT_GRAY_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_GRAY_LAMP, Items.GRAY_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_BLACK_LAMP, Items.BLACK_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_BROWN_LAMP, Items.BROWN_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_RED_LAMP, Items.RED_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_ORANGE_LAMP, Items.ORANGE_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_YELLOW_LAMP, Items.YELLOW_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_LIME_LAMP, Items.LIME_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_GREEN_LAMP, Items.GREEN_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_CYAN_LAMP, Items.CYAN_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_LIGHT_BLUE_LAMP, Items.LIGHT_BLUE_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_BLUE_LAMP, Items.BLUE_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_PURPLE_LAMP, Items.PURPLE_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_MAGENTA_LAMP, Items.MAGENTA_STAINED_GLASS_PANE);
+
+        offerHangingColouredLampRecipe(output,DecoBlocks.HANGING_PINK_LAMP, Items.PINK_STAINED_GLASS_PANE);
+
+        offerStairSlabCarpetRecipes(output, Items.SAND, DecoBlocks.SAND_STAIRS, DecoBlocks.SAND_SLAB,
+                DecoBlocks.SAND_CARPET);
+        offerStairSlabCarpetRecipes(output, Items.RED_SAND, DecoBlocks.RED_SAND_STAIRS, DecoBlocks.RED_SAND_SLAB,
+                DecoBlocks.RED_SAND_CARPET);
+        offerStairSlabCarpetRecipes(output, Items.GRAVEL, DecoBlocks.GRAVEL_STAIRS, DecoBlocks.GRAVEL_SLAB,
+                DecoBlocks.GRAVEL_CARPET);
+
+        offerBasicStairSlabWallRecipes(output, DecoBlocks.FLINT_BLOCK, DecoBlocks.FLINT_STAIRS,
+                DecoBlocks.FLINT_SLAB, DecoBlocks.FLINT_WALL);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SAND,4)
+                .pattern("P#")
+                .pattern("#P")
+                .define('#', Items.SAND)
+                .define('P', DecoItems.PASSTOL)
+                .unlockedBy(getHasName(DecoItems.PASSTOL),
+                        has(DecoItems.PASSTOL))
+                .save(output,(getSimpleRecipeName(DecoBlocks.WHITE_SAND)+ "_recipe_create"));
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SAND,4)
+                .pattern("S#")
+                .pattern("#S")
+                .define('#', Items.SAND)
+                .define('S', DecoItems.SHADDOL)
+                .unlockedBy(getHasName(DecoItems.SHADDOL),
+                        has(DecoItems.SHADDOL))
+                .save(output,(getSimpleRecipeName(DecoBlocks.BLACK_SAND)+ "_recipe_create"));
+
+        offerTwoByTwoRecipe(output, DecoBlocks.WHITE_SANDSTONE, DecoBlocks.WHITE_SAND);
+        offerTwoByTwoRecipe(output, DecoBlocks.BLACK_SANDSTONE, DecoBlocks.BLACK_SAND);
+
+        offerChiseledStairSlabWallRecipes(output,DecoBlocks.WHITE_SANDSTONE, DecoBlocks.WHITE_SANDSTONE_STAIRS,
+                DecoBlocks.WHITE_SANDSTONE_SLAB, DecoBlocks.WHITE_SANDSTONE_WALL, DecoBlocks.CHISELED_WHITE_SANDSTONE);
+        offerChiseledStairSlabWallRecipes(output,DecoBlocks.BLACK_SANDSTONE, DecoBlocks.BLACK_SANDSTONE_STAIRS,
+                DecoBlocks.BLACK_SANDSTONE_SLAB, DecoBlocks.BLACK_SANDSTONE_WALL, DecoBlocks.CHISELED_BLACK_SANDSTONE);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE, DecoBlocks.WHITE_SANDSTONE);
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE, DecoBlocks.BLACK_SANDSTONE);
+
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.CUT_WHITE_SANDSTONE, DecoBlocks.CUT_WHITE_SANDSTONE_STAIRS,
+                DecoBlocks.CUT_WHITE_SANDSTONE_SLAB, DecoBlocks.CUT_WHITE_SANDSTONE_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_STAIRS, DecoBlocks.WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_SLAB, DecoBlocks.WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_WALL, DecoBlocks.WHITE_SANDSTONE);
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.CUT_BLACK_SANDSTONE, DecoBlocks.CUT_BLACK_SANDSTONE_STAIRS,
+                DecoBlocks.CUT_BLACK_SANDSTONE_SLAB, DecoBlocks.CUT_BLACK_SANDSTONE_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_STAIRS, DecoBlocks.BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_SLAB, DecoBlocks.BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_WALL, DecoBlocks.BLACK_SANDSTONE);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_BRICKS, DecoBlocks.CUT_WHITE_SANDSTONE);
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_BRICKS, DecoBlocks.CUT_BLACK_SANDSTONE);
+
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.CUT_WHITE_SANDSTONE_BRICKS, DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_STAIRS,
+                DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_SLAB, DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_STAIRS, DecoBlocks.WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_SLAB, DecoBlocks.WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_WALL, DecoBlocks.WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_STAIRS, DecoBlocks.CUT_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_SLAB, DecoBlocks.CUT_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_WALL, DecoBlocks.CUT_WHITE_SANDSTONE);
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.CUT_BLACK_SANDSTONE_BRICKS, DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_STAIRS,
+                DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_SLAB, DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_STAIRS, DecoBlocks.BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_SLAB, DecoBlocks.BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_WALL, DecoBlocks.BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_STAIRS, DecoBlocks.CUT_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_SLAB, DecoBlocks.CUT_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_WALL, DecoBlocks.CUT_BLACK_SANDSTONE);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.WHITE_SANDSTONE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_WHITE_SANDSTONE,
+                        0.1f, 200).unlockedBy(getHasName(DecoBlocks.WHITE_SANDSTONE), has(DecoBlocks.WHITE_SANDSTONE))
+                .save(output,(getSimpleRecipeName(DecoBlocks.SMOOTH_WHITE_SANDSTONE)+ "_recipe_create"));
+
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.SMOOTH_WHITE_SANDSTONE, DecoBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS,
+                DecoBlocks.SMOOTH_WHITE_SANDSTONE_SLAB, DecoBlocks.SMOOTH_WHITE_SANDSTONE_WALL);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.WHITE_SANDSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS,
+                        0.1f, 200).unlockedBy(getHasName(DecoBlocks.WHITE_SANDSTONE_STAIRS), has(DecoBlocks.WHITE_SANDSTONE_STAIRS))
+                .save(output,("smooth_white_sandstone_stairs_from_smelting"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.WHITE_SANDSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_WHITE_SANDSTONE_SLAB,
+                        0.1f, 200).unlockedBy(getHasName(DecoBlocks.WHITE_SANDSTONE_SLAB), has(DecoBlocks.WHITE_SANDSTONE_SLAB))
+                .save(output,("smooth_white_sandstone_slab_from_smelting"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.WHITE_SANDSTONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_WHITE_SANDSTONE_WALL,
+                        0.1f, 200).unlockedBy(getHasName(DecoBlocks.WHITE_SANDSTONE_WALL), has(DecoBlocks.WHITE_SANDSTONE_WALL))
+                .save(output,("smooth_white_sandstone_wall_from_smelting"));
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLACK_SANDSTONE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_BLACK_SANDSTONE,
+                        0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLACK_SANDSTONE), has(DecoBlocks.BLACK_SANDSTONE))
+                .save(output,(getSimpleRecipeName(DecoBlocks.SMOOTH_BLACK_SANDSTONE)+ "_recipe_create"));
+
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.SMOOTH_BLACK_SANDSTONE, DecoBlocks.SMOOTH_BLACK_SANDSTONE_STAIRS,
+                DecoBlocks.SMOOTH_BLACK_SANDSTONE_SLAB, DecoBlocks.SMOOTH_BLACK_SANDSTONE_WALL);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLACK_SANDSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_BLACK_SANDSTONE_STAIRS,
+                        0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLACK_SANDSTONE_STAIRS), has(DecoBlocks.BLACK_SANDSTONE_STAIRS))
+                .save(output,("smooth_black_sandstone_stairs_from_smelting"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLACK_SANDSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_BLACK_SANDSTONE_SLAB,
+                        0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLACK_SANDSTONE_SLAB), has(DecoBlocks.BLACK_SANDSTONE_SLAB))
+                .save(output,("smooth_black_sandstone_slab_from_smelting"));
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLACK_SANDSTONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_BLACK_SANDSTONE_WALL,
+                        0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLACK_SANDSTONE_WALL), has(DecoBlocks.BLACK_SANDSTONE_WALL))
+                .save(output,("smooth_black_sandstone_wall_from_smelting"));
+
+        shapeless(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_WHITE_SANDSTONE,4)
+                .requires(DecoBlocks.WHITE_SANDSTONE)
+                .unlockedBy(getHasName(DecoBlocks.WHITE_SANDSTONE),
+                        has(DecoBlocks.WHITE_SANDSTONE))
+                .save(output,(getSimpleRecipeName(DecoBlocks.COBBLED_WHITE_SANDSTONE)+ "_recipe_create"));
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_WHITE_SANDSTONE, DecoBlocks.WHITE_SANDSTONE,4);
+
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.COBBLED_WHITE_SANDSTONE, DecoBlocks.COBBLED_WHITE_SANDSTONE_STAIRS,
+                DecoBlocks.COBBLED_WHITE_SANDSTONE_SLAB, DecoBlocks.COBBLED_WHITE_SANDSTONE_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_WHITE_SANDSTONE_STAIRS, DecoBlocks.WHITE_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_WHITE_SANDSTONE_SLAB, DecoBlocks.WHITE_SANDSTONE,8);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_WHITE_SANDSTONE_WALL, DecoBlocks.WHITE_SANDSTONE,4);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE, DecoBlocks.COBBLED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE, DecoBlocks.WHITE_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE, DecoBlocks.COBBLED_WHITE_SANDSTONE);
+
+        offerChiseledStairSlabWallRecipes(output,DecoBlocks.POLISHED_WHITE_SANDSTONE, DecoBlocks.POLISHED_WHITE_SANDSTONE_STAIRS,
+                DecoBlocks.POLISHED_WHITE_SANDSTONE_SLAB, DecoBlocks.POLISHED_WHITE_SANDSTONE_WALL,
+                DecoBlocks.CHISELED_POLISHED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE_STAIRS, DecoBlocks.WHITE_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE_STAIRS, DecoBlocks.COBBLED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE_SLAB, DecoBlocks.WHITE_SANDSTONE,8);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE_SLAB, DecoBlocks.COBBLED_WHITE_SANDSTONE,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE_WALL, DecoBlocks.WHITE_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_WHITE_SANDSTONE_WALL, DecoBlocks.COBBLED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_POLISHED_WHITE_SANDSTONE, DecoBlocks.WHITE_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_POLISHED_WHITE_SANDSTONE, DecoBlocks.COBBLED_WHITE_SANDSTONE);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICKS, DecoBlocks.POLISHED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICKS, DecoBlocks.WHITE_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICKS, DecoBlocks.COBBLED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICKS, DecoBlocks.POLISHED_WHITE_SANDSTONE);
+
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.WHITE_SANDSTONE_BRICKS, DecoBlocks.WHITE_SANDSTONE_BRICK_STAIRS,
+                DecoBlocks.WHITE_SANDSTONE_BRICK_SLAB, DecoBlocks.WHITE_SANDSTONE_BRICK_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_STAIRS, DecoBlocks.WHITE_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_STAIRS, DecoBlocks.COBBLED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_STAIRS, DecoBlocks.POLISHED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_SLAB, DecoBlocks.WHITE_SANDSTONE,8);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_SLAB, DecoBlocks.COBBLED_WHITE_SANDSTONE,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_SLAB, DecoBlocks.POLISHED_WHITE_SANDSTONE,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_WALL, DecoBlocks.WHITE_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_WALL, DecoBlocks.COBBLED_WHITE_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.WHITE_SANDSTONE_BRICK_WALL, DecoBlocks.POLISHED_WHITE_SANDSTONE);
+
+        shapeless(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_BLACK_SANDSTONE,4)
+                .requires(DecoBlocks.BLACK_SANDSTONE)
+                .unlockedBy(getHasName(DecoBlocks.BLACK_SANDSTONE),
+                        has(DecoBlocks.BLACK_SANDSTONE))
+                .save(output,(getSimpleRecipeName(DecoBlocks.COBBLED_BLACK_SANDSTONE)+ "_recipe_create"));
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_BLACK_SANDSTONE, DecoBlocks.BLACK_SANDSTONE,4);
+
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.COBBLED_BLACK_SANDSTONE, DecoBlocks.COBBLED_BLACK_SANDSTONE_STAIRS,
+                DecoBlocks.COBBLED_BLACK_SANDSTONE_SLAB, DecoBlocks.COBBLED_BLACK_SANDSTONE_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_BLACK_SANDSTONE_STAIRS, DecoBlocks.BLACK_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_BLACK_SANDSTONE_SLAB, DecoBlocks.BLACK_SANDSTONE,8);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COBBLED_BLACK_SANDSTONE_WALL, DecoBlocks.BLACK_SANDSTONE,4);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE, DecoBlocks.COBBLED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE, DecoBlocks.BLACK_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE, DecoBlocks.COBBLED_BLACK_SANDSTONE);
+
+        offerChiseledStairSlabWallRecipes(output,DecoBlocks.POLISHED_BLACK_SANDSTONE, DecoBlocks.POLISHED_BLACK_SANDSTONE_STAIRS,
+                DecoBlocks.POLISHED_BLACK_SANDSTONE_SLAB, DecoBlocks.POLISHED_BLACK_SANDSTONE_WALL,
+                DecoBlocks.CHISELED_POLISHED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE_STAIRS, DecoBlocks.BLACK_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE_STAIRS, DecoBlocks.COBBLED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE_SLAB, DecoBlocks.BLACK_SANDSTONE,8);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE_SLAB, DecoBlocks.COBBLED_BLACK_SANDSTONE,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE_WALL, DecoBlocks.BLACK_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.POLISHED_BLACK_SANDSTONE_WALL, DecoBlocks.COBBLED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_POLISHED_BLACK_SANDSTONE, DecoBlocks.BLACK_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_POLISHED_BLACK_SANDSTONE, DecoBlocks.COBBLED_BLACK_SANDSTONE);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICKS, DecoBlocks.POLISHED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICKS, DecoBlocks.BLACK_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICKS, DecoBlocks.COBBLED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICKS, DecoBlocks.POLISHED_BLACK_SANDSTONE);
+
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.BLACK_SANDSTONE_BRICKS, DecoBlocks.BLACK_SANDSTONE_BRICK_STAIRS,
+                DecoBlocks.BLACK_SANDSTONE_BRICK_SLAB, DecoBlocks.BLACK_SANDSTONE_BRICK_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_STAIRS, DecoBlocks.BLACK_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_STAIRS, DecoBlocks.COBBLED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_STAIRS, DecoBlocks.POLISHED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_SLAB, DecoBlocks.BLACK_SANDSTONE,8);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_SLAB, DecoBlocks.COBBLED_BLACK_SANDSTONE,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_SLAB, DecoBlocks.POLISHED_BLACK_SANDSTONE,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_WALL, DecoBlocks.BLACK_SANDSTONE,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_WALL, DecoBlocks.COBBLED_BLACK_SANDSTONE);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.BLACK_SANDSTONE_BRICK_WALL, DecoBlocks.POLISHED_BLACK_SANDSTONE);
+
+        shaped(RecipeCategory.DECORATIONS, DecoBlocks.GOLD_LANTERN)
+                .pattern("---")
+                .pattern("-#-")
+                .pattern("---")
+                .define('-', Items.TORCH)
+                .define('#', Items.GOLD_NUGGET)
+                .unlockedBy(getHasName(Items.GOLD_NUGGET),
+                        has(Items.GOLD_NUGGET))
+                .save(output,(getSimpleRecipeName(DecoBlocks.GOLD_LANTERN)+ "_recipe_create"));
+
+        shaped(RecipeCategory.DECORATIONS, DecoBlocks.GOLD_SOUL_LANTERN)
+                .pattern("---")
+                .pattern("-#-")
+                .pattern("---")
+                .define('-', Items.SOUL_TORCH)
+                .define('#', Items.GOLD_NUGGET)
+                .unlockedBy(getHasName(Items.SOUL_TORCH),
+                        has(Items.SOUL_TORCH))
+                .save(output,(getSimpleRecipeName(DecoBlocks.GOLD_SOUL_LANTERN)+ "_recipe_create"));
+
+        shaped(RecipeCategory.REDSTONE, DecoBlocks.IRON_BAR_DOOR,3)
+                .pattern("#-")
+                .pattern("#-")
+                .pattern("--")
+                .define('-', Items.IRON_INGOT)
+                .define('#', Items.IRON_BARS)
+                .unlockedBy(getHasName(Items.IRON_BARS),
+                        has(Items.IRON_BARS))
+                .save(output,(getSimpleRecipeName(DecoBlocks.IRON_BAR_DOOR)+ "_recipe_create"));
+
+        shaped(RecipeCategory.REDSTONE, DecoBlocks.GOLD_BAR_DOOR,3)
+                .pattern("#-")
+                .pattern("#-")
+                .pattern("--")
+                .define('-', Items.GOLD_INGOT)
+                .define('#', DecoBlocks.GOLD_BARS)
+                .unlockedBy(getHasName(DecoBlocks.GOLD_BARS),
+                        has(DecoBlocks.GOLD_BARS))
+                .save(output,(getSimpleRecipeName(DecoBlocks.GOLD_BAR_DOOR)+ "_recipe_create"));
+
+        shaped(RecipeCategory.REDSTONE, DecoBlocks.IRON_BAR_TRAPDOOR)
+                .pattern("#-")
+                .pattern("--")
+                .define('-', Items.IRON_INGOT)
+                .define('#', Items.IRON_BARS)
+                .unlockedBy(getHasName(Items.IRON_BARS),
+                        has(Items.IRON_BARS))
+                .save(output,(getSimpleRecipeName(DecoBlocks.IRON_BAR_TRAPDOOR)+ "_recipe_create"));
+
+        shaped(RecipeCategory.REDSTONE, DecoBlocks.GOLD_BAR_TRAPDOOR)
+                .pattern("#-")
+                .pattern("--")
+                .define('-', Items.GOLD_INGOT)
+                .define('#', DecoBlocks.GOLD_BARS)
+                .unlockedBy(getHasName(DecoBlocks.GOLD_BARS),
+                        has(DecoBlocks.GOLD_BARS))
+                .save(output,(getSimpleRecipeName(DecoBlocks.GOLD_BAR_TRAPDOOR)+ "_recipe_create"));
+
+        offerStairSlabCarpetRecipes(output, DecoBlocks.WHITE_SAND, DecoBlocks.WHITE_SAND_STAIRS,DecoBlocks.WHITE_SAND_SLAB,
+                DecoBlocks.WHITE_SAND_CARPET);
+        offerStairSlabCarpetRecipes(output, DecoBlocks.BLACK_SAND, DecoBlocks.BLACK_SAND_STAIRS,DecoBlocks.BLACK_SAND_SLAB,
+                DecoBlocks.BLACK_SAND_CARPET);
+
+        offerBasicStairSlabWallRecipes(output,Items.AMETHYST_BLOCK, DecoBlocks.AMETHYST_STAIRS,
+                DecoBlocks.AMETHYST_SLAB, DecoBlocks.AMETHYST_WALL);
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.ECHO_BLOCK, DecoBlocks.ECHO_STAIRS,
+                DecoBlocks.ECHO_SLAB, DecoBlocks.ECHO_WALL);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SHINED_AMETHYST,2)
+                .pattern("#F")
+                .pattern("F#")
+                .define('F', Items.FLINT)
+                .define('#', Items.AMETHYST_BLOCK)
+                .unlockedBy(getHasName(Items.AMETHYST_BLOCK),
+                        has(Items.AMETHYST_BLOCK))
+                .save(output,(getSimpleRecipeName(DecoBlocks.SHINED_AMETHYST)+ "_recipe_create"));
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.SHINED_AMETHYST, DecoBlocks.SHINED_AMETHYST_STAIRS,
+                DecoBlocks.SHINED_AMETHYST_SLAB, DecoBlocks.SHINED_AMETHYST_WALL);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SHINED_ECHO,2)
+                .pattern("#F")
+                .pattern("F#")
+                .define('F', Items.FLINT)
+                .define('#', DecoBlocks.ECHO_BLOCK)
+                .unlockedBy(getHasName(DecoBlocks.ECHO_BLOCK),
+                        has(DecoBlocks.ECHO_BLOCK))
+                .save(output,(getSimpleRecipeName(DecoBlocks.SHINED_ECHO)+ "_recipe_create"));
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.SHINED_ECHO, DecoBlocks.SHINED_ECHO_STAIRS,
+                DecoBlocks.SHINED_ECHO_SLAB, DecoBlocks.SHINED_ECHO_WALL);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_AMETHYST,4)
+                .pattern("#/")
+                .pattern("/#")
+                .define('/', Items.AMETHYST_SHARD)
+                .define('#', DecoBlocks.SHINED_AMETHYST)
+                .unlockedBy(getHasName(DecoBlocks.SHINED_AMETHYST),
+                        has(DecoBlocks.SHINED_AMETHYST))
+                .save(output,(getSimpleRecipeName(DecoBlocks.SCATTERED_AMETHYST)+ "_recipe_create"));
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_AMETHYST, DecoBlocks.SHINED_AMETHYST,2);
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.SCATTERED_AMETHYST, DecoBlocks.SCATTERED_AMETHYST_STAIRS,
+                DecoBlocks.SCATTERED_AMETHYST_SLAB, DecoBlocks.SCATTERED_AMETHYST_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_AMETHYST_STAIRS, DecoBlocks.SHINED_AMETHYST,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_AMETHYST_SLAB, DecoBlocks.SHINED_AMETHYST,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_AMETHYST_WALL, DecoBlocks.SHINED_AMETHYST,2);
+
+        shaped(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_ECHO,4)
+                .pattern("#/")
+                .pattern("/#")
+                .define('/', Items.ECHO_SHARD)
+                .define('#', DecoBlocks.SHINED_ECHO)
+                .unlockedBy(getHasName(DecoBlocks.SHINED_ECHO),
+                        has(DecoBlocks.SHINED_ECHO))
+                .save(output,(getSimpleRecipeName(DecoBlocks.SCATTERED_ECHO)+ "_recipe_create"));
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_ECHO, DecoBlocks.SHINED_ECHO,2);
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.SCATTERED_ECHO, DecoBlocks.SCATTERED_ECHO_STAIRS,
+                DecoBlocks.SCATTERED_ECHO_SLAB, DecoBlocks.SCATTERED_ECHO_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_ECHO_STAIRS, DecoBlocks.SHINED_ECHO,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_ECHO_SLAB, DecoBlocks.SHINED_ECHO,4);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SCATTERED_ECHO_WALL, DecoBlocks.SHINED_ECHO,2);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.AMETHYST_BRICKS, DecoBlocks.SHINED_AMETHYST);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.AMETHYST_BRICKS, DecoBlocks.SHINED_AMETHYST);
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.AMETHYST_BRICKS, DecoBlocks.AMETHYST_BRICK_STAIRS,
+                DecoBlocks.AMETHYST_BRICK_SLAB, DecoBlocks.AMETHYST_BRICK_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.AMETHYST_BRICK_STAIRS, DecoBlocks.SHINED_AMETHYST);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.AMETHYST_BRICK_SLAB, DecoBlocks.SHINED_AMETHYST,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.AMETHYST_BRICK_WALL, DecoBlocks.SHINED_AMETHYST);
+
+        polished(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.ECHO_BRICKS, DecoBlocks.SHINED_ECHO);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.ECHO_BRICKS, DecoBlocks.SHINED_ECHO);
+        offerBasicStairSlabWallRecipes(output,DecoBlocks.ECHO_BRICKS, DecoBlocks.ECHO_BRICK_STAIRS,
+                DecoBlocks.ECHO_BRICK_SLAB, DecoBlocks.ECHO_BRICK_WALL);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.ECHO_BRICK_STAIRS, DecoBlocks.SHINED_ECHO);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.ECHO_BRICK_SLAB, DecoBlocks.SHINED_ECHO,2);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.ECHO_BRICK_WALL, DecoBlocks.SHINED_ECHO);
+
+        offerPillarBlockRecipe(output, DecoBlocks.AMETHYST_PILLAR, DecoBlocks.SHINED_AMETHYST_SLAB);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.AMETHYST_PILLAR, DecoBlocks.SHINED_AMETHYST);
+
+        offerPillarBlockRecipe(output, DecoBlocks.ECHO_PILLAR, DecoBlocks.SHINED_ECHO_SLAB);
+        stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.ECHO_PILLAR, DecoBlocks.SHINED_ECHO);
+
+        shaped(RecipeCategory.REDSTONE, DecoBlocks.COPPER_BAR_DOOR,3)
+                .pattern("#-")
+                .pattern("#-")
+                .pattern("--")
+                .define('-', Items.COPPER_INGOT)
+                .define('#', Items.COPPER_BARS.unaffected())
+                .unlockedBy(getHasName(Items.COPPER_BARS.unaffected()),
+                        has(Items.COPPER_BARS.unaffected()))
+                .save(output,(getSimpleRecipeName(DecoBlocks.COPPER_BAR_DOOR)+ "_recipe_create"));
+
+        shaped(RecipeCategory.REDSTONE, DecoBlocks.COPPER_BAR_TRAPDOOR)
+                .pattern("#-")
+                .pattern("--")
+                .define('-', Items.COPPER_INGOT)
+                .define('#', Items.COPPER_BARS.unaffected())
+                .unlockedBy(getHasName(Items.COPPER_BARS.unaffected()),
+                        has(Items.COPPER_BARS.unaffected()))
+                .save(output,(getSimpleRecipeName(DecoBlocks.COPPER_BAR_TRAPDOOR)+ "_recipe_create"));
+
+        shapeless(RecipeCategory.MISC, Items.GRAY_DYE,2)
+                 .requires(DecoBlocks.MEGA_GRAY_TULIP)
+                 .group("gray_dye")
+                 .unlockedBy(getHasName(DecoBlocks.MEGA_GRAY_TULIP),
+                        has(DecoBlocks.MEGA_GRAY_TULIP))
+                 .save(output, ("gray_dye_from_mega_gray_tulip"));
+
+                shapeless(RecipeCategory.MISC, Items.CYAN_DYE)
+                        .requires(DecoBlocks.SEA_WILDFLOWERS)
+                        .group("cyan_dye")
+                        .unlockedBy(getHasName(DecoBlocks.SEA_WILDFLOWERS),
+                                has(DecoBlocks.SEA_WILDFLOWERS))
+                        .save(output, getSimpleRecipeName(Items.CYAN_DYE) + "_from_wildflower");
+                shapeless(RecipeCategory.MISC, Items.BLACK_DYE)
+                        .requires(DecoBlocks.MONOCHROME_WILDFLOWERS)
+                        .group("black_dye")
+                        .unlockedBy(getHasName(DecoBlocks.MONOCHROME_WILDFLOWERS),
+                                has(DecoBlocks.MONOCHROME_WILDFLOWERS))
+                        .save(output, getSimpleRecipeName(Items.BLACK_DYE) + "_from_wildflower");
     }
     public void offerLadderVariantRecipe(RecipeOutput exporter, ItemLike output, ItemLike woodInput) {
         shaped(RecipeCategory.DECORATIONS,output,3)
@@ -4302,6 +4897,14 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                 .unlockedBy(getHasName(woodInput),
                         has(woodInput))
                 .save(exporter,getSimpleRecipeName(output)+ "_recipe_create");
+    }
+        public void offerTwoByTwoRecipe(RecipeOutput exporter, ItemLike output, ItemLike input) {
+            shaped(RecipeCategory.BUILDING_BLOCKS, output)
+                    .define('#', input)
+                    .pattern("##")
+                    .pattern("##")
+                    .unlockedBy(getHasName(input), has(input))
+                    .save(exporter,(getSimpleRecipeName(output)+ "_recipe_create"));
     }
     public void offerPastelBlockRecipe(RecipeOutput exporter, ItemLike dyeBlockInput, ItemLike output) {
         shaped(RecipeCategory.BUILDING_BLOCKS,output, 8)
@@ -4411,9 +5014,135 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                         .group(compactingRecipeGroup)
                         .unlockedBy(getHasName(input), has(input))
                         .save(exporter, compactingRecipeName+ "_recipe_create");
+            }public void offerHardenedGlassRecipe(RecipeOutput exporter, ItemLike output, ItemLike glassInput) {
+                shaped(RecipeCategory.DECORATIONS,output, 4)
+                        .define('#', Items.IRON_INGOT)
+                        .define('X', glassInput)
+                        .pattern(" # ")
+                        .pattern("#X#")
+                        .pattern(" # ")
+                        .group("hardened_glass")
+                        .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                        .save(exporter, getConversionRecipeName(output, glassInput));
+            }
+
+            public void offerHardenedGlassPaneRecipe(RecipeOutput exporter, ItemLike output, ItemLike glassPaneInput) {
+                shaped(RecipeCategory.DECORATIONS,output, 8)
+                        .define('#', Items.IRON_INGOT)
+                        .define('X', glassPaneInput)
+                        .pattern(" # ")
+                        .pattern("#X#")
+                        .pattern(" # ")
+                        .group("hardened_glass_panes")
+                        .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                        .save(exporter, getConversionRecipeName(output, glassPaneInput));
+            }
+            public void offerBasicStairSlabWallRecipes(
+                    RecipeOutput exporter,
+                    ItemLike blockInput,
+                    ItemLike stair,
+                    ItemLike slab,
+                    ItemLike wall
+            ) {
+                stairBuilder(stair, Ingredient.of(blockInput))
+                        .unlockedBy(getHasName(blockInput),has(blockInput))
+                        .save(exporter,(getSimpleRecipeName(stair)+ "_recipe_create"));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stair, blockInput);
+
+                slab(RecipeCategory.BUILDING_BLOCKS, slab, blockInput);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slab, blockInput,2);
+
+                wall(RecipeCategory.DECORATIONS,wall, blockInput);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wall, blockInput);
+            }
+            public void offerChiseledStairSlabWallRecipes(
+                    RecipeOutput exporter,
+                    ItemLike blockInput,
+                    ItemLike stair,
+                    ItemLike slab,
+                    ItemLike wall,
+                    ItemLike chiseledBlock
+            ) {
+                stairBuilder(stair, Ingredient.of(blockInput))
+                        .unlockedBy(getHasName(blockInput),has(blockInput))
+                        .save(exporter,(getSimpleRecipeName(stair)+ "_recipe_create"));
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, stair, blockInput);
+
+                slab(RecipeCategory.BUILDING_BLOCKS, slab, blockInput);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, slab, blockInput,2);
+
+                wall(RecipeCategory.DECORATIONS, wall, blockInput);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, wall, blockInput);
+
+                chiseled(RecipeCategory.BUILDING_BLOCKS, chiseledBlock, slab);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, chiseledBlock, blockInput);
+            }
+            public void offerNonStonecutterStairSlabWallRecipes(
+                    RecipeOutput exporter,
+                    ItemLike blockInput,
+                    ItemLike stair,
+                    ItemLike slab,
+                    ItemLike wall
+            ) {
+                stairBuilder(stair, Ingredient.of(blockInput))
+                        .unlockedBy(getHasName(blockInput),has(blockInput))
+                        .save(exporter,(getSimpleRecipeName(stair)+ "_recipe_create"));
+
+                slab(RecipeCategory.BUILDING_BLOCKS, slab, blockInput);
+
+                wall(RecipeCategory.DECORATIONS,wall, blockInput);
+            }
+            public void offerStairSlabCarpetRecipes(
+                    RecipeOutput exporter,
+                    ItemLike blockInput,
+                    ItemLike stair,
+                    ItemLike slab,
+                    ItemLike carpet
+            ) {
+                stairBuilder(stair, Ingredient.of(blockInput))
+                        .unlockedBy(getHasName(blockInput),has(blockInput))
+                        .save(exporter,(getSimpleRecipeName(stair)+ "_recipe_create"));
+
+                slab(RecipeCategory.DECORATIONS, slab, blockInput);
+
+                carpet(carpet, blockInput);
+            }
+            public void offerHangingLampRecipe(RecipeOutput exporter, ItemLike output, ItemLike input) {
+                shaped(RecipeCategory.DECORATIONS,output,8)
+                        .pattern("###")
+                        .pattern("#X#")
+                        .pattern("###")
+                        .define('X', input)
+                        .define('#', Items.IRON_NUGGET)
+                        .group("hanging_lamps")
+                        .unlockedBy(getHasName(input),
+                                has(input))
+                        .save(exporter,(getSimpleRecipeName(output)+ "_recipe_create"));
+            }
+            public void offerHangingColouredLampRecipe(RecipeOutput exporter, ItemLike output, ItemLike paneInput) {
+                shaped(RecipeCategory.DECORATIONS,output)
+                        .define('#', paneInput)
+                        .define('$', DecoBlocks.HANGING_LAMP)
+                        .pattern(" # ")
+                        .pattern("#$#")
+                        .pattern(" # ")
+                        .group("hanging_coloured_lamp")
+                        .unlockedBy(getHasName(DecoBlocks.HANGING_LAMP),
+                                has(DecoBlocks.HANGING_LAMP))
+                        .save(exporter, getConversionRecipeName(output, paneInput));
+            }
+            public void offerPillarBlockRecipe(RecipeOutput exporter, ItemLike output, ItemLike input) {
+                shaped(RecipeCategory.BUILDING_BLOCKS, output)
+                        .define('#', input)
+                        .pattern("#")
+                        .pattern("#")
+                        .pattern("#")
+                        .unlockedBy(getHasName(input), has(input))
+                        .save(exporter,(getSimpleRecipeName(output)+ "_recipe_create"));
             }
 };
-    }
+    
+}
 
 
     @Override

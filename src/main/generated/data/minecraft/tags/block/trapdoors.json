@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:iron_bar_trapdoor",
+    "minecraft:copper_bar_trapdoor",
+    "minecraft:exposed_copper_bar_trapdoor",
+    "minecraft:weathered_copper_bar_trapdoor",
+    "minecraft:oxidized_copper_bar_trapdoor",
+    "minecraft:waxed_copper_bar_trapdoor",
+    "minecraft:waxed_exposed_copper_bar_trapdoor",
+    "minecraft:waxed_weathered_copper_bar_trapdoor",
+    "minecraft:waxed_oxidized_copper_bar_trapdoor",
+    "minecraft:gold_bar_trapdoor"
+  ]
+}

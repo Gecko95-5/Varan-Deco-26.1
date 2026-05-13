@@ -126,10 +126,40 @@ public class DecoFlowerGeneration {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.PALE_GARDEN),
                 GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_PALE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.PALE_GARDEN),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_PALE_MEGA_TULIP_PLACED);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DARK_FOREST),
                 GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_ROOFED_PLACED);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.DARK_FOREST),
                 GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_MEGA_TULIP_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.TAIGA),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_TAIGA_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.OLD_GROWTH_PINE_TAIGA),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_TAIGA_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.OLD_GROWTH_SPRUCE_TAIGA),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_TAIGA_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.TAIGA),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_TAIGA_WILDFLOWER_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.JUNGLE),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_JUNGLE_WILDFLOWER_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WINDSWEPT_HILLS),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_WINDSWEPT_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WINDSWEPT_GRAVELLY_HILLS),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_WINDSWEPT_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WINDSWEPT_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_WINDSWEPT_FOREST_PLACED);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WINDSWEPT_HILLS),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_SILVER_ROSE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WINDSWEPT_GRAVELLY_HILLS),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_SILVER_ROSE_PLACED);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.WINDSWEPT_FOREST),
+                GenerationStep.Decoration.VEGETAL_DECORATION, DecoPlacedFeatures.DECO_SILVER_ROSE_PLACED);
     }
 }

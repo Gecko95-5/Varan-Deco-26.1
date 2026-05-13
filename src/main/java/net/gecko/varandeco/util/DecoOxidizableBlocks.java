@@ -38,6 +38,14 @@ public class DecoOxidizableBlocks {
         OxidizableBlocksRegistry.registerOxidizableBlockPair(DecoBlocks.EXPOSED_COPPER_LADDER, DecoBlocks.WEATHERED_COPPER_LADDER);
         OxidizableBlocksRegistry.registerOxidizableBlockPair(DecoBlocks.WEATHERED_COPPER_LADDER, DecoBlocks.OXIDIZED_COPPER_LADDER);
 
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(DecoBlocks.COPPER_BAR_DOOR, DecoBlocks.EXPOSED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(DecoBlocks.EXPOSED_COPPER_BAR_DOOR, DecoBlocks.WEATHERED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(DecoBlocks.WEATHERED_COPPER_BAR_DOOR, DecoBlocks.OXIDIZED_COPPER_BAR_DOOR);
+
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(DecoBlocks.COPPER_BAR_TRAPDOOR, DecoBlocks.EXPOSED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(DecoBlocks.EXPOSED_COPPER_BAR_TRAPDOOR, DecoBlocks.WEATHERED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(DecoBlocks.WEATHERED_COPPER_BAR_TRAPDOOR, DecoBlocks.OXIDIZED_COPPER_BAR_TRAPDOOR);
+
     }
     public static void registerWaxableBlocks(){
         OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.HEAVY_COPPER_BARS, DecoBlocks.WAXED_HEAVY_COPPER_BARS);
@@ -79,5 +87,15 @@ public class DecoOxidizableBlocks {
         OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.EXPOSED_COPPER_LADDER, DecoBlocks.WAXED_EXPOSED_COPPER_LADDER);
         OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.WEATHERED_COPPER_LADDER, DecoBlocks.WAXED_WEATHERED_COPPER_LADDER);
         OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.OXIDIZED_COPPER_LADDER, DecoBlocks.WAXED_OXIDIZED_COPPER_LADDER);
+
+        OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.COPPER_BAR_DOOR, DecoBlocks.WAXED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.EXPOSED_COPPER_BAR_DOOR, DecoBlocks.WAXED_EXPOSED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.WEATHERED_COPPER_BAR_DOOR, DecoBlocks.WAXED_WEATHERED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.OXIDIZED_COPPER_BAR_DOOR, DecoBlocks.WAXED_OXIDIZED_COPPER_BAR_DOOR);
+
+        OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.COPPER_BAR_TRAPDOOR, DecoBlocks.WAXED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.EXPOSED_COPPER_BAR_TRAPDOOR, DecoBlocks.WAXED_EXPOSED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.WEATHERED_COPPER_BAR_TRAPDOOR, DecoBlocks.WAXED_WEATHERED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(DecoBlocks.OXIDIZED_COPPER_BAR_TRAPDOOR, DecoBlocks.WAXED_OXIDIZED_COPPER_BAR_TRAPDOOR);
     }
 }

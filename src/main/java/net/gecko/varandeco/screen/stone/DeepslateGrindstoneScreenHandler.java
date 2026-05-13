@@ -25,6 +25,9 @@ import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.phys.Vec3;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class DeepslateGrindstoneScreenHandler extends AbstractContainerMenu {
 	public static final int field_30793 = 35;

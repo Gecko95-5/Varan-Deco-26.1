@@ -20,7 +20,7 @@ import net.minecraft.world.item.crafting.SelectableRecipe;
 import net.minecraft.world.item.crafting.SingleRecipeInput;
 import net.minecraft.world.item.crafting.StonecutterRecipe;
 import net.minecraft.world.level.Level;
-
+import net.gecko.varandeco.block.DecoBlocks;
 import java.util.List;
 import java.util.Optional;
 

@@ -15,19 +15,13 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.DoubleHighBlockItem;
-import net.minecraft.world.item.HangingSignItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SignItem;
-import net.minecraft.world.item.StandingAndWallBlockItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Function;
 
 import static net.minecraft.world.item.Items.registerBlock;
-import static net.minecraft.world.item.Items.registerItem;
 
 public class DecoItems {
 

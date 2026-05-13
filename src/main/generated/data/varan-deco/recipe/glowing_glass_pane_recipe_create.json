@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "glowing_glass_pane",
+  "key": {
+    "#": "minecraft:glowing_glass"
+  },
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 18,
+    "id": "minecraft:glowing_glass_pane"
+  }
+}

@@ -133,11 +133,25 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "gray": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:mega_gray_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Collect all the Different type of Tulips",
+    "description": {
+      "translate": "advancements.varan-deco.tulips.description"
+    },
     "frame": "challenge",
     "hidden": false,
     "icon": {
@@ -145,7 +159,9 @@
       "id": "minecraft:black_tulip"
     },
     "show_toast": true,
-    "title": "The Tulip Gardener"
+    "title": {
+      "translate": "advancements.varan-deco.tulips.title"
+    }
   },
   "requirements": [
     [
@@ -183,6 +199,9 @@
     ],
     [
       "brown"
+    ],
+    [
+      "gray"
     ]
   ]
 }

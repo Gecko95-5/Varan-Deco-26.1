@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:shined_echo",
+  "result": {
+    "count": 2,
+    "id": "minecraft:shined_echo_slab"
+  }
+}

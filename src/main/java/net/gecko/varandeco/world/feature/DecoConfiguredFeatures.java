@@ -26,24 +26,13 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.CountConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.DiskConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FallenTreeConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.DualNoiseProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedBlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
@@ -52,6 +41,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
+
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -119,6 +109,20 @@ public class DecoConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> DECO_MEGA_TULIP = registerKey("deco_mega_tulip");
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_PALE_MEGA_TULIP = registerKey("deco_pale_mega_tulip");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_TAIGA = registerKey("deco_taiga_flowers");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_WINDSWEPT_FOREST = registerKey("deco_windswept_forest_flowers");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_WINDSWEPT = registerKey("deco_windswept_flowers");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_SILVER_ROSE = registerKey("deco_silver_rose");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_TAIGA_WILDFLOWER_KEY = registerKey("deco_taiga_wildflower");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_JUNGLE_WILDFLOWER_KEY = registerKey("deco_jungle_wildflower");
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacebles = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
 
@@ -158,7 +162,16 @@ public class DecoConfiguredFeatures {
         register(context, DECO_BIRCH_WILDFLOWER_KEY, Feature.FLOWER, new RandomPatchConfiguration(
                 16, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
                 (new WeightedStateProvider(flowerbed(DecoBlocks.SWEET_WILDFLOWERS))))));
-                                        FeatureUtils.register(context, DECO_TULIPS_MEADOW_KEY,
+
+        register(context, DECO_TAIGA_WILDFLOWER_KEY, Feature.FLOWER, new RandomPatchConfiguration(
+                16, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
+                (new WeightedStateProvider(flowerbed(DecoBlocks.MONOCHROME_WILDFLOWERS))))));
+
+        register(context, DECO_JUNGLE_WILDFLOWER_KEY, Feature.FLOWER, new RandomPatchConfiguration(
+                16, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
+                (new WeightedStateProvider(flowerbed(DecoBlocks.SEA_WILDFLOWERS))))));
+
+        register(context, DECO_TULIPS_MEADOW_KEY,
                 Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedStateProvider
                         (WeightedList.<BlockState>builder().add(DecoBlocks.BLACK_TULIP.defaultBlockState(),1)
                                 .add(DecoBlocks.GREEN_TULIP.defaultBlockState(),5)
@@ -196,6 +209,29 @@ public class DecoConfiguredFeatures {
                         16, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
                 (new WeightedStateProvider(flowerbed(DecoBlocks.GECKO_WILDFLOWERS))))));
 
+        FeatureUtils.register(context, DECO_TAIGA,
+                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedStateProvider
+                            (WeightedList.<BlockState>builder().add(DecoBlocks.TAIGA_DANDELION.defaultBlockState(),2)
+                                    .add(DecoBlocks.PUFFY_DANDELION.defaultBlockState(),2)
+                                    .add(DecoBlocks.FERN_LAVENDER.defaultBlockState(),1)
+                                    .add(DecoBlocks.CARAMEL_BUTTERCUP.defaultBlockState(),1).build()),24));
+
+        FeatureUtils.register(context, DECO_WINDSWEPT_FOREST,
+                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedStateProvider
+                            (WeightedList.<BlockState>builder().add(DecoBlocks.TAIGA_DANDELION.defaultBlockState(),2)
+                                    .add(DecoBlocks.PUFFY_DANDELION.defaultBlockState(),2)
+                                    .add(DecoBlocks.CARAMEL_BUTTERCUP.defaultBlockState(),2)
+                                    .add(DecoBlocks.ALPINE_POPPY.defaultBlockState(),1)
+                                    .add(DecoBlocks.ALPINE_SPEEDWELL.defaultBlockState(),1).build()),24));
+
+        FeatureUtils.register(context, DECO_WINDSWEPT,
+                Feature.FLOWER, DecoConfiguredFeatures.createRandomPatchFeatureConfig(new WeightedStateProvider
+                            (WeightedList.<BlockState>builder().add(DecoBlocks.ALPINE_POPPY.defaultBlockState(),2)
+                                    .add(DecoBlocks.ALPINE_SPEEDWELL.defaultBlockState(),1).build()),16));
+
+        FeatureUtils.register(context, DECO_SILVER_ROSE, Feature.FLOWER, new RandomPatchConfiguration(16, 6, 2,
+                    PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.SILVER_ROSE)))));
+
         register(context, DECO_SWAMP_KEY, Feature.FLOWER, new RandomPatchConfiguration(64, 6, 2,
                         PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.YELLOW_ORCHID)))));
 
@@ -226,6 +262,10 @@ public class DecoConfiguredFeatures {
     FeatureUtils.register(
             context, DECO_MEGA_TULIP, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
                     new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.MEGA_BROWN_TULIP))));
+
+    FeatureUtils.register(
+            context, DECO_PALE_MEGA_TULIP, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,
+                    new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.MEGA_GRAY_TULIP))));
 
             FeatureUtils.register(context, DECO_ROSE_KEY, Feature.FLOWER, new RandomPatchConfiguration(64, 6, 2,
                         PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.ROSE)))));

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "brown_block",
+  "ingredients": [
+    "minecraft:yellow_block",
+    "minecraft:purple_block"
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:brown_block"
+  }
+}

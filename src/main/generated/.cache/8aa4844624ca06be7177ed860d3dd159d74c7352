@@ -7,7 +7,7 @@ bca3193a178670643eb7951bcbf62df66a82b9a0 data/minecraft/tags/item/logs.json
 112f54edac636b7f3e31ec3980c565cb269c14eb data/minecraft/tags/item/logs_that_burn.json
 a5aa2015d09ea2100561c8e8d7772bee0578278c data/minecraft/tags/item/planks.json
 b7e6a540240367fd515f5eebf5b116893a889e97 data/minecraft/tags/item/saplings.json
-01506031597647d13ef9d5b5fb52590461f8b33c data/minecraft/tags/item/small_flowers.json
+9e2f3624ec61ccac87a02e3158a72bc7177a0a03 data/minecraft/tags/item/small_flowers.json
 69c9fb0224b16350d86b28643f7d40d2b6001b20 data/minecraft/tags/item/stone_buttons.json
 120a0f92a9d22e1966595e6afb272f0c60a5e5c5 data/minecraft/tags/item/stone_crafting_materials.json
 36b2acd3789855661ef39084e13acdeb1c8d3190 data/minecraft/tags/item/stone_tool_materials.json
@@ -32,6 +32,7 @@ d36c5471ba55fae953eb60db3b7da6ed18360809 data/varan-deco/tags/item/deco_smithing
 5021e7d5f722cc7f75a1281f53826089da591ae8 data/varan-deco/tags/item/driftwood_logs.json
 7438cb1f15178c6a48abc8b192db0bc54c936a39 data/varan-deco/tags/item/furnaces.json
 ffd53d52d0d0c9f59dd8ca26d1814b40256dbf24 data/varan-deco/tags/item/giant_mushroom_blocks.json
+fe982dd1fbae0013c7e06d9f04ab43e399099d8b data/varan-deco/tags/item/hanging_lamps.json
 e41c9b7ad2daf38720c64f6ef72d9d77be6b5f88 data/varan-deco/tags/item/iron_cap_stem.json
 2912a9fa51854772cd70708615b52a0175799ff3 data/varan-deco/tags/item/log_slabs.json
 7c238fc4271e5f065f5a4f461b196f13693e0c2a data/varan-deco/tags/item/log_stairs.json
@@ -45,7 +46,7 @@ c26a5a52b370166be8b3befd42dd732bf0383c85 data/varan-deco/tags/item/mosaic_stairs
 d5aebde1fd1141df86b6ed4ace3f720504b32ab2 data/varan-deco/tags/item/soul_ground_blocks.json
 fabde9b1f1292ea44d1ae619e883e51593511fa9 data/varan-deco/tags/item/water_items.json
 07245fab3d8730fd93e3364988d68f22faa017d0 data/varan-deco/tags/item/wet_driftwood_logs.json
-db710215101a30afbe3f1785f60538532dc056ac data/varan-deco/tags/item/wildflowers.json
+e0c4fffb0980d2d17c38a9f92e55fdbac7857599 data/varan-deco/tags/item/wildflowers.json
 ad28c0bb1c555dcb6bd3a12831d5034f264c7fed data/varan-deco/tags/item/wooden_barrels.json
 36be714fbf22e7bae87185113ad12ba45a27e152 data/varan-deco/tags/item/wooden_bookshelf_slab.json
 b3bd574301d5d08f842437f146340d9d3770879b data/varan-deco/tags/item/wooden_bookshelf_stairs.json

@@ -191,7 +191,9 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Obtain all Different Types of Crafting Table",
+    "description": {
+      "translate": "advancements.varan-deco.crafting_table.description"
+    },
     "frame": "challenge",
     "hidden": false,
     "icon": {
@@ -199,7 +201,9 @@
       "id": "minecraft:crafting_table"
     },
     "show_toast": true,
-    "title": "The Crafting Collector"
+    "title":{
+      "translate": "advancements.varan-deco.crafting_table.title"
+    }
   },
   "requirements": [
     [

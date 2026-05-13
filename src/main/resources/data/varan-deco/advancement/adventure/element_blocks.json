@@ -48,7 +48,9 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Collect or Craft all Four Element Blocks",
+    "description": {
+      "translate": "advancements.varan-deco.element_blocks.description"
+    },
     "frame": "task",
     "hidden": true,
     "icon": {
@@ -56,7 +58,9 @@
       "id": "minecraft:wind_block"
     },
     "show_toast": true,
-    "title": "Earth, Fire, Water, Air in Blocks"
+    "title": {
+      "translate": "advancements.varan-deco.element_blocks.title"
+    }
   },
   "requirements": [
     [

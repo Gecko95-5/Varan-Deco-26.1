@@ -14,7 +14,9 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Obtain a Bubble Orb",
+    "description": {
+      "translate": "advancements.varan-deco.bubble_orb.description"
+    },
     "frame": "task",
     "hidden": false,
     "icon": {
@@ -22,7 +24,9 @@
       "id": "minecraft:bubble_orb"
     },
     "show_toast": true,
-    "title": "The Orb found in the Ocean Depths"
+    "title": {
+      "translate": "advancements.varan-deco.bubble_orb.title"
+    }
   },
   "requirements": [
     [

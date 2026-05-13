@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:polished_black_sandstone",
+  "result": {
+    "count": 1,
+    "id": "minecraft:black_sandstone_bricks"
+  }
+}

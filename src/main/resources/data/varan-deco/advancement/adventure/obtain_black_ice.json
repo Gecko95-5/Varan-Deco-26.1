@@ -16,7 +16,9 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Crafted a very Dense Block of Ice",
+    "description": {
+      "translate": "advancements.varan-deco.black_ice.description"
+    },
     "frame": "task",
     "hidden": true,
     "icon": {
@@ -24,7 +26,9 @@
       "id": "minecraft:black_ice"
     },
     "show_toast": true,
-    "title": "To Dangerous to Be Place"
+    "title": {
+      "translate": "advancements.varan-deco.black_ice.title"
+    }
   },
   "requirements": [
     [

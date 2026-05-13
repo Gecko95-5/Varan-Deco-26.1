@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/carpet_tinted",
-  "textures": {
-    "wool": "minecraft:block/grass_block_base"
-  }
-}

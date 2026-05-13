@@ -2,6 +2,7 @@
   "item.minecraft.snow_brick": "Snow Brick",
   "item.minecraft.cactus_sign": "Cactus Sign",
   "item.minecraft.mushroom_sign": "Mushroom Sign",
+  "item.varan-deco.iron_cap_sign": "Iron Cap Sign",
   "item.minecraft.iron_cap_sign": "Iron Cap Sign",
   "item.minecraft.wooden_sign": "Wooden Sign",
   "item.minecraft.driftwood_sign": "Driftwood Sign",
@@ -321,41 +322,137 @@
   "block.minecraft.light_prismarine_slab": "Light Prismarine Slab",
   "block.minecraft.light_prismarine_wall": "Light Prismarine Wall",
 
-  "block.minecraft.soul_soilstone": "Soul Soilstone",
-  "block.minecraft.soul_soilstone_stairs": "Soul Soilstone Stairs",
-  "block.minecraft.soul_soilstone_slab": "Soul Soilstone Slab",
-  "block.minecraft.soul_soilstone_wall": "Soul Soilstone Wall",
+  "block.minecraft.soul_soilstone": "Soulstone",
+  "block.minecraft.soul_soilstone_stairs": "Soulstone Stairs",
+  "block.minecraft.soul_soilstone_slab": "Soulstone Slab",
+  "block.minecraft.soul_soilstone_wall": "Soulstone Wall",
 
-  "block.minecraft.cut_soul_soilstone": "Cut Soul Soilstone",
-  "block.minecraft.cut_soul_soilstone_stairs": "Cut Soul Soilstone Stairs",
-  "block.minecraft.cut_soul_soilstone_slab": "Cut Soul Soilstone Slab",
-  "block.minecraft.cut_soul_soilstone_wall": "Cut Soul Soilstone Wall",
+  "block.minecraft.cut_soul_soilstone": "Cut Soulstone",
+  "block.minecraft.cut_soul_soilstone_stairs": "Cut Soulstone Stairs",
+  "block.minecraft.cut_soul_soilstone_slab": "Cut Soulstone Slab",
+  "block.minecraft.cut_soul_soilstone_wall": "Cut Soulstone Wall",
 
-  "block.minecraft.cut_soul_soilstone_bricks": "Cut Soul Soilstone Bricks",
-  "block.minecraft.cut_soul_soilstone_brick_stairs": "Cut Soul Soilstone Brick Stairs",
-  "block.minecraft.cut_soul_soilstone_brick_slab": "Cut Soul Soilstone Brick Slab",
-  "block.minecraft.cut_soul_soilstone_brick_wall": "Cut Soul Soilstone Brick Wall",
+  "block.minecraft.cut_soul_soilstone_bricks": "Cut Soulstone Bricks",
+  "block.minecraft.cut_soul_soilstone_brick_stairs": "Cut Soulstone Brick Stairs",
+  "block.minecraft.cut_soul_soilstone_brick_slab": "Cut Soulstone Brick Slab",
+  "block.minecraft.cut_soul_soilstone_brick_wall": "Cut Soulstone Brick Wall",
 
-  "block.minecraft.smooth_soul_soilstone": "Smooth Soul Soilstone",
-  "block.minecraft.smooth_soul_soilstone_stairs": "Smooth Soul Soilstone Stairs",
-  "block.minecraft.smooth_soul_soilstone_slab": "Smooth Soul Soilstone Slab",
-  "block.minecraft.smooth_soul_soilstone_wall": "Smooth Soul Soilstone Wall",
+  "block.minecraft.smooth_soul_soilstone": "Smooth Soulstone",
+  "block.minecraft.smooth_soul_soilstone_stairs": "Smooth Soulstone Stairs",
+  "block.minecraft.smooth_soul_soilstone_slab": "Smooth Soulstone Slab",
+  "block.minecraft.smooth_soul_soilstone_wall": "Smooth Soulstone Wall",
 
-  "block.minecraft.cobbled_soul_soilstone": "Cobbled Soul Soilstone",
-  "block.minecraft.cobbled_soul_soilstone_stairs": "Cobbled Soul Soilstone Stairs",
-  "block.minecraft.cobbled_soul_soilstone_slab": "Cobbled Soul Soilstone Slab",
-  "block.minecraft.cobbled_soul_soilstone_wall": "Cobbled Soul Soilstone Wall",
+  "block.minecraft.cobbled_soul_soilstone": "Cobbled Soulstone",
+  "block.minecraft.cobbled_soul_soilstone_stairs": "Cobbled Soulstone Stairs",
+  "block.minecraft.cobbled_soul_soilstone_slab": "Cobbled Soulstone Slab",
+  "block.minecraft.cobbled_soul_soilstone_wall": "Cobbled Soulstone Wall",
 
-  "block.minecraft.polished_soul_soilstone": "Polished Soul Soilstone",
-  "block.minecraft.polished_soul_soilstone_stairs": "Polished Soul Soilstone Stairs",
-  "block.minecraft.polished_soul_soilstone_slab": "Polished Soul Soilstone Slab",
-  "block.minecraft.polished_soul_soilstone_wall": "Polished Soul Soilstone Wall",
-  "block.minecraft.chiseled_polished_soul_soilstone": "Chiseled Polished Soul Soilstone",
+  "block.minecraft.polished_soul_soilstone": "Polished Soulstone",
+  "block.minecraft.polished_soul_soilstone_stairs": "Polished Soulstone Stairs",
+  "block.minecraft.polished_soul_soilstone_slab": "Polished Soulstone Slab",
+  "block.minecraft.polished_soul_soilstone_wall": "Polished Soulstone Wall",
+  "block.minecraft.chiseled_polished_soul_soilstone": "Chiseled Polished Soulstone",
 
-  "block.minecraft.soul_soilstone_bricks": "Polished Soul Soilstone Bricks",
-  "block.minecraft.soul_soilstone_brick_stairs": "Polished Soul Soilstone Brick Stairs",
-  "block.minecraft.soul_soilstone_brick_slab": "Polished Soul Soilstone Brick Slab",
-  "block.minecraft.soul_soilstone_brick_wall": "Polished Soul Soilstone Brick Wall",
+  "block.minecraft.soul_soilstone_bricks": "Polished Soulstone Bricks",
+  "block.minecraft.soul_soilstone_brick_stairs": "Polished Soulstone Brick Stairs",
+  "block.minecraft.soul_soilstone_brick_slab": "Polished Soulstone Brick Slab",
+  "block.minecraft.soul_soilstone_brick_wall": "Polished Soulstone Brick Wall",
+
+  "block.minecraft.chiseled_soul_soilstone": "Chiseled Soulstone",
+
+  "block.minecraft.white_sand": "White Sand",
+  "block.minecraft.white_sand_stairs": "White Sand Stairs",
+  "block.minecraft.white_sand_slab": "White Sand Slab",
+  "block.minecraft.white_sand_carpet": "White Sand Carpet",
+
+  "block.minecraft.white_sandstone": "White Sandstone",
+  "block.minecraft.white_sandstone_stairs": "White Sandstone Stairs",
+  "block.minecraft.white_sandstone_slab": "White Sandstone Slab",
+  "block.minecraft.white_sandstone_wall": "White Sandstone Wall",
+
+  "block.minecraft.cut_white_sandstone": "Cut White Sandstone",
+  "block.minecraft.cut_white_sandstone_stairs": "Cut White Sandstone Stairs",
+  "block.minecraft.cut_white_sandstone_slab": "Cut White Sandstone Slab",
+  "block.minecraft.cut_white_sandstone_wall": "Cut White Sandstone Wall",
+
+  "block.minecraft.cut_white_sandstone_bricks": "Cut White Sandstone Bricks",
+  "block.minecraft.cut_white_sandstone_brick_stairs": "Cut White Sandstone Brick Stairs",
+  "block.minecraft.cut_white_sandstone_brick_slab": "Cut White Sandstone Brick Slab",
+  "block.minecraft.cut_white_sandstone_brick_wall": "Cut White Sandstone Brick Wall",
+
+  "block.minecraft.smooth_white_sandstone": "Smooth White Sandstone",
+  "block.minecraft.smooth_white_sandstone_stairs": "Smooth White Sandstone Stairs",
+  "block.minecraft.smooth_white_sandstone_slab": "Smooth White Sandstone Slab",
+  "block.minecraft.smooth_white_sandstone_wall": "Smooth White Sandstone Wall",
+
+  "block.minecraft.cobbled_white_sandstone": "Cobbled White Sandstone",
+  "block.minecraft.cobbled_white_sandstone_stairs": "Cobbled White Sandstone Stairs",
+  "block.minecraft.cobbled_white_sandstone_slab": "Cobbled White Sandstone Slab",
+  "block.minecraft.cobbled_white_sandstone_wall": "Cobbled White Sandstone Wall",
+
+  "block.minecraft.polished_white_sandstone": "Polished White Sandstone",
+  "block.minecraft.polished_white_sandstone_stairs": "Polished White Sandstone Stairs",
+  "block.minecraft.polished_white_sandstone_slab": "Polished White Sandstone Slab",
+  "block.minecraft.polished_white_sandstone_wall": "Polished White Sandstone Wall",
+  "block.minecraft.chiseled_polished_white_sandstone": "Chiseled Polished White Sandstone",
+
+  "block.minecraft.white_sandstone_bricks": "Polished White Sandstone Bricks",
+  "block.minecraft.white_sandstone_brick_stairs": "Polished White Sandstone Brick Stairs",
+  "block.minecraft.white_sandstone_brick_slab": "Polished White Sandstone Brick Slab",
+  "block.minecraft.white_sandstone_brick_wall": "Polished White Sandstone Brick Wall",
+
+  "block.minecraft.chiseled_white_sandstone": "Chiseled White Sandstone",
+
+  "block.minecraft.black_sand": "Black Sand",
+  "block.minecraft.black_sand_stairs": "Black Sand Stairs",
+  "block.minecraft.black_sand_slab": "Black Sand Slab",
+  "block.minecraft.black_sand_carpet": "Black Sand Carpet",
+
+  "block.minecraft.black_sandstone": "Black Sandstone",
+  "block.minecraft.black_sandstone_stairs": "Black Sandstone Stairs",
+  "block.minecraft.black_sandstone_slab": "Black Sandstone Slab",
+  "block.minecraft.black_sandstone_wall": "Black Sandstone Wall",
+
+  "block.minecraft.cut_black_sandstone": "Cut Black Sandstone",
+  "block.minecraft.cut_black_sandstone_stairs": "Cut Black Sandstone Stairs",
+  "block.minecraft.cut_black_sandstone_slab": "Cut Black Sandstone Slab",
+  "block.minecraft.cut_black_sandstone_wall": "Cut Black Sandstone Wall",
+
+  "block.minecraft.cut_black_sandstone_bricks": "Cut Black Sandstone Bricks",
+  "block.minecraft.cut_black_sandstone_brick_stairs": "Cut Black Sandstone Brick Stairs",
+  "block.minecraft.cut_black_sandstone_brick_slab": "Cut Black Sandstone Brick Slab",
+  "block.minecraft.cut_black_sandstone_brick_wall": "Cut Black Sandstone Brick Wall",
+
+  "block.minecraft.smooth_black_sandstone": "Smooth Black Sandstone",
+  "block.minecraft.smooth_black_sandstone_stairs": "Smooth Black Sandstone Stairs",
+  "block.minecraft.smooth_black_sandstone_slab": "Smooth Black Sandstone Slab",
+  "block.minecraft.smooth_black_sandstone_wall": "Smooth Black Sandstone Wall",
+
+  "block.minecraft.cobbled_black_sandstone": "Cobbled Black Sandstone",
+  "block.minecraft.cobbled_black_sandstone_stairs": "Cobbled Black Sandstone Stairs",
+  "block.minecraft.cobbled_black_sandstone_slab": "Cobbled Black Sandstone Slab",
+  "block.minecraft.cobbled_black_sandstone_wall": "Cobbled Black Sandstone Wall",
+
+  "block.minecraft.polished_black_sandstone": "Polished Black Sandstone",
+  "block.minecraft.polished_black_sandstone_stairs": "Polished Black Sandstone Stairs",
+  "block.minecraft.polished_black_sandstone_slab": "Polished Black Sandstone Slab",
+  "block.minecraft.polished_black_sandstone_wall": "Polished Black Sandstone Wall",
+  "block.minecraft.chiseled_polished_black_sandstone": "Chiseled Polished Black Sandstone",
+
+  "block.minecraft.black_sandstone_bricks": "Polished Black Sandstone Bricks",
+  "block.minecraft.black_sandstone_brick_stairs": "Polished Black Sandstone Brick Stairs",
+  "block.minecraft.black_sandstone_brick_slab": "Polished Black Sandstone Brick Slab",
+  "block.minecraft.black_sandstone_brick_wall": "Polished Black Sandstone Brick Wall",
+
+  "block.minecraft.chiseled_black_sandstone": "Chiseled Black Sandstone",
+
+  "block.minecraft.gold_lantern": "Golden Lantern",
+  "block.minecraft.gold_soul_lantern": "Golden Soul Lantern",
+
+  "block.minecraft.iron_bar_door": "Iron Bar Door",
+  "block.minecraft.iron_bar_trapdoor": "Iron Bar Trapdoor",
+  "block.minecraft.gold_bar_door": "Golden Bar Door",
+  "block.minecraft.gold_bar_trapdoor": "Golden Bar Trapdoor",
 
   "block.minecraft.quartz_wall": "Quartz Wall",
   "block.minecraft.smooth_quartz_wall": "Smooth Quartz Wall",
@@ -368,8 +465,6 @@
   "block.minecraft.cut_quartz_stairs": "Cut Quartz Stairs",
   "block.minecraft.cut_quartz_slab": "Cut Quartz Slab",
   "block.minecraft.cut_quartz_wall": "Cut Quartz Wall",
-
-  "block.minecraft.chiseled_soul_soilstone": "Chiseled Soul Soilstone",
 
   "block.minecraft.chiseled_red_nether_bricks": "Chiseled Red Nether Bricks",
   "block.minecraft.cracked_red_nether_bricks": "Cracked Red Nether Bricks",
@@ -1378,7 +1473,25 @@
   "block.minecraft.blue_delphinium": "Blue Delphinium",
   "block.minecraft.potted_blue_delphinium": "Potted Blue Delphinium",
 
+  "block.minecraft.taiga_dandelion": "Taiga Dandelion",
+  "block.minecraft.potted_taiga_dandelion": "Potted Taiga Dandelion",
+
+  "block.minecraft.fern_lavender": "Fern Lavender",
+  "block.minecraft.potted_fern_lavender": "Potted Fern Lavender",
+
+  "block.minecraft.caramel_buttercup": "Caramel Buttercup",
+  "block.minecraft.potted_caramel_buttercup": "Potted Caramel Buttercup",
+
+  "block.minecraft.silver_rose": "Silver Rose",
+  "block.minecraft.potted_silver_rose": "Potted Silver Rose",
+
+  "block.minecraft.alpine_speedwell": "Alpine Speedwell",
+  "block.minecraft.potted_alpine_speedwell": "Potted Alpine Speedwell",
+
   "block.minecraft.mega_brown_tulip": "Brown Mega Tulip",
+  "block.minecraft.mega_gray_tulip": "Gray Mega Tulip",
+
+  "block.minecraft.gold_chain": "Gold Chain",
 
   "block.minecraft.jack_o_soul_lantern": "Jack-O-Soul Lantern",
 
@@ -1882,6 +1995,8 @@
   "block.minecraft.rouge_wildflowers": "Wildflower",
   "block.minecraft.sweet_wildflowers": "Wildflower",
   "block.minecraft.gecko_wildflowers": "Wildflower",
+  "block.minecraft.sea_wildflowers": "Wildflower",
+  "block.minecraft.monochrome_wildflowers": "Wildflower",
 
   "block.minecraft.cut_calcite": "Cut Calcite",
 
@@ -2526,7 +2641,124 @@
   "block.minecraft.smooth_resin_slab": "Smooth Resin Slab",
   "block.minecraft.smooth_resin_wall": "Smooth Resin Wall",
 
-  "effect.varan-deco.grounded": "Grounded",
+  "effect.minecraft.grounded": "Grounded",
+
+  "block.minecraft.coal_stairs": "Coal Stairs",
+  "block.minecraft.coal_slab": "Coal Slab",
+  "block.minecraft.coal_wall": "Coal Wall",
+
+  "block.minecraft.coal_bricks": "Coal Bricks",
+
+  "block.minecraft.coal_brick_stairs": "Coal Brick Stairs",
+  "block.minecraft.coal_brick_slab": "Coal Brick Slab",
+  "block.minecraft.coal_brick_wall": "Coal Brick Wall",
+
+  "block.minecraft.chiseled_coal_bricks": "Chiseled Coal Bricks",
+
+  "block.minecraft.charcoal_stairs": "Charcoal Stairs",
+  "block.minecraft.charcoal_slab": "Charcoal Slab",
+  "block.minecraft.charcoal_wall": "Charcoal Wall",
+
+  "block.minecraft.hanging_lamp": "Hanging Lamp",
+
+  "block.minecraft.hanging_white_lamp": "Hanging White Lamp",
+  "block.minecraft.hanging_light_gray_lamp": "Hanging Light Gray Lamp",
+  "block.minecraft.hanging_gray_lamp": "Hanging Gray Lamp",
+  "block.minecraft.hanging_black_lamp": "Hanging Black Lamp",
+  "block.minecraft.hanging_brown_lamp": "Hanging Brown Lamp",
+  "block.minecraft.hanging_red_lamp": "Hanging Red Lamp",
+  "block.minecraft.hanging_orange_lamp": "Hanging Orange Lamp",
+  "block.minecraft.hanging_yellow_lamp": "Hanging Yellow Lamp",
+  "block.minecraft.hanging_lime_lamp": "Hanging Lime Lamp",
+  "block.minecraft.hanging_green_lamp": "Hanging Green Lamp",
+  "block.minecraft.hanging_cyan_lamp": "Hanging Cyan Lamp",
+  "block.minecraft.hanging_light_blue_lamp": "Hanging Light Blue Lamp",
+  "block.minecraft.hanging_blue_lamp": "Hanging Blue Lamp",
+  "block.minecraft.hanging_purple_lamp": "Hanging Purple Lamp",
+  "block.minecraft.hanging_magenta_lamp": "Hanging Magenta Lamp",
+  "block.minecraft.hanging_pink_lamp": "Hanging Pink Lamp",
+
+  "block.minecraft.glowing_glass": "Glowing Glass",
+  "block.minecraft.glowing_glass_pane": "Glowing Glass Pane",
+  "block.minecraft.hardened_glowing_glass": "Hardened Glowing Glass",
+  "block.minecraft.hardened_glowing_glass_pane": "Hardened Glowing Glass Pane",
+
+  "block.minecraft.sand_stairs": "Sand Stairs",
+  "block.minecraft.sand_slab": "Sand Slab",
+  "block.minecraft.sand_carpet": "Sand Carpet",
+
+  "block.minecraft.red_sand_stairs": "Red Sand Stairs",
+  "block.minecraft.red_sand_slab": "Red Sand Slab",
+  "block.minecraft.red_sand_carpet": "Red Sand Carpet",
+
+  "block.minecraft.gravel_stairs": "Gravel Stairs",
+  "block.minecraft.gravel_slab": "Gravel Slab",
+  "block.minecraft.gravel_carpet": "Gravel Carpet",
+
+  "block.minecraft.flint_stairs": "Flint Stairs",
+  "block.minecraft.flint_slab": "Flint Slab",
+  "block.minecraft.flint_wall": "Flint Wall",
+
+  "block.minecraft.amethyst_stairs": "Amethyst Stairs",
+  "block.minecraft.amethyst_slab": "Amethyst Slab",
+  "block.minecraft.amethyst_wall": "Amethyst Wall",
+
+  "block.minecraft.echo_stairs": "Echo Stairs",
+  "block.minecraft.echo_slab": "Echo Slab",
+  "block.minecraft.echo_wall": "Echo Wall",
+
+  "block.minecraft.shined_amethyst": "Shined Amethyst Block",
+  "block.minecraft.shined_amethyst_stairs": "Shined Amethyst Stairs",
+  "block.minecraft.shined_amethyst_slab": "Shined Amethyst Slab",
+  "block.minecraft.shined_amethyst_wall": "Shined Amethyst Wall",
+
+  "block.minecraft.shined_echo": "Shined Echo Block",
+  "block.minecraft.shined_echo_stairs": "Shined Echo Stairs",
+  "block.minecraft.shined_echo_slab": "Shined Echo Slab",
+  "block.minecraft.shined_echo_wall": "Shined Echo Wall",
+
+  "block.minecraft.amethyst_pillar": "Amethyst Pillar",
+  "block.minecraft.echo_pillar": "Echo Pillar",
+
+  "block.minecraft.scattered_amethyst": "Scattered Amethyst Block",
+  "block.minecraft.scattered_amethyst_stairs": "Scattered Amethyst Stairs",
+  "block.minecraft.scattered_amethyst_slab": "Scattered Amethyst Slab",
+  "block.minecraft.scattered_amethyst_wall": "Scattered Amethyst Wall",
+
+  "block.minecraft.scattered_echo": "Scattered Echo Block",
+  "block.minecraft.scattered_echo_stairs": "Scattered Echo Stairs",
+  "block.minecraft.scattered_echo_slab": "Scattered Echo Slab",
+  "block.minecraft.scattered_echo_wall": "Scattered Echo Wall",
+
+  "block.minecraft.amethyst_bricks": "Amethyst Bricks",
+  "block.minecraft.amethyst_brick_stairs": "Amethyst Brick Stairs",
+  "block.minecraft.amethyst_brick_slab": "Amethyst Brick Slab",
+  "block.minecraft.amethyst_brick_wall": "Amethyst Brick Wall",
+
+  "block.minecraft.echo_bricks": "Echo Bricks",
+  "block.minecraft.echo_brick_stairs": "Echo Brick Stairs",
+  "block.minecraft.echo_brick_slab": "Echo Brick Slab",
+  "block.minecraft.echo_brick_wall": "Echo Brick Wall",
+
+  "block.minecraft.copper_bar_door": "Copper Bar Door",
+  "block.minecraft.copper_bar_trapdoor": "Copper Bar Trapdoor",
+  "block.minecraft.waxed_copper_bar_door": "Waxed Copper Bar Door",
+  "block.minecraft.waxed_copper_bar_trapdoor": "Waxed Copper Bar Trapdoor",
+
+  "block.minecraft.exposed_copper_bar_door": "Exposed Copper Bar Door",
+  "block.minecraft.exposed_copper_bar_trapdoor": "Exposed Copper Bar Trapdoor",
+  "block.minecraft.waxed_exposed_copper_bar_door": "Waxed Exposed Copper Bar Door",
+  "block.minecraft.waxed_exposed_copper_bar_trapdoor": "Waxed Exposed Copper Bar Trapdoor",
+
+  "block.minecraft.weathered_copper_bar_door": "Weathered Copper Bar Door",
+  "block.minecraft.weathered_copper_bar_trapdoor": "Weathered Copper Bar Trapdoor",
+  "block.minecraft.waxed_weathered_copper_bar_door": "Waxed Weathered Copper Bar Door",
+  "block.minecraft.waxed_weathered_copper_bar_trapdoor": "Waxed Weathered Copper Bar Trapdoor",
+
+  "block.minecraft.oxidized_copper_bar_door": "Oxidized Copper Bar Door",
+  "block.minecraft.oxidized_copper_bar_trapdoor": "Oxidized Copper Bar Trapdoor",
+  "block.minecraft.waxed_oxidized_copper_bar_door": "Waxed Oxidized Copper Bar Door",
+  "block.minecraft.waxed_oxidized_copper_bar_trapdoor": "Waxed Oxidized Copper Bar Trapdoor",
 
   "item.minecraft.potion.effect.bubble_potion": "Water Bubble Potion",
   "item.minecraft.splash_potion.effect.bubble_potion": "Splash Potion of The Water Bubble",
@@ -2624,6 +2856,43 @@
   "entity.minecraft.iron_cap_chest_raft": "Iron Cap Raft with Chest",
   "entity.minecraft.wooden_raft": "Wooden Raft",
   "entity.minecraft.wooden_chest_raft": "Wooden Raft with Chest",
+
+  "tooltip.varan-deco.nonStationBlock": "This Block is not able to be used by Villagers",
+
+  "advancements.varan-deco.crafting_table.title": "The Crafting Collector",
+  "advancements.varan-deco.crafting_table.description": "Obtain all Different Types of Crafting Table",
+  "advancements.varan-deco.smelting_blocks.title": "Smelting a Million",
+  "advancements.varan-deco.smelting_blocks.description": "Obtain all the Smelting Blocks",
+  "advancements.varan-deco.bubble_elevator.title": "The Best Two in One",
+  "advancements.varan-deco.bubble_elevator.description": "Craft the Bubble Elevator Block",
+  "advancements.varan-deco.black_ice.title": "To Dangerous to Be Place",
+  "advancements.varan-deco.black_ice.description": "Crafted a very Dense Block of Ice",
+  "advancements.varan-deco.bubble_orb.title": "The Orb found in the Ocean Depths",
+  "advancements.varan-deco.bubble_orb.description": "Obtain a Bubble Orb",
+  "advancements.varan-deco.fragile_ice.title": "More Fragile than Glass",
+  "advancements.varan-deco.fragile_ice.description": "Obtain a Fragile Ice Block, Try not to Step on it",
+  "advancements.varan-deco.hardened_glass.title": "As Tough as Obsidian",
+  "advancements.varan-deco.hardened_glass.description": "Crafted Hardened Glass",
+  "advancements.varan-deco.element_blocks.title": "Earth, Fire, Water, Air in Blocks",
+  "advancements.varan-deco.element_blocks.description": "Collect or Craft all Four Element Blocks",
+  "advancements.varan-deco.earth_sphere.title": "A small piece of World",
+  "advancements.varan-deco.earth_sphere.description": "Craft an Earth Sphere with Mud & Soil",
+
+  "advancements.varan-deco.flowers.title": "Petals of Power",
+  "advancements.varan-deco.flowers.description": "Obtain any Flower",
+  "advancements.varan-deco.wooden_sapling.title": "The Wood of Woods",
+  "advancements.varan-deco.wooden_sapling.description": "Obtain a Wooden Saplings",
+  "advancements.varan-deco.tulips.title": "The Tulip Gardener",
+  "advancements.varan-deco.tulips.description": "Collect all the Different type of Tulips",
+  "advancements.varan-deco.daisy.title": "Dandy Daisies",
+  "advancements.varan-deco.daisy.description": "Collect all the Different type of Daisies",
+
+  "advancements.varan-deco.blaze_snow_brick.title": "Chill Out",
+  "advancements.varan-deco.blaze_snow_brick.description": "Kill a Blaze with a Snow Brick",
+  "advancements.varan-deco.coloured_lamp.title": "Coloured Lamp encased in Glass",
+  "advancements.varan-deco.coloured_lamp.description": "Crafted a Colour Lamp with Stained Glass Panes",
+  "advancements.varan-deco.smooth_glowstone.title": "A Smooth Beacon of Light",
+  "advancements.varan-deco.smooth_glowstone.description": "Smelt a Block of Smooth Glowstone",
 
   "itemgroup.varan_deco_blocks": "Variant Decoration"
 }

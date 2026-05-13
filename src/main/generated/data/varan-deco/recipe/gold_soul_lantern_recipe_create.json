@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:gold_nugget",
+    "-": "minecraft:soul_torch"
+  },
+  "pattern": [
+    "---",
+    "-#-",
+    "---"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:gold_soul_lantern"
+  }
+}

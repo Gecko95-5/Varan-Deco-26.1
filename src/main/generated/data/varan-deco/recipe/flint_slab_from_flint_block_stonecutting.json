@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:flint_block",
+  "result": {
+    "count": 2,
+    "id": "minecraft:flint_slab"
+  }
+}

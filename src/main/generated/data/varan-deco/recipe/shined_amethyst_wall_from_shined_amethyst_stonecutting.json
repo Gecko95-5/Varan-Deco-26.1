@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:shined_amethyst",
+  "result": {
+    "count": 1,
+    "id": "minecraft:shined_amethyst_wall"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/coal_brick_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/coal_bricks"
+    },
+    "type=top": {
+      "model": "minecraft:block/coal_brick_slab_top"
+    }
+  }
+}

@@ -6,8 +6,8 @@
     "#": "minecraft:hydrated_fire_coral"
   },
   "pattern": [
-    "##",
-    "##"
+    "#",
+    "#"
   ],
   "result": {
     "count": 1,

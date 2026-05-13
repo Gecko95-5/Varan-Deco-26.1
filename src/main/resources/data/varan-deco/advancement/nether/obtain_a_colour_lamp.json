@@ -14,14 +14,18 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Crafted a Colour Lamp with Stained Glass Panes",
+    "description": {
+      "translate": "advancements.varan-deco.coloured_lamp.description"
+    },
     "frame": "task",
     "hidden": false,
     "icon": {
       "id": "minecraft:red_lamp"
     },
     "show_toast": true,
-    "title": "Coloured Lamp encased in Glass"
+    "title": {
+      "translate": "advancements.varan-deco.coloured_lamp.title"
+    }
   },
   "requirements": [
     [

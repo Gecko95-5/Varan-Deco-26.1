@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/shined_amethyst_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/shined_amethyst"
+    },
+    "type=top": {
+      "model": "minecraft:block/shined_amethyst_slab_top"
+    }
+  }
+}

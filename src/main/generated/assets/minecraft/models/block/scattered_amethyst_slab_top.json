@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "minecraft:block/scattered_amethyst_temp",
+    "side": "minecraft:block/scattered_amethyst_temp",
+    "top": "minecraft:block/scattered_amethyst_temp"
+  }
+}

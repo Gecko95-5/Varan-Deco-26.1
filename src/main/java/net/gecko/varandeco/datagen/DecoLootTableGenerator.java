@@ -1230,6 +1230,9 @@ public class DecoLootTableGenerator extends FabricBlockLootTableProvider {
         add(Blocks.ICE, block -> this.createSingleItemTableWithSilkTouch(block, DecoItems.ICE_SHARD,
                 UniformGenerator.between(3.0F, 6.0f)));
 
+        add(Blocks.PACKED_ICE, block -> this.createSingleItemTableWithSilkTouch(block, DecoItems.ICE_SHARD,
+                UniformGenerator.between(6.0F, 9.0f)));
+
         add(Blocks.BLUE_ICE, block -> this.createSingleItemTableWithSilkTouch(block, DecoItems.ICE_SHARD,
                 UniformGenerator.between(9.0F, 12.0f)));
 
@@ -2301,6 +2304,219 @@ public class DecoLootTableGenerator extends FabricBlockLootTableProvider {
         dropSelf(DecoBlocks.MOSSY_TUFF_BRICK_STAIRS);
         add(DecoBlocks.MOSSY_TUFF_BRICK_SLAB, createSlabItemTable(DecoBlocks.MOSSY_TUFF_BRICK_SLAB));
         dropSelf(DecoBlocks.MOSSY_TUFF_BRICK_WALL);
+
+        createSilkTouchOnlyTable(DecoBlocks.GLOWING_GLASS);
+        createSilkTouchOnlyTable(DecoBlocks.GLOWING_GLASS_PANE);
+
+        dropSelf(DecoBlocks.HARDENED_GLOWING_GLASS);
+        dropSelf(DecoBlocks.HARDENED_GLOWING_GLASS_PANE);
+
+        dropSelf(DecoBlocks.TAIGA_DANDELION);
+        createPotFlowerItemTable(DecoBlocks.POTTED_TAIGA_DANDELION);
+        dropSelf(DecoBlocks.FERN_LAVENDER);
+        createPotFlowerItemTable(DecoBlocks.POTTED_FERN_LAVENDER);
+        dropSelf(DecoBlocks.CARAMEL_BUTTERCUP);
+        createPotFlowerItemTable(DecoBlocks.POTTED_CARAMEL_BUTTERCUP);
+        dropSelf(DecoBlocks.SILVER_ROSE);
+        createPotFlowerItemTable(DecoBlocks.POTTED_SILVER_ROSE);
+        dropSelf(DecoBlocks.ALPINE_SPEEDWELL);
+        createPotFlowerItemTable(DecoBlocks.POTTED_ALPINE_SPEEDWELL);
+
+        createSingleItemTable(DecoBlocks.GOLD_CHAIN);
+
+        dropSelf(DecoBlocks.COAL_STAIRS);
+        add(DecoBlocks.COAL_SLAB, createSlabItemTable(DecoBlocks.COAL_SLAB));
+        dropSelf(DecoBlocks.COAL_WALL);
+
+        dropSelf(DecoBlocks.COAL_BRICKS);
+        dropSelf(DecoBlocks.COAL_BRICK_STAIRS);
+        add(DecoBlocks.COAL_BRICK_SLAB, createSlabItemTable(DecoBlocks.COAL_BRICK_SLAB));
+        dropSelf(DecoBlocks.COAL_BRICK_WALL);
+
+        dropSelf(DecoBlocks.CHARCOAL_STAIRS);
+        add(DecoBlocks.CHARCOAL_SLAB, createSlabItemTable(DecoBlocks.CHARCOAL_SLAB));
+        dropSelf(DecoBlocks.CHARCOAL_WALL);
+
+        dropSelf(DecoBlocks.HANGING_LAMP);
+
+        dropSelf(DecoBlocks.HANGING_WHITE_LAMP);
+        dropSelf(DecoBlocks.HANGING_LIGHT_GRAY_LAMP);
+        dropSelf(DecoBlocks.HANGING_GRAY_LAMP);
+        dropSelf(DecoBlocks.HANGING_BLACK_LAMP);
+        dropSelf(DecoBlocks.HANGING_BROWN_LAMP);
+        dropSelf(DecoBlocks.HANGING_RED_LAMP);
+        dropSelf(DecoBlocks.HANGING_ORANGE_LAMP);
+        dropSelf(DecoBlocks.HANGING_YELLOW_LAMP);
+        dropSelf(DecoBlocks.HANGING_LIME_LAMP);
+        dropSelf(DecoBlocks.HANGING_GREEN_LAMP);
+        dropSelf(DecoBlocks.HANGING_CYAN_LAMP);
+        dropSelf(DecoBlocks.HANGING_LIGHT_BLUE_LAMP);
+        dropSelf(DecoBlocks.HANGING_BLUE_LAMP);
+        dropSelf(DecoBlocks.HANGING_PURPLE_LAMP);
+        dropSelf(DecoBlocks.HANGING_MAGENTA_LAMP);
+        dropSelf(DecoBlocks.HANGING_PINK_LAMP);
+
+        add(DecoBlocks.SAND_SLAB, createSlabItemTable(DecoBlocks.SAND_SLAB));
+        dropSelf(DecoBlocks.SAND_STAIRS);
+        dropSelf(DecoBlocks.SAND_CARPET);
+
+        add(DecoBlocks.RED_SAND_SLAB, createSlabItemTable(DecoBlocks.RED_SAND_SLAB));
+        dropSelf(DecoBlocks.RED_SAND_STAIRS);
+        dropSelf(DecoBlocks.RED_SAND_CARPET);
+
+        add(DecoBlocks.GRAVEL_SLAB, createSlabItemTable(DecoBlocks.GRAVEL_SLAB));
+        dropSelf(DecoBlocks.GRAVEL_STAIRS);
+        dropSelf(DecoBlocks.GRAVEL_CARPET);
+
+        dropSelf(DecoBlocks.FLINT_STAIRS);
+        add(DecoBlocks.FLINT_SLAB, createSlabItemTable(DecoBlocks.FLINT_SLAB));
+        dropSelf(DecoBlocks.FLINT_WALL);
+
+        dropSelf(DecoBlocks.WHITE_SANDSTONE);
+        dropSelf(DecoBlocks.WHITE_SANDSTONE_STAIRS);
+        add(DecoBlocks.WHITE_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.WHITE_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.WHITE_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.CUT_WHITE_SANDSTONE);
+        dropSelf(DecoBlocks.CUT_WHITE_SANDSTONE_STAIRS);
+        add(DecoBlocks.CUT_WHITE_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.CUT_WHITE_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.CUT_WHITE_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.CHISELED_WHITE_SANDSTONE);
+
+        dropSelf(DecoBlocks.SMOOTH_WHITE_SANDSTONE);
+        dropSelf(DecoBlocks.SMOOTH_WHITE_SANDSTONE_STAIRS);
+        add(DecoBlocks.SMOOTH_WHITE_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.SMOOTH_WHITE_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.SMOOTH_WHITE_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.CUT_WHITE_SANDSTONE_BRICKS);
+        dropSelf(DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_STAIRS);
+        add(DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_SLAB, createSlabItemTable(DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_SLAB));
+        dropSelf(DecoBlocks.CUT_WHITE_SANDSTONE_BRICK_WALL);
+
+        dropSelf(DecoBlocks.COBBLED_WHITE_SANDSTONE);
+        dropSelf(DecoBlocks.COBBLED_WHITE_SANDSTONE_STAIRS);
+        add(DecoBlocks.COBBLED_WHITE_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.COBBLED_WHITE_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.COBBLED_WHITE_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.POLISHED_WHITE_SANDSTONE);
+        dropSelf(DecoBlocks.POLISHED_WHITE_SANDSTONE_STAIRS);
+        add(DecoBlocks.POLISHED_WHITE_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.POLISHED_WHITE_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.POLISHED_WHITE_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.WHITE_SANDSTONE_BRICKS);
+        dropSelf(DecoBlocks.WHITE_SANDSTONE_BRICK_STAIRS);
+        add(DecoBlocks.WHITE_SANDSTONE_BRICK_SLAB, createSlabItemTable(DecoBlocks.WHITE_SANDSTONE_BRICK_SLAB));
+        dropSelf(DecoBlocks.WHITE_SANDSTONE_BRICK_WALL);
+
+        dropSelf(DecoBlocks.CHISELED_POLISHED_WHITE_SANDSTONE);
+
+        dropSelf(DecoBlocks.BLACK_SANDSTONE);
+        dropSelf(DecoBlocks.BLACK_SANDSTONE_STAIRS);
+        add(DecoBlocks.BLACK_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.BLACK_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.BLACK_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.CUT_BLACK_SANDSTONE);
+        dropSelf(DecoBlocks.CUT_BLACK_SANDSTONE_STAIRS);
+        add(DecoBlocks.CUT_BLACK_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.CUT_BLACK_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.CUT_BLACK_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.CHISELED_BLACK_SANDSTONE);
+
+        dropSelf(DecoBlocks.SMOOTH_BLACK_SANDSTONE);
+        dropSelf(DecoBlocks.SMOOTH_BLACK_SANDSTONE_STAIRS);
+        add(DecoBlocks.SMOOTH_BLACK_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.SMOOTH_BLACK_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.SMOOTH_BLACK_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.CUT_BLACK_SANDSTONE_BRICKS);
+        dropSelf(DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_STAIRS);
+        add(DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_SLAB, createSlabItemTable(DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_SLAB));
+        dropSelf(DecoBlocks.CUT_BLACK_SANDSTONE_BRICK_WALL);
+
+        dropSelf(DecoBlocks.COBBLED_BLACK_SANDSTONE);
+        dropSelf(DecoBlocks.COBBLED_BLACK_SANDSTONE_STAIRS);
+        add(DecoBlocks.COBBLED_BLACK_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.COBBLED_BLACK_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.COBBLED_BLACK_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.POLISHED_BLACK_SANDSTONE);
+        dropSelf(DecoBlocks.POLISHED_BLACK_SANDSTONE_STAIRS);
+        add(DecoBlocks.POLISHED_BLACK_SANDSTONE_SLAB, createSlabItemTable(DecoBlocks.POLISHED_BLACK_SANDSTONE_SLAB));
+        dropSelf(DecoBlocks.POLISHED_BLACK_SANDSTONE_WALL);
+
+        dropSelf(DecoBlocks.BLACK_SANDSTONE_BRICKS);
+        dropSelf(DecoBlocks.BLACK_SANDSTONE_BRICK_STAIRS);
+        add(DecoBlocks.BLACK_SANDSTONE_BRICK_SLAB, createSlabItemTable(DecoBlocks.BLACK_SANDSTONE_BRICK_SLAB));
+        dropSelf(DecoBlocks.BLACK_SANDSTONE_BRICK_WALL);
+
+        dropSelf(DecoBlocks.CHISELED_POLISHED_BLACK_SANDSTONE);
+
+        dropSelf(DecoBlocks.GOLD_LANTERN);
+        dropSelf(DecoBlocks.GOLD_SOUL_LANTERN);
+
+        dropSelf(DecoBlocks.WHITE_SAND);
+
+        add(DecoBlocks.WHITE_SAND_SLAB, createSlabItemTable(DecoBlocks.WHITE_SAND_SLAB));
+        dropSelf(DecoBlocks.WHITE_SAND_STAIRS);
+        dropSelf(DecoBlocks.WHITE_SAND_CARPET);
+
+        dropSelf(DecoBlocks.BLACK_SAND);
+
+        add(DecoBlocks.BLACK_SAND_SLAB, createSlabItemTable(DecoBlocks.BLACK_SAND_SLAB));
+        dropSelf(DecoBlocks.BLACK_SAND_STAIRS);
+        dropSelf(DecoBlocks.BLACK_SAND_CARPET);
+
+        add(DecoBlocks.IRON_BAR_DOOR, createDoorTable(DecoBlocks.IRON_BAR_DOOR));
+        dropSelf(DecoBlocks.IRON_BAR_TRAPDOOR);
+
+        add(DecoBlocks.GOLD_BAR_DOOR, createDoorTable(DecoBlocks.GOLD_BAR_DOOR));
+        dropSelf(DecoBlocks.GOLD_BAR_TRAPDOOR);
+
+        dropSelf(DecoBlocks.AMETHYST_STAIRS);
+        add(DecoBlocks.AMETHYST_SLAB, createSlabItemTable(DecoBlocks.AMETHYST_SLAB));
+        dropSelf(DecoBlocks.AMETHYST_WALL);
+
+        dropSelf(DecoBlocks.ECHO_STAIRS);
+        add(DecoBlocks.ECHO_SLAB, createSlabItemTable(DecoBlocks.ECHO_SLAB));
+        dropSelf(DecoBlocks.ECHO_WALL);
+
+        dropSelf(DecoBlocks.SHINED_AMETHYST);
+        dropSelf(DecoBlocks.SHINED_AMETHYST_STAIRS);
+        add(DecoBlocks.SHINED_AMETHYST_SLAB, createSlabItemTable(DecoBlocks.SHINED_AMETHYST_SLAB));
+        dropSelf(DecoBlocks.SHINED_AMETHYST_WALL);
+
+        dropSelf(DecoBlocks.AMETHYST_PILLAR);
+
+        dropSelf(DecoBlocks.AMETHYST_BRICKS);
+        dropSelf(DecoBlocks.AMETHYST_BRICK_STAIRS);
+        add(DecoBlocks.AMETHYST_BRICK_SLAB, createSlabItemTable(DecoBlocks.AMETHYST_BRICK_SLAB));
+        dropSelf(DecoBlocks.AMETHYST_BRICK_WALL);
+
+        dropSelf(DecoBlocks.SCATTERED_AMETHYST);
+        dropSelf(DecoBlocks.SCATTERED_AMETHYST_STAIRS);
+        add(DecoBlocks.SCATTERED_AMETHYST_SLAB, createSlabItemTable(DecoBlocks.SCATTERED_AMETHYST_SLAB));
+        dropSelf(DecoBlocks.SCATTERED_AMETHYST_WALL);
+
+        dropSelf(DecoBlocks.SHINED_ECHO);
+        dropSelf(DecoBlocks.SHINED_ECHO_STAIRS);
+        add(DecoBlocks.SHINED_ECHO_SLAB, createSlabItemTable(DecoBlocks.SHINED_ECHO_SLAB));
+        dropSelf(DecoBlocks.SHINED_ECHO_WALL);
+
+        dropSelf(DecoBlocks.ECHO_PILLAR);
+
+        dropSelf(DecoBlocks.ECHO_BRICKS);
+        dropSelf(DecoBlocks.ECHO_BRICK_STAIRS);
+        add(DecoBlocks.ECHO_BRICK_SLAB, createSlabItemTable(DecoBlocks.ECHO_BRICK_SLAB));
+        dropSelf(DecoBlocks.ECHO_BRICK_WALL);
+
+        dropSelf(DecoBlocks.SCATTERED_ECHO);
+        dropSelf(DecoBlocks.SCATTERED_ECHO_STAIRS);
+        add(DecoBlocks.SCATTERED_ECHO_SLAB, createSlabItemTable(DecoBlocks.SCATTERED_ECHO_SLAB));
+        dropSelf(DecoBlocks.SCATTERED_ECHO_WALL);
+
+        add(DecoBlocks.MEGA_GRAY_TULIP, block -> this.createSinglePropConditionTable(block, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+
+        add(DecoBlocks.SEA_WILDFLOWERS, this.createSegmentedBlockDrops(DecoBlocks.SEA_WILDFLOWERS));
+        add(DecoBlocks.MONOCHROME_WILDFLOWERS, this.createSegmentedBlockDrops(DecoBlocks.MONOCHROME_WILDFLOWERS));
     }
     public LootTable.Builder capMushroomBlockDrops(Block dropWithSilkTouch, ItemLike drop) {
         return createSilkTouchDispatchTable(

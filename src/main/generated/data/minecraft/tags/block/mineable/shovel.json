@@ -23,6 +23,23 @@
     "minecraft:rooted_dirt_wall",
     "minecraft:mud_wall",
     "minecraft:clay_wall",
-    "minecraft:dry_grass_block"
+    "minecraft:dry_grass_block",
+    "minecraft:sand_stairs",
+    "minecraft:red_sand_stairs",
+    "minecraft:gravel_stairs",
+    "minecraft:sand_slab",
+    "minecraft:red_sand_slab",
+    "minecraft:gravel_slab",
+    "minecraft:sand_carpet",
+    "minecraft:red_sand_carpet",
+    "minecraft:gravel_carpet",
+    "minecraft:white_sand",
+    "minecraft:black_sand",
+    "minecraft:white_sand_stairs",
+    "minecraft:black_sand_stairs",
+    "minecraft:white_sand_slab",
+    "minecraft:black_sand_slab",
+    "minecraft:white_sand_carpet",
+    "minecraft:black_sand_carpet"
   ]
 }

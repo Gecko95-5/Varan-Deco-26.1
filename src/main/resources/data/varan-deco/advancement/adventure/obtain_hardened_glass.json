@@ -13,13 +13,19 @@
     }
   },
   "display": {
-    "description": "Crafted Hardened Glass",
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.varan-deco.hardened_glass.description"
+    },
+    "frame": "task",
+    "hidden": false,
     "icon": {
       "count": 1,
       "id": "minecraft:hardened_glass"
     },
-    "title": "As Tough as Obsidian"
-  },
+    "title": "advancements.varan-deco.hardened_glass.title"
+  }
+},
   "requirements": [
     [
       "glass"

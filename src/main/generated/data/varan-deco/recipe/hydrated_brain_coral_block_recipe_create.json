@@ -6,8 +6,8 @@
     "#": "minecraft:hydrated_brain_coral"
   },
   "pattern": [
-    "##",
-    "##"
+    "#",
+    "#"
   ],
   "result": {
     "count": 1,

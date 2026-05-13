@@ -32,7 +32,9 @@ public class VaranDeco implements ModInitializer {
 		DecoWorldGeneration.generateWorldGen();
 		DecoPotion.registerPotions();
 		DecoFlammableBlocks.registerFlammableBlocks();
-		DecoStrippableBlocks.registerStrippables();
+		DecoTooledBlocks.registerStrippables();
+		DecoTooledBlocks.registerFlatting();
+		DecoTooledBlocks.registerTilling();
 		DecoOxidizableBlocks.registerOxidizableBlocks();
 		DecoOxidizableBlocks.registerWaxableBlocks();
 		DecoLootTableModifiers.modifyLootTables();

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/scattered_amethyst_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/scattered_amethyst_temp"
+    },
+    "type=top": {
+      "model": "minecraft:block/scattered_amethyst_slab_top"
+    }
+  }
+}

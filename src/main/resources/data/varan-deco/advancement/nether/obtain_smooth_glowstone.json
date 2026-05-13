@@ -16,14 +16,18 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Smelt a Block of Smooth Glowstone",
+    "description": {
+      "translate": "advancements.varan-deco.smooth_glowstone.description"
+    },
     "frame": "task",
     "hidden": false,
     "icon": {
       "id": "minecraft:smooth_glowstone"
     },
     "show_toast": true,
-    "title": "A Smooth Beacon of Light"
+    "title": {
+      "translate": "advancements.varan-deco.smooth_glowstone.title"
+    }
   },
   "requirements": [
     [

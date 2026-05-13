@@ -1,5 +1,9 @@
 {
   "values": [
+    "minecraft:charcoal_block",
+    "minecraft:charcoal_stairs",
+    "minecraft:charcoal_slab",
+    "minecraft:charcoal_wall",
     "#varan-deco:deco_crafting_tables",
     "#varan-deco:deco_barrels",
     "#varan-deco:deco_ladders",

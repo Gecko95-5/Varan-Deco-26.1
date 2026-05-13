@@ -14,7 +14,9 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Craft the Bubble Elevator Block",
+    "description": {
+      "translate": "advancements.varan-deco.bubble_elevator.description"
+    },
     "frame": "task",
     "hidden": true,
     "icon": {
@@ -22,7 +24,9 @@
       "id": "minecraft:bubble_elevator_block_bubble"
     },
     "show_toast": true,
-    "title": "The Best Two in One"
+    "title": {
+      "translate": "advancements.varan-deco.bubble_elevator.title"
+    }
   },
   "requirements": [
     [
