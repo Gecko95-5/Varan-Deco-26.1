@@ -2,6 +2,7 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:checkered_red_concrete",
   "result": {
+    "count": 1,
     "id": "minecraft:checkered_red_concrete_wall"
   }
 }

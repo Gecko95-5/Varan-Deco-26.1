@@ -1,6 +1,6 @@
 package net.gecko.varandeco.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.item.DecoItems;
@@ -12,7 +12,6 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -23,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 public class DecoRecipeGenerator extends FabricRecipeProvider {
 
 
-    public DecoRecipeGenerator(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public DecoRecipeGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
 
@@ -539,9 +538,8 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
         wall(RecipeCategory.DECORATIONS,DecoBlocks.CRYSTALLIZED_PRISMARINE_WALL, DecoBlocks.CRYSTALLIZED_PRISMARINE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CRYSTALLIZED_PRISMARINE_WALL, DecoBlocks.CRYSTALLIZED_PRISMARINE);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.CRYSTALLIZED_PRISMARINE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        Items.SEA_LANTERN, 0.35f, 200)
-                .unlockedBy(getHasName(DecoBlocks.CRYSTALLIZED_PRISMARINE), has(DecoBlocks.CRYSTALLIZED_PRISMARINE))
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.CRYSTALLIZED_PRISMARINE), RecipeCategory.BUILDING_BLOCKS, Items.SEA_LANTERN,
+                0.35f, 200).unlockedBy(getHasName(DecoBlocks.CRYSTALLIZED_PRISMARINE), has(DecoBlocks.CRYSTALLIZED_PRISMARINE))
                 .save(output,"sea_lantern_from_smelting"+ "_recipe_create");
 
         polished(RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CRYSTALLIZED_PRISMARINE_BRICKS, DecoBlocks.CRYSTALLIZED_PRISMARINE);
@@ -682,8 +680,7 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
         chiseled(RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CHISELED_SOUL_SOILSTONE, DecoBlocks.SOUL_SOILSTONE_SLAB);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CHISELED_SOUL_SOILSTONE, DecoBlocks.SOUL_SOILSTONE);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SOUL_SOILSTONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS, 
-                        DecoBlocks.SMOOTH_SOUL_SOILSTONE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SOUL_SOILSTONE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_SOUL_SOILSTONE,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.SOUL_SOILSTONE), has(DecoBlocks.SOUL_SOILSTONE))
                 .save(output,"smooth_soul_soilstone_from_smelting"+ "_recipe_create");
 
@@ -780,8 +777,7 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
                 .save(output, getSimpleRecipeName(DecoBlocks.CHISELED_RED_NETHER_BRICKS)+ "_recipe_create");
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_RED_NETHER_BRICKS, Items.RED_NETHER_BRICKS);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_NETHER_BRICKS),RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.CRACKED_RED_NETHER_BRICKS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_NETHER_BRICKS),RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_RED_NETHER_BRICKS,
                         0.1f, 200).unlockedBy(getHasName(Items.RED_NETHER_BRICKS), has(Items.RED_NETHER_BRICKS))
                 .save(output,"cracked_red_nether_bricks_from_smelting"+ "_recipe_create");
 
@@ -832,8 +828,7 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
                 .save(output, getSimpleRecipeName(DecoBlocks.CHISELED_BLUE_NETHER_BRICKS)+ "_recipe_create");
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CHISELED_BLUE_NETHER_BRICKS, DecoBlocks.BLUE_NETHER_BRICKS);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICKS),RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.CRACKED_BLUE_NETHER_BRICKS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICKS),RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_BLUE_NETHER_BRICKS,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLUE_NETHER_BRICKS), has(DecoBlocks.BLUE_NETHER_BRICKS))
                 .save(output, getSimpleRecipeName(DecoBlocks.CRACKED_BLUE_NETHER_BRICKS)+ "_recipe_create");
 
@@ -2515,8 +2510,7 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
 
         stainedGlassPaneFromStainedGlass(DecoBlocks.HARDENED_BLACK_STAINED_GLASS_PANE, DecoBlocks.HARDENED_BLACK_STAINED_GLASS);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE),RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.SMOOTH_DEEPSLATE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE),RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_DEEPSLATE,
                         0.1f, 200).unlockedBy(getHasName(Items.DEEPSLATE), has(Items.DEEPSLATE))
                 .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_DEEPSLATE)+ "_recipe_create");
 
@@ -2531,8 +2525,7 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
         wall(RecipeCategory.DECORATIONS,DecoBlocks.SMOOTH_DEEPSLATE_WALL, DecoBlocks.SMOOTH_DEEPSLATE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS,DecoBlocks.SMOOTH_DEEPSLATE_WALL, DecoBlocks.SMOOTH_DEEPSLATE);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACKSTONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.SMOOTH_BLACKSTONE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACKSTONE), RecipeCategory.BUILDING_BLOCKS,DecoBlocks.SMOOTH_BLACKSTONE,
                         0.1f, 200).unlockedBy(getHasName(Items.BLACKSTONE), has(Items.BLACKSTONE))
                 .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_BLACKSTONE)+ "_recipe_create");
 
@@ -2662,8 +2655,7 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
         wall(RecipeCategory.DECORATIONS,DecoBlocks.END_STONE_WALL, Items.END_STONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS,DecoBlocks.END_STONE_WALL, Items.END_STONE);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PURPUR_BLOCK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.SMOOTH_PURPUR,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PURPUR_BLOCK), RecipeCategory.BUILDING_BLOCKS,DecoBlocks.SMOOTH_PURPUR,
                         0.1f, 200).unlockedBy(getHasName(Items.PURPUR_BLOCK), has(Items.PURPUR_BLOCK))
                 .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_PURPUR)+ "_recipe_create");
 
@@ -3805,164 +3797,132 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
         hangingSign(DecoItems.CACTUS_MOSAIC_HANGING_SIGN, DecoBlocks.CACTUS_MOSAIC);
         hangingSign(DecoItems.WOODEN_MOSAIC_HANGING_SIGN, DecoBlocks.WOODEN_MOSAIC);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.WHITE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_WHITE_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.WHITE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_WHITE_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.WHITE_STAINED_GLASS), has(Items.WHITE_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_WHITE_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIGHT_GRAY_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_LIGHT_GRAY_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIGHT_GRAY_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_LIGHT_GRAY_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.LIGHT_GRAY_STAINED_GLASS), has(Items.LIGHT_GRAY_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_LIGHT_GRAY_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GRAY_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_GRAY_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GRAY_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_GRAY_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.GRAY_STAINED_GLASS), has(Items.GRAY_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_GRAY_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACK_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_BLACK_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACK_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_BLACK_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.BLACK_STAINED_GLASS), has(Items.BLACK_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_BLACK_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BROWN_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_BROWN_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BROWN_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_BROWN_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.BROWN_STAINED_GLASS), has(Items.BROWN_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_BROWN_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_RED_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_RED_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.RED_STAINED_GLASS), has(Items.RED_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_RED_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.ORANGE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_ORANGE_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.ORANGE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_ORANGE_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.ORANGE_STAINED_GLASS), has(Items.ORANGE_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_ORANGE_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.YELLOW_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_YELLOW_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.YELLOW_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_YELLOW_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.YELLOW_STAINED_GLASS), has(Items.YELLOW_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_YELLOW_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIME_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_LIME_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIME_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_LIME_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.LIME_STAINED_GLASS), has(Items.LIME_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_LIME_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GREEN_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_GREEN_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GREEN_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_GREEN_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.GREEN_STAINED_GLASS), has(Items.GREEN_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_GREEN_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.CYAN_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_CYAN_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.CYAN_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_CYAN_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.CYAN_STAINED_GLASS), has(Items.CYAN_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_CYAN_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIGHT_BLUE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_LIGHT_BLUE_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIGHT_BLUE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_LIGHT_BLUE_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.LIGHT_BLUE_STAINED_GLASS), has(Items.LIGHT_BLUE_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_LIGHT_BLUE_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLUE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_BLUE_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLUE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_BLUE_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.BLUE_STAINED_GLASS), has(Items.BLUE_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_BLUE_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PURPLE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_PURPLE_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PURPLE_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_PURPLE_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.PURPLE_STAINED_GLASS), has(Items.PURPLE_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_PURPLE_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.MAGENTA_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_MAGENTA_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.MAGENTA_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_MAGENTA_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.MAGENTA_STAINED_GLASS), has(Items.MAGENTA_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_MAGENTA_STAINED_GLASS)+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PINK_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_PINK_STAINED_GLASS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PINK_STAINED_GLASS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_PINK_STAINED_GLASS,
                         0.1f, 200).group("mosaic_glass")
                 .unlockedBy(getHasName(Items.PINK_STAINED_GLASS), has(Items.PINK_STAINED_GLASS))
                 .save(output,getSimpleRecipeName(DecoBlocks.MOSAIC_PINK_STAINED_GLASS)+ "_recipe_create");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.WHITE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_WHITE_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.WHITE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_WHITE_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.WHITE_STAINED_GLASS_PANE), has(Items.WHITE_STAINED_GLASS_PANE))
                 .save(output,"mosaic_white_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIGHT_GRAY_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_LIGHT_GRAY_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIGHT_GRAY_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_LIGHT_GRAY_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.LIGHT_GRAY_STAINED_GLASS_PANE), has(Items.LIGHT_GRAY_STAINED_GLASS_PANE))
                 .save(output,"mosaic_light_gray_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GRAY_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_GRAY_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GRAY_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_GRAY_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.GRAY_STAINED_GLASS_PANE), has(Items.GRAY_STAINED_GLASS_PANE))
                 .save(output,"mosaic_gray_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACK_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_BLACK_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACK_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_BLACK_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.BLACK_STAINED_GLASS_PANE), has(Items.BLACK_STAINED_GLASS_PANE))
                 .save(output,"mosaic_black_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BROWN_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_BROWN_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BROWN_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_BROWN_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.BROWN_STAINED_GLASS_PANE), has(Items.BROWN_STAINED_GLASS_PANE))
                 .save(output,"mosaic_brown_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_RED_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_RED_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.RED_STAINED_GLASS_PANE), has(Items.RED_STAINED_GLASS_PANE))
                 .save(output,"mosaic_red_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.ORANGE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_ORANGE_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.ORANGE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_ORANGE_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.ORANGE_STAINED_GLASS_PANE), has(Items.ORANGE_STAINED_GLASS_PANE))
                 .save(output,"mosaic_orange_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.YELLOW_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_YELLOW_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.YELLOW_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_YELLOW_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.YELLOW_STAINED_GLASS_PANE), has(Items.YELLOW_STAINED_GLASS_PANE))
                 .save(output,"mosaic_yellow_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIME_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_LIME_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIME_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_LIME_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.LIME_STAINED_GLASS_PANE), has(Items.LIME_STAINED_GLASS_PANE))
                 .save(output,"mosaic_lime_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GREEN_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_GREEN_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GREEN_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_GREEN_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.GREEN_STAINED_GLASS_PANE), has(Items.GREEN_STAINED_GLASS_PANE))
                 .save(output,"mosaic_green_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.CYAN_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_CYAN_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.CYAN_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_CYAN_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.CYAN_STAINED_GLASS_PANE), has(Items.CYAN_STAINED_GLASS_PANE))
                 .save(output,"mosaic_cyan_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIGHT_BLUE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_LIGHT_BLUE_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LIGHT_BLUE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_LIGHT_BLUE_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.LIGHT_BLUE_STAINED_GLASS_PANE), has(Items.LIGHT_BLUE_STAINED_GLASS_PANE))
                 .save(output,"mosaic_light_blue_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLUE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_BLUE_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLUE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_BLUE_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.BLUE_STAINED_GLASS_PANE), has(Items.BLUE_STAINED_GLASS_PANE))
                 .save(output,"mosaic_blue_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PURPLE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_PURPLE_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PURPLE_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_PURPLE_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.PURPLE_STAINED_GLASS_PANE), has(Items.PURPLE_STAINED_GLASS_PANE))
                 .save(output,"mosaic_purple_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.MAGENTA_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_MAGENTA_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.MAGENTA_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_MAGENTA_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.MAGENTA_STAINED_GLASS_PANE), has(Items.MAGENTA_STAINED_GLASS_PANE))
                 .save(output,"mosaic_magenta_glass_pane_from_smelting"+ "_recipe_create");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PINK_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.MOSAIC_PINK_STAINED_GLASS_PANE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.PINK_STAINED_GLASS_PANE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.MOSAIC_PINK_STAINED_GLASS_PANE,
                         0.1f, 200).group("mosaic_glass_pane")
                 .unlockedBy(getHasName(Items.PINK_STAINED_GLASS_PANE), has(Items.PINK_STAINED_GLASS_PANE))
                 .save(output,"mosaic_pink_glass_pane_from_smelting"+ "_recipe_create");
@@ -3999,8 +3959,7 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
                         has(DecoItems.MIGHTY_LAVENDER_FLOWER))
                 .save(output,getSimpleRecipeName(DecoBlocks.MIGHTY_LAVENDER)+ "_recipe_create");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.TUFF), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.SMOOTH_TUFF,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.TUFF), RecipeCategory.BUILDING_BLOCKS,DecoBlocks.SMOOTH_TUFF,
                         0.1f, 200).unlockedBy(getHasName(Items.TUFF), has(Items.TUFF))
                 .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_TUFF)+ "_recipe_create");
 
@@ -4295,13 +4254,11 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
                         has(Items.SEAGRASS))
                 .save(output,getSimpleRecipeName(DecoItems.TALL_SEAGRASS)+ "_recipe_create");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_TILES), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.CRACKED_STONE_TILES,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_TILES), RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CRACKED_STONE_TILES,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.STONE_TILES), has(DecoBlocks.STONE_TILES))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_STONE_TILES)+ "_recipe_create");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.POLISHED_BLACKSTONE_TILES), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILES,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.POLISHED_BLACKSTONE_TILES), RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILES,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.POLISHED_BLACKSTONE_TILES), has(DecoBlocks.POLISHED_BLACKSTONE_TILES))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILES)+ "_recipe_create");
 
@@ -4586,13 +4543,11 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CHISELED_POLISHED_SOUL_SOILSTONE, DecoBlocks.COBBLED_SOUL_SOILSTONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CHISELED_POLISHED_SOUL_SOILSTONE, DecoBlocks.POLISHED_SOUL_SOILSTONE);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.TUFF_TILES), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.CRACKED_TUFF_TILES,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.TUFF_TILES), RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CRACKED_TUFF_TILES,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.TUFF_TILES), has(DecoBlocks.TUFF_TILES))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_TUFF_TILES)+ "_recipe_create");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.TUFF_BRICKS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,
-                        DecoBlocks.CRACKED_TUFF_BRICKS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Blocks.TUFF_BRICKS), RecipeCategory.BUILDING_BLOCKS,DecoBlocks.CRACKED_TUFF_BRICKS,
                         0.1f, 200).unlockedBy(getHasName(Blocks.TUFF_BRICKS), has(Blocks.TUFF_BRICKS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_TUFF_BRICKS)+ "_recipe_create");
 
@@ -4899,11 +4854,11 @@ public class DecoRecipeGenerator extends FabricRecipeProvider {
                                 has(Items.KELP))
                         .save(output, getSimpleRecipeName(DecoBlocks.KELP_LEAVES) + "_recipe_create");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.KELP_LEAVES),RecipeCategory.FOOD, CookingBookCategory.BLOCKS, Items.DRIED_KELP,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.KELP_LEAVES),RecipeCategory.FOOD, Items.DRIED_KELP,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.KELP_LEAVES), has(DecoBlocks.KELP_LEAVES))
                         .save(output, getSimpleRecipeName(Items.DRIED_KELP)+ "_from_smelting_kelp_leaves");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.DEAD_KELP_LEAVES),RecipeCategory.FOOD, CookingBookCategory.BLOCKS, Items.DRIED_KELP,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.DEAD_KELP_LEAVES),RecipeCategory.FOOD, Items.DRIED_KELP,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.DEAD_KELP_LEAVES), has(DecoBlocks.DEAD_KELP_LEAVES))
                         .save(output, getSimpleRecipeName(Items.DRIED_KELP)+ "_from_smelting_dead_kelp_leaves");
 

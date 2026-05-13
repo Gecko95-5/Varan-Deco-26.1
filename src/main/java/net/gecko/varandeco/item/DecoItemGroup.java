@@ -1,6 +1,6 @@
 package net.gecko.varandeco.item;
 
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.gecko.varandeco.VaranDeco;
 import net.gecko.varandeco.block.DecoBlocks;
 import net.minecraft.core.Registry;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack;
 public class DecoItemGroup {
     public static final CreativeModeTab VARAN_DECO_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
             Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, "varan_deco"),
-            FabricCreativeModeTab.builder().title(Component.translatable("itemgroup.varan_deco_blocks"))
+            FabricItemGroup.builder().title(Component.translatable("itemgroup.varan_deco_blocks"))
                     .icon(() -> new ItemStack(DecoBlocks.STONE_TILES)).displayItems((displayContext, entries) -> {
 
                         entries.accept(DecoBlocks.OAK_WOOD_STAIRS.asItem());

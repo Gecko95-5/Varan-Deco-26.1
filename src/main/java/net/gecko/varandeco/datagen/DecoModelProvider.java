@@ -1,24 +1,30 @@
 package net.gecko.varandeco.datagen;
 
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.block.nature.WarpedWartBlock;
 import net.gecko.varandeco.item.DecoItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TextureMapping;
+import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.data.models.model.TexturedModel;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.level.block.Blocks;
+import java.lang.reflect.Field;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 public class DecoModelProvider extends FabricModelProvider {
-    public DecoModelProvider(FabricPackOutput output) {
-        super(output);
-    }
 
     // Thanks to PedalHat29861 Packed Grass is now has a Colour Base on the Biomes
 
-
+    public DecoModelProvider(FabricDataOutput output) {
+        super(output);
+    }
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator) {
         itemModelGenerator.generateFlatItem(DecoItems.SNOW_BRICK, ModelTemplates.FLAT_ITEM);

@@ -127,10 +127,10 @@ public class AcaciaBarrelBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     void playSound(BlockState state, SoundEvent soundEvent) {
-        Vec3i vec3i = state.getValue(BarrelBlock.FACING).getUnitVec3i();
+        Vec3i vec3i = ((Direction)state.getValue(BarrelBlock.FACING)).getUnitVec3i();
         double d = this.worldPosition.getX() + 0.5 + vec3i.getX() / 2.0;
         double e = this.worldPosition.getY() + 0.5 + vec3i.getY() / 2.0;
         double f = this.worldPosition.getZ() + 0.5 + vec3i.getZ() / 2.0;
-        this.level.playSound(null, d, e, f, soundEvent, SoundSource.BLOCKS, 0.5F, this.level.getRandom().nextFloat() * 0.1F + 0.9F);
+        this.level.playSound(null, d, e, f, soundEvent, SoundSource.BLOCKS, 0.5F, this.level.random.nextFloat() * 0.1F + 0.9F);
     }
 }

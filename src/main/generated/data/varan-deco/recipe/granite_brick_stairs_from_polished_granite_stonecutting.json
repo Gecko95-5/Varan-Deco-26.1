@@ -2,6 +2,7 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:polished_granite",
   "result": {
+    "count": 1,
     "id": "minecraft:granite_brick_stairs"
   }
 }

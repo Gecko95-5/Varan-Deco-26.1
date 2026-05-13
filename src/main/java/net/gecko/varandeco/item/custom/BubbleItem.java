@@ -35,9 +35,9 @@ public class BubbleItem extends Item {
                 for (int i = 0; i < 5; i++) {
                     serverWorld.sendParticles(
                             ParticleTypes.SPLASH,
-                            blockPos.getX() + world.getRandom().nextDouble(),
+                            blockPos.getX() + world.random.nextDouble(),
                             blockPos.getY() + 1,
-                            blockPos.getZ() + world.getRandom().nextDouble(),
+                            blockPos.getZ() + world.random.nextDouble(),
                             1,
                             0.0,
                             0.0,

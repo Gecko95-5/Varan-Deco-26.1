@@ -1,6 +1,5 @@
 package net.gecko.varandeco.block.elementblocks;
 
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
@@ -9,23 +8,22 @@ import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class BubbleStairBlock extends StairBlock {
-
-
-    public BubbleStairBlock(BlockState baseState, Properties properties) {
-        super(baseState, properties);
+    public BubbleStairBlock(BlockState baseBlockState, Properties settings) {
+        super(baseBlockState, settings);
     }
+
     @Override
-    public void stepOn(final Level level, final BlockPos pos, final BlockState onState, final Entity entity) {
-        if (!entity.isPassenger() && entity.isOnFire()) {
-            if (entity.hasExactlyOnePlayerPassenger()) {
+    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
+        if (!entity.isSteppingCarefully() && entity.isOnFire()) {
+            if (entity.isAlwaysTicking()) {
                 entity.playSound(SoundEvents.FIRE_EXTINGUISH, 1.0f, 1.0f);
             }
-            entity.extinguishFire();
+            entity.clearFire();
         }
-        if (!entity.isPassenger() && entity.isUnderWater()) {
+        if (!entity.isSteppingCarefully() && entity.isUnderWater()) {
             entity.setAirSupply(300);
         }
 
-        super.stepOn(level, pos, onState, entity);
+        super.stepOn(world, pos, state, entity);
     }
 }

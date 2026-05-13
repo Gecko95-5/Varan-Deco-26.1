@@ -38,7 +38,52 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.component.SuspiciousStewEffects;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseCoralFanBlock;
+import net.minecraft.world.level.block.BaseCoralPlantBlock;
+import net.minecraft.world.level.block.BaseCoralWallFanBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.CarpetBlock;
+import net.minecraft.world.level.block.CeilingHangingSignBlock;
+import net.minecraft.world.level.block.DoorBlock;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.FenceGateBlock;
+import net.minecraft.world.level.block.FlowerBedBlock;
+import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.block.FlowerPotBlock;
+import net.minecraft.world.level.block.InfestedBlock;
+import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.LadderBlock;
+import net.minecraft.world.level.block.LanternBlock;
+import net.minecraft.world.level.block.LeverBlock;
+import net.minecraft.world.level.block.MagmaBlock;
+import net.minecraft.world.level.block.NoteBlock;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.SlabBlock;
+import net.minecraft.world.level.block.SnowyDirtBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StainedGlassBlock;
+import net.minecraft.world.level.block.StainedGlassPaneBlock;
+import net.minecraft.world.level.block.StairBlock;
+import net.minecraft.world.level.block.StandingSignBlock;
+import net.minecraft.world.level.block.TallFlowerBlock;
+import net.minecraft.world.level.block.TintedGlassBlock;
+import net.minecraft.world.level.block.TintedParticleLeavesBlock;
+import net.minecraft.world.level.block.TransparentBlock;
+import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.WallHangingSignBlock;
+import net.minecraft.world.level.block.WallSignBlock;
+import net.minecraft.world.level.block.WaterloggedTransparentBlock;
+import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.WeatheringCopperBarsBlock;
+import net.minecraft.world.level.block.WeatheringCopperSlabBlock;
+import net.minecraft.world.level.block.WeatheringCopperStairBlock;
+import net.minecraft.world.level.block.WeatheringLanternBlock;
+import net.minecraft.world.level.block.WeightedPressurePlateBlock;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -77,7 +122,7 @@ public class DecoBlocks {
     public static final Block CHISELED_DRIPSTONE = registerBlock("chiseled_dripstone",
             BlockBehaviour.Properties.ofFullCopy(Blocks.DRIPSTONE_BLOCK), Block::new);
     public static final Block DRY_GRASS_BLOCK = registerBlock("dry_grass_block",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK).mapColor(MapColor.COLOR_YELLOW), SnowyBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK).mapColor(MapColor.COLOR_YELLOW), SnowyDirtBlock::new);
     public static final Block PACKED_GRASS = registerBlock("packed_grass",
             BlockBehaviour.Properties.ofFullCopy(Blocks.GRASS_BLOCK), PackedGrassBlock::new);
     public static final Block PACKED_DRY_GRASS = registerBlock("packed_dry_grass",
@@ -488,7 +533,7 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.MAGMA_BRICKS), MagmaBrickBlock::new);
     public static final Block BUBBLE_BLOCK = registerBlock("bubble_block",
             BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLESTONE).strength(0.5F,25.0f)
-                    .mapColor(MapColor.COLOR_BLUE).randomTicks()
+                    .mapColor(MapColor.COLOR_BLUE).hasPostProcess(DecoBlocks::always).randomTicks()
                     .emissiveRendering(DecoBlocks::always).lightLevel(state -> 1), BubbleBlock::new);
     public static final Block CHISELED_BUBBLE_BLOCK = registerBlock("chiseled_bubble_block",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BUBBLE_BLOCK), BubbleBlock::new);
@@ -3659,12 +3704,12 @@ public class DecoBlocks {
 
     public static final Block BUBBLE_ELEVATOR_BLOCK_BUBBLE = registerBlock("bubble_elevator_block_bubble",
             BlockBehaviour.Properties.ofFullCopy(Blocks.WAXED_COPPER_BLOCK).explosionResistance(25.0f)
-                    .mapColor(MapColor.COLOR_BLUE).sound(SoundType.COPPER_BULB).randomTicks()
+                    .mapColor(MapColor.COLOR_BLUE).sound(SoundType.COPPER_BULB).hasPostProcess(DecoBlocks::always).randomTicks()
                     .emissiveRendering(DecoBlocks::always).lightLevel(state -> 3),BubbleElevatorBubbleBlock::new);
 
     public static final Block BUBBLE_ELEVATOR_BLOCK_MAGMA = registerBlockWithoutItem("bubble_elevator_block_magma",
             BlockBehaviour.Properties.ofFullCopy(Blocks.WAXED_COPPER_BLOCK).explosionResistance(25.0f)
-                    .mapColor(MapColor.NETHER).sound(SoundType.COPPER_BULB).randomTicks()
+                    .mapColor(MapColor.NETHER).sound(SoundType.COPPER_BULB).hasPostProcess(DecoBlocks::always).randomTicks()
                     .emissiveRendering(DecoBlocks::always).lightLevel(state -> 3),BubbleElevatorMagmaBlock::new);
 
     public static final Block STONE_LEVER = registerBlock("stone_lever",
@@ -4695,6 +4740,7 @@ public class DecoBlocks {
     public static final Block STRIPPED_DRIFTWOOD_TEMP = registerBlockTemp("stripped_driftwood_temp",Block::new);
     public static final Block DRIFTWOOD_TEMP = registerBlockTemp("driftwood_temp",Block::new);
     public static final Block DRIED_DRIFTWOOD_TEMP = registerBlockTemp("dried_driftwood_temp",Block::new);
+    public static final Block GRASS_TEMP = registerBlockTemp("grass_temp",Block::new);
     public static final Block DRY_GRASS_TEMP = registerBlockTemp("dry_grass_temp",Block::new);
     public static final Block PODZOL_TEMP = registerBlockTemp("podzol_temp",Block::new);
     public static final Block MYCELIUM_TEMP = registerBlockTemp("mycelium_temp",Block::new);
@@ -4895,7 +4941,7 @@ public class DecoBlocks {
     }
     public static <T extends Block> T registerCouldBlock(String name,BlockBehaviour.Properties settings, Function<BlockBehaviour.Properties, T> factory){
         T block = factory.apply(settings.setId(getBlockKey(name)));
-        registerBlockItem(name, block);
+        registerCloudBlockItem(name, block);
         return Registry.register(BuiltInRegistries.BLOCK, getCloudBlockKey(name), block);
     }
     public static <T extends Block> T registerBlockWithoutItem(String name,BlockBehaviour.Properties settings, Function<BlockBehaviour.Properties, T> factory){

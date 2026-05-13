@@ -1,16 +1,26 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "below_trunk_provider": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "minecraft:driftwood_log",
-        "Properties": {
-          "axis": "y"
+    "decorators": [
+      {
+        "type": "minecraft:alter_ground",
+        "provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:driftwood_log",
+            "Properties": {
+              "axis": "y"
+            }
+          }
         }
       }
+    ],
+    "dirt_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "minecraft:dirt"
+      }
     },
-    "decorators": [],
     "foliage_placer": {
       "type": "minecraft:spruce_foliage_placer",
       "offset": 4,
@@ -30,11 +40,13 @@
         }
       }
     },
+    "force_dirt": false,
     "ignore_vines": false,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
       "limit": 0,
       "lower_size": 0,
+      "min_clipped_height": 4,
       "upper_size": 0
     },
     "trunk_placer": {

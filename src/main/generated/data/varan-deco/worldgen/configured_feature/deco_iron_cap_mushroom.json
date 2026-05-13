@@ -1,13 +1,23 @@
 {
   "type": "minecraft:tree",
   "config": {
-    "below_trunk_provider": {
+    "decorators": [
+      {
+        "type": "minecraft:alter_ground",
+        "provider": {
+          "type": "minecraft:simple_state_provider",
+          "state": {
+            "Name": "minecraft:spore_iron_ore"
+          }
+        }
+      }
+    ],
+    "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:spore_iron_ore"
+        "Name": "minecraft:dirt"
       }
     },
-    "decorators": [],
     "foliage_placer": {
       "type": "minecraft:acacia_foliage_placer",
       "offset": 0,
@@ -19,6 +29,7 @@
         "Name": "minecraft:iron_cap_mushroom_block"
       }
     },
+    "force_dirt": false,
     "ignore_vines": false,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",

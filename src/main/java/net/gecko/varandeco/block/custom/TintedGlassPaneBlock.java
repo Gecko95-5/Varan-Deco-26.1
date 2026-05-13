@@ -14,7 +14,7 @@ public class TintedGlassPaneBlock extends IronBarsBlock {
     }
 
     @Override
-    protected int getLightDampening(final BlockState state) {
+    protected int getLightBlock(BlockState state) {
         return 15;
     }
 }

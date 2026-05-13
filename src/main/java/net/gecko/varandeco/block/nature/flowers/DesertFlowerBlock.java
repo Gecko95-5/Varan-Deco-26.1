@@ -17,6 +17,6 @@ public class DesertFlowerBlock extends FlowerBlock {
 
     @Override
     protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
-        return floor.is(BlockTags.SUPPORTS_DRY_VEGETATION);
+        return floor.is(BlockTags.DRY_VEGETATION_MAY_PLACE_ON);
     }
 }

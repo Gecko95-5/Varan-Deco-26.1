@@ -2,6 +2,7 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:bubble_coral_block",
   "result": {
+    "count": 1,
     "id": "minecraft:bubble_coral_stairs"
   }
 }

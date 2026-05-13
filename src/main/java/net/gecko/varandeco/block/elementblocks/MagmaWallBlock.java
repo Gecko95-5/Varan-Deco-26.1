@@ -1,23 +1,23 @@
 package net.gecko.varandeco.block.elementblocks;
 
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class MagmaWallBlock extends WallBlock {
-    public MagmaWallBlock(Properties properties) {
-        super(properties);
+    public MagmaWallBlock(Properties settings) {
+        super(settings);
     }
 
     @Override
-    public void stepOn(final Level level, final BlockPos pos, final net.minecraft.world.level.block.state.BlockState onState, final Entity entity) {
+    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
         if (!entity.isSteppingCarefully() && entity instanceof LivingEntity) {
-            entity.hurt(level.damageSources().hotFloor(), 1.0F);
+            entity.hurt(world.damageSources().hotFloor(), 1.0F);
         }
 
-        super.stepOn(level, pos, onState, entity);
+        super.stepOn(world, pos, state, entity);
     }
 }

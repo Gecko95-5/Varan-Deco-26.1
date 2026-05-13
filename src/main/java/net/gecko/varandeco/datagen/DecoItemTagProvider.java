@@ -1,7 +1,7 @@
 package net.gecko.varandeco.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.item.DecoItems;
 import net.gecko.varandeco.util.DecoTags;
@@ -9,20 +9,15 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import org.jetbrains.annotations.NotNull;
-import org.jspecify.annotations.Nullable;
-
 import java.util.concurrent.CompletableFuture;
 
-public class DecoItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
-
-
-    public DecoItemTagProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registryLookupFuture) {
-        super(output, registryLookupFuture);
+public class DecoItemTagProvider extends FabricTagProvider.ItemTagProvider {
+    public DecoItemTagProvider(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> completableFuture) {
+        super(output, completableFuture);
     }
 
     @Override
-    public void addTags(HolderLookup.@NotNull Provider provider) {
+    protected void addTags(HolderLookup.Provider arg) {
         valueLookupBuilder(ItemTags.PLANKS)
                 .add(DecoBlocks.CACTUS_PLANKS.asItem())
                 .add(DecoBlocks.MUSHROOM_PLANKS.asItem())
@@ -553,6 +548,5 @@ public class DecoItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(DecoBlocks.ROUGE_WILDFLOWERS.asItem())
                 .add(DecoBlocks.SWEET_WILDFLOWERS.asItem())
                 .add(DecoBlocks.GECKO_WILDFLOWERS.asItem());
-
     }
 }

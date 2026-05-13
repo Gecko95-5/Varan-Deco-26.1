@@ -1,6 +1,6 @@
 package net.gecko.varandeco.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.gecko.varandeco.block.DecoBlocks;
 import net.gecko.varandeco.item.DecoItems;
@@ -12,7 +12,6 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -21,10 +20,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
-    public DecoRecipeGeneratorTwo(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+    public DecoRecipeGeneratorTwo(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
     }
-
     @Override
     protected RecipeProvider createRecipeProvider(HolderLookup.Provider registryLookup, RecipeOutput exporter) {
         return new RecipeProvider(registryLookup, exporter) {
@@ -349,8 +347,7 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks. BASALT_BRICKS, Items.BASALT);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks. BASALT_BRICKS, Items.POLISHED_BASALT);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GLOWSTONE), RecipeCategory.BUILDING_BLOCKS,CookingBookCategory.BLOCKS,
-                        DecoBlocks.SMOOTH_GLOWSTONE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.GLOWSTONE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_GLOWSTONE,
                         0.35f, 200).unlockedBy(getHasName(Items.GLOWSTONE), has(Items.GLOWSTONE))
                 .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_GLOWSTONE)+ "_recipe_create");
 
@@ -1071,157 +1068,157 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
         slab(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.RAW_COPPER_SLAB, Items.RAW_COPPER_BLOCK);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.RAW_COPPER_SLAB, Items.RAW_COPPER_BLOCK,2);
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLESTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.STONE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLESTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, Items.STONE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(Items.COBBLESTONE_STAIRS), has(Items.COBBLESTONE_STAIRS))
                         .save(output, getSimpleRecipeName(Items.STONE_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLESTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.STONE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLESTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, Items.STONE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(Items.COBBLESTONE_SLAB), has(Items.COBBLESTONE_SLAB))
                         .save(output, getSimpleRecipeName(Items.STONE_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLESTONE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.STONE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLESTONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.STONE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(Items.COBBLESTONE_WALL), has(Items.COBBLESTONE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.STONE_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_STONE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_STONE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(Items.STONE_STAIRS), has(Items.STONE_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_STONE_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.SMOOTH_STONE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_SLAB), RecipeCategory.BUILDING_BLOCKS, Items.SMOOTH_STONE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(Items.STONE_SLAB), has(Items.STONE_SLAB))
                         .save(output, getSimpleRecipeName(Items.SMOOTH_STONE_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_STONE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_STONE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.STONE_WALL), has(DecoBlocks.STONE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_STONE_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLED_DEEPSLATE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.DEEPSLATE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLED_DEEPSLATE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.DEEPSLATE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(Items.COBBLED_DEEPSLATE_STAIRS), has(Items.COBBLED_DEEPSLATE_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.DEEPSLATE_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLED_DEEPSLATE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.DEEPSLATE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLED_DEEPSLATE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.DEEPSLATE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(Items.COBBLED_DEEPSLATE_SLAB), has(Items.COBBLED_DEEPSLATE_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.DEEPSLATE_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLED_DEEPSLATE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.DEEPSLATE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.COBBLED_DEEPSLATE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.DEEPSLATE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(Items.COBBLED_DEEPSLATE_WALL), has(Items.COBBLED_DEEPSLATE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.DEEPSLATE_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.SANDSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.SMOOTH_SANDSTONE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.SANDSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, Items.SMOOTH_SANDSTONE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(Items.SANDSTONE_STAIRS), has(Items.SANDSTONE_STAIRS))
                         .save(output, getSimpleRecipeName(Items.SMOOTH_SANDSTONE_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.SANDSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.SMOOTH_SANDSTONE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.SANDSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, Items.SMOOTH_SANDSTONE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(Items.SANDSTONE_SLAB), has(Items.SANDSTONE_SLAB))
                         .save(output, getSimpleRecipeName(Items.SMOOTH_SANDSTONE_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.SANDSTONE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_SANDSTONE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.SANDSTONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_SANDSTONE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(Items.SANDSTONE_WALL), has(Items.SANDSTONE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_SANDSTONE_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_SANDSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.SMOOTH_RED_SANDSTONE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_SANDSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, Items.SMOOTH_RED_SANDSTONE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(Items.RED_SANDSTONE_STAIRS), has(Items.RED_SANDSTONE_STAIRS))
                         .save(output, getSimpleRecipeName(Items.SMOOTH_RED_SANDSTONE_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_SANDSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.SMOOTH_RED_SANDSTONE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_SANDSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, Items.SMOOTH_RED_SANDSTONE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(Items.RED_SANDSTONE_SLAB), has(Items.RED_SANDSTONE_SLAB))
                         .save(output, getSimpleRecipeName(Items.SMOOTH_RED_SANDSTONE_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_SANDSTONE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_RED_SANDSTONE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_SANDSTONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_RED_SANDSTONE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(Items.RED_SANDSTONE_WALL), has(Items.RED_SANDSTONE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_RED_SANDSTONE_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.QUARTZ_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.SMOOTH_QUARTZ_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.QUARTZ_STAIRS), RecipeCategory.BUILDING_BLOCKS, Items.SMOOTH_QUARTZ_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(Items.QUARTZ_STAIRS), has(Items.QUARTZ_STAIRS))
                         .save(output, getSimpleRecipeName(Items.SMOOTH_QUARTZ_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.QUARTZ_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,Items.SMOOTH_QUARTZ_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.QUARTZ_SLAB), RecipeCategory.BUILDING_BLOCKS, Items.SMOOTH_QUARTZ_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(Items.QUARTZ_SLAB), has(Items.QUARTZ_SLAB))
                         .save(output, getSimpleRecipeName(Items.SMOOTH_QUARTZ_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.QUARTZ_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_QUARTZ_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.QUARTZ_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_QUARTZ_WALL,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.QUARTZ_WALL), has(DecoBlocks.QUARTZ_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_QUARTZ_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SOUL_SOILSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_SOUL_SOILSTONE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SOUL_SOILSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_SOUL_SOILSTONE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.SOUL_SOILSTONE_STAIRS), has(DecoBlocks.SOUL_SOILSTONE_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_SOUL_SOILSTONE_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SOUL_SOILSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_SOUL_SOILSTONE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SOUL_SOILSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_SOUL_SOILSTONE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.SOUL_SOILSTONE_SLAB), has(DecoBlocks.SOUL_SOILSTONE_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_SOUL_SOILSTONE_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SOUL_SOILSTONE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_SOUL_SOILSTONE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SOUL_SOILSTONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_SOUL_SOILSTONE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.SOUL_SOILSTONE_WALL), has(DecoBlocks.SOUL_SOILSTONE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_SOUL_SOILSTONE_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACKSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_BLACKSTONE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACKSTONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_BLACKSTONE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(Items.BLACKSTONE_STAIRS), has(Items.BLACKSTONE_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_BLACKSTONE_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACKSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_BLACKSTONE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACKSTONE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_BLACKSTONE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(Items.BLACKSTONE_SLAB), has(Items.BLACKSTONE_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_BLACKSTONE_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACKSTONE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_BLACKSTONE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.BLACKSTONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_BLACKSTONE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(Items.BLACKSTONE_WALL), has(Items.BLACKSTONE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_BLACKSTONE_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.DEEPSLATE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_DEEPSLATE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.DEEPSLATE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_DEEPSLATE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.DEEPSLATE_STAIRS), has(DecoBlocks.DEEPSLATE_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_DEEPSLATE_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.DEEPSLATE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_DEEPSLATE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.DEEPSLATE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_DEEPSLATE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.DEEPSLATE_SLAB), has(DecoBlocks.DEEPSLATE_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_DEEPSLATE_SLAB) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.DEEPSLATE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_DEEPSLATE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.DEEPSLATE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_DEEPSLATE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.DEEPSLATE_WALL), has(DecoBlocks.DEEPSLATE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_DEEPSLATE_WALL) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_IRON_BLOCK), RecipeCategory.MISC, CookingBookCategory.MISC,Items.IRON_BLOCK,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_IRON_BLOCK), RecipeCategory.MISC, Items.IRON_BLOCK,
                                 6.3f, 1800).unlockedBy(getHasName(Items.RAW_IRON_BLOCK), has(Items.RAW_IRON_BLOCK))
                         .save(output, getSimpleRecipeName(Items.IRON_BLOCK) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.RAW_IRON_BLOCK), RecipeCategory.MISC, CookingBookCategory.MISC,Items.IRON_BLOCK,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.RAW_IRON_BLOCK), RecipeCategory.MISC, Items.IRON_BLOCK,
                                 6.3f, 900).unlockedBy(getHasName(Items.RAW_IRON_BLOCK), has(Items.RAW_IRON_BLOCK))
                         .save(output, getSimpleRecipeName(Items.IRON_BLOCK) + "_form_blasting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_IRON_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.IRON_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_IRON_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.IRON_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RAW_IRON_STAIRS), has(DecoBlocks.RAW_IRON_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.IRON_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_IRON_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.IRON_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_IRON_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.IRON_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RAW_IRON_SLAB), has(DecoBlocks.RAW_IRON_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.IRON_SLAB) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_IRON_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.IRON_STAIRS,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_IRON_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.IRON_STAIRS,
                                 0.1f, 100).unlockedBy(getHasName(DecoBlocks.RAW_IRON_STAIRS), has(DecoBlocks.RAW_IRON_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.IRON_STAIRS) + "_form_blasting");
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_IRON_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.IRON_SLAB,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_IRON_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.IRON_SLAB,
                                 0.1f, 100).unlockedBy(getHasName(DecoBlocks.RAW_IRON_SLAB), has(DecoBlocks.RAW_IRON_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.RAW_IRON_SLAB) + "_form_blasting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD_BLOCK), RecipeCategory.MISC, CookingBookCategory.MISC,Items.GOLD_BLOCK,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_GOLD_BLOCK), RecipeCategory.MISC, Items.GOLD_BLOCK,
                                 6.3f, 1800).unlockedBy(getHasName(Items.RAW_GOLD_BLOCK), has(Items.RAW_GOLD_BLOCK))
                         .save(output, getSimpleRecipeName(Items.GOLD_BLOCK) + "_form_smelting");
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.RAW_GOLD_BLOCK), RecipeCategory.MISC, CookingBookCategory.MISC,Items.GOLD_BLOCK,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.RAW_GOLD_BLOCK), RecipeCategory.MISC, Items.GOLD_BLOCK,
                                 6.3f, 900).unlockedBy(getHasName(Items.RAW_GOLD_BLOCK), has(Items.RAW_GOLD_BLOCK))
                         .save(output, getSimpleRecipeName(Items.GOLD_BLOCK) + "_form_blasting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_GOLD_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.GOLD_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_GOLD_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.GOLD_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RAW_GOLD_STAIRS), has(DecoBlocks.RAW_GOLD_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.GOLD_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_GOLD_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.GOLD_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_GOLD_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.GOLD_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RAW_GOLD_SLAB), has(DecoBlocks.RAW_GOLD_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.GOLD_SLAB) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_GOLD_STAIRS),  RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.GOLD_STAIRS,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_GOLD_STAIRS),  RecipeCategory.BUILDING_BLOCKS, DecoBlocks.GOLD_STAIRS,
                                 0.1f, 100).unlockedBy(getHasName(DecoBlocks.RAW_GOLD_STAIRS), has(DecoBlocks.RAW_GOLD_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.GOLD_STAIRS) + "_form_blasting");
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_GOLD_SLAB),  RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.GOLD_SLAB,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_GOLD_SLAB),  RecipeCategory.BUILDING_BLOCKS, DecoBlocks.GOLD_SLAB,
                                 0.1f, 100).unlockedBy(getHasName(DecoBlocks.RAW_GOLD_SLAB), has(DecoBlocks.RAW_GOLD_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.GOLD_SLAB) + "_form_blasting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_COPPER_BLOCK), RecipeCategory.MISC, CookingBookCategory.MISC,Items.COPPER_BLOCK,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RAW_COPPER_BLOCK), RecipeCategory.MISC, Items.COPPER_BLOCK,
                                 6.3f, 1800).unlockedBy(getHasName(Items.RAW_COPPER_BLOCK), has(Items.RAW_COPPER_BLOCK))
                         .save(output, getSimpleRecipeName(Items.COPPER_BLOCK) + "_form_smelting");
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.RAW_COPPER_BLOCK), RecipeCategory.MISC, CookingBookCategory.MISC,Items.COPPER_BLOCK,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.RAW_COPPER_BLOCK), RecipeCategory.MISC, Items.COPPER_BLOCK,
                                 6.3f, 900).unlockedBy(getHasName(Items.RAW_COPPER_BLOCK), has(Items.RAW_COPPER_BLOCK))
                         .save(output, getSimpleRecipeName(Items.COPPER_BLOCK) + "_form_blasting");
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_COPPER_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.COPPER_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_COPPER_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COPPER_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RAW_COPPER_STAIRS), has(DecoBlocks.RAW_COPPER_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.COPPER_STAIRS) + "_form_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_COPPER_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.COPPER_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RAW_COPPER_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COPPER_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RAW_COPPER_SLAB), has(DecoBlocks.RAW_COPPER_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.COPPER_SLAB) + "_form_smelting");
 
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_COPPER_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.COPPER_STAIRS,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_COPPER_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COPPER_STAIRS,
                                 0.1f, 100).unlockedBy(getHasName(DecoBlocks.RAW_COPPER_STAIRS), has(DecoBlocks.RAW_COPPER_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.COPPER_STAIRS) + "_form_blasting");
-                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_COPPER_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.COPPER_SLAB,
+                SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.RAW_COPPER_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.COPPER_SLAB,
                                 0.1f, 100).unlockedBy(getHasName(DecoBlocks.RAW_COPPER_SLAB), has(DecoBlocks.RAW_COPPER_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.COPPER_SLAB) + "_form_blasting");
 
@@ -1337,7 +1334,7 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
         wall(RecipeCategory.DECORATIONS, DecoBlocks.SANDED_OBSIDIAN_WALL, DecoBlocks.SANDED_OBSIDIAN);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SANDED_OBSIDIAN_WALL, DecoBlocks.SANDED_OBSIDIAN);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.OBSIDIAN), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_OBSIDIAN,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.OBSIDIAN), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_OBSIDIAN,
                         0.1f, 200).unlockedBy(getHasName(Items.OBSIDIAN), has(Items.OBSIDIAN))
                 .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_OBSIDIAN)+ "_recipe_create");
 
@@ -1345,19 +1342,19 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                 .unlockedBy(getHasName(DecoBlocks.SMOOTH_OBSIDIAN),has(DecoBlocks.SMOOTH_OBSIDIAN))
                 .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_OBSIDIAN_STAIRS)+ "_recipe_create");
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_OBSIDIAN_STAIRS, DecoBlocks.SMOOTH_OBSIDIAN);
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.OBSIDIAN_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_OBSIDIAN_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.OBSIDIAN_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_OBSIDIAN_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.OBSIDIAN_STAIRS), has(DecoBlocks.OBSIDIAN_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_OBSIDIAN_STAIRS)+ "_from_smelting");
 
         slab(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_OBSIDIAN_SLAB, DecoBlocks.SMOOTH_OBSIDIAN);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_OBSIDIAN_SLAB, DecoBlocks.SMOOTH_OBSIDIAN,2);
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.OBSIDIAN_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_OBSIDIAN_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.OBSIDIAN_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_OBSIDIAN_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.OBSIDIAN_SLAB), has(DecoBlocks.OBSIDIAN_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_OBSIDIAN_SLAB)+ "_from_smelting");
 
         wall(RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_OBSIDIAN_WALL, DecoBlocks.SMOOTH_OBSIDIAN);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_OBSIDIAN_WALL, DecoBlocks.SMOOTH_OBSIDIAN);
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.OBSIDIAN_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_OBSIDIAN_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.OBSIDIAN_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_OBSIDIAN_WALL,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.OBSIDIAN_WALL), has(DecoBlocks.OBSIDIAN_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_OBSIDIAN_WALL)+ "_from_smelting");
 
@@ -1438,7 +1435,7 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.END_STONE_BRICK_WALL, DecoBlocks.POLISHED_END_STONE);
 
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_END_STONE_BRICKS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_END_STONE_BRICKS,
                         0.1f, 200).unlockedBy(getHasName(Items.END_STONE_BRICKS), has(Items.END_STONE_BRICKS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_END_STONE_BRICKS)+ "_recipe_create");
 
@@ -1478,12 +1475,12 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.END_STONE_TILE_WALL, Items.END_STONE_BRICKS);
 
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_TILES), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_END_STONE_TILES,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_TILES), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_END_STONE_TILES,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.END_STONE_TILES), has(DecoBlocks.END_STONE_TILES))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_END_STONE_TILES)+ "_recipe_create");
 
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_END_STONE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_END_STONE,
                         0.1f, 200).unlockedBy(getHasName(Items.END_STONE), has(Items.END_STONE))
                 .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_END_STONE)+ "_recipe_create");
 
@@ -1492,21 +1489,21 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                 .unlockedBy(getHasName(DecoBlocks.SMOOTH_END_STONE),has(DecoBlocks.SMOOTH_END_STONE))
                 .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_END_STONE_STAIRS)+ "_recipe_create");
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_END_STONE_STAIRS, DecoBlocks.SMOOTH_END_STONE);
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_END_STONE_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_END_STONE_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.END_STONE_STAIRS), has(DecoBlocks.END_STONE_STAIRS))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_END_STONE_STAIRS) + "_from_smelting");
 
 
         slab(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_END_STONE_SLAB, DecoBlocks.SMOOTH_END_STONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_END_STONE_SLAB, DecoBlocks.SMOOTH_END_STONE,2);
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_END_STONE_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_END_STONE_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.END_STONE_SLAB), has(DecoBlocks.END_STONE_SLAB))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_END_STONE_SLAB) + "_from_smelting");
 
 
         wall(RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_END_STONE_WALL, DecoBlocks.SMOOTH_END_STONE);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_END_STONE_WALL, DecoBlocks.SMOOTH_END_STONE);
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_END_STONE_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_END_STONE_WALL,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.END_STONE_WALL), has(DecoBlocks.END_STONE_WALL))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_END_STONE_WALL) + "_from_smelting");
 
@@ -2021,11 +2018,11 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                 .save(output,getSimpleRecipeName(DecoBlocks.IRON_CAP_MOSAIC_STAIRS)+ "_recipe_create");
         slab(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.IRON_CAP_MOSAIC_SLAB, DecoBlocks.IRON_CAP_MOSAIC);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SPORE_IRON_ORE), RecipeCategory.MISC, CookingBookCategory.MISC,Items.IRON_INGOT,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.SPORE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT,
                         0.7f, 200).unlockedBy(getHasName(DecoBlocks.SPORE_IRON_ORE), has(DecoBlocks.SPORE_IRON_ORE))
                 .save(output,getSimpleRecipeName(Items.IRON_INGOT)+"_from_smelting_spore_ore");
 
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.SPORE_IRON_ORE), RecipeCategory.MISC, CookingBookCategory.MISC,Items.IRON_INGOT,
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(DecoBlocks.SPORE_IRON_ORE), RecipeCategory.MISC, Items.IRON_INGOT,
                         0.7f, 100).unlockedBy(getHasName(DecoBlocks.SPORE_IRON_ORE), has(DecoBlocks.SPORE_IRON_ORE))
                 .save(output,getSimpleRecipeName(Items.IRON_INGOT)+"_from_blasting_spore_ore");
 
@@ -2492,134 +2489,134 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
         wall(RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_BLUE_NETHER_BRICK_WALL, DecoBlocks.CRACKED_BLUE_NETHER_BRICKS);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_BLUE_NETHER_BRICK_WALL, DecoBlocks.CRACKED_BLUE_NETHER_BRICKS);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_STONE_BRICK_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_STONE_BRICK_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(Items.STONE_BRICK_STAIRS), has(Items.STONE_BRICK_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_STONE_BRICK_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_STONE_BRICK_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_STONE_BRICK_SLAB,
                         0.1f, 200).unlockedBy(getHasName(Items.STONE_BRICK_SLAB), has(Items.STONE_BRICK_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_STONE_BRICK_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_BRICK_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_STONE_BRICK_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.STONE_BRICK_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_STONE_BRICK_WALL,
                         0.1f, 200).unlockedBy(getHasName(Items.STONE_BRICK_WALL), has(Items.STONE_BRICK_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_STONE_BRICK_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.POLISHED_BLACKSTONE_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.POLISHED_BLACKSTONE_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(Items.POLISHED_BLACKSTONE_BRICK_STAIRS), has(Items.POLISHED_BLACKSTONE_BRICK_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.POLISHED_BLACKSTONE_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.POLISHED_BLACKSTONE_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB,
                         0.1f, 200).unlockedBy(getHasName(Items.POLISHED_BLACKSTONE_BRICK_SLAB), has(Items.POLISHED_BLACKSTONE_BRICK_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.POLISHED_BLACKSTONE_BRICK_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.POLISHED_BLACKSTONE_BRICK_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL,
                         0.1f, 200).unlockedBy(getHasName(Items.POLISHED_BLACKSTONE_BRICK_WALL), has(Items.POLISHED_BLACKSTONE_BRICK_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_POLISHED_BLACKSTONE_BRICK_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_DEEPSLATE_BRICK_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_DEEPSLATE_BRICK_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(Items.DEEPSLATE_BRICK_STAIRS), has(Items.DEEPSLATE_BRICK_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_DEEPSLATE_BRICK_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_DEEPSLATE_BRICK_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_DEEPSLATE_BRICK_SLAB,
                         0.1f, 200).unlockedBy(getHasName(Items.DEEPSLATE_BRICK_SLAB), has(Items.DEEPSLATE_BRICK_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_DEEPSLATE_BRICK_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_BRICK_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_DEEPSLATE_BRICK_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_BRICK_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_DEEPSLATE_BRICK_WALL,
                         0.1f, 200).unlockedBy(getHasName(Items.DEEPSLATE_BRICK_WALL), has(Items.DEEPSLATE_BRICK_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_DEEPSLATE_BRICK_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHER_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_NETHER_BRICK_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHER_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_NETHER_BRICK_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(Items.NETHER_BRICK_STAIRS), has(Items.NETHER_BRICK_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_NETHER_BRICK_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHER_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_NETHER_BRICK_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHER_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_NETHER_BRICK_SLAB,
                         0.1f, 200).unlockedBy(getHasName(Items.NETHER_BRICK_SLAB), has(Items.NETHER_BRICK_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_NETHER_BRICK_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHER_BRICK_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_NETHER_BRICK_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHER_BRICK_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_NETHER_BRICK_WALL,
                         0.1f, 200).unlockedBy(getHasName(Items.NETHER_BRICK_WALL), has(Items.NETHER_BRICK_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_NETHER_BRICK_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHER_BRICK_FENCE), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_NETHER_BRICK_FENCE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.NETHER_BRICK_FENCE), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_NETHER_BRICK_FENCE,
                         0.1f, 200).unlockedBy(getHasName(Items.NETHER_BRICK_FENCE), has(Items.NETHER_BRICK_FENCE))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_NETHER_BRICK_FENCE)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.NETHER_BRICK_FENCE_GATE), RecipeCategory.REDSTONE, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_NETHER_BRICK_FENCE_GATE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.NETHER_BRICK_FENCE_GATE), RecipeCategory.REDSTONE, DecoBlocks.CRACKED_NETHER_BRICK_FENCE_GATE,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.NETHER_BRICK_FENCE_GATE), has(DecoBlocks.NETHER_BRICK_FENCE_GATE))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_NETHER_BRICK_FENCE_GATE)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_NETHER_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_RED_NETHER_BRICK_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_NETHER_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_RED_NETHER_BRICK_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(Items.RED_NETHER_BRICK_STAIRS), has(Items.RED_NETHER_BRICK_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_RED_NETHER_BRICK_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_NETHER_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_RED_NETHER_BRICK_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_NETHER_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_RED_NETHER_BRICK_SLAB,
                         0.1f, 200).unlockedBy(getHasName(Items.RED_NETHER_BRICK_SLAB), has(Items.RED_NETHER_BRICK_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_RED_NETHER_BRICK_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_NETHER_BRICK_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_RED_NETHER_BRICK_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RED_NETHER_BRICK_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_RED_NETHER_BRICK_WALL,
                         0.1f, 200).unlockedBy(getHasName(Items.RED_NETHER_BRICK_WALL), has(Items.RED_NETHER_BRICK_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_RED_NETHER_BRICK_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RED_NETHER_BRICK_FENCE), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_RED_NETHER_BRICK_FENCE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RED_NETHER_BRICK_FENCE), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_RED_NETHER_BRICK_FENCE,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.RED_NETHER_BRICK_FENCE), has(DecoBlocks.RED_NETHER_BRICK_FENCE))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_RED_NETHER_BRICK_FENCE)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RED_NETHER_BRICK_FENCE_GATE), RecipeCategory.REDSTONE, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_RED_NETHER_BRICK_FENCE_GATE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RED_NETHER_BRICK_FENCE_GATE), RecipeCategory.REDSTONE, DecoBlocks.CRACKED_RED_NETHER_BRICK_FENCE_GATE,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.RED_NETHER_BRICK_FENCE_GATE), has(DecoBlocks.RED_NETHER_BRICK_FENCE_GATE))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_RED_NETHER_BRICK_FENCE_GATE)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_BLUE_NETHER_BRICK_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_BLUE_NETHER_BRICK_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLUE_NETHER_BRICK_STAIRS), has(DecoBlocks.BLUE_NETHER_BRICK_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_BLUE_NETHER_BRICK_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_BLUE_NETHER_BRICK_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_BLUE_NETHER_BRICK_SLAB,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLUE_NETHER_BRICK_SLAB), has(DecoBlocks.BLUE_NETHER_BRICK_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_BLUE_NETHER_BRICK_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_BLUE_NETHER_BRICK_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_BLUE_NETHER_BRICK_WALL,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLUE_NETHER_BRICK_WALL), has(DecoBlocks.BLUE_NETHER_BRICK_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_BLUE_NETHER_BRICK_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_FENCE), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_BLUE_NETHER_BRICK_FENCE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_FENCE), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_BLUE_NETHER_BRICK_FENCE,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLUE_NETHER_BRICK_FENCE), has(DecoBlocks.BLUE_NETHER_BRICK_FENCE))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_BLUE_NETHER_BRICK_FENCE)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_FENCE_GATE), RecipeCategory.REDSTONE, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_BLUE_NETHER_BRICK_FENCE_GATE,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.BLUE_NETHER_BRICK_FENCE_GATE), RecipeCategory.REDSTONE, DecoBlocks.CRACKED_BLUE_NETHER_BRICK_FENCE_GATE,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.BLUE_NETHER_BRICK_FENCE_GATE), has(DecoBlocks.BLUE_NETHER_BRICK_FENCE_GATE))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_BLUE_NETHER_BRICK_FENCE_GATE)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_DEEPSLATE_TILE_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_DEEPSLATE_TILE_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(Items.DEEPSLATE_TILE_STAIRS), has(Items.DEEPSLATE_TILE_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_DEEPSLATE_TILE_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_DEEPSLATE_TILE_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_DEEPSLATE_TILE_SLAB,
                         0.1f, 200).unlockedBy(getHasName(Items.DEEPSLATE_TILE_SLAB), has(Items.DEEPSLATE_TILE_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_DEEPSLATE_TILE_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_TILE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_DEEPSLATE_TILE_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.DEEPSLATE_TILE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_DEEPSLATE_TILE_WALL,
                         0.1f, 200).unlockedBy(getHasName(Items.DEEPSLATE_TILE_WALL), has(Items.DEEPSLATE_TILE_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_DEEPSLATE_TILE_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_END_STONE_BRICK_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_END_STONE_BRICK_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(Items.END_STONE_BRICK_STAIRS), has(Items.END_STONE_BRICK_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_END_STONE_BRICK_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_END_STONE_BRICK_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_END_STONE_BRICK_SLAB,
                         0.1f, 200).unlockedBy(getHasName(Items.END_STONE_BRICK_SLAB), has(Items.END_STONE_BRICK_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_END_STONE_BRICK_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE_BRICK_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_END_STONE_BRICK_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.END_STONE_BRICK_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_END_STONE_BRICK_WALL,
                         0.1f, 200).unlockedBy(getHasName(Items.END_STONE_BRICK_WALL), has(Items.END_STONE_BRICK_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_END_STONE_BRICK_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_STONE_TILE_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_STONE_TILE_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.STONE_TILE_STAIRS), has(DecoBlocks.STONE_TILE_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_STONE_TILE_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_STONE_TILE_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_STONE_TILE_SLAB,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.STONE_TILE_SLAB), has(DecoBlocks.STONE_TILE_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_STONE_TILE_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_TILE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_STONE_TILE_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.STONE_TILE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_STONE_TILE_WALL,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.STONE_TILE_WALL), has(DecoBlocks.STONE_TILE_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_STONE_TILE_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.POLISHED_BLACKSTONE_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.POLISHED_BLACKSTONE_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.POLISHED_BLACKSTONE_TILE_STAIRS), has(DecoBlocks.POLISHED_BLACKSTONE_TILE_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.POLISHED_BLACKSTONE_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.POLISHED_BLACKSTONE_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_SLAB,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.POLISHED_BLACKSTONE_TILE_SLAB), has(DecoBlocks.POLISHED_BLACKSTONE_TILE_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.POLISHED_BLACKSTONE_TILE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.POLISHED_BLACKSTONE_TILE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_WALL,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.POLISHED_BLACKSTONE_TILE_WALL), has(DecoBlocks.POLISHED_BLACKSTONE_TILE_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_POLISHED_BLACKSTONE_TILE_WALL)+"_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_END_STONE_TILE_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_END_STONE_TILE_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.END_STONE_TILE_STAIRS), has(DecoBlocks.END_STONE_TILE_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_END_STONE_TILE_STAIRS)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_END_STONE_TILE_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_END_STONE_TILE_SLAB,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.END_STONE_TILE_SLAB), has(DecoBlocks.END_STONE_TILE_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_END_STONE_TILE_SLAB)+"_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_TILE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_END_STONE_TILE_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.END_STONE_TILE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_END_STONE_TILE_WALL,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.END_STONE_TILE_WALL), has(DecoBlocks.END_STONE_TILE_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_END_STONE_TILE_WALL)+"_from_smelting");
 
@@ -2900,23 +2897,23 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
         wall(RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_TUFF_TILE_WALL, DecoBlocks.CRACKED_TUFF_TILES);
         stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_TUFF_TILE_WALL, DecoBlocks.CRACKED_TUFF_TILES);
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.TUFF_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_TUFF_BRICK_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.TUFF_BRICK_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_TUFF_BRICK_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(Items.TUFF_BRICK_STAIRS), has(Items.TUFF_BRICK_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_TUFF_BRICK_STAIRS)+ "_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.TUFF_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_TUFF_BRICK_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.TUFF_BRICK_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_TUFF_BRICK_SLAB,
                         0.1f, 200).unlockedBy(getHasName(Items.TUFF_BRICK_SLAB), has(Items.TUFF_BRICK_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_TUFF_BRICK_SLAB)+ "_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.TUFF_BRICK_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_TUFF_BRICK_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.TUFF_BRICK_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_TUFF_BRICK_WALL,
                         0.1f, 200).unlockedBy(getHasName(Items.TUFF_BRICK_WALL), has(Items.TUFF_BRICK_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_TUFF_BRICK_WALL)+ "_from_smelting");
 
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.TUFF_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_TUFF_TILE_STAIRS,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.TUFF_TILE_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_TUFF_TILE_STAIRS,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.TUFF_TILE_STAIRS), has(DecoBlocks.TUFF_TILE_STAIRS))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_TUFF_TILE_STAIRS)+ "_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.TUFF_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_TUFF_TILE_SLAB,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.TUFF_TILE_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CRACKED_TUFF_TILE_SLAB,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.TUFF_TILE_SLAB), has(DecoBlocks.TUFF_TILE_SLAB))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_TUFF_TILE_SLAB)+ "_from_smelting");
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.TUFF_TILE_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.CRACKED_TUFF_TILE_WALL,
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.TUFF_TILE_WALL), RecipeCategory.DECORATIONS, DecoBlocks.CRACKED_TUFF_TILE_WALL,
                         0.1f, 200).unlockedBy(getHasName(DecoBlocks.TUFF_TILE_WALL), has(DecoBlocks.TUFF_TILE_WALL))
                 .save(output,getSimpleRecipeName(DecoBlocks.CRACKED_TUFF_TILE_WALL)+ "_from_smelting");
 
@@ -3054,16 +3051,16 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                         .save(output,getSimpleRecipeName(DecoBlocks.PALE_MOSS_STAIRS)+ "_recipe_create");
                 slab(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.PALE_MOSS_SLAB, Items.PALE_MOSS_BLOCK);
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RESIN_BLOCK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_RESIN,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.RESIN_BLOCK), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_RESIN,
                                 0.1f, 200).unlockedBy(getHasName(Items.RESIN_BLOCK), has(Items.RESIN_BLOCK))
                         .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_RESIN)+ "_from_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RESIN_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_RESIN_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RESIN_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_RESIN_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RESIN_STAIRS), has(DecoBlocks.RESIN_STAIRS))
                         .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_RESIN_STAIRS)+ "_from_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RESIN_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_RESIN_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RESIN_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_RESIN_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RESIN_SLAB), has(DecoBlocks.RESIN_SLAB))
                         .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_RESIN_SLAB)+ "_from_smelting");
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RESIN_WALL), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_RESIN_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.RESIN_WALL), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_RESIN_WALL,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.RESIN_WALL), has(DecoBlocks.RESIN_WALL))
                         .save(output,getSimpleRecipeName(DecoBlocks.SMOOTH_RESIN_WALL)+ "_from_smelting");
 
@@ -3312,7 +3309,7 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_LAPIS_WALL, Items.LAPIS_BLOCK);
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.CUT_LAPIS_WALL, DecoBlocks.CUT_LAPIS);
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LAPIS_BLOCK), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_LAPIS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.LAPIS_BLOCK), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_LAPIS,
                                 0.1f, 200).unlockedBy(getHasName(Items.LAPIS_BLOCK), has(Items.LAPIS_BLOCK))
                         .save(output, getSimpleRecipeName(DecoBlocks.SMOOTH_LAPIS) + "_recipe_create");
 
@@ -3325,13 +3322,13 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                 slab(RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_LAPIS_WALL, DecoBlocks.SMOOTH_LAPIS);
                 stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_LAPIS_WALL, DecoBlocks.SMOOTH_LAPIS);
 
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.LAPIS_STAIRS), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_LAPIS_STAIRS,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.LAPIS_STAIRS), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_LAPIS_STAIRS,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.LAPIS_STAIRS), has(DecoBlocks.LAPIS_STAIRS))
                         .save(output,("smooth_lapis_stairs_from_smelting"));
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.LAPIS_SLAB), RecipeCategory.BUILDING_BLOCKS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_LAPIS_SLAB,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.LAPIS_SLAB), RecipeCategory.BUILDING_BLOCKS, DecoBlocks.SMOOTH_LAPIS_SLAB,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.LAPIS_SLAB), has(DecoBlocks.LAPIS_SLAB))
                         .save(output,("smooth_lapis_slab_from_smelting"));
-                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.LAPIS_WALL), RecipeCategory.DECORATIONS, CookingBookCategory.BLOCKS,DecoBlocks.SMOOTH_LAPIS_WALL,
+                SimpleCookingRecipeBuilder.smelting(Ingredient.of(DecoBlocks.LAPIS_WALL), RecipeCategory.DECORATIONS, DecoBlocks.SMOOTH_LAPIS_WALL,
                                 0.1f, 200).unlockedBy(getHasName(DecoBlocks.LAPIS_WALL), has(DecoBlocks.LAPIS_WALL))
                         .save(output,("smooth_lapis_wall_from_smelting"));
 

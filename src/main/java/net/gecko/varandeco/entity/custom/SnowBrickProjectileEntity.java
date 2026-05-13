@@ -13,7 +13,6 @@ import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -36,18 +35,20 @@ public class SnowBrickProjectileEntity extends ThrowableItemProjectile {
         return DecoItems.SNOW_BRICK;
     }
 
-    private ParticleOptions getParticle() {
-        ItemStack item = this.getItem();
-        return item.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item));
+    private ParticleOptions getParticleParameters() {
+        ItemStack itemStack = this.getItem();
+        return !itemStack.isEmpty() && !itemStack.is(this.getDefaultItem())
+                ? new ItemParticleOption(ParticleTypes.ITEM, itemStack)
+                : ParticleTypes.ITEM_SNOWBALL;
     }
 
     @Override
-    public void handleEntityEvent(final byte id) {
-        if (id == 3) {
-            ParticleOptions particle = this.getParticle();
+    public void handleEntityEvent(byte status) {
+        if (status == EntityEvent.DEATH) {
+            ParticleOptions particleEffect = this.getParticleParameters();
 
             for (int i = 0; i < 8; i++) {
-                this.level().addParticle(particle, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
+                this.level().addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
             }
         }
     }

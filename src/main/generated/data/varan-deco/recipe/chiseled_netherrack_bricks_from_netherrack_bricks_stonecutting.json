@@ -2,6 +2,7 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:netherrack_bricks",
   "result": {
+    "count": 1,
     "id": "minecraft:chiseled_netherrack_bricks"
   }
 }

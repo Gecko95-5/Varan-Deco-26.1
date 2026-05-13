@@ -2,6 +2,7 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:checkered_pink_concrete",
   "result": {
+    "count": 1,
     "id": "minecraft:checkered_pink_concrete_stairs"
   }
 }

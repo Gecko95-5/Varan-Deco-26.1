@@ -2,6 +2,7 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:purpur_block",
   "result": {
+    "count": 1,
     "id": "minecraft:cut_purpur_wall"
   }
 }

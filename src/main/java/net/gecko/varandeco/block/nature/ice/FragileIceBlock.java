@@ -16,7 +16,7 @@ public class FragileIceBlock extends Block {
     public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
         super.stepOn(world, pos, state, entity);
         if (!entity.isSteppingCarefully()) {
-            if (!entity.is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS))
+            if (!entity.getType().is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS))
                 world.destroyBlock(pos, true);
         }
     }
@@ -24,7 +24,7 @@ public class FragileIceBlock extends Block {
     @Override
     public void fallOn(Level world, BlockState state, BlockPos pos, Entity entity, double fallDistance) {
         if (!entity.isSteppingCarefully()) {
-            if (!entity.is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS))
+            if (!entity.getType().is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS))
                 world.destroyBlock(pos, true);
             entity.causeFallDamage(fallDistance, 1.5F, world.damageSources().fall());
         }

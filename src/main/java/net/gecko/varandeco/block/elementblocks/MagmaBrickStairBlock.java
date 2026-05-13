@@ -1,22 +1,23 @@
 package net.gecko.varandeco.block.elementblocks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class MagmaBrickStairBlock extends StairBlock {
-
-    public MagmaBrickStairBlock(BlockState baseState, Properties properties) {
-        super(baseState, properties);
+    public MagmaBrickStairBlock(BlockState baseBlockState, Properties settings) {
+        super(baseBlockState, settings);
     }
 
     @Override
-    public void stepOn(final Level level, final BlockPos pos, final net.minecraft.world.level.block.state.BlockState onState, final net.minecraft.world.entity.Entity entity) {
-        if (!entity.isSteppingCarefully() && entity instanceof net.minecraft.world.entity.LivingEntity) {
-            entity.hurt(level.damageSources().hotFloor(), 0.5F);
+    public void stepOn(Level world, BlockPos pos, BlockState state, Entity entity) {
+        if (!entity.isSteppingCarefully() && entity instanceof LivingEntity) {
+            entity.hurt(world.damageSources().hotFloor(), 0.5F);
         }
 
-        super.stepOn(level, pos, onState, entity);
+        super.stepOn(world, pos, state, entity);
     }
 }

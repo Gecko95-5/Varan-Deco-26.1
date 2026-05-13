@@ -106,7 +106,7 @@ public class DecoLootTableModifiers {
             if (SHIPWRECK_SP_ID.equals(key.identifier())) {
                 LootPool.Builder poolBuilder = LootPool.lootPool()
                         .setRolls(UniformGenerator.between(1.0f,2.0f))
-                        .add(LootItem.lootTableItem(DecoBlocks.DRIFTWOOD_LOG)
+                        .with(LootItem.lootTableItem(DecoBlocks.DRIFTWOOD_LOG)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0f, 6.0f))).build());
 
 

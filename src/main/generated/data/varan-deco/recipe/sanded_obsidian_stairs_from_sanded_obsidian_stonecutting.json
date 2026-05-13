@@ -2,6 +2,7 @@
   "type": "minecraft:stonecutting",
   "ingredient": "minecraft:sanded_obsidian",
   "result": {
+    "count": 1,
     "id": "minecraft:sanded_obsidian_stairs"
   }
 }
