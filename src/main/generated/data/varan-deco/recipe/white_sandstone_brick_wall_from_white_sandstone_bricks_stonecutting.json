@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:white_sandstone_bricks",
+  "result": {
+    "id": "minecraft:white_sandstone_brick_wall"
+  }
+}

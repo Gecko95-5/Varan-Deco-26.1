@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/flower_pot_cross",
+  "textures": {
+    "plant": "minecraft:block/waxed_weathered_copper_tulip"
+  }
+}

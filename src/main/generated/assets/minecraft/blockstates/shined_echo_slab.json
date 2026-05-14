@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "minecraft:block/shined_echo_slab"
+    },
+    "type=double": {
+      "model": "minecraft:block/shined_echo"
+    },
+    "type=top": {
+      "model": "minecraft:block/shined_echo_slab_top"
+    }
+  }
+}

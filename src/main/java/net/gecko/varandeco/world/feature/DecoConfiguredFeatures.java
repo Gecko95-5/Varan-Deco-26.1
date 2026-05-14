@@ -30,10 +30,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePl
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.MegaJungleFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.SpruceFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.DualNoiseProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.NoiseProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLogsDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlacer;
@@ -106,6 +103,20 @@ public class DecoConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?,?>> DECO_MEGA_TULIP = registerKey("deco_mega_tulip");
 
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_PALE_MEGA_TULIP = registerKey("deco_pale_mega_tulip");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_TAIGA = registerKey("deco_taiga_flowers");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_WINDSWEPT_FOREST = registerKey("deco_windswept_forest_flowers");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_WINDSWEPT = registerKey("deco_windswept_flowers");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_SILVER_ROSE = registerKey("deco_silver_rose");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_TAIGA_WILDFLOWER_KEY = registerKey("deco_taiga_wildflower");
+
+    public static final ResourceKey<ConfiguredFeature<?,?>> DECO_JUNGLE_WILDFLOWER_KEY = registerKey("deco_jungle_wildflower");
+
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacebles = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
 
@@ -143,7 +154,13 @@ public class DecoConfiguredFeatures {
         FeatureUtils.register(context, DECO_BIRCH_WILDFLOWER_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
                 (new WeightedStateProvider(flowerBedPatchBuilder(DecoBlocks.SWEET_WILDFLOWERS))));
 
-        FeatureUtils.register(context, DECO_TULIPS_MEADOW_KEY,
+        FeatureUtils.register(context, DECO_TAIGA_WILDFLOWER_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
+                (new WeightedStateProvider(flowerBedPatchBuilder(DecoBlocks.MONOCHROME_WILDFLOWERS))));
+
+        FeatureUtils.register(context, DECO_JUNGLE_WILDFLOWER_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
+                (new WeightedStateProvider(flowerBedPatchBuilder((DecoBlocks.SEA_WILDFLOWERS)))));
+
+        register(context, DECO_TULIPS_MEADOW_KEY,
                 Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
                         (WeightedList.<BlockState>builder().add(DecoBlocks.BLACK_TULIP.defaultBlockState(),1)
                                 .add(DecoBlocks.GREEN_TULIP.defaultBlockState(),5)
@@ -178,6 +195,29 @@ public class DecoConfiguredFeatures {
         FeatureUtils.register(context, DECO_MESA_WILDFLOWER_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration
                 (new WeightedStateProvider(flowerBedPatchBuilder(DecoBlocks.GECKO_WILDFLOWERS))));
 
+        FeatureUtils.register(context, DECO_TAIGA,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.TAIGA_DANDELION.defaultBlockState(),2)
+                                    .add(DecoBlocks.PUFFY_DANDELION.defaultBlockState(),2)
+                                    .add(DecoBlocks.FERN_LAVENDER.defaultBlockState(),1)
+                                    .add(DecoBlocks.CARAMEL_BUTTERCUP.defaultBlockState(),1))));
+
+        FeatureUtils.register(context, DECO_WINDSWEPT_FOREST,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.TAIGA_DANDELION.defaultBlockState(),2)
+                                    .add(DecoBlocks.PUFFY_DANDELION.defaultBlockState(),2)
+                                    .add(DecoBlocks.CARAMEL_BUTTERCUP.defaultBlockState(),2)
+                                    .add(DecoBlocks.ALPINE_POPPY.defaultBlockState(),1)
+                                    .add(DecoBlocks.ALPINE_SPEEDWELL.defaultBlockState(),1))));
+
+        FeatureUtils.register(context, DECO_WINDSWEPT,
+                Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider
+                        (WeightedList.<BlockState>builder().add(DecoBlocks.ALPINE_POPPY.defaultBlockState(),2)
+                                    .add(DecoBlocks.ALPINE_SPEEDWELL.defaultBlockState(),1))));
+
+        FeatureUtils.register(context, DECO_SILVER_ROSE, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.SILVER_ROSE)));
+
         register(context, DECO_SWAMP_KEY,
                 Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.YELLOW_ORCHID)));
 
@@ -208,6 +248,10 @@ public class DecoConfiguredFeatures {
     FeatureUtils.register(
             context, DECO_MEGA_TULIP, Feature.SIMPLE_BLOCK,
                     new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.MEGA_BROWN_TULIP)));
+
+    FeatureUtils.register(
+            context, DECO_PALE_MEGA_TULIP, Feature.SIMPLE_BLOCK,
+                new SimpleBlockConfiguration(BlockStateProvider.simple((DecoBlocks.MEGA_GRAY_TULIP))));
 
             FeatureUtils.register(context, DECO_ROSE_KEY, Feature.SIMPLE_BLOCK,
                     new SimpleBlockConfiguration(BlockStateProvider.simple(DecoBlocks.ROSE)));

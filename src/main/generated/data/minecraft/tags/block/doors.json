@@ -1,0 +1,14 @@
+{
+  "values": [
+    "minecraft:iron_bar_door",
+    "minecraft:copper_bar_door",
+    "minecraft:exposed_copper_bar_door",
+    "minecraft:weathered_copper_bar_door",
+    "minecraft:oxidized_copper_bar_door",
+    "minecraft:waxed_copper_bar_door",
+    "minecraft:waxed_exposed_copper_bar_door",
+    "minecraft:waxed_weathered_copper_bar_door",
+    "minecraft:waxed_oxidized_copper_bar_door",
+    "minecraft:gold_bar_door"
+  ]
+}

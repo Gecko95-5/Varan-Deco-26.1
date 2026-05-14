@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "brown_dye",
+  "ingredients": [
+    "minecraft:exposed_copper_tulip"
+  ],
+  "result": {
+    "id": "minecraft:brown_dye"
+  }
+}

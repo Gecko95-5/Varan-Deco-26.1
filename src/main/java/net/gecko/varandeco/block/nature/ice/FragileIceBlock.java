@@ -1,13 +1,16 @@
 package net.gecko.varandeco.block.nature.ice;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class FragileIceBlock extends Block {
+public class  FragileIceBlock extends Block{
     public FragileIceBlock(Properties settings) {
         super(settings);
     }
@@ -27,6 +30,12 @@ public class FragileIceBlock extends Block {
             if (!entity.is(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS))
                 world.destroyBlock(pos, true);
             entity.causeFallDamage(fallDistance, 1.5F, world.damageSources().fall());
+        }
+    }
+    @Override
+    public void randomTick(BlockState state, ServerLevel world, BlockPos pos, RandomSource random) {
+        if (world.environmentAttributes().getValue(EnvironmentAttributes.WATER_EVAPORATES, pos)) {
+            world.removeBlock(pos, false);
         }
     }
 }

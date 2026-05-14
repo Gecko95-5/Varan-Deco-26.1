@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "hardened_glass",
+  "key": {
+    "#": "minecraft:glowstone_dust",
+    "X": "minecraft:hardened_glass"
+  },
+  "pattern": [
+    " # ",
+    "#X#",
+    " # "
+  ],
+  "result": {
+    "count": 2,
+    "id": "minecraft:hardened_glowing_glass"
+  }
+}

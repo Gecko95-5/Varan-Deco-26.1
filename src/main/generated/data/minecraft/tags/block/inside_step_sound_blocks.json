@@ -2,6 +2,8 @@
   "values": [
     "minecraft:rouge_wildflowers",
     "minecraft:sweet_wildflowers",
-    "minecraft:gecko_wildflowers"
+    "minecraft:gecko_wildflowers",
+    "minecraft:sea_wildflowers",
+    "minecraft:monochrome_wildflowers"
   ]
 }

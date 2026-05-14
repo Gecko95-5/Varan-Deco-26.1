@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "cyan_dye",
+  "ingredients": [
+    "minecraft:oxidized_copper_tulip"
+  ],
+  "result": {
+    "id": "minecraft:cyan_dye"
+  }
+}

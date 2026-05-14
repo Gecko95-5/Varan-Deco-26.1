@@ -14,12 +14,16 @@
     }
   },
   "display": {
-    "description": "Obtain a Wooden Saplings",
+    "description": {
+      "translate": "advancements.varan-deco.wooden_sapling.description"
+    },
     "icon": {
       "count": 1,
       "id": "minecraft:wooden_sapling"
     },
-    "title": "The Wood of Woods"
+    "title": {
+      "translate": "advancements.varan-deco.wooden_sapling.title"
+    }
   },
   "requirements": [
     [

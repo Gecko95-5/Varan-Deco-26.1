@@ -2,22 +2,24 @@ package net.gecko.varandeco.block;
 
 import com.terraformersmc.terraform.sign.api.block.TerraformSignBlockHelper;
 import net.gecko.varandeco.VaranDeco;
+import net.gecko.varandeco.block.custom.*;
+import net.gecko.varandeco.block.elementblocks.*;
 import net.gecko.varandeco.block.nature.*;
+import net.gecko.varandeco.block.nature.flowers.*;
 import net.gecko.varandeco.block.nature.ice.BlackIceBlock;
 import net.gecko.varandeco.block.nature.ice.FragileIceBlock;
+import net.gecko.varandeco.block.nature.packed.PackedGrassBlock;
+import net.gecko.varandeco.block.nature.packed.PackedMyceliumBlock;
 import net.gecko.varandeco.block.nature.underwater.*;
-import net.gecko.varandeco.block.woodmadeblocks.barrel.*;
-import net.gecko.varandeco.block.elementblocks.*;
-import net.gecko.varandeco.block.custom.*;
 import net.gecko.varandeco.block.nature.underwater.corals.*;
-import net.gecko.varandeco.block.nature.flowers.*;
 import net.gecko.varandeco.block.oxidizable.*;
 import net.gecko.varandeco.block.stonemadeblocks.*;
+import net.gecko.varandeco.block.woodmadeblocks.barrel.*;
 import net.gecko.varandeco.block.woodmadeblocks.cartographytables.*;
 import net.gecko.varandeco.block.woodmadeblocks.craftingtables.*;
 import net.gecko.varandeco.block.woodmadeblocks.smithingtables.*;
-import net.gecko.varandeco.item.custom.NonStationBlockItem;
 import net.gecko.varandeco.effects.DecoStatusEffects;
+import net.gecko.varandeco.item.custom.NonStationBlockItem;
 import net.gecko.varandeco.world.feature.tree.DecoSaplingGenerators;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -29,6 +31,7 @@ import net.minecraft.data.BlockFamily;
 import net.minecraft.data.worldgen.features.NetherFeatures;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffects;
@@ -48,6 +51,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+
 import java.util.List;
 import java.util.function.Function;
 
@@ -103,15 +107,39 @@ public class DecoBlocks {
     public static final Block DRIFTWOOD_PLANKS = registerBlock("driftwood_planks",
             BlockBehaviour.Properties.of().strength(2.0f,3.0f)
                     .sound(SoundType.WOOD).mapColor(MapColor.PLANT), Block::new);
+    public static final Block WHITE_SAND = registerFallingBlock("white_sand",
+            new ColorRGBA(0xc0c0c0),Blocks.SAND,MapColor.QUARTZ);
+    public static final Block BLACK_SAND = registerFallingBlock("black_sand",
+            new ColorRGBA(0x404040), Blocks.SAND, MapColor.DEEPSLATE);
+    public static final Block COAL_BRICKS = registerBlock("coal_bricks",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BRICKS).mapColor(MapColor.COLOR_BLACK), Block::new);
+    public static final Block CHISELED_COAL_BRICKS = registerBlock("chiseled_coal_bricks",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.COAL_BRICKS), Block::new);
     public static final Block CHARCOAL_BLOCK = registerBlock("charcoal_block",
             BlockBehaviour.Properties.of().requiresCorrectToolForDrops()
                     .strength(5.0F, 6.0F).sound(SoundType.WOOD).mapColor(MapColor.PODZOL), Block::new);
     public static final Block FLINT_BLOCK = registerBlock("flint_block",
             BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(5.0F, 6.0F)
                     .sound(SoundType.DEEPSLATE_BRICKS), Block::new);
+    public static final Block SHINED_AMETHYST = registerBlock("shined_amethyst",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).mapColor(MapColor.ICE), Block::new);
+    public static final Block AMETHYST_BRICKS = registerBlock("amethyst_bricks",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_AMETHYST).strength(2.0F), Block::new);
+    public static final Block SCATTERED_AMETHYST = registerBlock("scattered_amethyst",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_AMETHYST), GlazedTerracottaBlock::new);
+    public static final Block AMETHYST_PILLAR = registerBlock("amethyst_pillar",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_AMETHYST), RotatedPillarBlock::new);
     public static final Block ECHO_BLOCK = registerBlock("echo_block",
             BlockBehaviour.Properties.of().requiresCorrectToolForDrops().strength(2.0F, 3.0F)
                     .sound(SoundType.SCULK_CATALYST).lightLevel(state -> 7).mapColor(MapColor.COLOR_BLACK), Block::new);
+    public static final Block SHINED_ECHO = registerBlock("shined_echo",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.ECHO_BLOCK).lightLevel(state -> 3), Block::new);
+    public static final Block ECHO_BRICKS = registerBlock("echo_bricks",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_ECHO).strength(2.5F), Block::new);
+    public static final Block SCATTERED_ECHO = registerBlock("scattered_echo",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_ECHO), GlazedTerracottaBlock::new);
+    public static final Block ECHO_PILLAR = registerBlock("echo_pillar",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_ECHO), RotatedPillarBlock::new);
     public static final Block CUT_IRON = registerBlock("cut_iron",
             BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK), Block::new);
     public static final Block CUT_IRON_STAIRS = registerStairs("cut_iron_stairs",
@@ -180,12 +208,16 @@ public class DecoBlocks {
     public static final Block IRON_CAP_HYPHAE = registerBlock("iron_cap_hyphae",
             BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_GRAY).strength(2.0f,2.0f)
                     .sound(SoundType.NETHER_WOOD).requiresCorrectToolForDrops().instrument(NoteBlockInstrument.IRON_XYLOPHONE),RotatedPillarBlock::new);
+    public static final Block GLOWING_GLASS = registerBlock("glowing_glass",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion().lightLevel(state -> 15),TransparentBlock::new);
     public static final Block HARDENED_GLASS = registerBlock("hardened_glass",
             BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).strength(25.0f,100.0f)
                     .noOcclusion().requiresCorrectToolForDrops(),TransparentBlock::new);
     public static final Block HARDENED_TINTED_GLASS = registerBlock("hardened_tinted_glass",
             BlockBehaviour.Properties.ofFullCopy(Blocks.TINTED_GLASS).strength(25.0f,100.0f)
                     .noOcclusion().requiresCorrectToolForDrops(),TintedGlassBlock::new);
+    public static final Block HARDENED_GLOWING_GLASS = registerBlock("hardened_glowing_glass",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HARDENED_GLASS).noOcclusion().lightLevel(state -> 15),TransparentBlock::new);
     public static final Block CHISELED_LAPIS = registerBlock("chiseled_lapis",
             BlockBehaviour.Properties.ofFullCopy(Blocks.LAPIS_BLOCK), Block::new);
     public static final Block LAPIS_BRICKS = registerBlock("lapis_bricks",
@@ -443,6 +475,42 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.CUT_RED_SANDSTONE), Block::new);
     public static final Block RED_SANDSTONE_BRICKS = registerBlock("red_sandstone_bricks",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_RED_SANDSTONE_BRICKS), Block::new);
+    public static final Block WHITE_SANDSTONE = registerBlock("white_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).requiresCorrectToolForDrops().mapColor(MapColor.QUARTZ), Block::new);
+    public static final Block CHISELED_WHITE_SANDSTONE = registerBlock("chiseled_white_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WHITE_SANDSTONE), Block::new);
+    public static final Block SMOOTH_WHITE_SANDSTONE = registerBlock("smooth_white_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WHITE_SANDSTONE), Block::new);
+    public static final Block CUT_WHITE_SANDSTONE = registerBlock("cut_white_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WHITE_SANDSTONE), Block::new);
+    public static final Block CUT_WHITE_SANDSTONE_BRICKS = registerBlock("cut_white_sandstone_bricks",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_WHITE_SANDSTONE).strength(1.6f), Block::new);
+    public static final Block COBBLED_WHITE_SANDSTONE = registerBlock("cobbled_white_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WHITE_SANDSTONE), Block::new);
+    public static final Block CHISELED_POLISHED_WHITE_SANDSTONE = registerBlock("chiseled_polished_white_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CHISELED_WHITE_SANDSTONE), Block::new);
+    public static final Block POLISHED_WHITE_SANDSTONE = registerBlock("polished_white_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_WHITE_SANDSTONE), Block::new);
+    public static final Block WHITE_SANDSTONE_BRICKS = registerBlock("white_sandstone_bricks",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_WHITE_SANDSTONE_BRICKS), Block::new);
+    public static final Block BLACK_SANDSTONE = registerBlock("black_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE).requiresCorrectToolForDrops().mapColor(MapColor.DEEPSLATE), Block::new);
+    public static final Block CHISELED_BLACK_SANDSTONE = registerBlock("chiseled_black_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BLACK_SANDSTONE), Block::new);
+    public static final Block SMOOTH_BLACK_SANDSTONE = registerBlock("smooth_black_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BLACK_SANDSTONE), Block::new);
+    public static final Block CUT_BLACK_SANDSTONE = registerBlock("cut_black_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BLACK_SANDSTONE), Block::new);
+    public static final Block CUT_BLACK_SANDSTONE_BRICKS = registerBlock("cut_black_sandstone_bricks",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_BLACK_SANDSTONE).strength(1.6f), Block::new);
+    public static final Block COBBLED_BLACK_SANDSTONE = registerBlock("cobbled_black_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BLACK_SANDSTONE), Block::new);
+    public static final Block CHISELED_POLISHED_BLACK_SANDSTONE = registerBlock("chiseled_polished_black_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CHISELED_BLACK_SANDSTONE), Block::new);
+    public static final Block POLISHED_BLACK_SANDSTONE = registerBlock("polished_black_sandstone",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_BLACK_SANDSTONE), Block::new);
+    public static final Block BLACK_SANDSTONE_BRICKS = registerBlock("black_sandstone_bricks",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_BLACK_SANDSTONE_BRICKS), Block::new);
     public static final Block CHISELED_PRISMARINE_BRICKS = registerBlock("chiseled_prismarine_bricks",
             BlockBehaviour.Properties.ofFullCopy(Blocks.PRISMARINE).mapColor(MapColor.DIAMOND), Block::new);
     public static final Block CRYSTALLIZED_PRISMARINE = registerBlock("crystallized_prismarine",
@@ -995,12 +1063,25 @@ public class DecoBlocks {
     public static final Block BEDROCK_SLAB = registerBlock("bedrock_slab",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK), SlabBlock::new);
 
+    public static final Block SAND_SLAB = registerFallingSlabBlock("sand_slab",
+            14406560,Blocks.SAND);
+    public static final Block RED_SAND_SLAB = registerFallingSlabBlock("red_sand_slab",
+            11098145,Blocks.RED_SAND);
+    public static final Block GRAVEL_SLAB = registerFallingSlabBlock("gravel_slab",
+            -8356741,Blocks.GRAVEL);
+
+    public static final Block COAL_SLAB = registerBlock("coal_slab",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.COAL_BLOCK), SlabBlock::new);
+
     public static final Block RAW_IRON_SLAB = registerBlock("raw_iron_slab",
             BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK), SlabBlock::new);
     public static final Block RAW_COPPER_SLAB = registerBlock("raw_copper_slab",
             BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_COPPER_BLOCK), SlabBlock::new);
     public static final Block RAW_GOLD_SLAB = registerBlock("raw_gold_slab",
             BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_GOLD_BLOCK), SlabBlock::new);
+
+    public static final Block AMETHYST_SLAB = registerBlock("amethyst_slab",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK), SlabBlock::new);
 
     public static final Block IRON_SLAB = registerBlock("iron_slab",
             BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK), SlabBlock::new);
@@ -1285,6 +1366,30 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.IRON_CAP_PLANKS), SlabBlock::new);
     public static final Block WOODEN_SLAB = registerBlock("wooden_slab",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WOODEN_PLANKS), SlabBlock::new);
+    public static final Block WHITE_SAND_SLAB = registerFallingSlabBlock("white_sand_slab",
+            0xc0c0c0,DecoBlocks.WHITE_SAND);
+    public static final Block BLACK_SAND_SLAB = registerFallingSlabBlock("black_sand_slab",
+            0x404040,DecoBlocks.BLACK_SAND);
+    public static final Block COAL_BRICK_SLAB = registerBlock("coal_brick_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.COAL_BRICKS), SlabBlock::new);
+    public static final Block CHARCOAL_SLAB = registerBlock("charcoal_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CHARCOAL_BLOCK), SlabBlock::new);
+    public static final Block FLINT_SLAB = registerBlock("flint_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.FLINT_BLOCK), SlabBlock::new);
+    public static final Block SHINED_AMETHYST_SLAB = registerBlock("shined_amethyst_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_AMETHYST), SlabBlock::new);
+    public static final Block AMETHYST_BRICK_SLAB = registerBlock("amethyst_brick_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.AMETHYST_BRICKS), SlabBlock::new);
+    public static final Block SCATTERED_AMETHYST_SLAB = registerBlock("scattered_amethyst_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SCATTERED_AMETHYST), SlabBlock::new);
+    public static final Block ECHO_SLAB = registerBlock("echo_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.ECHO_BLOCK), SlabBlock::new);
+    public static final Block SHINED_ECHO_SLAB = registerBlock("shined_echo_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_ECHO), SlabBlock::new);
+    public static final Block ECHO_BRICK_SLAB = registerBlock("echo_brick_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.ECHO_BRICKS), SlabBlock::new);
+    public static final Block SCATTERED_ECHO_SLAB = registerBlock("scattered_echo_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SCATTERED_ECHO), SlabBlock::new);
     public static final Block LAPIS_BRICK_SLAB = registerBlock("lapis_brick_slab",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.LAPIS_BRICKS), SlabBlock::new);
     public static final Block CUT_LAPIS_SLAB = registerBlock("cut_lapis_slab",
@@ -1303,6 +1408,10 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_OBSIDIAN), SlabBlock::new);
     public static final Block SMOOTH_PURPUR_SLAB = registerBlock("smooth_purpur_slab",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_PURPUR), SlabBlock::new);
+    public static final Block SMOOTH_WHITE_SANDSTONE_SLAB = registerBlock("smooth_white_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_WHITE_SANDSTONE), SlabBlock::new);
+    public static final Block SMOOTH_BLACK_SANDSTONE_SLAB = registerBlock("smooth_black_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_BLACK_SANDSTONE), SlabBlock::new);
     public static final Block SMOOTH_DEEPSLATE_SLAB = registerBlock("smooth_deepslate_slab",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_DEEPSLATE), SlabBlock::new);
     public static final Block SMOOTH_BLACKSTONE_SLAB = registerBlock("smooth_blackstone_slab",
@@ -1507,6 +1616,30 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.POLISHED_RED_SANDSTONE), SlabBlock::new);
     public static final Block RED_SANDSTONE_BRICK_SLAB = registerBlock("red_sandstone_brick_slab",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.RED_SANDSTONE_BRICKS), SlabBlock::new);
+    public static final Block WHITE_SANDSTONE_SLAB = registerBlock("white_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WHITE_SANDSTONE), SlabBlock::new);
+    public static final Block CUT_WHITE_SANDSTONE_SLAB = registerBlock("cut_white_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_WHITE_SANDSTONE), SlabBlock::new);
+    public static final Block CUT_WHITE_SANDSTONE_BRICK_SLAB = registerBlock("cut_white_sandstone_brick_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_WHITE_SANDSTONE_BRICKS), SlabBlock::new);
+    public static final Block COBBLED_WHITE_SANDSTONE_SLAB = registerBlock("cobbled_white_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.COBBLED_WHITE_SANDSTONE), SlabBlock::new);
+    public static final Block POLISHED_WHITE_SANDSTONE_SLAB = registerBlock("polished_white_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.POLISHED_WHITE_SANDSTONE), SlabBlock::new);
+    public static final Block WHITE_SANDSTONE_BRICK_SLAB = registerBlock("white_sandstone_brick_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WHITE_SANDSTONE_BRICKS), SlabBlock::new);
+    public static final Block BLACK_SANDSTONE_SLAB = registerBlock("black_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BLACK_SANDSTONE), SlabBlock::new);
+    public static final Block CUT_BLACK_SANDSTONE_SLAB = registerBlock("cut_black_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_BLACK_SANDSTONE), SlabBlock::new);
+    public static final Block CUT_BLACK_SANDSTONE_BRICK_SLAB = registerBlock("cut_black_sandstone_brick_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_BLACK_SANDSTONE_BRICKS), SlabBlock::new);
+    public static final Block COBBLED_BLACK_SANDSTONE_SLAB = registerBlock("cobbled_black_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.COBBLED_BLACK_SANDSTONE), SlabBlock::new);
+    public static final Block POLISHED_BLACK_SANDSTONE_SLAB = registerBlock("polished_black_sandstone_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.POLISHED_BLACK_SANDSTONE), SlabBlock::new);
+    public static final Block BLACK_SANDSTONE_BRICK_SLAB = registerBlock("black_sandstone_brick_slab",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BLACK_SANDSTONE_BRICKS), SlabBlock::new);
     public static final Block MAGMA_BRICK_SLAB = registerBlock("magma_brick_slab",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.MAGMA_BRICKS), MagmaBrickSlabBlock::new);
     public static final Block BUBBLE_SLAB = registerBlock("bubble_slab",
@@ -1567,6 +1700,16 @@ public class DecoBlocks {
             DecoBlocks.PACKED_WARPED_NYLIUM, DecoBlocks.PACKED_WARPED_NYLIUM);
     public static final Block BEDROCK_STAIRS = registerStairs("bedrock_stairs",
             Blocks.BEDROCK, Blocks.BEDROCK);
+
+    public static final Block SAND_STAIRS = registerFallingStairs("sand_stairs",
+            14406560,Blocks.SAND,Blocks.SAND);
+    public static final Block RED_SAND_STAIRS = registerFallingStairs("red_sand_stairs",
+            11098145,Blocks.RED_SAND,Blocks.RED_SAND);
+    public static final Block GRAVEL_STAIRS = registerFallingStairs("gravel_stairs",
+            -8356741,Blocks.GRAVEL,Blocks.GRAVEL);
+
+    public static final Block COAL_STAIRS = registerStairs("coal_stairs",
+            Blocks.COAL_BLOCK,Blocks.COAL_BLOCK);
     public static final Block RAW_IRON_STAIRS = registerStairs("raw_iron_stairs",
             Blocks.RAW_IRON_BLOCK, Blocks.RAW_IRON_BLOCK);
     public static final Block RAW_COPPER_STAIRS = registerStairs("raw_copper_stairs",
@@ -1594,6 +1737,9 @@ public class DecoBlocks {
             Blocks.WAXED_OXIDIZED_COPPER, Blocks.WAXED_OXIDIZED_COPPER);
     public static final Block GOLD_STAIRS = registerStairs("gold_stairs",
             Blocks.GOLD_BLOCK, Blocks.GOLD_BLOCK);
+
+    public static final Block AMETHYST_STAIRS = registerStairs("amethyst_stairs",
+            Blocks.AMETHYST_BLOCK,Blocks.AMETHYST_BLOCK);
 
     public static final Block OAK_WOOD_STAIRS = registerWoodStairs("oak_wood_stairs",
             Blocks.OAK_PLANKS, Blocks.OAK_PLANKS, MapColor.DIRT);
@@ -2144,6 +2290,61 @@ public class DecoBlocks {
     public static final Block CLOUD_BRICK_STAIRS = registerStairs("cloud_brick_stairs",
             DecoBlocks.CLOUD_BRICKS, DecoBlocks.CLOUD_BRICKS);
 
+    public static final Block WHITE_SAND_STAIRS = registerFallingStairs("white_sand_stairs",
+            0xc0c0c0,DecoBlocks.WHITE_SAND,DecoBlocks.WHITE_SAND);
+    public static final Block BLACK_SAND_STAIRS = registerFallingStairs("black_sand_stairs",
+            0x404040,DecoBlocks.BLACK_SAND,DecoBlocks.BLACK_SAND);
+    public static final Block COAL_BRICK_STAIRS = registerStairs("coal_brick_stairs",
+            DecoBlocks.COAL_BRICKS,DecoBlocks.COAL_BRICKS);
+    public static final Block CHARCOAL_STAIRS = registerStairs("charcoal_stairs",
+            DecoBlocks.CHARCOAL_BLOCK,DecoBlocks.CHARCOAL_BLOCK);
+    public static final Block SHINED_AMETHYST_STAIRS = registerStairs("shined_amethyst_stairs",
+            DecoBlocks.SHINED_AMETHYST,DecoBlocks.SHINED_AMETHYST);
+    public static final Block AMETHYST_BRICK_STAIRS = registerStairs("amethyst_brick_stairs",
+            DecoBlocks.AMETHYST_BRICKS,DecoBlocks.AMETHYST_BRICKS);
+    public static final Block SCATTERED_AMETHYST_STAIRS = registerStairs("scattered_amethyst_stairs",
+            DecoBlocks.SCATTERED_AMETHYST,DecoBlocks.SCATTERED_AMETHYST);
+    public static final Block ECHO_STAIRS = registerStairs("echo_stairs",
+            DecoBlocks.ECHO_BLOCK,DecoBlocks.ECHO_BLOCK);
+    public static final Block SHINED_ECHO_STAIRS = registerStairs("shined_echo_stairs",
+            DecoBlocks.SHINED_ECHO,DecoBlocks.SHINED_ECHO);
+    public static final Block ECHO_BRICK_STAIRS = registerStairs("echo_brick_stairs",
+            DecoBlocks.ECHO_BRICKS,DecoBlocks.ECHO_BRICKS);
+    public static final Block SCATTERED_ECHO_STAIRS = registerStairs("scattered_echo_stairs",
+            DecoBlocks.SCATTERED_ECHO,DecoBlocks.SCATTERED_ECHO);
+    public static final Block FLINT_STAIRS = registerStairs("flint_stairs",
+            DecoBlocks.FLINT_BLOCK,DecoBlocks.FLINT_BLOCK);
+
+    public static final Block SMOOTH_WHITE_SANDSTONE_STAIRS = registerStairs("smooth_white_sandstone_stairs",
+            DecoBlocks.SMOOTH_WHITE_SANDSTONE,DecoBlocks.SMOOTH_WHITE_SANDSTONE);
+    public static final Block SMOOTH_BLACK_SANDSTONE_STAIRS = registerStairs("smooth_black_sandstone_stairs",
+            DecoBlocks.SMOOTH_BLACK_SANDSTONE,DecoBlocks.SMOOTH_BLACK_SANDSTONE);
+
+    public static final Block WHITE_SANDSTONE_STAIRS = registerStairs("white_sandstone_stairs",
+            DecoBlocks.WHITE_SANDSTONE,DecoBlocks.WHITE_SANDSTONE);
+    public static final Block CUT_WHITE_SANDSTONE_STAIRS = registerStairs("cut_white_sandstone_stairs",
+            DecoBlocks.CUT_WHITE_SANDSTONE,DecoBlocks.CUT_WHITE_SANDSTONE);
+    public static final Block CUT_WHITE_SANDSTONE_BRICK_STAIRS = registerStairs("cut_white_sandstone_brick_stairs",
+            DecoBlocks.CUT_WHITE_SANDSTONE_BRICKS,DecoBlocks.CUT_WHITE_SANDSTONE_BRICKS);
+    public static final Block COBBLED_WHITE_SANDSTONE_STAIRS = registerStairs("cobbled_white_sandstone_stairs",
+            DecoBlocks.COBBLED_WHITE_SANDSTONE,DecoBlocks.COBBLED_WHITE_SANDSTONE);
+    public static final Block POLISHED_WHITE_SANDSTONE_STAIRS = registerStairs("polished_white_sandstone_stairs",
+            DecoBlocks.POLISHED_WHITE_SANDSTONE,DecoBlocks.POLISHED_WHITE_SANDSTONE);
+    public static final Block WHITE_SANDSTONE_BRICK_STAIRS = registerStairs("white_sandstone_brick_stairs",
+            DecoBlocks.WHITE_SANDSTONE_BRICKS,DecoBlocks.WHITE_SANDSTONE_BRICKS);
+    public static final Block BLACK_SANDSTONE_STAIRS = registerStairs("black_sandstone_stairs",
+            DecoBlocks.BLACK_SANDSTONE,DecoBlocks.BLACK_SANDSTONE);
+    public static final Block CUT_BLACK_SANDSTONE_STAIRS = registerStairs("cut_black_sandstone_stairs",
+            DecoBlocks.CUT_BLACK_SANDSTONE,DecoBlocks.CUT_BLACK_SANDSTONE);
+    public static final Block CUT_BLACK_SANDSTONE_BRICK_STAIRS = registerStairs("cut_black_sandstone_brick_stairs",
+            DecoBlocks.CUT_BLACK_SANDSTONE_BRICKS,DecoBlocks.CUT_BLACK_SANDSTONE_BRICKS);
+    public static final Block COBBLED_BLACK_SANDSTONE_STAIRS = registerStairs("cobbled_black_sandstone_stairs",
+            DecoBlocks.COBBLED_BLACK_SANDSTONE,DecoBlocks.COBBLED_BLACK_SANDSTONE);
+    public static final Block POLISHED_BLACK_SANDSTONE_STAIRS = registerStairs("polished_black_sandstone_stairs",
+            DecoBlocks.POLISHED_BLACK_SANDSTONE,DecoBlocks.POLISHED_BLACK_SANDSTONE);
+    public static final Block BLACK_SANDSTONE_BRICK_STAIRS = registerStairs("black_sandstone_brick_stairs",
+            DecoBlocks.BLACK_SANDSTONE_BRICKS,DecoBlocks.BLACK_SANDSTONE_BRICKS);
+
     public static final Block STRIPPED_PALE_OAK_WOOD_SLAB = registerBlock("stripped_pale_oak_wood_slab",
             BlockBehaviour.Properties.ofFullCopy(Blocks.PALE_OAK_PLANKS), SlabBlock::new);
     public static final Block PALE_OAK_WOOD_SLAB = registerBlock("pale_oak_wood_slab",
@@ -2210,6 +2411,10 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.WILDFLOWERS), FlowerBedBlock::new);
     public static final Block GECKO_WILDFLOWERS = registerBlock("gecko_wildflowers",
             BlockBehaviour.Properties.ofFullCopy(Blocks.WILDFLOWERS), FlowerBedBlock::new);
+    public static final Block SEA_WILDFLOWERS = registerBlock("sea_wildflowers",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WILDFLOWERS), FlowerBedBlock::new);
+    public static final Block MONOCHROME_WILDFLOWERS = registerBlock("monochrome_wildflowers",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WILDFLOWERS), FlowerBedBlock::new);
 
     public static final Block IRON_CAP_MUSHROOM_BLOCK = registerBlock("iron_cap_mushroom_block",
             BlockBehaviour.Properties.of().strength(4.0F, 6.0F).mapColor(MapColor.METAL)
@@ -2223,6 +2428,10 @@ public class DecoBlocks {
             MobEffects.SATURATION, 3, Blocks.DANDELION);
     public static final Block POTTED_PUFFY_DANDELION = registerFlowerPot("potted_puffy_dandelion",
             PUFFY_DANDELION,Blocks.POTTED_DANDELION);
+    public static final Block TAIGA_DANDELION = registerFlower("taiga_dandelion",
+            MobEffects.INSTANT_HEALTH, 1,Blocks.DANDELION);
+    public static final Block POTTED_TAIGA_DANDELION = registerFlowerPot("potted_taiga_dandelion",
+            TAIGA_DANDELION,Blocks.POTTED_DANDELION);
 
     public static final Block CALIFORNIA_POPPY = registerFlower("california_poppy",
             MobEffects.FIRE_RESISTANCE, 5, Blocks.POPPY);
@@ -2293,6 +2502,51 @@ public class DecoBlocks {
     public static final Block POTTED_CYAN_TULIP = registerFlowerPot("potted_cyan_tulip",
             CYAN_TULIP,Blocks.POTTED_RED_TULIP);
 
+    public static final Block COPPER_TULIP = registerOxidFlower("copper_tulip",
+            MobEffects.WEAKNESS, 7, WeatheringCopper.WeatherState.UNAFFECTED,
+            Blocks.ORANGE_TULIP);
+    public static final Block WAXED_COPPER_TULIP = registerFlower("waxed_copper_tulip",
+            MobEffects.WEAKNESS, 7, Blocks.ORANGE_TULIP);
+    public static final Block POTTED_COPPER_TULIP = registerOxidFlowerPot("potted_copper_tulip",
+            COPPER_TULIP,WeatheringCopper.WeatherState.UNAFFECTED,Blocks.POTTED_ORANGE_TULIP);
+    public static final Block POTTED_WAXED_COPPER_TULIP = registerFlowerPot("potted_waxed_copper_tulip",
+            WAXED_COPPER_TULIP,Blocks.POTTED_ORANGE_TULIP);
+
+    public static final Block EXPOSED_COPPER_TULIP = registerOxidFlower("exposed_copper_tulip",
+            MobEffects.WEAKNESS, 11, WeatheringCopper.WeatherState.EXPOSED,
+            Blocks.ORANGE_TULIP);
+    public static final Block WAXED_EXPOSED_COPPER_TULIP = registerFlower("waxed_exposed_copper_tulip",
+            MobEffects.WEAKNESS, 11, Blocks.ORANGE_TULIP);
+    public static final Block POTTED_EXPOSED_COPPER_TULIP = registerOxidFlowerPot("potted_exposed_copper_tulip",
+            EXPOSED_COPPER_TULIP,WeatheringCopper.WeatherState.EXPOSED,Blocks.POTTED_ORANGE_TULIP);
+    public static final Block POTTED_WAXED_EXPOSED_COPPER_TULIP = registerFlowerPot("potted_waxed_exposed_copper_tulip",
+            WAXED_EXPOSED_COPPER_TULIP,Blocks.POTTED_ORANGE_TULIP);
+
+    public static final Block WEATHERED_COPPER_TULIP = registerOxidFlower("weathered_copper_tulip",
+            MobEffects.WEAKNESS, 15, WeatheringCopper.WeatherState.WEATHERED,
+            Blocks.ORANGE_TULIP);
+    public static final Block WAXED_WEATHERED_COPPER_TULIP = registerFlower("waxed_weathered_copper_tulip",
+            MobEffects.WEAKNESS, 15, Blocks.ORANGE_TULIP);
+    public static final Block POTTED_WEATHERED_COPPER_TULIP = registerOxidFlowerPot("potted_weathered_copper_tulip",
+            WEATHERED_COPPER_TULIP,WeatheringCopper.WeatherState.WEATHERED,Blocks.POTTED_ORANGE_TULIP);
+    public static final Block POTTED_WAXED_WEATHERED_COPPER_TULIP = registerFlowerPot("potted_waxed_weathered_copper_tulip",
+            WAXED_WEATHERED_COPPER_TULIP,Blocks.POTTED_ORANGE_TULIP);
+
+    public static final Block OXIDIZED_COPPER_TULIP = registerOxidFlower("oxidized_copper_tulip",
+            MobEffects.WEAKNESS, 19, WeatheringCopper.WeatherState.OXIDIZED,
+            Blocks.ORANGE_TULIP);
+    public static final Block WAXED_OXIDIZED_COPPER_TULIP = registerFlower("waxed_oxidized_copper_tulip",
+            MobEffects.WEAKNESS, 19, Blocks.ORANGE_TULIP);
+    public static final Block POTTED_OXIDIZED_COPPER_TULIP = registerOxidFlowerPot("potted_oxidized_copper_tulip",
+            OXIDIZED_COPPER_TULIP,WeatheringCopper.WeatherState.OXIDIZED,Blocks.POTTED_ORANGE_TULIP);
+    public static final Block POTTED_WAXED_OXIDIZED_COPPER_TULIP = registerFlowerPot("potted_waxed_oxidized_copper_tulip",
+            WAXED_OXIDIZED_COPPER_TULIP,Blocks.POTTED_ORANGE_TULIP);
+
+    public static final Block IRON_EYEBLOSSOM = registerBlock("iron_eyeblossom",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).mapColor(MapColor.COLOR_GRAY),IronEyeBlossomBlock::new);
+    public static final Block POTTED_IRON_EYEBLOSSOM = registerRedstoneFlowerPot("potted_iron_eyeblossom",
+            IRON_EYEBLOSSOM,Blocks.POTTED_CLOSED_EYEBLOSSOM);
+
     public static final Block BARBERTON_DAISY = registerFlower("barberton_daisy",
             MobEffects.INSTANT_HEALTH, 1, Blocks.OXEYE_DAISY);
     public static final Block POTTED_BARBERTON_DAISY = registerFlowerPot("potted_barberton_daisy",
@@ -2331,6 +2585,10 @@ public class DecoBlocks {
             DecoStatusEffects.GROUNDED,7, DecoBlocks.LAVENDER);
     public static final Block POTTED_DRILL_LAVENDER = registerFlowerPot("potted_drill_lavender",
             DRILL_LAVENDER,DecoBlocks.LAVENDER);
+    public static final Block FERN_LAVENDER = registerFlower("fern_lavender",
+            MobEffects.SPEED,9,Blocks.POPPY);
+    public static final Block POTTED_FERN_LAVENDER = registerFlowerPot("potted_fern_lavender",
+            FERN_LAVENDER,Blocks.POTTED_POPPY);
 
     public static final Block BLUE_HIBISCUS = registerFlower("blue_hibiscus",
                 MobEffects.ABSORPTION,7, Blocks.POPPY);
@@ -2346,6 +2604,10 @@ public class DecoBlocks {
             MobEffects.ABSORPTION,7,Blocks.POPPY);
     public static final Block POTTED_BUTTERCUP = registerFlowerPot("potted_buttercup",
             BUTTERCUP,Blocks.POTTED_POPPY);
+    public static final Block CARAMEL_BUTTERCUP = registerFlower("caramel_buttercup",
+            MobEffects.NAUSEA,3,Blocks.POPPY);
+    public static final Block POTTED_CARAMEL_BUTTERCUP = registerFlowerPot("potted_caramel_buttercup",
+            CARAMEL_BUTTERCUP,Blocks.POTTED_POPPY);
 
     public static final Block NIGHTSHADE = registerFlower("nightshade",
             MobEffects.INSTANT_DAMAGE,1,Blocks.POPPY);
@@ -2366,10 +2628,19 @@ public class DecoBlocks {
     public static final Block POTTED_BLUE_DELPHINIUM = registerFlowerPot("potted_blue_delphinium",
             BLUE_DELPHINIUM,Blocks.POTTED_POPPY);
 
+    public static final Block ALPINE_SPEEDWELL = registerFlower("alpine_speedwell",
+            MobEffects.SPEED,13,Blocks.POPPY);
+    public static final Block POTTED_ALPINE_SPEEDWELL = registerFlowerPot("potted_alpine_speedwell",
+            ALPINE_SPEEDWELL,Blocks.POTTED_POPPY);
+
     public static final Block ROSE = registerFlower("rose",
             MobEffects.POISON, 5, Blocks.POPPY);
     public static final Block POTTED_ROSE = registerFlowerPot("potted_rose",
             ROSE,Blocks.POTTED_POPPY);
+    public static final Block SILVER_ROSE = registerSilverRose("silver_rose",
+            MobEffects.INSTANT_DAMAGE,1,Blocks.POPPY);
+    public static final Block POTTED_SILVER_ROSE = registerFlowerPot("potted_silver_rose",
+            SILVER_ROSE,Blocks.POTTED_POPPY);
     public static final Block ENDER_ROSE = registerRoseFlower("ender_rose",
             MobEffects.LEVITATION, 8.0F, Blocks.POPPY);
     public static final Block POTTED_ENDER_ROSE = registerFlowerPot("potted_ender_rose",
@@ -2517,6 +2788,15 @@ public class DecoBlocks {
     public static final Block WARPED_NYLIUM_CARPET = registerBlock("warped_nylium_carpet",
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.WARPED_NYLIUM)
                     .sound(SoundType.NYLIUM),CarpetBlock::new);
+    public static final Block SAND_CARPET = registerBlock("sand_carpet",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.SAND)
+                    .sound(SoundType.SAND),CarpetBlock::new);
+    public static final Block RED_SAND_CARPET = registerBlock("red_sand_carpet",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.COLOR_ORANGE)
+                    .sound(SoundType.SAND),CarpetBlock::new);
+    public static final Block GRAVEL_CARPET = registerBlock("gravel_carpet",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.STONE)
+                    .sound(SoundType.GRAVEL),CarpetBlock::new);
     public static final Block MYCELIUM_CARPET = registerBlock("mycelium_carpet",
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.COLOR_PURPLE)
                     .sound(SoundType.GRASS),CarpetBlock::new);
@@ -2527,6 +2807,13 @@ public class DecoBlocks {
     public static final Block SCULK_CARPET = registerBlock("sculk_carpet",
             BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.COLOR_BLACK)
                     .sound(SoundType.SCULK),CarpetBlock::new);
+
+    public static final Block WHITE_SAND_CARPET = registerBlock("white_sand_carpet",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.QUARTZ)
+                    .sound(SoundType.SAND),CarpetBlock::new);
+    public static final Block BLACK_SAND_CARPET = registerBlock("black_sand_carpet",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_CARPET).mapColor(MapColor.DEEPSLATE)
+                    .sound(SoundType.SAND),CarpetBlock::new);
 
     public static final Block PACKED_CACTUS = registerBlock("packed_cactus",
             BlockBehaviour.Properties.ofFullCopy(Blocks.DARK_OAK_WOOD).strength(0.4F).sound(SoundType.WOOL)
@@ -2689,6 +2976,9 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HEAVY_IRON_BARS).sound(SoundType.METAL)
                     .mapColor(MapColor.GOLD),IronBarsBlock::new);
 
+    public static final Block GOLD_CHAIN = registerBlock("gold_chain",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_CHAIN),ChainBlock::new);
+
     public static final Block CRACKED_NETHER_BRICK_FENCE = registerBlock("cracked_nether_brick_fence",
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRACKED_NETHER_BRICKS),FenceBlock::new);
     public static final Block CRACKED_RED_NETHER_BRICK_FENCE = registerBlock("cracked_red_nether_brick_fence",
@@ -2721,6 +3011,11 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.MUD), WallBlock::new);
     public static final Block BEDROCK_WALL = registerBlock("bedrock_wall",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BEDROCK), WallBlock::new);
+
+    public static final Block COAL_WALL = registerBlock("coal_wall",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.COAL_BLOCK), WallBlock::new);
+    public static final Block AMETHYST_WALL = registerBlock("amethyst_wall",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK), WallBlock::new);
 
     public static final Block OAK_WOOD_WALL = registerBlock("oak_wood_wall",
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).mapColor(MapColor.DIRT), WallBlock::new);
@@ -2956,6 +3251,26 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.DRIPSTONE_BRICKS), WallBlock::new);
     public static final Block DRIPSTONE_BRICK_PILLAR_WALL = registerBlock("dripstone_brick_pillar_wall",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.DRIPSTONE_BRICK_PILLAR), WallBlock::new);
+    public static final Block COAL_BRICK_WALL = registerBlock("coal_brick_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.COAL_BRICKS), WallBlock::new);
+    public static final Block CHARCOAL_WALL = registerBlock("charcoal_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CHARCOAL_BLOCK), WallBlock::new);
+    public static final Block FLINT_WALL = registerBlock("flint_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.FLINT_BLOCK), WallBlock::new);
+    public static final Block SHINED_AMETHYST_WALL = registerBlock("shined_amethyst_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_AMETHYST), WallBlock::new);
+    public static final Block AMETHYST_BRICK_WALL = registerBlock("amethyst_brick_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.AMETHYST_BRICKS), WallBlock::new);
+    public static final Block SCATTERED_AMETHYST_WALL = registerBlock("scattered_amethyst_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SCATTERED_AMETHYST), WallBlock::new);
+    public static final Block ECHO_WALL = registerBlock("echo_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.ECHO_BLOCK), WallBlock::new);
+    public static final Block SHINED_ECHO_WALL = registerBlock("shined_echo_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SHINED_ECHO), WallBlock::new);
+    public static final Block ECHO_BRICK_WALL = registerBlock("echo_brick_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.ECHO_BRICKS), WallBlock::new);
+    public static final Block SCATTERED_ECHO_WALL = registerBlock("scattered_echo_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SCATTERED_ECHO), WallBlock::new);
     public static final Block LAPIS_BRICK_WALL = registerBlock("lapis_brick_wall",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.LAPIS_BRICKS), WallBlock::new);
     public static final Block CUT_LAPIS_WALL = registerBlock("cut_lapis_wall",
@@ -2974,6 +3289,10 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_OBSIDIAN), WallBlock::new);
     public static final Block SMOOTH_PURPUR_WALL = registerBlock("smooth_purpur_wall",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_PURPUR),WallBlock::new);
+    public static final Block SMOOTH_WHITE_SANDSTONE_WALL = registerBlock("smooth_white_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_WHITE_SANDSTONE), WallBlock::new);
+    public static final Block SMOOTH_BLACK_SANDSTONE_WALL = registerBlock("smooth_black_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_BLACK_SANDSTONE), WallBlock::new);
     public static final Block SMOOTH_DEEPSLATE_WALL = registerBlock("smooth_deepslate_wall",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SMOOTH_DEEPSLATE),WallBlock::new);
     public static final Block SMOOTH_BLACKSTONE_WALL = registerBlock("smooth_blackstone_wall",
@@ -3180,6 +3499,30 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.POLISHED_RED_SANDSTONE),WallBlock::new);
     public static final Block RED_SANDSTONE_BRICK_WALL = registerBlock("red_sandstone_brick_wall",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.RED_SANDSTONE_BRICKS),WallBlock::new);
+    public static final Block WHITE_SANDSTONE_WALL = registerBlock("white_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WHITE_SANDSTONE), WallBlock::new);
+    public static final Block CUT_WHITE_SANDSTONE_WALL = registerBlock("cut_white_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_WHITE_SANDSTONE), WallBlock::new);
+    public static final Block CUT_WHITE_SANDSTONE_BRICK_WALL = registerBlock("cut_white_sandstone_brick_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_WHITE_SANDSTONE_BRICKS), WallBlock::new);
+    public static final Block COBBLED_WHITE_SANDSTONE_WALL = registerBlock("cobbled_white_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.COBBLED_WHITE_SANDSTONE), WallBlock::new);
+    public static final Block POLISHED_WHITE_SANDSTONE_WALL = registerBlock("polished_white_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.POLISHED_WHITE_SANDSTONE), WallBlock::new);
+    public static final Block WHITE_SANDSTONE_BRICK_WALL = registerBlock("white_sandstone_brick_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.WHITE_SANDSTONE_BRICKS), WallBlock::new);
+    public static final Block BLACK_SANDSTONE_WALL = registerBlock("black_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BLACK_SANDSTONE), WallBlock::new);
+    public static final Block CUT_BLACK_SANDSTONE_WALL = registerBlock("cut_black_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_BLACK_SANDSTONE), WallBlock::new);
+    public static final Block CUT_BLACK_SANDSTONE_BRICK_WALL = registerBlock("cut_black_sandstone_brick_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.CUT_BLACK_SANDSTONE_BRICKS), WallBlock::new);
+    public static final Block COBBLED_BLACK_SANDSTONE_WALL = registerBlock("cobbled_black_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.COBBLED_BLACK_SANDSTONE), WallBlock::new);
+    public static final Block POLISHED_BLACK_SANDSTONE_WALL = registerBlock("polished_black_sandstone_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.POLISHED_BLACK_SANDSTONE), WallBlock::new);
+    public static final Block BLACK_SANDSTONE_BRICK_WALL = registerBlock("black_sandstone_brick_wall",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.BLACK_SANDSTONE_BRICKS), WallBlock::new);
     public static final Block MAGMA_BRICK_WALL = registerBlock("magma_brick_wall",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.MAGMA_BRICKS),MagmaBrickWallBlock::new);
     public static final Block BUBBLE_WALL = registerBlock("bubble_wall",
@@ -3237,6 +3580,9 @@ public class DecoBlocks {
     public static final Block MEGA_BROWN_TULIP = registerBlock("mega_brown_tulip",
             BlockBehaviour.Properties.ofFullCopy(Blocks.PEONY),TallFlowerBlock::new);
 
+    public static final Block MEGA_GRAY_TULIP = registerBlock("mega_gray_tulip",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.PEONY),TallFlowerBlock::new);
+
     public static final Block WITHER_ROSE_BUSH = registerBlock("wither_rose_bush",
             BlockBehaviour.Properties.ofFullCopy(Blocks.ROSE_BUSH),WitherRoseBushBlock::new);
     public static final Block ENDER_ROSE_BUSH = registerBlock("ender_rose_bush",
@@ -3244,44 +3590,49 @@ public class DecoBlocks {
 
     public static final Block TINTED_GLASS_PANE = registerBlock("tinted_glass_pane",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BLACK_STAINED_GLASS_PANE).noOcclusion(),TintedGlassPaneBlock::new);
+    public static final Block GLOWING_GLASS_PANE = registerBlock("glowing_glass_pane",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE).noOcclusion().lightLevel(state -> 15),IronBarsBlock::new);
     public static final Block HARDENED_GLASS_PANE = registerBlock("hardened_glass_pane",
             BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS_PANE).strength(25.0F,100.0f)
                     .noOcclusion().requiresCorrectToolForDrops(),IronBarsBlock::new);
     public static final Block HARDENED_TINTED_GLASS_PANE = registerBlock("hardened_tinted_glass_pane",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.TINTED_GLASS_PANE).strength(25.0F,100.0f)
-                    .noOcclusion().requiresCorrectToolForDrops(),TintedGlassPaneBlock::new);
+                    .noOcclusion().requiresCorrectToolForDrops(),IronBarsBlock::new);
+    public static final Block HARDENED_GLOWING_GLASS_PANE = registerBlock("hardened_glowing_glass_pane",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HARDENED_GLASS_PANE).lightLevel(state -> 15)
+                    .noOcclusion(),IronBarsBlock::new);
     public static final Block HARDENED_WHITE_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_white_stained_glass_pane",
             DyeColor.WHITE,DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_ORANGE_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_orange_stained_glass_pane",
-           DyeColor.ORANGE,DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.ORANGE,DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_MAGENTA_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_magenta_stained_glass_pane",
-           DyeColor.MAGENTA,DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.MAGENTA,DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_LIGHT_BLUE_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_light_blue_stained_glass_pane",
-           DyeColor.LIGHT_BLUE, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.LIGHT_BLUE, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_YELLOW_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_yellow_stained_glass_pane",
-           DyeColor.YELLOW, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.YELLOW, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_LIME_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_lime_stained_glass_pane",
-           DyeColor.LIME, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.LIME, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_PINK_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_pink_stained_glass_pane",
-           DyeColor.PINK, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.PINK, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_GRAY_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_gray_stained_glass_pane",
-           DyeColor.GRAY, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.GRAY, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_LIGHT_GRAY_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_light_gray_stained_glass_pane",
-           DyeColor.LIGHT_GRAY, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.LIGHT_GRAY, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_CYAN_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_cyan_stained_glass_pane",
-           DyeColor.CYAN, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.CYAN, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_PURPLE_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_purple_stained_glass_pane",
-           DyeColor.PURPLE, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.PURPLE, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_BLUE_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_blue_stained_glass_pane",
-           DyeColor.BLUE, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.BLUE, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_BROWN_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_brown_stained_glass_pane",
-           DyeColor.BROWN, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.BROWN, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_GREEN_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_green_stained_glass_pane",
-           DyeColor.GREEN, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.GREEN, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_RED_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_red_stained_glass_pane",
-           DyeColor.RED, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.RED, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
     public static final Block HARDENED_BLACK_STAINED_GLASS_PANE = registerStainedGlassPane("hardened_black_stained_glass_pane",
-           DyeColor.BLACK, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
+            DyeColor.BLACK, DecoBlocks.HARDENED_GLASS_PANE,25.0F,100.0f);
 
     public static final Block MOSAIC_WHITE_STAINED_GLASS_PANE = registerStainedGlassPane("mosaic_white_stained_glass_pane",
            DyeColor.WHITE,Blocks.WHITE_STAINED_GLASS_PANE, 0.6f, 0.3f);
@@ -3640,6 +3991,9 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.STONECUTTER).mapColor(MapColor.SAND)
                     .strength(4.5f),EndstoneStonecutterBlock::new);
 
+    public static final Block GOLD_LANTERN = registerBlock("gold_lantern",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN),LanternBlock::new);
+
     public static final Block COPPER_SOUL_LANTERN = registerOxidLantern("copper_soul_lantern",
             WeatheringCopper.WeatherState.UNAFFECTED,Blocks.SOUL_LANTERN);
     public static final Block WAXED_COPPER_SOUL_LANTERN = registerBlock("waxed_copper_soul_lantern",
@@ -3656,6 +4010,45 @@ public class DecoBlocks {
             WeatheringCopper.WeatherState.OXIDIZED,Blocks.SOUL_LANTERN);
     public static final Block WAXED_OXIDIZED_COPPER_SOUL_LANTERN = registerBlock("waxed_oxidized_copper_soul_lantern",
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.OXIDIZED_COPPER_SOUL_LANTERN),LanternBlock::new);
+
+    public static final Block GOLD_SOUL_LANTERN = registerBlock("gold_soul_lantern",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.SOUL_LANTERN),LanternBlock::new);
+
+    public static final Block HANGING_LAMP = registerBlock("hanging_lamp",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN),HangingLampBlock::new);
+
+    public static final Block HANGING_WHITE_LAMP = registerBlock("hanging_white_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_ORANGE_LAMP = registerBlock("hanging_orange_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_MAGENTA_LAMP = registerBlock("hanging_magenta_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_LIGHT_BLUE_LAMP = registerBlock("hanging_light_blue_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_YELLOW_LAMP = registerBlock("hanging_yellow_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_LIME_LAMP = registerBlock("hanging_lime_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_PINK_LAMP = registerBlock("hanging_pink_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_GRAY_LAMP = registerBlock("hanging_gray_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_LIGHT_GRAY_LAMP = registerBlock("hanging_light_gray_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_CYAN_LAMP = registerBlock("hanging_cyan_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_PURPLE_LAMP = registerBlock("hanging_purple_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_BLUE_LAMP = registerBlock("hanging_blue_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_BROWN_LAMP = registerBlock("hanging_brown_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_GREEN_LAMP = registerBlock("hanging_green_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_RED_LAMP = registerBlock("hanging_red_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
+    public static final Block HANGING_BLACK_LAMP = registerBlock("hanging_black_lamp",
+            BlockBehaviour.Properties.ofFullCopy(DecoBlocks.HANGING_LAMP),HangingLampBlock::new);
 
     public static final Block BUBBLE_ELEVATOR_BLOCK_BUBBLE = registerBlock("bubble_elevator_block_bubble",
             BlockBehaviour.Properties.ofFullCopy(Blocks.WAXED_COPPER_BLOCK).explosionResistance(25.0f)
@@ -3730,35 +4123,35 @@ public class DecoBlocks {
                     .sound(SoundType.CHERRY_WOOD),NoteBlock::new);
 
     public static final Block DEEPSLATE_BUTTON = registerButton("deepslate_button",
-            net.gecko.varandeco.block.DecoBlockSets.DEEPSLATE, 20,Blocks.STONE_BUTTON);
+            DecoBlockSets.DEEPSLATE, 20,Blocks.STONE_BUTTON);
     public static final Block COBBLED_DEEPSLATE_BUTTON = registerButton("cobbled_deepslate_button",
-            net.gecko.varandeco.block.DecoBlockSets.DEEPSLATE, 20,Blocks.STONE_BUTTON);
+            DecoBlockSets.DEEPSLATE, 20,Blocks.STONE_BUTTON);
     public static final Block POLISHED_DEEPSLATE_BUTTON = registerButton("polished_deepslate_button",
-            net.gecko.varandeco.block.DecoBlockSets.POLISHED_DEEPSLATE, 20,Blocks.STONE_BUTTON);
+            DecoBlockSets.POLISHED_DEEPSLATE, 20,Blocks.STONE_BUTTON);
     public static final Block COBBLESTONE_BUTTON = registerButton("cobblestone_button",
             BlockSetType.STONE, 20,Blocks.STONE_BUTTON);
     public static final Block END_STONE_BUTTON = registerButton("end_stone_button",
-            net.gecko.varandeco.block.DecoBlockSets.END_STONE, 20, Blocks.STONE_BUTTON);
+            DecoBlockSets.END_STONE, 20, Blocks.STONE_BUTTON);
     public static final Block BLACKSTONE_BUTTON = registerButton("blackstone_button",
-            net.gecko.varandeco.block.DecoBlockSets.BLACKSTONE, 20,Blocks.STONE_BUTTON);
+            DecoBlockSets.BLACKSTONE, 20,Blocks.STONE_BUTTON);
     public static final Block POLISHED_STONE_BUTTON = registerButton("polished_stone_button",
             BlockSetType.STONE, 20,Blocks.STONE_BUTTON);
     public static final Block TUFF_BUTTON = registerButton("tuff_button",
-            net.gecko.varandeco.block.DecoBlockSets.TUFF, 20,Blocks.STONE_BUTTON);
+            DecoBlockSets.TUFF, 20,Blocks.STONE_BUTTON);
     public static final Block POLISHED_TUFF_BUTTON = registerButton("polished_tuff_button",
-            net.gecko.varandeco.block.DecoBlockSets.POLISHED_TUFF, 20, Blocks.STONE_BUTTON);
+            DecoBlockSets.POLISHED_TUFF, 20, Blocks.STONE_BUTTON);
     public static final Block POLISHED_END_STONE_BUTTON = registerButton("polished_end_stone_button",
-            net.gecko.varandeco.block.DecoBlockSets.END_STONE, 20,Blocks.STONE_BUTTON);
+            DecoBlockSets.END_STONE, 20,Blocks.STONE_BUTTON);
     public static final Block CACTUS_PLANK_BUTTON = registerButton("cactus_plank_button",
-            net.gecko.varandeco.block.DecoBlockSets.CACUTS, 30, Blocks.OAK_BUTTON);
+            DecoBlockSets.CACUTS, 30, Blocks.OAK_BUTTON);
     public static final Block MUSHROOM_BUTTON = registerButton("mushroom_button",
-            net.gecko.varandeco.block.DecoBlockSets.MUSHROOM, 30, Blocks.OAK_BUTTON);
+            DecoBlockSets.MUSHROOM, 30, Blocks.OAK_BUTTON);
     public static final Block IRON_CAP_BUTTON = registerButton("iron_cap_button",
-            net.gecko.varandeco.block.DecoBlockSets.IRON_CAP, 50, Blocks.OAK_BUTTON);
+            DecoBlockSets.IRON_CAP, 50, Blocks.OAK_BUTTON);
     public static final Block WOODEN_BUTTON = registerButton("wooden_button",
-            net.gecko.varandeco.block.DecoBlockSets.WOODEN, 30, Blocks.OAK_BUTTON);
+            DecoBlockSets.WOODEN, 30, Blocks.OAK_BUTTON);
     public static final Block DRIFTWOOD_BUTTON = registerButton("driftwood_button",
-            net.gecko.varandeco.block.DecoBlockSets.DRIFTWOOD, 30, Blocks.OAK_BUTTON);
+            DecoBlockSets.DRIFTWOOD, 30, Blocks.OAK_BUTTON);
 
     public static final Block IRON_BUTTON = registerButton("iron_button",
             BlockSetType.IRON, 50, Blocks.STONE_BUTTON);
@@ -3783,25 +4176,25 @@ public class DecoBlocks {
             BlockSetType.COPPER, 40, DecoBlocks.OXIDIZED_COPPER_BUTTON);
 
     public static final Block DEEPSLATE_PRESSURE_PLATE = registerPressurePlateBlock("deepslate_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.DEEPSLATE, Blocks.DEEPSLATE);
+            DecoBlockSets.DEEPSLATE, Blocks.DEEPSLATE);
     public static final Block COBBLED_DEEPSLATE_PRESSURE_PLATE = registerPressurePlateBlock("cobbled_deepslate_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.DEEPSLATE, Blocks.COBBLED_DEEPSLATE);
+            DecoBlockSets.DEEPSLATE, Blocks.COBBLED_DEEPSLATE);
     public static final Block POLISHED_DEEPSLATE_PRESSURE_PLATE = registerPressurePlateBlock("polished_deepslate_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.POLISHED_DEEPSLATE, Blocks.POLISHED_DEEPSLATE);
+            DecoBlockSets.POLISHED_DEEPSLATE, Blocks.POLISHED_DEEPSLATE);
     public static final Block COBBLESTONE_PRESSURE_PLATE = registerPressurePlateBlock("cobblestone_pressure_plate",
             BlockSetType.STONE, Blocks.STONE_PRESSURE_PLATE);
     public static final Block BLACKSTONE_PRESSURE_PLATE = registerPressurePlateBlock("blackstone_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.BLACKSTONE, Blocks.BLACKSTONE);
+            DecoBlockSets.BLACKSTONE, Blocks.BLACKSTONE);
     public static final Block END_STONE_PRESSURE_PLATE = registerPressurePlateBlock("end_stone_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.END_STONE, Blocks.END_STONE);
+            DecoBlockSets.END_STONE, Blocks.END_STONE);
     public static final Block POLISHED_STONE_PRESSURE_PLATE = registerPressurePlateBlock("polished_stone_pressure_plate",
             BlockSetType.STONE, Blocks.STONE_PRESSURE_PLATE);
     public static final Block POLISHED_END_STONE_PRESSURE_PLATE = registerPressurePlateBlock("polished_end_stone_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.END_STONE, DecoBlocks.POLISHED_END_STONE);
+            DecoBlockSets.END_STONE, DecoBlocks.POLISHED_END_STONE);
     public static final Block TUFF_PRESSURE_PLATE = registerPressurePlateBlock("tuff_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.TUFF, Blocks.TUFF);
+            DecoBlockSets.TUFF, Blocks.TUFF);
     public static final Block POLISHED_TUFF_PRESSURE_PLATE = registerPressurePlateBlock("polished_tuff_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.POLISHED_TUFF, Blocks.POLISHED_TUFF);
+            DecoBlockSets.POLISHED_TUFF, Blocks.POLISHED_TUFF);
 
     public static final Block COPPER_WEIGHT_PRESSURE_PLATE = registerOxidPressurePlateBlock("copper_weight_pressure_plate",
             20, WeatheringCopper.WeatherState.UNAFFECTED,BlockSetType.COPPER,Blocks.COPPER_BLOCK);
@@ -3821,24 +4214,47 @@ public class DecoBlocks {
             100, BlockSetType.COPPER,DecoBlocks.OXIDIZED_COPPER_WEIGHT_PRESSURE_PLATE);
 
     public static final Block CACTUS_PLANK_PRESSURE_PLATE = registerPressurePlateBlock("cactus_plank_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.CACUTS, Blocks.OAK_PRESSURE_PLATE);
+            DecoBlockSets.CACUTS, Blocks.OAK_PRESSURE_PLATE);
     public static final Block MUSHROOM_PRESSURE_PLATE = registerPressurePlateBlock("mushroom_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.MUSHROOM, Blocks.OAK_PRESSURE_PLATE);
+            DecoBlockSets.MUSHROOM, Blocks.OAK_PRESSURE_PLATE);
     public static final Block IRON_CAP_PRESSURE_PLATE = registerPressurePlateBlock("iron_cap_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.IRON_CAP, Blocks.OAK_PRESSURE_PLATE);
+            DecoBlockSets.IRON_CAP, Blocks.OAK_PRESSURE_PLATE);
     public static final Block WOODEN_PRESSURE_PLATE = registerPressurePlateBlock("wooden_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.WOODEN, Blocks.SPRUCE_PRESSURE_PLATE);
+            DecoBlockSets.WOODEN, Blocks.SPRUCE_PRESSURE_PLATE);
     public static final Block DRIFTWOOD_PRESSURE_PLATE = registerPressurePlateBlock("driftwood_pressure_plate",
-            net.gecko.varandeco.block.DecoBlockSets.DRIFTWOOD, Blocks.SPRUCE_PRESSURE_PLATE);
+            DecoBlockSets.DRIFTWOOD, Blocks.SPRUCE_PRESSURE_PLATE);
 
+    public static final Block IRON_BAR_DOOR = registerDoorBlock("iron_bar_door",
+            BlockSetType.IRON, Blocks.IRON_DOOR);
     public static final Block GOLD_DOOR = registerDoorBlock("gold_door",
             BlockSetType.GOLD, Blocks.GOLD_BLOCK);
+    public static final Block GOLD_BAR_DOOR = registerDoorBlock("gold_bar_door",
+            BlockSetType.GOLD, DecoBlocks.GOLD_DOOR);
+
+    public static final Block COPPER_BAR_DOOR = registerOxidDoorBlock("copper_bar_door",
+            BlockSetType.COPPER, WeatheringCopper.WeatherState.UNAFFECTED, Blocks.COPPER_DOOR);
+    public static final Block EXPOSED_COPPER_BAR_DOOR = registerOxidDoorBlock("exposed_copper_bar_door",
+            BlockSetType.COPPER, WeatheringCopper.WeatherState.EXPOSED, Blocks.EXPOSED_COPPER_DOOR);
+    public static final Block WEATHERED_COPPER_BAR_DOOR = registerOxidDoorBlock("weathered_copper_bar_door",
+            BlockSetType.COPPER, WeatheringCopper.WeatherState.UNAFFECTED, Blocks.WEATHERED_COPPER_DOOR);
+    public static final Block OXIDIZED_COPPER_BAR_DOOR = registerOxidDoorBlock("oxidized_copper_bar_door",
+            BlockSetType.COPPER, WeatheringCopper.WeatherState.OXIDIZED, Blocks.OXIDIZED_COPPER_DOOR);
+
+    public static final Block WAXED_COPPER_BAR_DOOR = registerDoorBlock("waxed_copper_bar_door",
+            BlockSetType.COPPER, DecoBlocks.COPPER_BAR_DOOR);
+    public static final Block WAXED_EXPOSED_COPPER_BAR_DOOR = registerDoorBlock("waxed_exposed_copper_bar_door",
+            BlockSetType.COPPER, DecoBlocks.EXPOSED_COPPER_BAR_DOOR);
+    public static final Block WAXED_WEATHERED_COPPER_BAR_DOOR = registerDoorBlock("waxed_weathered_copper_bar_door",
+            BlockSetType.COPPER, DecoBlocks.WEATHERED_COPPER_BAR_DOOR);
+    public static final Block WAXED_OXIDIZED_COPPER_BAR_DOOR = registerDoorBlock("waxed_oxidized_copper_bar_door",
+            BlockSetType.COPPER, DecoBlocks.OXIDIZED_COPPER_BAR_DOOR);
+
     public static final Block CACTUS_DOOR = registerDoorBlock("cactus_door",
             BlockSetType.BIRCH, Blocks.OAK_DOOR);
     public static final Block MUSHROOM_DOOR = registerDoorBlock("mushroom_door",
-            net.gecko.varandeco.block.DecoBlockSets.MUSHROOM, Blocks.OAK_DOOR);
+            DecoBlockSets.MUSHROOM, Blocks.OAK_DOOR);
     public static final Block IRON_CAP_DOOR = registerDoorBlock("iron_cap_door",
-            net.gecko.varandeco.block.DecoBlockSets.IRON_CAP, Blocks.OAK_DOOR);
+            DecoBlockSets.IRON_CAP, Blocks.OAK_DOOR);
     public static final Block WOODEN_DOOR = registerDoorBlock("wooden_door",
             BlockSetType.OAK, Blocks.OAK_DOOR);
     public static final Block DRIFTWOOD_DOOR = registerDoorBlock("driftwood_door",
@@ -3870,23 +4286,47 @@ public class DecoBlocks {
             BlockSetType.WARPED, Blocks.MANGROVE_DOOR);
 
     public static final Block CACTUS_PALLET_DOOR = registerDoorBlock("cactus_pallet_door",
-            net.gecko.varandeco.block.DecoBlockSets.CACUTS, DecoBlocks.CACTUS_DOOR);
+            DecoBlockSets.CACUTS, DecoBlocks.CACTUS_DOOR);
     public static final Block MUSHROOM_PALLET_DOOR = registerDoorBlock("mushroom_pallet_door",
-            net.gecko.varandeco.block.DecoBlockSets.MUSHROOM, DecoBlocks.MUSHROOM_DOOR);
+            DecoBlockSets.MUSHROOM, DecoBlocks.MUSHROOM_DOOR);
     public static final Block IRON_CAP_PALLET_DOOR = registerDoorBlock("iron_cap_pallet_door",
-            net.gecko.varandeco.block.DecoBlockSets.IRON_CAP, DecoBlocks.IRON_CAP_DOOR);
+            DecoBlockSets.IRON_CAP, DecoBlocks.IRON_CAP_DOOR);
     public static final Block DRIFTWOOD_PALLET_DOOR = registerDoorBlock("driftwood_pallet_door",
-            net.gecko.varandeco.block.DecoBlockSets.DRIFTWOOD, DecoBlocks.DRIFTWOOD_DOOR);
+            DecoBlockSets.DRIFTWOOD, DecoBlocks.DRIFTWOOD_DOOR);
     public static final Block WOODEN_PALLET_DOOR = registerDoorBlock("wooden_pallet_door",
-            net.gecko.varandeco.block.DecoBlockSets.WOODEN, DecoBlocks.WOODEN_DOOR);
+            DecoBlockSets.WOODEN, DecoBlocks.WOODEN_DOOR);
+
+    public static final Block IRON_BAR_TRAPDOOR = registerTrapDoorBlock("iron_bar_trapdoor",
+            BlockSetType.IRON, Blocks.IRON_TRAPDOOR);
     public static final Block GOLD_TRAPDOOR = registerTrapDoorBlock("gold_trapdoor",
             BlockSetType.GOLD, Blocks.GOLD_BLOCK);
+    public static final Block GOLD_BAR_TRAPDOOR = registerTrapDoorBlock("gold_bar_trapdoor",
+            BlockSetType.GOLD, DecoBlocks.GOLD_TRAPDOOR);
+
+    public static final Block COPPER_BAR_TRAPDOOR = registerOxidTrapDoorBlock("copper_bar_trapdoor",
+            BlockSetType.COPPER, WeatheringCopper.WeatherState.UNAFFECTED, Blocks.COPPER_TRAPDOOR);
+    public static final Block EXPOSED_COPPER_BAR_TRAPDOOR = registerOxidTrapDoorBlock("exposed_copper_bar_trapdoor",
+            BlockSetType.COPPER, WeatheringCopper.WeatherState.EXPOSED, Blocks.EXPOSED_COPPER_TRAPDOOR);
+    public static final Block WEATHERED_COPPER_BAR_TRAPDOOR = registerOxidTrapDoorBlock("weathered_copper_bar_trapdoor",
+            BlockSetType.COPPER, WeatheringCopper.WeatherState.UNAFFECTED,Blocks.WEATHERED_COPPER_TRAPDOOR);
+    public static final Block OXIDIZED_COPPER_BAR_TRAPDOOR = registerOxidTrapDoorBlock("oxidized_copper_bar_trapdoor",
+            BlockSetType.COPPER, WeatheringCopper.WeatherState.OXIDIZED,Blocks.OXIDIZED_COPPER_TRAPDOOR);
+
+    public static final Block WAXED_COPPER_BAR_TRAPDOOR = registerTrapDoorBlock("waxed_copper_bar_trapdoor",
+            BlockSetType.COPPER, DecoBlocks.COPPER_BAR_TRAPDOOR);
+    public static final Block WAXED_EXPOSED_COPPER_BAR_TRAPDOOR = registerTrapDoorBlock("waxed_exposed_copper_bar_trapdoor",
+            BlockSetType.COPPER, DecoBlocks.EXPOSED_COPPER_BAR_TRAPDOOR);
+    public static final Block WAXED_WEATHERED_COPPER_BAR_TRAPDOOR = registerTrapDoorBlock("waxed_weathered_copper_bar_trapdoor",
+            BlockSetType.COPPER, DecoBlocks.WEATHERED_COPPER_BAR_TRAPDOOR);
+    public static final Block WAXED_OXIDIZED_COPPER_BAR_TRAPDOOR = registerTrapDoorBlock("waxed_oxidized_copper_bar_trapdoor",
+            BlockSetType.COPPER, DecoBlocks.OXIDIZED_COPPER_BAR_TRAPDOOR);
+
     public static final Block CACTUS_TRAPDOOR = registerTrapDoorBlock("cactus_trapdoor",
             BlockSetType.BIRCH, Blocks.OAK_TRAPDOOR);
     public static final Block MUSHROOM_TRAPDOOR = registerTrapDoorBlock("mushroom_trapdoor",
-            net.gecko.varandeco.block.DecoBlockSets.MUSHROOM, Blocks.OAK_TRAPDOOR);
+            DecoBlockSets.MUSHROOM, Blocks.OAK_TRAPDOOR);
     public static final Block IRON_CAP_TRAPDOOR = registerTrapDoorBlock("iron_cap_trapdoor",
-            net.gecko.varandeco.block.DecoBlockSets.IRON_CAP, Blocks.OAK_TRAPDOOR);
+            DecoBlockSets.IRON_CAP, Blocks.OAK_TRAPDOOR);
     public static final Block WOODEN_TRAPDOOR = registerTrapDoorBlock("wooden_trapdoor",
             BlockSetType.OAK, Blocks.OAK_TRAPDOOR);
     public static final Block DRIFTWOOD_TRAPDOOR = registerTrapDoorBlock("driftwood_trapdoor",
@@ -3918,13 +4358,13 @@ public class DecoBlocks {
             BlockSetType.WARPED, Blocks.MANGROVE_TRAPDOOR);
 
     public static final Block CACTUS_PALLET_TRAPDOOR = registerTrapDoorBlock("cactus_pallet_trapdoor",
-            net.gecko.varandeco.block.DecoBlockSets.CACUTS, DecoBlocks.CACTUS_TRAPDOOR);
+            DecoBlockSets.CACUTS, DecoBlocks.CACTUS_TRAPDOOR);
     public static final Block MUSHROOM_PALLET_TRAPDOOR = registerTrapDoorBlock("mushroom_pallet_trapdoor",
-            net.gecko.varandeco.block.DecoBlockSets.MUSHROOM, DecoBlocks.MUSHROOM_TRAPDOOR);
+            DecoBlockSets.MUSHROOM, DecoBlocks.MUSHROOM_TRAPDOOR);
     public static final Block IRON_CAP_PALLET_TRAPDOOR = registerTrapDoorBlock("iron_cap_pallet_trapdoor",
-            net.gecko.varandeco.block.DecoBlockSets.IRON_CAP, DecoBlocks.IRON_CAP_TRAPDOOR);
+            DecoBlockSets.IRON_CAP, DecoBlocks.IRON_CAP_TRAPDOOR);
     public static final Block DRIFTWOOD_PALLET_TRAPDOOR = registerTrapDoorBlock("driftwood_pallet_trapdoor",
-            net.gecko.varandeco.block.DecoBlockSets.DRIFTWOOD, DecoBlocks.DRIFTWOOD_TRAPDOOR);
+            DecoBlockSets.DRIFTWOOD, DecoBlocks.DRIFTWOOD_TRAPDOOR);
     public static final Block WOODEN_PALLET_TRAPDOOR = registerTrapDoorBlock("wooden_pallet_trapdoor",
             DecoBlockSets.WOODEN, DecoBlocks.WOODEN_TRAPDOOR);
 
@@ -4111,471 +4551,471 @@ public class DecoBlocks {
     public static final Identifier DRIFTWOOD_PLANKS_WALL_HANGING_SIGN_ID = Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID,"driftwood_planks_wall_hanging_sign");
 
     public static final StandingSignBlock STANDING_CACTUS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_TYPE, settings),
+            (CACTUS_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.CACTUS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final WallSignBlock WALL_CACTUS_SIGN  = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_TYPE, settings),
+            (CACTUS_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.CACTUS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_CACTUS_SIGN.getLootTable()));
 
     public static final StandingSignBlock STANDING_WOODEN_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_TYPE, settings),
+            (WOODEN_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.WOODEN_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final WallSignBlock WALL_WOODEN_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_TYPE, settings),
+            (WOODEN_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.WOODEN_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_WOODEN_SIGN.getLootTable()));
 
     public static final Block STANDING_MUSHROOM_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_SIGN_ID, settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_TYPE, settings),
+            (MUSHROOM_SIGN_ID, settings -> new StandingSignBlock(DecoWoodTypes.MUSHROOM_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_MUSHROOM_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_WALL_SIGN_ID, settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_TYPE, settings),
+            (MUSHROOM_WALL_SIGN_ID, settings -> new WallSignBlock(DecoWoodTypes.MUSHROOM_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_MUSHROOM_SIGN.getLootTable()));
 
     public static final Block STANDING_IRON_CAP_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_SIGN_ID, settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_TYPE, settings),
+            (IRON_CAP_SIGN_ID, settings -> new StandingSignBlock(DecoWoodTypes.IRON_CAP_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_IRON_CAP_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_WALL_SIGN_ID,  settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_TYPE, settings),
+            (IRON_CAP_WALL_SIGN_ID,  settings -> new WallSignBlock(DecoWoodTypes.IRON_CAP_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_MUSHROOM_SIGN.getLootTable()));
 
     public static final StandingSignBlock STANDING_DRIFTWOOD_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_TYPE, settings),
+            (DRIFTWOOD_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.DRIFTWOOD_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final WallSignBlock WALL_DRIFTWOOD_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_TYPE, settings),
+            (DRIFTWOOD_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.DRIFTWOOD_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_DRIFTWOOD_SIGN.getLootTable()));
 
     public static final Block HANGING_CACTUS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_TYPE, settings),
+            (CACTUS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.CACTUS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_CACTUS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_TYPE, settings),
+            (CACTUS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.CACTUS_TYPE, settings),
             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_CACTUS_SIGN.getLootTable()));
 
     public static final Block HANGING_MUSHROOM_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_TYPE, settings),
+            (MUSHROOM_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.MUSHROOM_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_MUSHROOM_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_TYPE, settings),
+            (MUSHROOM_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.MUSHROOM_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_MUSHROOM_SIGN.getLootTable()));
 
     public static final Block HANGING_IRON_CAP_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_TYPE, settings),
+            (IRON_CAP_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.IRON_CAP_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_IRON_CAP_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_TYPE, settings),
+            (IRON_CAP_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.IRON_CAP_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_IRON_CAP_SIGN.getLootTable()));
 
     public static final CeilingHangingSignBlock HANGING_WOODEN_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_TYPE, settings),
+            (WOODEN_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.WOODEN_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final WallHangingSignBlock WALL_HANGING_WOODEN_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_TYPE, settings),
+            (WOODEN_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.WOODEN_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_WOODEN_SIGN.getLootTable()));
 
     public static final CeilingHangingSignBlock HANGING_DRIFTWOOD_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_TYPE, settings),
+            (DRIFTWOOD_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.DRIFTWOOD_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final WallHangingSignBlock WALL_HANGING_DRIFTWOOD_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_TYPE, settings),
+            (DRIFTWOOD_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.DRIFTWOOD_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_DRIFTWOOD_SIGN.getLootTable()));
 
     public static final Block STANDING_STRIPPED_OAK_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_OAK_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_OAK_TYPE, settings),
+            (STRIPPED_OAK_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_OAK_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_OAK_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_OAK_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_OAK_TYPE, settings),
+            (STRIPPED_OAK_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_OAK_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_OAK_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_SPRUCE_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_SPRUCE_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_SPRUCE_TYPE, settings),
+            (STRIPPED_SPRUCE_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_SPRUCE_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_SPRUCE_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_SPRUCE_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_SPRUCE_TYPE, settings),
+            (STRIPPED_SPRUCE_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_SPRUCE_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_SPRUCE_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_BIRCH_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_BIRCH_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_BIRCH_TYPE, settings),
+            (STRIPPED_BIRCH_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_BIRCH_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_BIRCH_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_BIRCH_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_BIRCH_TYPE, settings),
+            (STRIPPED_BIRCH_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_BIRCH_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_BIRCH_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_JUNGLE_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_JUNGLE_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_JUNGLE_TYPE, settings),
+            (STRIPPED_JUNGLE_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_JUNGLE_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_JUNGLE_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_JUNGLE_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_JUNGLE_TYPE, settings),
+            (STRIPPED_JUNGLE_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_JUNGLE_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_JUNGLE_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_ACACIA_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_ACACIA_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_ACACIA_TYPE, settings),
+            (STRIPPED_ACACIA_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_ACACIA_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_ACACIA_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_ACACIA_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_ACACIA_TYPE, settings),
+            (STRIPPED_ACACIA_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_ACACIA_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_ACACIA_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_DARK_OAK_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_DARK_OAK_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_DARK_OAK_TYPE, settings),
+            (STRIPPED_DARK_OAK_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_DARK_OAK_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_DARK_OAK_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_DARK_OAK_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_DARK_OAK_TYPE, settings),
+            (STRIPPED_DARK_OAK_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_DARK_OAK_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_DARK_OAK_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_MANGROVE_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_MANGROVE_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_MANGROVE_TYPE, settings),
+            (STRIPPED_MANGROVE_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_MANGROVE_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_MANGROVE_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_MANGROVE_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_MANGROVE_TYPE, settings),
+            (STRIPPED_MANGROVE_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_MANGROVE_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_MANGROVE_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_CHERRY_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_CHERRY_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_CHERRY_TYPE, settings),
+            (STRIPPED_CHERRY_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_CHERRY_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SIGN));
     public static final Block WALL_STRIPPED_CHERRY_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_CHERRY_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_CHERRY_TYPE, settings),
+            (STRIPPED_CHERRY_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_CHERRY_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_CHERRY_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_PALE_OAK_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_PALE_OAK_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_PALE_OAK_TYPE, settings),
+            (STRIPPED_PALE_OAK_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_PALE_OAK_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_PALE_OAK_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_PALE_OAK_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_PALE_OAK_TYPE, settings),
+            (STRIPPED_PALE_OAK_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_PALE_OAK_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_PALE_OAK_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_CRIMSON_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_CRIMSON_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_CRIMSON_TYPE, settings),
+            (STRIPPED_CRIMSON_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_CRIMSON_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_SIGN));
     public static final Block WALL_STRIPPED_CRIMSON_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_CRIMSON_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_CRIMSON_TYPE, settings),
+            (STRIPPED_CRIMSON_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_CRIMSON_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_CRIMSON_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_WARPED_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_WARPED_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_WARPED_TYPE, settings),
+            (STRIPPED_WARPED_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_WARPED_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_SIGN));
     public static final Block WALL_STRIPPED_WARPED_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_WARPED_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_WARPED_TYPE, settings),
+            (STRIPPED_WARPED_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_WARPED_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_WARPED_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_WOODEN_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_WOODEN_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_WOODEN_TYPE, settings),
+            (STRIPPED_WOODEN_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_WOODEN_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_WOODEN_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_WOODEN_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_WOODEN_TYPE, settings),
+            (STRIPPED_WOODEN_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_WOODEN_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_WOODEN_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_DRIFTWOOD_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_DRIFTWOOD_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_DRIFTWOOD_TYPE, settings),
+            (STRIPPED_DRIFTWOOD_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_DRIFTWOOD_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_DRIFTWOOD_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_DRIFTWOOD_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_DRIFTWOOD_TYPE, settings),
+            (STRIPPED_DRIFTWOOD_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_DRIFTWOOD_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_DRIFTWOOD_SIGN.getLootTable()));
 
     public static final Block STANDING_STRIPPED_CACTUS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_CACTUS_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_CACTUS_TYPE, settings),
+            (STRIPPED_CACTUS_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_CACTUS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_CACTUS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_CACTUS_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_CACTUS_TYPE, settings),
+            (STRIPPED_CACTUS_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_CACTUS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_CACTUS_SIGN.getLootTable()));
     public static final Block STANDING_MUSHROOM_STEM_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_STEM_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_STEM_TYPE, settings),
+            (MUSHROOM_STEM_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.MUSHROOM_STEM_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_MUSHROOM_STEM_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_STEM_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_STEM_TYPE, settings),
+            (MUSHROOM_STEM_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.MUSHROOM_STEM_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_MUSHROOM_STEM_SIGN.getLootTable()));
     public static final Block STANDING_STRIPPED_IRON_CAP_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_IRON_CAP_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_IRON_CAP_TYPE, settings),
+            (STRIPPED_IRON_CAP_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.STRIPPED_IRON_CAP_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_STRIPPED_IRON_CAP_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (STRIPPED_IRON_CAP_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.STRIPPED_IRON_CAP_TYPE, settings),
+            (STRIPPED_IRON_CAP_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.STRIPPED_IRON_CAP_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_STRIPPED_IRON_CAP_SIGN.getLootTable()));
 
     public static final Block STANDING_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (OAK_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.OAK_MOSAIC_TYPE, settings),
+            (OAK_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (OAK_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.OAK_MOSAIC_TYPE, settings),
+            (OAK_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_OAK_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_SPRUCE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (SPRUCE_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.SPRUCE_MOSAIC_TYPE, settings),
+            (SPRUCE_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.SPRUCE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_SPRUCE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (SPRUCE_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.SPRUCE_MOSAIC_TYPE, settings),
+            (SPRUCE_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.SPRUCE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_SPRUCE_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_BIRCH_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BIRCH_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BIRCH_MOSAIC_TYPE, settings),
+            (BIRCH_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.BIRCH_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_BIRCH_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BIRCH_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BIRCH_MOSAIC_TYPE, settings),
+            (BIRCH_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.BIRCH_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_BIRCH_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_JUNGLE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (JUNGLE_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.JUNGLE_MOSAIC_TYPE, settings),
+            (JUNGLE_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.JUNGLE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_JUNGLE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (JUNGLE_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.JUNGLE_MOSAIC_TYPE, settings),
+            (JUNGLE_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.JUNGLE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_JUNGLE_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_ACACIA_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (ACACIA_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.ACACIA_MOSAIC_TYPE, settings),
+            (ACACIA_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.ACACIA_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_ACACIA_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (ACACIA_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.ACACIA_MOSAIC_TYPE, settings),
+            (ACACIA_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.ACACIA_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_ACACIA_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_DARK_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DARK_OAK_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DARK_OAK_MOSAIC_TYPE, settings),
+            (DARK_OAK_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.DARK_OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_DARK_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DARK_OAK_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DARK_OAK_MOSAIC_TYPE, settings),
+            (DARK_OAK_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.DARK_OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_DARK_OAK_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_MANGROVE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MANGROVE_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MANGROVE_MOSAIC_TYPE, settings),
+            (MANGROVE_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.MANGROVE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_MANGROVE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MANGROVE_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MANGROVE_MOSAIC_TYPE, settings),
+            (MANGROVE_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.MANGROVE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_MANGROVE_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_CHERRY_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CHERRY_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CHERRY_MOSAIC_TYPE, settings),
+            (CHERRY_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.CHERRY_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SIGN));
     public static final Block WALL_CHERRY_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CHERRY_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CHERRY_MOSAIC_TYPE, settings),
+            (CHERRY_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.CHERRY_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_WALL_SIGN).overrideLootTable(STANDING_CHERRY_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_PALE_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (PALE_OAK_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.PALE_OAK_MOSAIC_TYPE, settings),
+            (PALE_OAK_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.PALE_OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_PALE_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (PALE_OAK_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.PALE_OAK_MOSAIC_TYPE, settings),
+            (PALE_OAK_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.PALE_OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_PALE_OAK_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_BAMBOO_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BAMBOO_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BAMBOO_MOSAIC_TYPE, settings),
+            (BAMBOO_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.BAMBOO_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_SIGN));
     public static final Block WALL_BAMBOO_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BAMBOO_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BAMBOO_MOSAIC_TYPE, settings),
+            (BAMBOO_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.BAMBOO_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_WALL_SIGN).overrideLootTable(STANDING_BAMBOO_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_CRIMSON_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CRIMSON_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CRIMSON_MOSAIC_TYPE, settings),
+            (CRIMSON_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.CRIMSON_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_SIGN));
     public static final Block WALL_CRIMSON_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CRIMSON_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CRIMSON_MOSAIC_TYPE, settings),
+            (CRIMSON_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.CRIMSON_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_WALL_SIGN).overrideLootTable(STANDING_CRIMSON_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_WARPED_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WARPED_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WARPED_MOSAIC_TYPE, settings),
+            (WARPED_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.WARPED_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_SIGN));
     public static final Block WALL_WARPED_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WARPED_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WARPED_MOSAIC_TYPE, settings),
+            (WARPED_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.WARPED_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_WALL_SIGN).overrideLootTable(STANDING_WARPED_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_CACTUS_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_MOSAIC_TYPE, settings),
+            (CACTUS_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.CACTUS_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_CACTUS_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_MOSAIC_TYPE, settings),
+            (CACTUS_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.CACTUS_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_CACTUS_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_WOODEN_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_MOSAIC_TYPE, settings),
+            (WOODEN_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.WOODEN_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_WOODEN_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_MOSAIC_TYPE, settings),
+            (WOODEN_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.WOODEN_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_WOODEN_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_DRIFTWOOD_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_MOSAIC_TYPE, settings),
+            (DRIFTWOOD_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.DRIFTWOOD_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_DRIFTWOOD_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_MOSAIC_TYPE, settings),
+            (DRIFTWOOD_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.DRIFTWOOD_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_DRIFTWOOD_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_MUSHROOM_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_MOSAIC_TYPE, settings),
+            (MUSHROOM_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.MUSHROOM_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_MUSHROOM_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_MOSAIC_TYPE, settings),
+            (MUSHROOM_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.MUSHROOM_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_MUSHROOM_MOSAIC_SIGN.getLootTable()));
     public static final Block STANDING_IRON_CAP_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_MOSAIC_TYPE, settings),
+            (IRON_CAP_MOSAIC_SIGN_ID,settings -> new StandingSignBlock(DecoWoodTypes.IRON_CAP_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN));
     public static final Block WALL_IRON_CAP_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_MOSAIC_TYPE, settings),
+            (IRON_CAP_MOSAIC_WALL_SIGN_ID,settings -> new WallSignBlock(DecoWoodTypes.IRON_CAP_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN).overrideLootTable(STANDING_IRON_CAP_MOSAIC_SIGN.getLootTable()));
 
     public static final Block HANGING_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (OAK_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.OAK_MOSAIC_TYPE, settings),
+            (OAK_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (OAK_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.OAK_MOSAIC_TYPE, settings),
+            (OAK_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_OAK_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_SPRUCE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (SPRUCE_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.SPRUCE_MOSAIC_TYPE, settings),
+            (SPRUCE_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.SPRUCE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_SPRUCE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (SPRUCE_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.SPRUCE_MOSAIC_TYPE, settings),
+            (SPRUCE_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.SPRUCE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_SPRUCE_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_BIRCH_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BIRCH_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BIRCH_MOSAIC_TYPE, settings),
+            (BIRCH_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.BIRCH_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_BIRCH_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BIRCH_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BIRCH_MOSAIC_TYPE, settings),
+            (BIRCH_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.BIRCH_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_BIRCH_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_JUNGLE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (JUNGLE_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.JUNGLE_MOSAIC_TYPE, settings),
+            (JUNGLE_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.JUNGLE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_JUNGLE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (JUNGLE_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.JUNGLE_MOSAIC_TYPE, settings),
+            (JUNGLE_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.JUNGLE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_JUNGLE_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_ACACIA_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (ACACIA_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.ACACIA_MOSAIC_TYPE, settings),
+            (ACACIA_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.ACACIA_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_ACACIA_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (ACACIA_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.ACACIA_MOSAIC_TYPE, settings),
+            (ACACIA_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.ACACIA_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_ACACIA_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_DARK_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DARK_OAK_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DARK_OAK_MOSAIC_TYPE, settings),
+            (DARK_OAK_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.DARK_OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_DARK_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DARK_OAK_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DARK_OAK_MOSAIC_TYPE, settings),
+            (DARK_OAK_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.DARK_OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_DARK_OAK_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_MANGROVE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MANGROVE_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MANGROVE_MOSAIC_TYPE, settings),
+            (MANGROVE_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.MANGROVE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_MANGROVE_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MANGROVE_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MANGROVE_MOSAIC_TYPE, settings),
+            (MANGROVE_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.MANGROVE_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_MANGROVE_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_CHERRY_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CHERRY_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CHERRY_MOSAIC_TYPE, settings),
+            (CHERRY_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.CHERRY_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_HANGING_SIGN));
     public static final Block WALL_HANGING_CHERRY_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CHERRY_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CHERRY_MOSAIC_TYPE, settings),
+            (CHERRY_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.CHERRY_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_WALL_HANGING_SIGN).overrideLootTable(HANGING_CHERRY_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_PALE_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (PALE_OAK_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.PALE_OAK_MOSAIC_TYPE, settings),
+            (PALE_OAK_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.PALE_OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_PALE_OAK_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (PALE_OAK_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.PALE_OAK_MOSAIC_TYPE, settings),
+            (PALE_OAK_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.PALE_OAK_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_PALE_OAK_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_BAMBOO_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BAMBOO_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BAMBOO_MOSAIC_TYPE, settings),
+            (BAMBOO_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.BAMBOO_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_HANGING_SIGN));
     public static final Block WALL_HANGING_BAMBOO_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BAMBOO_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BAMBOO_MOSAIC_TYPE, settings),
+            (BAMBOO_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.BAMBOO_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_WALL_HANGING_SIGN).overrideLootTable(HANGING_BAMBOO_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_CRIMSON_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CRIMSON_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CRIMSON_MOSAIC_TYPE, settings),
+            (CRIMSON_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.CRIMSON_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_HANGING_SIGN));
     public static final Block WALL_HANGING_CRIMSON_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CRIMSON_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CRIMSON_MOSAIC_TYPE, settings),
+            (CRIMSON_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.CRIMSON_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_WALL_HANGING_SIGN).overrideLootTable(HANGING_CRIMSON_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_WARPED_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WARPED_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WARPED_MOSAIC_TYPE, settings),
+            (WARPED_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.WARPED_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_HANGING_SIGN));
     public static final Block WALL_HANGING_WARPED_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WARPED_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WARPED_MOSAIC_TYPE, settings),
+            (WARPED_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.WARPED_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_WALL_HANGING_SIGN).overrideLootTable(HANGING_WARPED_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_CACTUS_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_MOSAIC_TYPE, settings),
+            (CACTUS_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.CACTUS_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_CACTUS_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_MOSAIC_TYPE, settings),
+            (CACTUS_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.CACTUS_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_CACTUS_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_WOODEN_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_MOSAIC_TYPE, settings),
+            (WOODEN_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.WOODEN_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_WOODEN_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_MOSAIC_TYPE, settings),
+            (WOODEN_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.WOODEN_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_WOODEN_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_DRIFTWOOD_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_MOSAIC_TYPE, settings),
+            (DRIFTWOOD_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.DRIFTWOOD_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_DRIFTWOOD_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_MOSAIC_TYPE, settings),
+            (DRIFTWOOD_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.DRIFTWOOD_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_DRIFTWOOD_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_MUSHROOM_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_MOSAIC_TYPE, settings),
+            (MUSHROOM_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.MUSHROOM_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_MUSHROOM_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_MOSAIC_TYPE, settings),
+            (MUSHROOM_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.MUSHROOM_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_MUSHROOM_MOSAIC_SIGN.getLootTable()));
     public static final Block HANGING_IRON_CAP_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_MOSAIC_TYPE, settings),
+            (IRON_CAP_MOSAIC_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.IRON_CAP_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_IRON_CAP_MOSAIC_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_MOSAIC_TYPE, settings),
+            (IRON_CAP_MOSAIC_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.IRON_CAP_MOSAIC_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_IRON_CAP_MOSAIC_SIGN.getLootTable()));
 
     public static final Block HANGING_OAK_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (OAK_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.OAK_PLANKS_TYPE, settings),
+            (OAK_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.OAK_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_OAK_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (OAK_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.OAK_PLANKS_TYPE, settings),
+            (OAK_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.OAK_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_OAK_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_SPRUCE_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (SPRUCE_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.SPRUCE_PLANKS_TYPE, settings),
+            (SPRUCE_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.SPRUCE_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_SPRUCE_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (SPRUCE_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.SPRUCE_PLANKS_TYPE, settings),
+            (SPRUCE_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.SPRUCE_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_SPRUCE_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_BIRCH_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BIRCH_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BIRCH_PLANKS_TYPE, settings),
+            (BIRCH_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.BIRCH_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_BIRCH_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (BIRCH_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.BIRCH_PLANKS_TYPE, settings),
+            (BIRCH_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.BIRCH_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_BIRCH_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_JUNGLE_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (JUNGLE_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.JUNGLE_PLANKS_TYPE, settings),
+            (JUNGLE_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.JUNGLE_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_JUNGLE_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (JUNGLE_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.JUNGLE_PLANKS_TYPE, settings),
+            (JUNGLE_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.JUNGLE_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_JUNGLE_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_ACACIA_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (ACACIA_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.ACACIA_PLANKS_TYPE, settings),
+            (ACACIA_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.ACACIA_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_ACACIA_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (ACACIA_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.ACACIA_PLANKS_TYPE, settings),
+            (ACACIA_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.ACACIA_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_ACACIA_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_DARK_OAK_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DARK_OAK_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DARK_OAK_PLANKS_TYPE, settings),
+            (DARK_OAK_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.DARK_OAK_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_DARK_OAK_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DARK_OAK_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DARK_OAK_PLANKS_TYPE, settings),
+            (DARK_OAK_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.DARK_OAK_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_DARK_OAK_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_MANGROVE_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MANGROVE_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MANGROVE_PLANKS_TYPE, settings),
+            (MANGROVE_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.MANGROVE_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_MANGROVE_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MANGROVE_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MANGROVE_PLANKS_TYPE, settings),
+            (MANGROVE_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.MANGROVE_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_MANGROVE_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_CHERRY_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CHERRY_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CHERRY_PLANKS_TYPE, settings),
+            (CHERRY_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.CHERRY_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_HANGING_SIGN));
     public static final Block WALL_HANGING_CHERRY_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CHERRY_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CHERRY_PLANKS_TYPE, settings),
+            (CHERRY_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.CHERRY_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_WALL_HANGING_SIGN).overrideLootTable(HANGING_CHERRY_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_PALE_OAK_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (PALE_OAK_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.PALE_OAK_PLANKS_TYPE, settings),
+            (PALE_OAK_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.PALE_OAK_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_PALE_OAK_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (PALE_OAK_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.PALE_OAK_PLANKS_TYPE, settings),
+            (PALE_OAK_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.PALE_OAK_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_PALE_OAK_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_CRIMSON_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CRIMSON_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CRIMSON_PLANKS_TYPE, settings),
+            (CRIMSON_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.CRIMSON_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_HANGING_SIGN));
     public static final Block WALL_HANGING_CRIMSON_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CRIMSON_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CRIMSON_PLANKS_TYPE, settings),
+            (CRIMSON_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.CRIMSON_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_WALL_HANGING_SIGN).overrideLootTable(HANGING_CRIMSON_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_WARPED_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WARPED_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WARPED_PLANKS_TYPE, settings),
+            (WARPED_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.WARPED_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_HANGING_SIGN));
     public static final Block WALL_HANGING_WARPED_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WARPED_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WARPED_PLANKS_TYPE, settings),
+            (WARPED_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.WARPED_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_WALL_HANGING_SIGN).overrideLootTable(HANGING_WARPED_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_CACTUS_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_PLANKS_TYPE, settings),
+            (CACTUS_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.CACTUS_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_CACTUS_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (CACTUS_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.CACTUS_PLANKS_TYPE, settings),
+            (CACTUS_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.CACTUS_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_CACTUS_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_WOODEN_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_PLANKS_TYPE, settings),
+            (WOODEN_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.WOODEN_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_WOODEN_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (WOODEN_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.WOODEN_PLANKS_TYPE, settings),
+            (WOODEN_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.WOODEN_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_WOODEN_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_DRIFTWOOD_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_PLANKS_TYPE, settings),
+            (DRIFTWOOD_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.DRIFTWOOD_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_DRIFTWOOD_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (DRIFTWOOD_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.DRIFTWOOD_PLANKS_TYPE, settings),
+            (DRIFTWOOD_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.DRIFTWOOD_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_DRIFTWOOD_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_IRON_CAP_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_PLANKS_TYPE, settings),
+            (IRON_CAP_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.IRON_CAP_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_IRON_CAP_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (IRON_CAP_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.IRON_CAP_PLANKS_TYPE, settings),
+            (IRON_CAP_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.IRON_CAP_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN).overrideLootTable(HANGING_IRON_CAP_PLANKS_SIGN.getLootTable()));
     public static final Block HANGING_MUSHROOM_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
-            (MUSHROOM_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(net.gecko.varandeco.block.DecoWoodTypes.MUSHROOM_PLANKS_TYPE, settings),
+            (MUSHROOM_PLANKS_HANGING_SIGN_ID,settings -> new CeilingHangingSignBlock(DecoWoodTypes.MUSHROOM_PLANKS_TYPE, settings),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN));
     public static final Block WALL_HANGING_MUSHROOM_PLANKS_SIGN = TerraformSignBlockHelper.registerSignBlock
             (MUSHROOM_PLANKS_WALL_HANGING_SIGN_ID,settings -> new WallHangingSignBlock(DecoWoodTypes.MUSHROOM_PLANKS_TYPE, settings),
@@ -4753,6 +5193,18 @@ public class DecoBlocks {
     public static final Block HONEYCOMB_TEMP = registerBlockTemp("honeycomb_temp",Block::new);
     public static final Block BAMBOO_TEMP = registerBlockTemp("bamboo_temp",Block::new);
     public static final Block STRIPPED_BAMBOO_TEMP = registerBlockTemp("stripped_bamboo_temp",Block::new);
+    public static final Block COAL_TEMP = registerBlockTemp("coal_temp",Block::new);
+    public static final Block SAND_TEMP = registerBlockTemp("sand_temp",Block::new);
+    public static final Block SAND_CARPET_TEMP = registerBlockTemp("sand_carpet_temp",Block::new);
+    public static final Block RED_SAND_TEMP = registerBlockTemp("red_sand_temp",Block::new);
+    public static final Block RED_SAND_CARPET_TEMP = registerBlockTemp("red_sand_carpet_temp",Block::new);
+    public static final Block GRAVEL_TEMP = registerBlockTemp("gravel_temp",Block::new);
+    public static final Block GRAVEL_CARPET_TEMP = registerBlockTemp("gravel_carpet_temp",Block::new);
+    public static final Block WHITE_SAND_TEMP = registerBlockTemp("white_sand_temp",Block::new);
+    public static final Block BLACK_SAND_TEMP = registerBlockTemp("black_sand_temp",Block::new);
+    public static final Block AMETHYST_TEMP = registerBlockTemp("amethyst_temp",Block::new);
+    public static final Block SCATTERED_AMETHYST_TEMP = registerBlockTemp("scattered_amethyst_temp",Block::new);
+    public static final Block SCATTERED_ECHO_TEMP = registerBlockTemp("scattered_echo_temp",Block::new);
 
     public static final BlockFamily CACTUS_FAMILY = BlockFamilies.familyBuilder(DecoBlocks.CACTUS_PLANKS)
             .sign(DecoBlocks.STANDING_CACTUS_SIGN,DecoBlocks.WALL_CACTUS_SIGN)
@@ -4931,6 +5383,10 @@ public class DecoBlocks {
         return registerSimple(name, new WeatheringCopperStairBlock(oxidationLevel, block.defaultBlockState(),
                 BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
     }
+    public static FallingStairBlock registerFallingStairs(String name, int colour, Block block, Block copyBlock){
+        return registerSimple(name, new FallingStairBlock(colour, block.defaultBlockState(),
+                BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
+    }
     public static WeatheringCopperSlabBlock registerOxidSlab(String name, WeatheringCopper.WeatherState oxidationLevel, Block copyBlock){
         return registerSimple(name, new WeatheringCopperSlabBlock(oxidationLevel,
                 BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
@@ -4975,13 +5431,30 @@ public class DecoBlocks {
         return registerSimpleWithoutItem(name, new FlowerPotBlock(content,
                 BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
     }
+    public static PottedIronEyeBlossomBlock registerRedstoneFlowerPot(String name, Block content, Block copyBlock){
+        return registerSimpleWithoutItem(name, new PottedIronEyeBlossomBlock(content,
+                BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
+    }
+    public static OxidizablePottedFlowerBlock registerOxidFlowerPot(String name, Block content, WeatheringCopper.WeatherState oxidationLevel, Block copyBlock){
+        return registerSimpleWithoutItem(name, new OxidizablePottedFlowerBlock(content, oxidationLevel,
+                BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
+    }
     public static FlowerBlock registerFlower(String name, Holder<MobEffect> stewEffect, float effectLengthInSeconds, Block copyBlock){
-        return registerSimple(name, new FlowerBlock( createStewEffectList(stewEffect, effectLengthInSeconds),
+        return registerSimple(name,  new FlowerBlock(createStewEffectList(stewEffect, effectLengthInSeconds),
+                BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
+    }
+    public static SilverRoseBlock registerSilverRose(String name, Holder<MobEffect> stewEffect, float effectLengthInSeconds, Block copyBlock){
+        return registerSimple(name,  new SilverRoseBlock(stewEffect, effectLengthInSeconds,
                 BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
     }
     public static PuffyDandelionBlock registerPuffyFlower(String name, Holder<MobEffect> stewEffect, float effectLengthInSeconds, Block copyBlock){
         return registerSimple(name,  new PuffyDandelionBlock(stewEffect, effectLengthInSeconds,
                 BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
+    }
+    public static OxidizableFlowerBlock registerOxidFlower(String name, Holder<MobEffect> stewEffect, float effectLengthInSeconds,
+                                                           WeatheringCopper.WeatherState oxidationLevel, Block copyBlock){
+        return registerSimple(name,  new OxidizableFlowerBlock(stewEffect, effectLengthInSeconds, oxidationLevel,
+                        BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
     }
     public static EnderRoseBlock registerRoseFlower(String name, Holder<MobEffect> stewEffect, float effectLengthInSeconds, Block copyBlock) {
         return registerSimple(name, new EnderRoseBlock(createStewEffectList(stewEffect, effectLengthInSeconds),
@@ -5052,6 +5525,14 @@ public class DecoBlocks {
         return registerSimple(name, new ButtonBlock(blockSetType, pressTicks,
                 BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
     }
+    public static ColoredFallingBlock registerFallingBlock(String name, ColorRGBA color,  Block copyBlock,MapColor mapColour) {
+        return registerSimple(name, new ColoredFallingBlock(color,
+                BlockBehaviour.Properties.ofFullCopy(copyBlock).mapColor(mapColour).setId(DecoBlocks.getBlockKey(name))));
+    }
+    public static FallingSlabBlock registerFallingSlabBlock(String name, int color,  Block copyBlock) {
+        return registerSimple(name, new FallingSlabBlock(color,
+                BlockBehaviour.Properties.ofFullCopy(copyBlock).setId(DecoBlocks.getBlockKey(name))));
+    }
     public static OxidizableButtonBlock registerOxidButton(String name, WeatheringCopper.WeatherState oxidationLevel,
                                                            BlockSetType blockSetType, int pressTicks, Block copyBlock) {
         return registerSimple(name, new OxidizableButtonBlock(oxidationLevel, blockSetType, pressTicks,
@@ -5076,6 +5557,18 @@ public class DecoBlocks {
     }
     public static TrapDoorBlock registerTrapDoorBlock(String name, BlockSetType blockSetType, Block copyBlock) {
         return registerSimple(name, new TrapDoorBlock(blockSetType,
+                BlockBehaviour.Properties.ofFullCopy(copyBlock).noOcclusion().setId(DecoBlocks.getBlockKey(name))));
+    }
+    public static WeatheringCopperDoorBlock registerOxidDoorBlock(String name, BlockSetType blockSetType,
+                                                            WeatheringCopper.WeatherState oxidationLevel,
+                                                            Block copyBlock) {
+        return registerSimple(name, new WeatheringCopperDoorBlock(blockSetType, oxidationLevel,
+                BlockBehaviour.Properties.ofFullCopy(copyBlock).noOcclusion().setId(DecoBlocks.getBlockKey(name))));
+    }
+    public static WeatheringCopperTrapDoorBlock registerOxidTrapDoorBlock(String name,BlockSetType blockSetType,
+                                                                    WeatheringCopper.WeatherState oxidationLevel,
+                                                                     Block copyBlock) {
+        return registerSimple(name, new WeatheringCopperTrapDoorBlock(blockSetType, oxidationLevel,
                 BlockBehaviour.Properties.ofFullCopy(copyBlock).noOcclusion().setId(DecoBlocks.getBlockKey(name))));
     }
     public static FenceGateBlock registerFenceGateBlock(String name, WoodType type, Block copyBlock) {

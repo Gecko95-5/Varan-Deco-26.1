@@ -1,0 +1,127 @@
+{
+  "parent": "varan-deco:husbandry/obtain_a_flower",
+  "criteria": {
+    "oxeye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:oxeye_daisy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "barberton": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:barberton_daisy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "blue_eyed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:blue_eyed_daisy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "gerbera": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:gerbera_daisy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "michaelmas": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:michaelmas_daisy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "dead_eye": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:dead_eye_daisy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "felicia": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:felicia_daisy"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.varan-deco.daisy.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:gerbera_daisy"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.varan-deco.daisy.title"
+    }
+  },
+  "requirements": [
+    [
+      "oxeye"
+    ],
+    [
+      "barberton"
+    ],
+    [
+      "blue_eyed"
+    ],
+    [
+      "gerbera"
+    ],
+    [
+      "michaelmas"
+    ],
+    [
+      "dead_eye"
+    ],
+    [
+      "felicia"
+    ]
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:white_sandstone",
+  "result": {
+    "count": 8,
+    "id": "minecraft:cobbled_white_sandstone_slab"
+  }
+}

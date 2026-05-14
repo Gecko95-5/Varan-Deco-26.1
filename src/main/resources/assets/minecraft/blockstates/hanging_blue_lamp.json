@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "minecraft:block/blue_lamp_bulb"
+    },
+    "hanging=true": {
+      "model": "minecraft:block/hanging_blue_lamp"
+    }
+  }
+}

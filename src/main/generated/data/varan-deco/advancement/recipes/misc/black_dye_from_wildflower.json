@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_monochrome_wildflowers": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:monochrome_wildflowers"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:black_dye_from_wildflower"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_monochrome_wildflowers"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:black_dye_from_wildflower"
+    ]
+  }
+}

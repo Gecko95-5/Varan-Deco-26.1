@@ -91,30 +91,48 @@ public class DecoFlammableBlocks {
         registry.add(DecoBlocks.ROUGE_WILDFLOWERS,60, 100);
         registry.add(DecoBlocks.SWEET_WILDFLOWERS,60, 100);
         registry.add(DecoBlocks.GECKO_WILDFLOWERS,60, 100);
+        registry.add(DecoBlocks.SEA_WILDFLOWERS,60, 100);
+        registry.add(DecoBlocks.MONOCHROME_WILDFLOWERS,60, 100);
 
         registry.add(DecoBlocks.IRIS,60, 100);
         registry.add(DecoBlocks.BLUE_DELPHINIUM,60, 100);
         registry.add(DecoBlocks.CYAN_ORCHID,60, 100);
         registry.add(DecoBlocks.FELICIA_DAISY,60, 100);
 
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.LOG_STAIRS,5,5);
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.LOG_SLABS,5,5);
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.LOG_WALLS,5,5);
+        registry.add(DecoBlocks.TAIGA_DANDELION,60, 100);
+        registry.add(DecoBlocks.FERN_LAVENDER,60, 100);
+        registry.add(DecoBlocks.CARAMEL_BUTTERCUP,60, 100);
+        registry.add(DecoBlocks.SILVER_ROSE,60, 100);
+        registry.add(DecoBlocks.ALPINE_SPEEDWELL,60, 100);
 
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOOL_STAIRS,30, 60);
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOOL_SLABS,30, 60);
+        registry.add(DecoBlocks.COPPER_TULIP,60, 100);
+        registry.add(DecoBlocks.WAXED_COPPER_TULIP,60, 100);
+        registry.add(DecoBlocks.EXPOSED_COPPER_TULIP,60, 100);
+        registry.add(DecoBlocks.WAXED_EXPOSED_COPPER_TULIP,60, 100);
+        registry.add(DecoBlocks.WEATHERED_COPPER_TULIP,60, 100);
+        registry.add(DecoBlocks.WAXED_WEATHERED_COPPER_TULIP,60, 100);
+        registry.add(DecoBlocks.OXIDIZED_COPPER_TULIP,60, 100);
+        registry.add(DecoBlocks.WAXED_OXIDIZED_COPPER_TULIP,60, 100);
+        registry.add(DecoBlocks.IRON_EYEBLOSSOM,60, 100);
 
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOODEN_BOOKSHELVES,30,20);
+        registry.add(DecoTags.Blocks.LOG_STAIRS,5,5);
+        registry.add(DecoTags.Blocks.LOG_SLABS,5,5);
+        registry.add(DecoTags.Blocks.LOG_WALLS,5,5);
 
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOODEN_BOOKSHELF_STAIRS,25,20);
+        registry.add(DecoTags.Blocks.WOOL_STAIRS,30, 60);
+        registry.add(DecoTags.Blocks.WOOL_SLABS,30, 60);
 
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.WOODEN_BOOKSHELF_SLABS,15,20);
+        registry.add(DecoTags.Blocks.WOODEN_BOOKSHELVES,30,20);
+
+        registry.add(DecoTags.Blocks.WOODEN_BOOKSHELF_STAIRS,25,20);
+
+        registry.add(DecoTags.Blocks.WOODEN_BOOKSHELF_SLABS,15,20);
 
         registry.add(DecoBlocks.ANCIENT_ROSE,60, 100);
         registry.add(DecoBlocks.MIGHTY_LAVENDER,60, 100);
 
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.MOSAIC_WOOD,5,20);
-        registry.add(net.gecko.varandeco.util.DecoTags.Blocks.MOSAIC_SLABS,5,20);
+        registry.add(DecoTags.Blocks.MOSAIC_WOOD,5,20);
+        registry.add(DecoTags.Blocks.MOSAIC_SLABS,5,20);
         registry.add(DecoTags.Blocks.MOSAIC_STAIRS,5,20);
 
         registry.add(DecoBlocks.DRIED_LEAVES, 60, 100);

@@ -24,7 +24,9 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Kill a Blaze with a Snow Brick",
+    "description": {
+      "translate": "advancements.varan-deco.blaze_snow_brick.description"
+    },
     "frame": "challenge",
     "hidden": false,
     "icon": {
@@ -32,7 +34,9 @@
       "id": "minecraft:snow_brick"
     },
     "show_toast": true,
-    "title": "Chill Out"
+    "title": {
+      "translate": "advancements.varan-deco.blaze_snow_brick.title"
+    }
   },
   "requirements": [
     [

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hanging_lamp": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:hanging_lamp"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:hanging_gray_lamp_from_gray_stained_glass_pane"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_hanging_lamp"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:hanging_gray_lamp_from_gray_stained_glass_pane"
+    ]
+  }
+}

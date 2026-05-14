@@ -14,7 +14,9 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Craft an Earth Sphere with Mud & Soil",
+    "description": {
+      "translate": "advancements.varan-deco.earth_sphere.description"
+    },
     "frame": "task",
     "hidden": false,
     "icon": {
@@ -22,7 +24,9 @@
       "id": "minecraft:earth_sphere"
     },
     "show_toast": true,
-    "title": "A small piece of World"
+    "title": {
+      "translate": "advancements.varan-deco.earth_sphere.title"
+    }
   },
   "requirements": [
     [

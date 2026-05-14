@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "minecraft:closed_eyeblossom",
+    "-": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    "---",
+    "-#-",
+    "---"
+  ],
+  "result": {
+    "id": "minecraft:iron_eyeblossom"
+  }
+}

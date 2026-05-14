@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_shined_echo_slab": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:shined_echo_slab"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:echo_pillar_recipe_create"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_shined_echo_slab"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:echo_pillar_recipe_create"
+    ]
+  }
+}

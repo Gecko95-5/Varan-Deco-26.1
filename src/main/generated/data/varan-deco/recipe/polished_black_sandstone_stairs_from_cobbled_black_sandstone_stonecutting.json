@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:cobbled_black_sandstone",
+  "result": {
+    "id": "minecraft:polished_black_sandstone_stairs"
+  }
+}

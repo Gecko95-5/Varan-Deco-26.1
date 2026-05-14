@@ -1,0 +1,40 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "minecraft:taiga_dandelion"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "minecraft:puffy_dandelion"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "minecraft:caramel_buttercup"
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "minecraft:alpine_poppy"
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "minecraft:alpine_speedwell"
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

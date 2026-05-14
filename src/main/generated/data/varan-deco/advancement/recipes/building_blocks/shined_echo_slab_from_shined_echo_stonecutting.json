@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_shined_echo": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:shined_echo"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "varan-deco:shined_echo_slab_from_shined_echo_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_shined_echo"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "varan-deco:shined_echo_slab_from_shined_echo_stonecutting"
+    ]
+  }
+}

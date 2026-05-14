@@ -45,6 +45,13 @@ public class DecoPlacedFeatures {
     public static final ResourceKey<PlacedFeature> DECO_DRIFTWOOD_SPROUT_PLACED = registerKey("deco_driftwood_sprout_placed");
     public static final ResourceKey<PlacedFeature> DECO_ROOFED_PLACED = registerKey("deco_roofed_placed");
     public static final ResourceKey<PlacedFeature> DECO_MEGA_TULIP_PLACED = registerKey("deco_mega_tulip_placed");
+    public static final ResourceKey<PlacedFeature> DECO_PALE_MEGA_TULIP_PLACED = registerKey("deco_pale_mega_tulip_placed");
+    public static final ResourceKey<PlacedFeature> DECO_SILVER_ROSE_PLACED = registerKey("deco_silver_rose_placed");
+    public static final ResourceKey<PlacedFeature> DECO_TAIGA_PLACED = registerKey("deco_taiga_flowers_placed");
+    public static final ResourceKey<PlacedFeature> DECO_WINDSWEPT_PLACED = registerKey("deco_windswept_flowers_placed");
+    public static final ResourceKey<PlacedFeature> DECO_WINDSWEPT_FOREST_PLACED = registerKey("deco_windswept_forest_flowers_placed");
+    public static final ResourceKey<PlacedFeature> DECO_TAIGA_WILDFLOWER_PLACED = registerKey("deco_taiga_wildflower_placed");
+    public static final ResourceKey<PlacedFeature> DECO_JUNGLE_WILDFLOWER_PLACED = registerKey("deco_jungle_wildflower_placed");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -112,10 +119,37 @@ public class DecoPlacedFeatures {
                 CountPlacement.of(32), RandomOffsetPlacement.ofTriangle(7, 3),
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
 
+        register(context,DECO_TAIGA_PLACED, configuredFeatures.getOrThrow(
+            DecoConfiguredFeatures.DECO_TAIGA),
+                RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP, BiomeFilter.biome(),
+                CountPlacement.of(24), RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+
+        register(context,DECO_WINDSWEPT_FOREST_PLACED, configuredFeatures.getOrThrow(
+            DecoConfiguredFeatures.DECO_WINDSWEPT_FOREST),
+                RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP, BiomeFilter.biome(),
+                CountPlacement.of(24), RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+
+        register(context,DECO_WINDSWEPT_PLACED, configuredFeatures.getOrThrow(
+            DecoConfiguredFeatures.DECO_WINDSWEPT),
+                RarityFilter.onAverageOnceEvery(3), InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP, BiomeFilter.biome(),
+                CountPlacement.of(24), RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+
         register(context,DECO_MEGA_TULIP_PLACED, configuredFeatures.getOrThrow(
                 DecoConfiguredFeatures.DECO_MEGA_TULIP), RarityFilter.onAverageOnceEvery(3),
                 InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome(),
                 CountPlacement.of(24), RandomOffsetPlacement.ofTriangle(7, 3),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+
+        register(context,DECO_PALE_MEGA_TULIP_PLACED, configuredFeatures.getOrThrow(
+                DecoConfiguredFeatures.DECO_PALE_MEGA_TULIP), RarityFilter.onAverageOnceEvery(3),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome(),
+                CountPlacement.of(16), RandomOffsetPlacement.ofTriangle(7, 3),
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
 
         register(context,DECO_ROSE_PLACED,
@@ -123,6 +157,14 @@ public class DecoPlacedFeatures {
                 CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2),
                 InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
                 BiomeFilter.biome(), CountPlacement.of(64),
+                RandomOffsetPlacement.ofTriangle(6, 2),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+
+        register(context,DECO_SILVER_ROSE_PLACED,
+                configuredFeatures.getOrThrow(DecoConfiguredFeatures.DECO_SILVER_ROSE ),
+                CountPlacement.of(3), RarityFilter.onAverageOnceEvery(2),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
+                BiomeFilter.biome(), CountPlacement.of(16),
                 RandomOffsetPlacement.ofTriangle(6, 2),
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
 
@@ -189,6 +231,20 @@ public class DecoPlacedFeatures {
 
         register(context, DECO_MEADOW_WILDFLOWER_PLACED, configuredFeatures.getOrThrow(
                 DecoConfiguredFeatures.DECO_MEADOW_WILDFLOWER_KEY),
+                NoiseThresholdCountPlacement.of(-0.8, 5, 10),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome(), CountPlacement.of(32),
+                RandomOffsetPlacement.ofTriangle(6, 2),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+
+        register(context, DECO_TAIGA_WILDFLOWER_PLACED, configuredFeatures.getOrThrow(
+                DecoConfiguredFeatures.DECO_TAIGA_WILDFLOWER_KEY ),
+                NoiseThresholdCountPlacement.of(-0.8, 5, 10),
+                InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome(), CountPlacement.of(16),
+                RandomOffsetPlacement.ofTriangle(6, 2),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE));
+
+        register(context, DECO_JUNGLE_WILDFLOWER_PLACED, configuredFeatures.getOrThrow(
+                DecoConfiguredFeatures.DECO_JUNGLE_WILDFLOWER_KEY),
                 NoiseThresholdCountPlacement.of(-0.8, 5, 10),
                 InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome(), CountPlacement.of(32),
                 RandomOffsetPlacement.ofTriangle(6, 2),

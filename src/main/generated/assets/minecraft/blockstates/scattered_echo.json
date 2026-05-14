@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "minecraft:block/scattered_echo",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "minecraft:block/scattered_echo",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "minecraft:block/scattered_echo"
+    },
+    "facing=west": {
+      "model": "minecraft:block/scattered_echo",
+      "y": 90
+    }
+  }
+}

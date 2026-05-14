@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "minecraft:block/scattered_amethyst",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "minecraft:block/scattered_amethyst",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "minecraft:block/scattered_amethyst"
+    },
+    "facing=west": {
+      "model": "minecraft:block/scattered_amethyst",
+      "y": 90
+    }
+  }
+}

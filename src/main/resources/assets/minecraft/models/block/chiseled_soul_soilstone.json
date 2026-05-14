@@ -1,7 +1,8 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "end": "minecraft:block/soul_soilstone_top",
+    "bottom": "minecraft:block/polished_soul_soilstone",
+    "top": "minecraft:block/soul_soilstone_top",
     "side": "minecraft:block/chiseled_soul_soilstone"
   }
 }

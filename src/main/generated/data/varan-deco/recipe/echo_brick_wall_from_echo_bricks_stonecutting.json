@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:echo_bricks",
+  "result": {
+    "id": "minecraft:echo_brick_wall"
+  }
+}

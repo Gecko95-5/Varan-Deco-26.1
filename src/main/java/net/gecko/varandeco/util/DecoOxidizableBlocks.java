@@ -38,6 +38,22 @@ public class DecoOxidizableBlocks {
         OxidizableBlocksRegistry.registerNextStage(DecoBlocks.EXPOSED_COPPER_LADDER, DecoBlocks.WEATHERED_COPPER_LADDER);
         OxidizableBlocksRegistry.registerNextStage(DecoBlocks.WEATHERED_COPPER_LADDER, DecoBlocks.OXIDIZED_COPPER_LADDER);
 
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.COPPER_BAR_DOOR, DecoBlocks.EXPOSED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.EXPOSED_COPPER_BAR_DOOR, DecoBlocks.WEATHERED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.WEATHERED_COPPER_BAR_DOOR, DecoBlocks.OXIDIZED_COPPER_BAR_DOOR);
+
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.COPPER_BAR_TRAPDOOR, DecoBlocks.EXPOSED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.EXPOSED_COPPER_BAR_TRAPDOOR, DecoBlocks.WEATHERED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.WEATHERED_COPPER_BAR_TRAPDOOR, DecoBlocks.OXIDIZED_COPPER_BAR_TRAPDOOR);
+
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.COPPER_TULIP, DecoBlocks.EXPOSED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.EXPOSED_COPPER_TULIP, DecoBlocks.WEATHERED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.WEATHERED_COPPER_TULIP, DecoBlocks.OXIDIZED_COPPER_TULIP);
+
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.POTTED_COPPER_TULIP, DecoBlocks.POTTED_EXPOSED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.POTTED_EXPOSED_COPPER_TULIP, DecoBlocks.POTTED_WEATHERED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerNextStage(DecoBlocks.POTTED_WEATHERED_COPPER_TULIP, DecoBlocks.POTTED_OXIDIZED_COPPER_TULIP);
+
     }
     public static void registerWaxableBlocks(){
         OxidizableBlocksRegistry.registerWaxable(DecoBlocks.HEAVY_COPPER_BARS, DecoBlocks.WAXED_HEAVY_COPPER_BARS);
@@ -79,5 +95,25 @@ public class DecoOxidizableBlocks {
         OxidizableBlocksRegistry.registerWaxable(DecoBlocks.EXPOSED_COPPER_LADDER, DecoBlocks.WAXED_EXPOSED_COPPER_LADDER);
         OxidizableBlocksRegistry.registerWaxable(DecoBlocks.WEATHERED_COPPER_LADDER, DecoBlocks.WAXED_WEATHERED_COPPER_LADDER);
         OxidizableBlocksRegistry.registerWaxable(DecoBlocks.OXIDIZED_COPPER_LADDER, DecoBlocks.WAXED_OXIDIZED_COPPER_LADDER);
+
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.COPPER_BAR_DOOR, DecoBlocks.WAXED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.EXPOSED_COPPER_BAR_DOOR, DecoBlocks.WAXED_EXPOSED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.WEATHERED_COPPER_BAR_DOOR, DecoBlocks.WAXED_WEATHERED_COPPER_BAR_DOOR);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.OXIDIZED_COPPER_BAR_DOOR, DecoBlocks.WAXED_OXIDIZED_COPPER_BAR_DOOR);
+
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.COPPER_BAR_TRAPDOOR, DecoBlocks.WAXED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.EXPOSED_COPPER_BAR_TRAPDOOR, DecoBlocks.WAXED_EXPOSED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.WEATHERED_COPPER_BAR_TRAPDOOR, DecoBlocks.WAXED_WEATHERED_COPPER_BAR_TRAPDOOR);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.OXIDIZED_COPPER_BAR_TRAPDOOR, DecoBlocks.WAXED_OXIDIZED_COPPER_BAR_TRAPDOOR);
+
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.COPPER_TULIP, DecoBlocks.WAXED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.EXPOSED_COPPER_TULIP, DecoBlocks.WAXED_EXPOSED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.WEATHERED_COPPER_TULIP, DecoBlocks.WAXED_WEATHERED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.OXIDIZED_COPPER_TULIP, DecoBlocks.WAXED_OXIDIZED_COPPER_TULIP);
+
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.POTTED_COPPER_TULIP, DecoBlocks.POTTED_WAXED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.POTTED_EXPOSED_COPPER_TULIP, DecoBlocks.POTTED_WAXED_EXPOSED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.POTTED_WEATHERED_COPPER_TULIP, DecoBlocks.POTTED_WAXED_WEATHERED_COPPER_TULIP);
+        OxidizableBlocksRegistry.registerWaxable(DecoBlocks.POTTED_OXIDIZED_COPPER_TULIP, DecoBlocks.POTTED_WAXED_OXIDIZED_COPPER_TULIP);
     }
 }

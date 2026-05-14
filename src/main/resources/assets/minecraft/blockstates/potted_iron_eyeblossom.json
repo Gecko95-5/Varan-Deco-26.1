@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "minecraft:block/potted_iron_eyeblossom"
+    },
+    "lit=true": {
+      "model": "minecraft:block/potted_iron_eyeblossom_on"
+    }
+  }
+}

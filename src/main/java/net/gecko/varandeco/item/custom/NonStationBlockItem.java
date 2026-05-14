@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 
 public class NonStationBlockItem extends BlockItem {
     private static final ChatFormatting FORMATTING = ChatFormatting.RED;
-    private static final Component TEXT = Component.literal("This Block is not able to be used by Villagers").withStyle(FORMATTING);
+    private static final Component TEXT = Component.translatable("tooltip.varan-deco.nonStationBlock").withStyle(FORMATTING);
     public NonStationBlockItem(Block block, Properties settings) {
         super(block, settings);
     }

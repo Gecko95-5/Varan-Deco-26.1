@@ -491,6 +491,24 @@ public class DecoItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(DecoBlocks.PINK_ORCHID.asItem())
                 .add(DecoBlocks.ROSE.asItem())
                 .add(DecoBlocks.ENDER_ROSE.asItem())
+                .add(DecoBlocks.TAIGA_DANDELION.asItem())
+                .add(DecoBlocks.FERN_LAVENDER.asItem())
+                .add(DecoBlocks.CARAMEL_BUTTERCUP.asItem())
+                .add(DecoBlocks.SILVER_ROSE.asItem())
+                .add(DecoBlocks.ALPINE_SPEEDWELL.asItem())
+                .add(DecoBlocks.IRIS.asItem())
+                .add(DecoBlocks.BLUE_DELPHINIUM.asItem())
+                .add(DecoBlocks.CYAN_ORCHID.asItem())
+                .add(DecoBlocks.FELICIA_DAISY.asItem())
+                .add(DecoBlocks.COPPER_TULIP.asItem())
+                .add(DecoBlocks.EXPOSED_COPPER_TULIP.asItem())
+                .add(DecoBlocks.WEATHERED_COPPER_TULIP.asItem())
+                .add(DecoBlocks.OXIDIZED_COPPER_TULIP.asItem())
+                .add(DecoBlocks.WAXED_COPPER_TULIP.asItem())
+                .add(DecoBlocks.WAXED_EXPOSED_COPPER_TULIP.asItem())
+                .add(DecoBlocks.WAXED_WEATHERED_COPPER_TULIP.asItem())
+                .add(DecoBlocks.WAXED_OXIDIZED_COPPER_TULIP.asItem())
+                .add(DecoBlocks.IRON_EYEBLOSSOM.asItem())
                 .add(DecoBlocks.PAEONIA.asItem())
                 .add(DecoBlocks.LAVENDER.asItem())
                 .add(DecoBlocks.ANCIENT_ROSE.asItem())
@@ -548,11 +566,31 @@ public class DecoItemTagProvider extends FabricTagsProvider.ItemTagsProvider {
                 .add(Items.PITCHER_POD.asItem())
                 .add(DecoItems.ANCIENT_ROSE_SEEDS.asItem());
 
+        valueLookupBuilder(DecoTags.Items.HANGING_LAMPS)
+                .add(DecoBlocks.HANGING_LAMP.asItem())
+                .add(DecoBlocks.HANGING_WHITE_LAMP.asItem())
+                .add(DecoBlocks.HANGING_LIGHT_GRAY_LAMP.asItem())
+                .add(DecoBlocks.HANGING_GRAY_LAMP.asItem())
+                .add(DecoBlocks.HANGING_BLACK_LAMP.asItem())
+                .add(DecoBlocks.HANGING_BROWN_LAMP.asItem())
+                .add(DecoBlocks.HANGING_RED_LAMP.asItem())
+                .add(DecoBlocks.HANGING_ORANGE_LAMP.asItem())
+                .add(DecoBlocks.HANGING_YELLOW_LAMP.asItem())
+                .add(DecoBlocks.HANGING_LIME_LAMP.asItem())
+                .add(DecoBlocks.HANGING_GREEN_LAMP.asItem())
+                .add(DecoBlocks.HANGING_CYAN_LAMP.asItem())
+                .add(DecoBlocks.HANGING_LIGHT_BLUE_LAMP.asItem())
+                .add(DecoBlocks.HANGING_BLUE_LAMP.asItem())
+                .add(DecoBlocks.HANGING_PURPLE_LAMP.asItem())
+                .add(DecoBlocks.HANGING_MAGENTA_LAMP.asItem())
+                .add(DecoBlocks.HANGING_PINK_LAMP.asItem());
+
         valueLookupBuilder(DecoTags.Items.WILDFLOWERS)
                 .add(Items.WILDFLOWERS)
                 .add(DecoBlocks.ROUGE_WILDFLOWERS.asItem())
                 .add(DecoBlocks.SWEET_WILDFLOWERS.asItem())
-                .add(DecoBlocks.GECKO_WILDFLOWERS.asItem());
-
+                .add(DecoBlocks.GECKO_WILDFLOWERS.asItem())
+                .add(DecoBlocks.SEA_WILDFLOWERS.asItem())
+                .add(DecoBlocks.MONOCHROME_WILDFLOWERS.asItem());
     }
 }

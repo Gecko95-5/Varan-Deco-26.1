@@ -14,7 +14,9 @@
   },
   "display": {
     "announce_to_chat": true,
-    "description": "Obtain any Flower",
+    "description": {
+      "translate": "advancements.varan-deco.flowers.description"
+    },
     "frame": "task",
     "hidden": false,
     "icon": {
@@ -22,7 +24,9 @@
       "id": "minecraft:rose"
     },
     "show_toast": true,
-    "title": "Petals of Power"
+    "title": {
+      "translate": "advancements.varan-deco.flowers.title"
+    }
   },
   "requirements": [
     [
