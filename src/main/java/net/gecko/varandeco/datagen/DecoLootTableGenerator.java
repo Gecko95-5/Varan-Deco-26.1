@@ -2542,6 +2542,14 @@ public class DecoLootTableGenerator extends FabricBlockLootSubProvider {
 
         dropSelf(DecoBlocks.IRON_EYEBLOSSOM);
         createPotFlowerItemTable(DecoBlocks.POTTED_IRON_EYEBLOSSOM);
+
+        dropSelf(DecoBlocks.CACTUS_SHELF);
+        dropSelf(DecoBlocks.MUSHROOM_SHELF);
+        dropSelf(DecoBlocks.IRON_CAP_SHELF);
+        dropSelf(DecoBlocks.DRIFTWOOD_SHELF);
+        dropSelf(DecoBlocks.WOODEN_SHELF);
+
+        dropSelf(DecoBlocks.JACK_O_COPPER_LANTERN);
     }
     public LootTable.Builder capMushroomBlockDrops(Block dropWithSilkTouch, ItemLike drop) {
         return createSilkTouchDispatchTable(

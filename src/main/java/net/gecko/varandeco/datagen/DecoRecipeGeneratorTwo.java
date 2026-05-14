@@ -4890,6 +4890,40 @@ public class DecoRecipeGeneratorTwo extends FabricRecipeProvider {
                         .unlockedBy(getHasName(Items.CLOSED_EYEBLOSSOM),
                                 has(Items.CLOSED_EYEBLOSSOM))
                         .save(output,(getSimpleRecipeName(DecoBlocks.IRON_EYEBLOSSOM)+ "_recipe_create"));
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.POLISHED_STONE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.POLISHED_STONE_STAIRS);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.POLISHED_STONE_SLAB,2);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.POLISHED_STONE_WALL);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.POLISHED_STONE_PRESSURE_PLATE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.POLISHED_STONE_BUTTON);
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.COBBLESTONE_PRESSURE_PLATE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.COBBLESTONE_BUTTON);
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.STONE, DecoBlocks.CHISELED_STONE);
+
+                polished(RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE, Items.DEEPSLATE_BRICKS);
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE, DecoBlocks.CHISELED_DEEPSLATE_BRICKS);
+
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE, DecoBlocks.COBBLED_DEEPSLATE_PRESSURE_PLATE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE, DecoBlocks.COBBLED_DEEPSLATE_BUTTON);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE, DecoBlocks.POLISHED_DEEPSLATE_PRESSURE_PLATE);
+                stonecutterResultFromBase(RecipeCategory.BUILDING_BLOCKS, Items.DEEPSLATE, DecoBlocks.POLISHED_DEEPSLATE_BUTTON);
+
+                shapeless(RecipeCategory.BUILDING_BLOCKS, DecoBlocks.JACK_O_COPPER_LANTERN)
+                        .requires(Items.CARVED_PUMPKIN)
+                        .requires(Items.COPPER_TORCH)
+                        .unlockedBy(getHasName(Items.COPPER_TORCH),
+                                has(Items.COPPER_TORCH))
+                        .save(output, getSimpleRecipeName(DecoBlocks.JACK_O_COPPER_LANTERN) + "_recipe_create");
+
+                shelf(DecoBlocks.CACTUS_SHELF, DecoBlocks.STRIPPED_CACTUS);
+                shelf(DecoBlocks.MUSHROOM_SHELF, Items.MUSHROOM_STEM);
+                shelf(DecoBlocks.IRON_CAP_SHELF, DecoBlocks.STRIPPED_IRON_CAP_STEM);
+                shelf(DecoBlocks.DRIFTWOOD_SHELF, DecoBlocks.STRIPPED_DRIFTWOOD_LOG);
+                shelf(DecoBlocks.WOODEN_SHELF, DecoBlocks.STRIPPED_WOODEN_LOG);
     }
     public void offerLadderVariantRecipe(RecipeOutput exporter, ItemLike output, ItemLike woodInput) {
         shaped(RecipeCategory.DECORATIONS,output,3)

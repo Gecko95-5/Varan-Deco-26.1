@@ -3,7 +3,6 @@ package net.gecko.varandeco;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.FabricPotionBrewingBuilder;
 import net.gecko.varandeco.block.DecoBlocks;
-import net.gecko.varandeco.block.entity.DecoBlockEntities;
 import net.gecko.varandeco.effects.DecoStatusEffects;
 import net.gecko.varandeco.entity.DecoEntities;
 import net.gecko.varandeco.item.DecoItemGroup;
@@ -28,7 +27,7 @@ public class VaranDeco implements ModInitializer {
 		DecoItemGroup.registerItemGroups();
 		DecoItems.registerDecoItems();
 		DecoBlocks.registerDecoBlocks();
-		DecoBlockEntities.registerBlockEntities();
+		DecoBlockEntityConnector.registerConnectedBlockEntities();
 		DecoPotion.registerPotions();
 		DecoFlammableBlocks.registerFlammableBlocks();
 		DecoTooledBlocks.registerStrippables();

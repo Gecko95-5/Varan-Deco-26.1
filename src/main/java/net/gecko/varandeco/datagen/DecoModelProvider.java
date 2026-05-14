@@ -596,6 +596,12 @@ public class DecoModelProvider extends FabricModelProvider {
         blockStateModelGenerator.createTrivialCube(DecoBlocks.INFESTED_CRACKED_STONE_TILES);
         blockStateModelGenerator.createTrivialCube(DecoBlocks.INFESTED_CRACKED_POLISHED_BLACKSTONE_TILES);
 
+        blockStateModelGenerator.createShelf(DecoBlocks.CACTUS_SHELF, DecoBlocks.STRIPPED_CACTUS);
+        blockStateModelGenerator.createShelf(DecoBlocks.MUSHROOM_SHELF, Blocks.MUSHROOM_STEM);
+        blockStateModelGenerator.createShelf(DecoBlocks.IRON_CAP_SHELF, DecoBlocks.STRIPPED_IRON_CAP_STEM);
+        blockStateModelGenerator.createShelf(DecoBlocks.DRIFTWOOD_SHELF, DecoBlocks.STRIPPED_DRIFTWOOD_LOG);
+        blockStateModelGenerator.createShelf(DecoBlocks.WOODEN_SHELF, DecoBlocks.STRIPPED_WOODEN_LOG);
+
         blockStateModelGenerator.createFullAndCarpetBlocks(DecoBlocks.WHITE_SAND, DecoBlocks.WHITE_SAND_CARPET);
 
         BlockModelGenerators.BlockFamilyProvider whiteSandPool =

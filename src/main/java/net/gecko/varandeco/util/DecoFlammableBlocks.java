@@ -28,6 +28,8 @@ public class DecoFlammableBlocks {
         registry.add(DecoBlocks.WOODEN_FENCE_GATE,5,20);
         registry.add(DecoBlocks.WOODEN_LEAVES,30, 60);
 
+        registry.add(DecoBlocks.WOODEN_SHELF, 30, 20);
+
         registry.add(DecoBlocks.DRIFTWOOD_PLANKS,5,20);
         registry.add(DecoBlocks.DRIED_DRIFTWOOD_LOG,5,5);
         registry.add(DecoBlocks.STRIPPED_DRIFTWOOD_LOG,5,5);

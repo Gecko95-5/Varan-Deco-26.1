@@ -2674,6 +2674,14 @@
   "block.minecraft.waxed_oxidized_copper_tulip": "Вощёный окисленный медный тюльпан",
   "block.minecraft.potted_waxed_oxidized_copper_tulip": "Вощёный окисленный медный тюльпан в горшке",
 
+  "block.minecraft.jack_o_copper_lantern": "Медный светильник Джека",
+
+  "block.minecraft.cactus_shelf": "Кактусовые полка",
+  "block.minecraft.mushroom_shelf": "Грибные полка",
+  "block.minecraft.iron_cap_shelf": "Железно-грибные полка",
+  "block.minecraft.driftwood_shelf": "Плавниковые полка",
+  "block.minecraft.wooden_shelf": "Деревянные полка",
+
   "tooltip.varan-deco.nonStationBlock": "Этот блок не может использоваться жителями",
 
   "advancements.varan-deco.crafting_table.title": "Коллекционер верстаков",

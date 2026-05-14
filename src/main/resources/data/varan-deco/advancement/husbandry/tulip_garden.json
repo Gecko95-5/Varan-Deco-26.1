@@ -145,6 +145,102 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "copper": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:copper_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:waxed_copper_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "exposed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:exposed_copper_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_exposed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:waxed_exposed_copper_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "weathered": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:weathered_copper_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_weathered": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:waxed_weathered_copper_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "oxidized": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:oxidized_copper_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "waxed_oxidized": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:waxed_oxidized_copper_tulip"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -202,6 +298,30 @@
     ],
     [
       "gray"
+    ],
+    [
+      "copper"
+    ],
+    [
+      "waxed"
+    ],
+    [
+      "exposed"
+    ],
+    [
+      "waxed_exposed"
+    ],
+    [
+      "weathered"
+    ],
+    [
+      "waxed_weathered"
+    ],
+    [
+      "oxidized"
+    ],
+    [
+      "waxed_oxidized"
     ]
   ]
 }

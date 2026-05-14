@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "minecraft:polished_stone_button",
+  "result": {
+    "id": "minecraft:stone"
+  }
+}

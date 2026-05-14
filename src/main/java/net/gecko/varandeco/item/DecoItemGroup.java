@@ -1695,6 +1695,7 @@ public class DecoItemGroup {
                         entries.accept(DecoItems.HYDRATED_FIRE_CORAL_FAN.asItem());
                         entries.accept(DecoItems.HYDRATED_HORN_CORAL_FAN.asItem());
                         entries.accept(DecoBlocks.JACK_O_SOUL_LANTERN.asItem());
+                        entries.accept(DecoBlocks.JACK_O_COPPER_LANTERN.asItem());
                         entries.accept(DecoBlocks.HAY_CARPET.asItem());
                         entries.accept(DecoBlocks.HAY_STAIRS.asItem());
                         entries.accept(DecoBlocks.HAY_SLAB.asItem());
@@ -1938,6 +1939,7 @@ public class DecoItemGroup {
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF.asItem());
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF_STAIRS.asItem());
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF_SLAB.asItem());
+                        entries.accept(DecoBlocks.WOODEN_SHELF.asItem());
                         entries.accept(DecoBlocks.OAK_BARREL.asItem());
                         entries.accept(DecoBlocks.SPRUCE_BARREL.asItem());
                         entries.accept(DecoBlocks.BIRCH_BARREL.asItem());

@@ -14,7 +14,6 @@ import net.gecko.varandeco.block.nature.underwater.*;
 import net.gecko.varandeco.block.nature.underwater.corals.*;
 import net.gecko.varandeco.block.oxidizable.*;
 import net.gecko.varandeco.block.stonemadeblocks.*;
-import net.gecko.varandeco.block.woodmadeblocks.barrel.*;
 import net.gecko.varandeco.block.woodmadeblocks.cartographytables.*;
 import net.gecko.varandeco.block.woodmadeblocks.craftingtables.*;
 import net.gecko.varandeco.block.woodmadeblocks.smithingtables.*;
@@ -278,6 +277,8 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(DecoBlocks.SNOW_BRICKS), Block::new);
     public static final Block JACK_O_SOUL_LANTERN = registerBlock("jack_o_soul_lantern",
             BlockBehaviour.Properties.ofFullCopy(Blocks.CARVED_PUMPKIN).lightLevel(state -> 10),MovablePumpkinBlock::new);
+    public static final Block JACK_O_COPPER_LANTERN = registerBlock("jack_o_copper_lantern",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CARVED_PUMPKIN).lightLevel(state -> 15),MovablePumpkinBlock::new);
     public static final Block PACKED_NETHERRACK = registerBlock("packed_netherrack",
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERRACK).strength(3.2F,1.0f), Block::new);
     public static final Block NETHERRACK_BRICKS = registerBlock("netherrack_bricks",
@@ -2700,16 +2701,16 @@ public class DecoBlocks {
 
     public static final Block DEEPSLATE_FURNACE = registerBlock("deepslate_furnace",
             BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.DEEPSLATE)
-                    .strength(4.5f).sound(SoundType.DEEPSLATE), DeepslateFurnaceBlock::new);
+                    .strength(4.5f).sound(SoundType.DEEPSLATE), FurnaceBlock::new);
     public static final Block BLACKSTONE_FURNACE = registerBlock("blackstone_furnace",
             BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.COLOR_BLACK)
-                    .strength(3.0f), BlackstoneFurnaceBlock::new);
+                    .strength(3.0f), FurnaceBlock::new);
     public static final Block TUFF_FURNACE = registerBlock("tuff_furnace",
             BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.TERRACOTTA_GRAY)
-                    .strength(3.0f).sound(SoundType.TUFF),TuffFurnaceBlock::new);
+                    .strength(3.0f).sound(SoundType.TUFF),FurnaceBlock::new);
     public static final Block END_STONE_FURNACE = registerBlock("end_stone_furnace",
             BlockBehaviour.Properties.ofFullCopy(Blocks.FURNACE).mapColor(MapColor.SAND)
-                    .strength(4.5f),EndstoneFurnaceBlock::new);
+                    .strength(4.5f),FurnaceBlock::new);
 
     public static final Block SPRUCE_LADDER = registerBlock("spruce_ladder",
             BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER),LadderBlock::new);
@@ -3705,43 +3706,54 @@ public class DecoBlocks {
             BlockBehaviour.Properties.ofFullCopy(Blocks.HORN_CORAL_WALL_FAN), BaseCoralWallFanBlock::new,
             copyLootTable(HYDRATED_HORN_CORAL_FAN, false));
 
+    public static final Block CACTUS_SHELF = registerBlock("cactus_shelf",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SHELF).mapColor(MapColor.GRASS),ShelfBlock::new);
+    public static final Block MUSHROOM_SHELF = registerBlock("mushroom_shelf",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SHELF).mapColor(MapColor.WOOL),ShelfBlock::new);
+    public static final Block IRON_CAP_SHELF = registerBlock("iron_cap_shelf",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SHELF).mapColor(MapColor.CLAY),ShelfBlock::new);
+    public static final Block DRIFTWOOD_SHELF = registerBlock("driftwood_shelf",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SHELF).mapColor(MapColor.PLANT),ShelfBlock::new);
+    public static final Block WOODEN_SHELF = registerBlock("wooden_shelf",
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SHELF).mapColor(MapColor.COLOR_BROWN),ShelfBlock::new);
+
     public static final Block OAK_BARREL = registerNonStationBlock("oak_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.WOOD), OakBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.WOOD), BarrelBlock::new);
     public static final Block SPRUCE_BARREL = registerNonStationBlock("spruce_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL), SpruceBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL), BarrelBlock::new);
     public static final Block BIRCH_BARREL = registerNonStationBlock("birch_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.SAND), BirchBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.SAND), BarrelBlock::new);
     public static final Block JUNGLE_BARREL = registerNonStationBlock("jungle_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.DIRT), JungleBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.DIRT), BarrelBlock::new);
     public static final Block ACACIA_BARREL = registerNonStationBlock("acacia_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.COLOR_ORANGE), AcaciaBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.COLOR_ORANGE), BarrelBlock::new);
     public static final Block DARK_OAK_BARREL = registerNonStationBlock("dark_oak_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.COLOR_BROWN),DarkOakBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.COLOR_BROWN),BarrelBlock::new);
     public static final Block MANGROVE_BARREL = registerNonStationBlock("mangrove_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.COLOR_RED),MangroveBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.COLOR_RED),BarrelBlock::new);
     public static final Block BAMBOO_BARREL = registerNonStationBlock("bamboo_barrel",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.COLOR_YELLOW)
-                    .sound(SoundType.BAMBOO_WOOD),BambooBarrelBlock::new);
+                    .sound(SoundType.BAMBOO_WOOD),BarrelBlock::new);
     public static final Block CHERRY_BARREL = registerNonStationBlock("cherry_barrel",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.TERRACOTTA_WHITE)
-                    .sound(SoundType.CHERRY_WOOD),CherryBarrelBlock::new);
+                    .sound(SoundType.CHERRY_WOOD),BarrelBlock::new);
     public static final Block PALE_OAK_BARREL = registerNonStationBlock("pale_oak_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.QUARTZ) ,PaleOakBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.QUARTZ) ,BarrelBlock::new);
     public static final Block CRIMSON_BARREL = registerNonStationBlock("crimson_barrel",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.CRIMSON_STEM)
-                    .sound(SoundType.NETHER_WOOD),CrimsonBarrelBlock::new);
+                    .sound(SoundType.NETHER_WOOD),BarrelBlock::new);
     public static final Block WARPED_BARREL = registerNonStationBlock("warped_barrel",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.WARPED_STEM)
-                    .sound(SoundType.NETHER_WOOD),WarpedBarrelBlock::new);
+                    .sound(SoundType.NETHER_WOOD),BarrelBlock::new);
     public static final Block CACTUS_BARREL = registerNonStationBlock("cactus_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.GRASS),CactusBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.GRASS),BarrelBlock::new);
     public static final Block DRIFTWOOD_BARREL = registerNonStationBlock("driftwood_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.PLANT),DriftwoodBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.PLANT),BarrelBlock::new);
     public static final Block MUSHROOM_BARREL = registerNonStationBlock("mushroom_barrel",
-            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.RAW_IRON),MushroomBarrelBlock::new);
+            BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.RAW_IRON),BarrelBlock::new);
     public static final Block IRON_CAP_BARREL = registerNonStationBlock("iron_cap_barrel",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BARREL).mapColor(MapColor.CLAY)
-                    .sound(SoundType.STEM),IronCapBarrelBlock::new);
+                    .sound(SoundType.STEM),BarrelBlock::new);
 
     public static final Block OAK_BOOKSHELF = registerBlock("oak_bookshelf",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BOOKSHELF).mapColor(MapColor.COLOR_BROWN),Block::new);
@@ -3868,29 +3880,29 @@ public class DecoBlocks {
 
     public static final Block DEEPSLATE_SMOKER = registerNonStationBlock("deepslate_smoker",
             BlockBehaviour.Properties.ofFullCopy(Blocks.SMOKER).mapColor(MapColor.DEEPSLATE)
-                    .strength(4.5f).sound(SoundType.DEEPSLATE),DeepslateSmokerBlock::new);
+                    .strength(4.5f).sound(SoundType.DEEPSLATE),SmokerBlock::new);
     public static final Block BLACKSTONE_SMOKER = registerNonStationBlock("blackstone_smoker",
             BlockBehaviour.Properties.ofFullCopy(Blocks.SMOKER).mapColor(MapColor.COLOR_BLACK)
-                    .strength(3.0f),BlackstoneSmokerBlock::new);
+                    .strength(3.0f),SmokerBlock::new);
     public static final Block TUFF_SMOKER = registerNonStationBlock("tuff_smoker",
             BlockBehaviour.Properties.ofFullCopy(Blocks.SMOKER).mapColor(MapColor.TERRACOTTA_GRAY)
-                    .strength(3.0f).sound(SoundType.TUFF),TuffSmokerBlock::new);
+                    .strength(3.0f).sound(SoundType.TUFF),SmokerBlock::new);
     public static final Block END_STONE_SMOKER = registerNonStationBlock("end_stone_smoker",
             BlockBehaviour.Properties.ofFullCopy(Blocks.SMOKER).mapColor(MapColor.SAND)
-                    .strength(4.5f),EndstoneSmokerBlock::new);
+                    .strength(4.5f),SmokerBlock::new);
 
     public static final Block DEEPSLATE_BLAST_FURNACE = registerNonStationBlock("deepslate_blast_furnace",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BLAST_FURNACE).mapColor(MapColor.DEEPSLATE)
-                    .strength(4.5f).sound(SoundType.DEEPSLATE_BRICKS),DeepslateBlastFurnaceBlock::new);
+                    .strength(4.5f).sound(SoundType.DEEPSLATE_BRICKS),BlastFurnaceBlock::new);
     public static final Block BLACKSTONE_BLAST_FURNACE = registerNonStationBlock("blackstone_blast_furnace",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BLAST_FURNACE).mapColor(MapColor.COLOR_BLACK)
-                    .strength(3.0f),BlackstoneBlastFurnaceBlock::new);
+                    .strength(3.0f),BlastFurnaceBlock::new);
     public static final Block TUFF_BLAST_FURNACE = registerNonStationBlock("tuff_blast_furnace",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BLAST_FURNACE).mapColor(MapColor.TERRACOTTA_GRAY)
-                    .strength(3.0f).sound(SoundType.TUFF_BRICKS),TuffBlastFurnaceBlock::new);
+                    .strength(3.0f).sound(SoundType.TUFF_BRICKS),BlastFurnaceBlock::new);
     public static final Block END_STONE_BLAST_FURNACE = registerNonStationBlock("end_stone_blast_furnace",
             BlockBehaviour.Properties.ofFullCopy(Blocks.BLAST_FURNACE).mapColor(MapColor.SAND)
-                    .strength(4.5f),EndstoneBlastFurnaceBlock::new);
+                    .strength(4.5f),BlastFurnaceBlock::new);
 
     public static final Block OAK_CARTOGRAPHY_TABLE = registerNonStationBlock("oak_cartography_table",
             BlockBehaviour.Properties.ofFullCopy(Blocks.CARTOGRAPHY_TABLE),OakCartographyTableBlock::new);

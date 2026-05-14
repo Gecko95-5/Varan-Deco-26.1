@@ -2823,6 +2823,14 @@
   "block.minecraft.bubble_elevator_block_magma": "Bubble Elevator Block",
   "block.minecraft.bubble_elevator_block_bubble": "Bubble Elevator Block",
 
+  "block.minecraft.jack_o_copper_lantern": "Jack-O-Copper Lantern",
+
+  "block.minecraft.cactus_shelf": "Cactus Shelf",
+  "block.minecraft.mushroom_shelf": "Mushroom Shelf",
+  "block.minecraft.iron_cap_shelf": "Iron Cap Shelf",
+  "block.minecraft.driftwood_shelf": "Driftwood Shelf",
+  "block.minecraft.wooden_shelf": "Wooden Shelf",
+
   "item.minecraft.potion.effect.water_bubble": "Water Bubble Potion",
   "item.minecraft.splash_potion.effect.water_bubble": "Splash Potion of The Water Bubble",
   "item.minecraft.lingering_potion.effect.water_bubble": "Lingering Potion of The Water Bubble",
