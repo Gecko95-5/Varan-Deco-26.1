@@ -53,6 +53,10 @@ public class DecoVillagerTrades {
             resourceKey("wandering_trader/emerald_sweet_wildflower");
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_GECKO_WILDFLOWERS =
             resourceKey("wandering_trader/emerald_gecko_wildflower");
+    public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_SEA_WILDFLOWERS =
+            resourceKey("wandering_trader/emerald_sea_wildflower");
+    public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_MONOCHROME_WILDFLOWERS =
+            resourceKey("wandering_trader/emerald_monochrome_wildflower");
 
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_BARBERTON_DAISY =
             resourceKey("wandering_trader/emerald_barberton_daisy");
@@ -85,21 +89,31 @@ public class DecoVillagerTrades {
             resourceKey("wandering_trader/emerald_lavender");
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_DRILL_LAVENDER =
             resourceKey("wandering_trader/emerald_drill_lavender");
+    public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_FERN_LAVENDER =
+            resourceKey("wandering_trader/emerald_fern_lavender");
 
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_BUTTERCUP =
             resourceKey("wandering_trader/emerald_buttercup");
+    public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_CARAMEL_BUTTERCUP =
+            resourceKey("wandering_trader/emerald_caramel_buttercup");
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_NIGHTSHADE =
             resourceKey("wandering_trader/emerald_nightshade");
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_ROSE =
             resourceKey("wandering_trader/emerald_rose");
+    public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_SILVER_ROSE =
+            resourceKey("wandering_trader/emerald_silver_rose");
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_PAEONIA =
             resourceKey("wandering_trader/emerald_paeonia");
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_IRIS =
             resourceKey("wandering_trader/emerald_iris");
+    public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_ALPINE_SPEEDWELL =
+            resourceKey("wandering_trader/emerald_alpine_speedwell");
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_BLUE_DELPHINIUM =
             resourceKey("wandering_trader/emerald_blue_delphinium");
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_PUFFY_DANDELION =
             resourceKey("wandering_trader/emerald_puffy_dandelion");
+    public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_TAIGA_DANDELION =
+            resourceKey("wandering_trader/emerald_taiga_dandelion");
 
     public static final ResourceKey<VillagerTrade> DECO_WANDERING_TRADER_EMERALD_DRIFTWOOD_SAPLING =
             resourceKey("wandering_trader/emerald_driftwood_sapling");
@@ -335,9 +349,16 @@ public class DecoVillagerTrades {
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_PURPLE_TULIP, DecoBlocks.PURPLE_TULIP.asItem()),
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_MAGENTA_TULIP, DecoBlocks.MAGENTA_TULIP.asItem()),
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_GREEN_TULIP, DecoBlocks.GREEN_TULIP.asItem()),
+                    Pair.of(DECO_WANDERING_TRADER_EMERALD_FERN_LAVENDER, DecoBlocks.FERN_LAVENDER.asItem()),
+                    Pair.of(DECO_WANDERING_TRADER_EMERALD_CARAMEL_BUTTERCUP, DecoBlocks.CARAMEL_BUTTERCUP.asItem()),
+                    Pair.of(DECO_WANDERING_TRADER_EMERALD_SILVER_ROSE, DecoBlocks.SILVER_ROSE.asItem()),
+                    Pair.of(DECO_WANDERING_TRADER_EMERALD_ALPINE_SPEEDWELL, DecoBlocks.ALPINE_SPEEDWELL.asItem()),
+                    Pair.of(DECO_WANDERING_TRADER_EMERALD_TAIGA_DANDELION, DecoBlocks.TAIGA_DANDELION.asItem()),
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_ROUGE_WILDFLOWERS, DecoBlocks.ROUGE_WILDFLOWERS.asItem()),
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_SWEET_WILDFLOWERS, DecoBlocks.SWEET_WILDFLOWERS.asItem()),
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_GECKO_WILDFLOWERS, DecoBlocks.GECKO_WILDFLOWERS.asItem()),
+                    Pair.of(DECO_WANDERING_TRADER_EMERALD_SEA_WILDFLOWERS, DecoBlocks.SEA_WILDFLOWERS.asItem()),
+                    Pair.of(DECO_WANDERING_TRADER_EMERALD_MONOCHROME_WILDFLOWERS, DecoBlocks.MONOCHROME_WILDFLOWERS.asItem()),
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_BARBERTON_DAISY, DecoBlocks.BARBERTON_DAISY.asItem()),
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_BLUE_EYED_DAISY, DecoBlocks.BLUE_EYED_DAISY.asItem()),
                     Pair.of(DECO_WANDERING_TRADER_EMERALD_GERBERA_DAISY, DecoBlocks.GERBERA_DAISY.asItem()),
