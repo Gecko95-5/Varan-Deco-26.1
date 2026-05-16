@@ -2720,5 +2720,9 @@
   "advancements.varan-deco.smooth_glowstone.title": "Гладкий светокаменный маяк",
   "advancements.varan-deco.smooth_glowstone.description": "Переплавьте блок гладкого светокамня",
 
-  "itemgroup.varan_deco_blocks": "Варианты декора"
+  "itemgroup.varan_deco_blocks": "V-Deco — Строительные блоки",
+  "itemgroup.varan_deco_colour": "V-Deco — Цветные блоки",
+  "itemgroup.varan_deco_flower": "V-Deco — Природные блоки",
+  "itemgroup.varan_deco_functional": "V-Deco — Функциональные блоки",
+  "itemgroup.varan_deco_misc": "V-Deco — Разное"
 }

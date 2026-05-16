@@ -15,7 +15,6 @@ public class DecoItemGroup {
             Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, "varan_deco"),
             FabricCreativeModeTab.builder().title(Component.translatable("itemgroup.varan_deco_blocks"))
                     .icon(() -> new ItemStack(DecoBlocks.STONE_TILES)).displayItems((displayContext, entries) -> {
-
                         entries.accept(DecoBlocks.OAK_WOOD_STAIRS.asItem());
                         entries.accept(DecoBlocks.OAK_WOOD_SLAB.asItem());
                         entries.accept(DecoBlocks.OAK_WOOD_WALL.asItem());
@@ -958,6 +957,12 @@ public class DecoItemGroup {
                         entries.accept(DecoBlocks.SMOOTH_RESIN_STAIRS.asItem());
                         entries.accept(DecoBlocks.SMOOTH_RESIN_SLAB.asItem());
                         entries.accept(DecoBlocks.SMOOTH_RESIN_WALL.asItem());
+                    }).build());
+
+            public static final CreativeModeTab VARAN_DECO_COLOURED_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
+                    Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, "varan_deco_colour"),
+                    FabricCreativeModeTab.builder().title(Component.translatable("itemgroup.varan_deco_colour"))
+                                .icon(() -> new ItemStack(DecoBlocks.CUT_GREEN_CONCRETE)).displayItems((displayContext, entries) -> {
                         entries.accept(DecoBlocks.WHITE_WOOL_STAIRS.asItem());
                         entries.accept(DecoBlocks.WHITE_WOOL_SLAB.asItem());
                         entries.accept(DecoBlocks.LIGHT_GRAY_WOOL_STAIRS.asItem());
@@ -1508,6 +1513,12 @@ public class DecoItemGroup {
                         entries.accept(DecoBlocks.SHADED_PURPLE_BLOCK.asItem());
                         entries.accept(DecoBlocks.SHADED_MAGENTA_BLOCK.asItem());
                         entries.accept(DecoBlocks.SHADED_PINK_BLOCK.asItem());
+                                }).build());
+
+    public static final CreativeModeTab VARAN_DECO_NATURAL_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
+            Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, "varan_deco_flower"),
+            FabricCreativeModeTab.builder().title(Component.translatable("itemgroup.varan_deco_flower"))
+                    .icon(() -> new ItemStack(DecoBlocks.YELLOW_TULIP)).displayItems((displayContext, entries) -> {
                         entries.accept(DecoBlocks.PACKED_GRASS.asItem());
                         entries.accept(DecoBlocks.GRASS_CARPET.asItem());
                         entries.accept(DecoBlocks.GRASS_STAIRS.asItem());
@@ -1709,6 +1720,12 @@ public class DecoItemGroup {
                         entries.accept(DecoBlocks.BEDROCK_SLAB.asItem());
                         entries.accept(DecoBlocks.BEDROCK_WALL.asItem());
                         entries.accept(DecoBlocks.CLOUD_BLOCK.asItem());
+                    }).build());
+
+    public static final CreativeModeTab VARAN_DECO_FUNCTIONAL_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
+            Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, "varan_deco_functional"),
+            FabricCreativeModeTab.builder().title(Component.translatable("itemgroup.varan_deco_functional"))
+                    .icon(() -> new ItemStack(DecoBlocks.END_STONE_FURNACE)).displayItems((displayContext, entries) -> {
                         entries.accept(DecoBlocks.GOLD_LANTERN.asItem());
                         entries.accept(DecoBlocks.GOLD_SOUL_LANTERN.asItem());
                         entries.accept(DecoBlocks.COPPER_SOUL_LANTERN.asItem());
@@ -1939,6 +1956,10 @@ public class DecoItemGroup {
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF.asItem());
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF_STAIRS.asItem());
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF_SLAB.asItem());
+                        entries.accept(DecoBlocks.CACTUS_SHELF.asItem());
+                        entries.accept(DecoBlocks.MUSHROOM_SHELF.asItem());
+                        entries.accept(DecoBlocks.IRON_CAP_SHELF.asItem());
+                        entries.accept(DecoBlocks.DRIFTWOOD_SHELF.asItem());
                         entries.accept(DecoBlocks.WOODEN_SHELF.asItem());
                         entries.accept(DecoBlocks.OAK_BARREL.asItem());
                         entries.accept(DecoBlocks.SPRUCE_BARREL.asItem());
@@ -2014,6 +2035,22 @@ public class DecoItemGroup {
                         entries.accept(DecoBlocks.IRON_CAP_NOTE_BLOCK.asItem());
                         entries.accept(DecoBlocks.DRIFTWOOD_NOTE_BLOCK.asItem());
                         entries.accept(DecoBlocks.BUBBLE_ELEVATOR_BLOCK_BUBBLE.asItem());
+                    }).build());
+
+    public static final CreativeModeTab VARAN_DECO_MISC_GROUP = Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB,
+            Identifier.fromNamespaceAndPath(VaranDeco.MOD_ID, "varan_deco_misc"),
+            FabricCreativeModeTab.builder().title(Component.translatable("itemgroup.varan_deco_misc"))
+                    .icon(() -> new ItemStack(DecoItems.BUBBLE_ORB)).displayItems((displayContext, entries) -> {
+                        entries.accept(DecoItems.ANCIENT_ROSE_SEEDS);
+                        entries.accept(DecoItems.MIGHTY_LAVENDER_FLOWER);
+                        entries.accept(DecoItems.LILAC_FLOWER);
+                        entries.accept(DecoItems.PASSTOL);
+                        entries.accept(DecoItems.SHADDOL);
+                        entries.accept(DecoItems.SNOW_BRICK);
+                        entries.accept(DecoItems.WARPED_WART);
+                        entries.accept(DecoItems.BUBBLE_ORB);
+                        entries.accept(DecoItems.EARTH_SPHERE);
+                        entries.accept(DecoItems.ICE_SHARD);
                         entries.accept(DecoItems.OAK_RAFT);
                         entries.accept(DecoItems.OAK_CHEST_RAFT);
                         entries.accept(DecoItems.SPRUCE_RAFT);
@@ -2062,16 +2099,6 @@ public class DecoItemGroup {
                         entries.accept(DecoItems.WOODEN_RAFT);
                         entries.accept(DecoItems.WOODEN_CHEST_BOAT);
                         entries.accept(DecoItems.WOODEN_CHEST_RAFT);
-                        entries.accept(DecoItems.ANCIENT_ROSE_SEEDS);
-                        entries.accept(DecoItems.MIGHTY_LAVENDER_FLOWER);
-                        entries.accept(DecoItems.LILAC_FLOWER);
-                        entries.accept(DecoItems.PASSTOL);
-                        entries.accept(DecoItems.SHADDOL);
-                        entries.accept(DecoItems.SNOW_BRICK);
-                        entries.accept(DecoItems.WARPED_WART);
-                        entries.accept(DecoItems.BUBBLE_ORB);
-                        entries.accept(DecoItems.EARTH_SPHERE);
-                        entries.accept(DecoItems.ICE_SHARD);
                     }).build());
 
     public static void registerItemGroups(){

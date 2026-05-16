@@ -2926,5 +2926,9 @@
   "advancements.varan-deco.smooth_glowstone.title": "A Smooth Beacon of Light",
   "advancements.varan-deco.smooth_glowstone.description": "Smelt a Block of Smooth Glowstone",
 
-  "itemgroup.varan_deco_blocks": "Variant Decoration"
+  "itemgroup.varan_deco_blocks": "V-Deco - Building Blocks",
+  "itemgroup.varan_deco_colour": "V-Deco - Coloured Blocks",
+  "itemgroup.varan_deco_flower": "V-Deco - Natural Blocks",
+  "itemgroup.varan_deco_functional": "V-Deco - Functional Blocks",
+  "itemgroup.varan_deco_misc": "V-Deco - Miscellaneous"
 }
