@@ -1939,6 +1939,10 @@ public class DecoItemGroup {
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF.asItem());
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF_STAIRS.asItem());
                         entries.accept(DecoBlocks.DRIFTWOOD_BOOKSHELF_SLAB.asItem());
+                        entries.accept(DecoBlocks.CACTUS_SHELF.asItem());
+                        entries.accept(DecoBlocks.MUSHROOM_SHELF.asItem());
+                        entries.accept(DecoBlocks.IRON_CAP_SHELF.asItem());
+                        entries.accept(DecoBlocks.DRIFTWOOD_SHELF.asItem());
                         entries.accept(DecoBlocks.WOODEN_SHELF.asItem());
                         entries.accept(DecoBlocks.OAK_BARREL.asItem());
                         entries.accept(DecoBlocks.SPRUCE_BARREL.asItem());
