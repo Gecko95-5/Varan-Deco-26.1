@@ -6,7 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EntityTypes;
 import net.minecraft.world.entity.InsideBlockEffectApplier;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.BlockGetter;
@@ -30,8 +30,8 @@ public class SilverRoseBlock extends FlowerBlock {
         if (world instanceof ServerLevel serverWorld
                 && world.getDifficulty() != Difficulty.PEACEFUL
                 && entity instanceof LivingEntity livingEntity
-                && livingEntity.getType() != EntityType.FOX
-                && livingEntity.getType() != EntityType.BEE) {
+                && livingEntity.getType() != EntityTypes.FOX
+                && livingEntity.getType() != EntityTypes.BEE) {
                 livingEntity.hurtServer((ServerLevel) world, world.damageSources().sweetBerryBush(), 1.0F);
         }
     }
