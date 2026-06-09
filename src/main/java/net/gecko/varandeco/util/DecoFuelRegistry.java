@@ -13,6 +13,8 @@ public class DecoFuelRegistry {
             builder.add(DecoTags.Items.WOODEN_SMITHING_TABLES,300);
             builder.add(DecoTags.Items.WOODEN_BARRELS,300);
             builder.add(DecoTags.Items.WOODEN_BOOKSHELVES,300);
+            builder.add(DecoTags.Items.WOODEN_BOOKSHELF_SLABS,150);
+            builder.add(DecoTags.Items.WOODEN_BOOKSHELF_STAIRS,300);
             builder.add(DecoTags.Items.MOSAIC_WOOD,300);
             builder.add(DecoTags.Items.MOSAIC_STAIRS,300);
             builder.add(DecoTags.Items.MOSAIC_SLABS,150);
@@ -28,6 +30,9 @@ public class DecoFuelRegistry {
             builder.add(DecoBlocks.CHARCOAL_STAIRS,16000);
             builder.add(DecoBlocks.CHARCOAL_SLAB,8000);
             builder.add(DecoBlocks.CHARCOAL_WALL,16000);
+            builder.add(DecoTags.Items.LOG_STAIRS,300);
+            builder.add(DecoTags.Items.LOG_SLABS,150);
+            builder.add(DecoTags.Items.LOG_WALLS,300);
         });
     }
 }
